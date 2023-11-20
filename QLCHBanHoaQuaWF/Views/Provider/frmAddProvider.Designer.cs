@@ -90,7 +90,7 @@
             this.lblTitile.AutoSize = true;
             this.lblTitile.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTitile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
-            this.lblTitile.Location = new System.Drawing.Point(41, 14);
+            this.lblTitile.Location = new System.Drawing.Point(11, 14);
             this.lblTitile.Name = "lblTitile";
             this.lblTitile.Size = new System.Drawing.Size(166, 23);
             this.lblTitile.TabIndex = 18;
@@ -134,6 +134,8 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.AutoRoundedCorners = true;
+            this.btnAdd.BorderRadius = 22;
             this.btnAdd.CustomizableEdges = customizableEdges1;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -151,7 +153,9 @@
             // 
             // btnExit
             // 
+            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnExit.BorderRadius = 22;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -185,6 +189,8 @@
             // txtAddress
             // 
             this.txtAddress.Animated = true;
+            this.txtAddress.AutoRoundedCorners = true;
+            this.txtAddress.BorderRadius = 19;
             this.txtAddress.CustomizableEdges = customizableEdges5;
             this.txtAddress.DefaultText = "";
             this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -217,6 +223,8 @@
             // txtPhone
             // 
             this.txtPhone.Animated = true;
+            this.txtPhone.AutoRoundedCorners = true;
+            this.txtPhone.BorderRadius = 19;
             this.txtPhone.CustomizableEdges = customizableEdges7;
             this.txtPhone.DefaultText = "";
             this.txtPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -249,6 +257,8 @@
             // txtEmail
             // 
             this.txtEmail.Animated = true;
+            this.txtEmail.AutoRoundedCorners = true;
+            this.txtEmail.BorderRadius = 19;
             this.txtEmail.CustomizableEdges = customizableEdges9;
             this.txtEmail.DefaultText = "";
             this.txtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -281,6 +291,8 @@
             // txtProviderName
             // 
             this.txtProviderName.Animated = true;
+            this.txtProviderName.AutoRoundedCorners = true;
+            this.txtProviderName.BorderRadius = 19;
             this.txtProviderName.CustomizableEdges = customizableEdges11;
             this.txtProviderName.DefaultText = "";
             this.txtProviderName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

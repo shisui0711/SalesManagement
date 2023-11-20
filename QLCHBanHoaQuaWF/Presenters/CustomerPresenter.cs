@@ -8,18 +8,18 @@ using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Customer;
-using AppContext = QLCHBanHoaQuaWF.Models.AppContext;
+using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF.Presenters
 {
-    internal class CustomerPresenter : PresenterCRUD
+    public class CustomerPresenter : PresenterCRUD
     {
         private IViewCustomer _viewCustomer;
         private IAddCustomer _addCustomer;
         private IUpdateCustomer _updateCustomer;
-        private AppContext _context;
+        private MyAppContext _context;
 
-        public CustomerPresenter(IViewCustomer viewCustomer,IAddCustomer addCustomer,IUpdateCustomer updateCustomer,AppContext context)
+        public CustomerPresenter(IViewCustomer viewCustomer,IAddCustomer addCustomer,IUpdateCustomer updateCustomer,MyAppContext context)
         {
             _viewCustomer = viewCustomer;
             _addCustomer = addCustomer;
@@ -77,33 +77,33 @@ namespace QLCHBanHoaQuaWF.Presenters
             _context.Customers.Add(customer);
             _viewCustomer.CustomerBindingSource.EndEdit();
             _context.SaveChanges();
+            _addCustomer.Reset();
 
         }
 
         public override void Update()
         {
-            var customer = new Customer();
-            customer.CustomerID = _updateCustomer.CustomerID;
+            var customer = _context.Customers.Find(_updateCustomer.CustomerID);
             customer.CustomerName = _updateCustomer.CustomerName;
             customer.Email = _updateCustomer.Email;
             customer.Phone = _updateCustomer.Phone;
             customer.Address = _updateCustomer.Address;
             if (!IsValid(customer,_updateCustomer))
             {
+                _context.Entry(customer).Reload();
                 return;
             }
-
-            var customerExist = _context.Customers.Find(customer.CustomerID);
-            if (customerExist != null)
-            {
-                _context.Entry(customerExist).CurrentValues.SetValues(customer);
-                _viewCustomer.CustomerBindingSource.EndEdit();
-                _context.SaveChanges();
-            }
+            _viewCustomer.CustomerBindingSource.EndEdit();
+            _context.SaveChanges();
         }
 
         public override void Remove()
         {
+            var deleted = _viewCustomer.CustomerBindingSource.Current as Customer;
+            if (deleted == null)
+            { 
+              return;  
+            }
             var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Cancel)
@@ -111,7 +111,7 @@ namespace QLCHBanHoaQuaWF.Presenters
                 return;
             }
 
-            var deleted = _viewCustomer.CustomerBindingSource.Current as Customer;
+            
             using (var transaction = _context.Database.BeginTransaction())
             {
                 try
@@ -134,7 +134,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             switch (_viewCustomer.OptionIndex)
             {
                 case 1:
-                    customers = _context.Customers.Where(x => x.CustomerName.Contains(_viewCustomer.SearchText)).ToList();
+                    customers = _context.Customers.Where(x => x.CustomerName.ToLower().Contains(_viewCustomer.SearchText.ToLower())).ToList();
                     break;
                 case 2:
                     customers = _context.Customers.Where(x => x.Email.Contains(_viewCustomer.SearchText)).ToList();
@@ -149,7 +149,7 @@ namespace QLCHBanHoaQuaWF.Presenters
                     break;
             }
 
-            if (customers != null)
+            if (customers != null && customers.Count > 0)
             {
                 _viewCustomer.CustomerBindingSource.ResetBindings(true);
                 _viewCustomer.CustomerBindingSource.DataSource = customers;
@@ -164,7 +164,6 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             _viewCustomer.CustomerBindingSource.ResetBindings(true);
             _viewCustomer.CustomerBindingSource.DataSource = _context.Customers.Local.ToBindingList();
-            _viewCustomer.CustomerBindingSource.EndEdit();
         }
     }
 }

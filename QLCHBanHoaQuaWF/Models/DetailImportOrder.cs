@@ -13,6 +13,8 @@ namespace QLCHBanHoaQuaWF.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DetailOrderID { get; set; }
+
+        public int OrderID { get; set; }
         [ForeignKey("OrderID")]
         [InverseProperty("DetailImportOrders")]
         public ImportOrder ImportOrder { get; set; }

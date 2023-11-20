@@ -179,13 +179,14 @@
             this.txtCalculationUnit.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCalculationUnit.Location = new System.Drawing.Point(292, 196);
             this.txtCalculationUnit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCalculationUnit.MaxLength = 50;
             this.txtCalculationUnit.Name = "txtCalculationUnit";
             this.txtCalculationUnit.PasswordChar = '\0';
             this.txtCalculationUnit.PlaceholderText = "";
             this.txtCalculationUnit.SelectedText = "";
             this.txtCalculationUnit.ShadowDecoration.CustomizableEdges = customizableEdges18;
             this.txtCalculationUnit.Size = new System.Drawing.Size(280, 40);
-            this.txtCalculationUnit.TabIndex = 22;
+            this.txtCalculationUnit.TabIndex = 2;
             // 
             // lblName
             // 
@@ -211,13 +212,14 @@
             this.txtProductName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtProductName.Location = new System.Drawing.Point(292, 129);
             this.txtProductName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtProductName.MaxLength = 50;
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.PasswordChar = '\0';
             this.txtProductName.PlaceholderText = "";
             this.txtProductName.SelectedText = "";
             this.txtProductName.ShadowDecoration.CustomizableEdges = customizableEdges20;
             this.txtProductName.Size = new System.Drawing.Size(280, 40);
-            this.txtProductName.TabIndex = 20;
+            this.txtProductName.TabIndex = 1;
             // 
             // label3
             // 
@@ -249,7 +251,7 @@
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
             this.guna2TextBox1.Size = new System.Drawing.Size(280, 40);
-            this.guna2TextBox1.TabIndex = 26;
+            this.guna2TextBox1.TabIndex = 0;
             // 
             // pnlButtuon
             // 
@@ -324,6 +326,7 @@
             this.txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescription.Location = new System.Drawing.Point(292, 611);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDescription.MaxLength = 100;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.PasswordChar = '\0';
@@ -331,7 +334,7 @@
             this.txtDescription.SelectedText = "";
             this.txtDescription.ShadowDecoration.CustomizableEdges = customizableEdges8;
             this.txtDescription.Size = new System.Drawing.Size(280, 40);
-            this.txtDescription.TabIndex = 32;
+            this.txtDescription.TabIndex = 5;
             // 
             // label4
             // 
@@ -357,13 +360,14 @@
             this.txtUnitPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUnitPrice.Location = new System.Drawing.Point(292, 553);
             this.txtUnitPrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtUnitPrice.MaxLength = 20;
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.PasswordChar = '\0';
             this.txtUnitPrice.PlaceholderText = "";
             this.txtUnitPrice.SelectedText = "";
             this.txtUnitPrice.ShadowDecoration.CustomizableEdges = customizableEdges10;
             this.txtUnitPrice.Size = new System.Drawing.Size(280, 40);
-            this.txtUnitPrice.TabIndex = 30;
+            this.txtUnitPrice.TabIndex = 4;
             // 
             // label6
             // 
@@ -389,13 +393,14 @@
             this.txtImportUnitPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtImportUnitPrice.Location = new System.Drawing.Point(292, 488);
             this.txtImportUnitPrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtImportUnitPrice.MaxLength = 20;
             this.txtImportUnitPrice.Name = "txtImportUnitPrice";
             this.txtImportUnitPrice.PasswordChar = '\0';
             this.txtImportUnitPrice.PlaceholderText = "";
             this.txtImportUnitPrice.SelectedText = "";
             this.txtImportUnitPrice.ShadowDecoration.CustomizableEdges = customizableEdges12;
             this.txtImportUnitPrice.Size = new System.Drawing.Size(280, 40);
-            this.txtImportUnitPrice.TabIndex = 28;
+            this.txtImportUnitPrice.TabIndex = 3;
             // 
             // frmUpdateProduct
             // 

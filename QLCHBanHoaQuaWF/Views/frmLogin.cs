@@ -64,7 +64,7 @@ namespace QLCHBanHoaQuaWF.Views
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-
+            rdoNhanVien.Checked = true;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

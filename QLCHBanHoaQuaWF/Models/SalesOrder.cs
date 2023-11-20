@@ -14,7 +14,7 @@ namespace QLCHBanHoaQuaWF.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
         [Column(TypeName = "date")]
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.Now;
         [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
         [ForeignKey("EmployeeID")]

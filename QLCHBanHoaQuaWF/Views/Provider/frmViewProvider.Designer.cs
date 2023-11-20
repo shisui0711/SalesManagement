@@ -53,24 +53,24 @@
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlGridView = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvProvider = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnHistoryImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.providerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.providerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.providerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.providerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.providerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.providerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnHistoryImport = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlControl.SuspendLayout();
             this.pnlGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProvider)).BeginInit();
+            this.guna2ContextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.providerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.providerBindingSource)).BeginInit();
-            this.guna2ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -218,6 +218,7 @@
             this.phoneDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn,
             this.importOrdersDataGridViewTextBoxColumn});
+            this.dgvProvider.ContextMenuStrip = this.guna2ContextMenuStrip1;
             this.dgvProvider.DataSource = this.providerBindingSource1;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Lime;
@@ -268,10 +269,57 @@
             this.dgvProvider.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvProvider.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // guna2ContextMenuStrip1
+            // 
+            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnUpdate,
+            this.btnRemove,
+            this.btnHistoryImport});
+            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(228, 76);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(227, 24);
+            this.btnUpdate.Text = "Sửa";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(227, 24);
+            this.btnRemove.Text = "Xóa";
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnHistoryImport
+            // 
+            this.btnHistoryImport.Name = "btnHistoryImport";
+            this.btnHistoryImport.Size = new System.Drawing.Size(227, 24);
+            this.btnHistoryImport.Text = "Các đơn hàng đã nhập";
+            // 
+            // providerBindingSource1
+            // 
+            this.providerBindingSource1.DataSource = typeof(QLCHBanHoaQuaWF.Models.Provider);
+            // 
+            // providerBindingSource
+            // 
+            this.providerBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.Provider);
+            // 
             // providerIDDataGridViewTextBoxColumn
             // 
             this.providerIDDataGridViewTextBoxColumn.DataPropertyName = "ProviderID";
-            this.providerIDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.providerIDDataGridViewTextBoxColumn.HeaderText = "Mã nhà cung cấp";
             this.providerIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.providerIDDataGridViewTextBoxColumn.Name = "providerIDDataGridViewTextBoxColumn";
             this.providerIDDataGridViewTextBoxColumn.ReadOnly = true;
@@ -317,53 +365,6 @@
             this.importOrdersDataGridViewTextBoxColumn.ReadOnly = true;
             this.importOrdersDataGridViewTextBoxColumn.Visible = false;
             // 
-            // providerBindingSource1
-            // 
-            this.providerBindingSource1.DataSource = typeof(QLCHBanHoaQuaWF.Models.Provider);
-            // 
-            // providerBindingSource
-            // 
-            this.providerBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.Provider);
-            // 
-            // guna2ContextMenuStrip1
-            // 
-            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnUpdate,
-            this.btnRemove,
-            this.btnHistoryImport});
-            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
-            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
-            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(228, 76);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(227, 24);
-            this.btnUpdate.Text = "Sửa";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(227, 24);
-            this.btnRemove.Text = "Xóa";
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // btnHistoryImport
-            // 
-            this.btnHistoryImport.Name = "btnHistoryImport";
-            this.btnHistoryImport.Size = new System.Drawing.Size(227, 24);
-            this.btnHistoryImport.Text = "Các đơn hàng đã nhập";
-            // 
             // frmViewProvider
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -378,9 +379,9 @@
             this.pnlControl.ResumeLayout(false);
             this.pnlGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProvider)).EndInit();
+            this.guna2ContextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.providerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.providerBindingSource)).EndInit();
-            this.guna2ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -396,16 +397,16 @@
         private Guna.UI2.WinForms.Guna2Button btnReload;
         private Guna.UI2.WinForms.Guna2Button btnSearch;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
+        private BindingSource providerBindingSource1;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
+        private ToolStripMenuItem btnUpdate;
+        private ToolStripMenuItem btnRemove;
+        private ToolStripMenuItem btnHistoryImport;
         private DataGridViewTextBoxColumn providerIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn providerNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn importOrdersDataGridViewTextBoxColumn;
-        private BindingSource providerBindingSource1;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
-        private ToolStripMenuItem btnUpdate;
-        private ToolStripMenuItem btnRemove;
-        private ToolStripMenuItem btnHistoryImport;
     }
 }

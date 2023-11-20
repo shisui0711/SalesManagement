@@ -4,23 +4,25 @@ using QLCHBanHoaQuaWF.Views.Customer;
 using QLCHBanHoaQuaWF.Views.Employee;
 using System.ComponentModel.DataAnnotations;
 using QLCHBanHoaQuaWF.Views;
-using AppContext = QLCHBanHoaQuaWF.Models.AppContext;
+using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF.Presenters;
-
 public class EmployeePresenter:PresenterCRUD
 {
-    private IViewEmployee _viewEmployee;
-    private IAddEmployee _addEmployee;
-    private IUpdateEmployee _updateEmployee;
-    private AppContext _context;
+    private readonly IViewEmployee _viewEmployee;
+    private readonly IAddEmployee _addEmployee;
+    private readonly IUpdateEmployee _updateEmployee;
+    private readonly MyAppContext _context;
+    private readonly AuthPresenter _auth;
 
-    public EmployeePresenter(IViewEmployee viewEmployee,IAddEmployee addEmployee,IUpdateEmployee updateEmployee,AppContext context)
+
+    public EmployeePresenter(IViewEmployee viewEmployee,IAddEmployee addEmployee,IUpdateEmployee updateEmployee,MyAppContext context,AuthPresenter auth)
     {
         _viewEmployee = viewEmployee;
         _addEmployee = addEmployee;
         _updateEmployee = updateEmployee;
         _context = context;
+        _auth = auth;
 
         _context.Employees.Load();
 
@@ -65,6 +67,16 @@ public class EmployeePresenter:PresenterCRUD
 
     public void ShowUpdateForm()
     {
+        var updated = _viewEmployee.EmployeeBindingSource.Current as Employee;
+        if (updated == null)
+        {
+            return;
+        }
+        _updateEmployee.EmployeeID = updated.EmployeeID;
+        _updateEmployee.EmployeeName = updated.EmployeeName;
+        _updateEmployee.Email = updated.Email;
+        _updateEmployee.Phone = updated.Phone;
+        _updateEmployee.Salary = updated.Salary;
         if (_updateEmployee.GetType().IsAssignableTo(typeof(Form)))
         {
             var form = _updateEmployee as Form;
@@ -87,15 +99,25 @@ public class EmployeePresenter:PresenterCRUD
             return;
         }
 
+        if (_context.Employees.Any(e=>e.Email ==_addEmployee.Email))
+        {
+            MessageBox.Show("Email đã tồn tại trên hệ thống");
+            return;
+        }
+
         _context.Employees.Add(employee);
         _context.SaveChanges();
+        _auth.Register(employee.Email,"123456",1);
         _viewEmployee.EmployeeBindingSource.EndEdit();
     }
 
     public override void Update()
     {
-        var employee = new Employee();
-        employee.EmployeeID = _updateEmployee.EmployeeID;
+        var employee = _context.Employees.Find(_updateEmployee.EmployeeID);
+        if (employee == null)
+        {
+            return;
+        }
         employee.EmployeeName = _updateEmployee.EmployeeName;
         employee.Email = _updateEmployee.Email;
         employee.Phone = _updateEmployee.Phone;
@@ -103,28 +125,27 @@ public class EmployeePresenter:PresenterCRUD
         employee.Salary = _updateEmployee.Salary;
         if (!IsValid(employee, _updateEmployee))
         {
+            _context.Entry(employee).Reload();
             return;
         }
 
-        var employeeExist = _context.Employees.Find(employee.EmployeeID);
-        if (employeeExist != null)
-        {
-            _context.Entry(employeeExist).CurrentValues.SetValues(employee);
-            _context.SaveChanges();
-            _viewEmployee.EmployeeBindingSource.EndEdit();
-        }
+        _context.SaveChanges();
+        _viewEmployee.EmployeeBindingSource.EndEdit();
     }
 
     public override void Remove()
     {
+        var deleted = _viewEmployee.EmployeeBindingSource.Current as Employee;
+        if (deleted == null)
+        {
+            return;
+        }
         var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
             MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         if (dialogResult == DialogResult.Cancel)
         {
             return;
         }
-
-        var deleted = _viewEmployee.EmployeeBindingSource.Current as Employee;
         using (var transaction = _context.Database.BeginTransaction())
         {
             try
@@ -176,5 +197,10 @@ public class EmployeePresenter:PresenterCRUD
     {
         _viewEmployee.EmployeeBindingSource.ResetBindings(true);
         _viewEmployee.EmployeeBindingSource.DataSource = _context.Employees.Local.ToBindingList();
+    }
+
+    public void LoadUserRole(BindingSource source)
+    {
+        source.DataSource = _context.UserRoles.ToList();
     }
 }

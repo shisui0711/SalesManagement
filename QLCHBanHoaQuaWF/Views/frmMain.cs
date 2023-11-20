@@ -18,6 +18,17 @@ namespace QLCHBanHoaQuaWF.Views
 {
     public partial class frmMain : Form,IViewMain
     {
+        public string User
+        {
+            get { return lblUser.Text;}
+            set { lblUser.Text = value; }
+        }
+        public string Role
+        {
+            get { return lblRole.Text;}
+            set { lblRole.Text = value; }
+        }
+
         public TabControl NavigationBar
         {
             get { return tbcNav; }
@@ -25,50 +36,15 @@ namespace QLCHBanHoaQuaWF.Views
         public event EventHandler? LoadPages;
         public event EventHandler? Logout;
         private bool IsLogout;
-        private IViewCustomer _viewCustomer;
-        private IViewEmployee _viewEmployee;
-        private IViewProduct _viewProduct;
-        public frmMain(IViewCustomer viewCustomer,IViewEmployee viewEmployee,IViewProduct viewProduct)
+        public frmMain()
         {
             InitializeComponent();
-            _viewCustomer = viewCustomer;
-            _viewEmployee = viewEmployee;
-            _viewProduct = viewProduct;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             LoadPages?.Invoke(sender,e);
-            //IsLogout = false;
-            //Form Customer
-            //var formCustomer = _viewCustomer as Form;
-            //if (formCustomer != null)
-            //{
-            //    formCustomer.TopLevel = false;
-            //    tabCustomer.Controls.Add(formCustomer);
-            //    formCustomer.Dock = DockStyle.Fill;
-            //    formCustomer.Show();
-            //}
-
-            //Form Employee
-            //var formEmployee = _viewEmployee as Form;
-            //if (formEmployee != null)
-            //{
-            //    formEmployee.TopLevel = false;
-            //    tabEmployee.Controls.Add(formEmployee);
-            //    formEmployee.Dock = DockStyle.Fill;
-            //    formEmployee.Show();
-            //}
-
-            //Form Product
-            //var formProduct = _viewProduct as Form;
-            //if (formProduct != null)
-            //{
-            //    formProduct.TopLevel = false;
-            //    tabProduct.Controls.Add(formProduct);
-            //    formProduct.Dock = DockStyle.Fill;
-            //    formProduct.Show();
-            //}
+            IsLogout = false;
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -85,12 +61,6 @@ namespace QLCHBanHoaQuaWF.Views
             this.Close();
         }
 
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            lblTime.Text = DateTime.Now.ToLongTimeString();
-            lblDate.Text = DateTime.Now.ToLongDateString();
-        }
 
         private void timerAnimation_Tick(object sender, EventArgs e)
         {

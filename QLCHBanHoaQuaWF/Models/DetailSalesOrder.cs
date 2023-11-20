@@ -23,8 +23,6 @@ namespace QLCHBanHoaQuaWF.Models
         [Column(TypeName = "decimal(10,2)")]
         public decimal UnitPrice { get; set; }
         [Column(TypeName = "decimal(10,2)")]
-        public decimal Discount { get; set; }
-        [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
         [ForeignKey("ProductID")]
         [InverseProperty("DetailSalesOrders")]

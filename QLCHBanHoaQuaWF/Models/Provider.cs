@@ -21,10 +21,16 @@ namespace QLCHBanHoaQuaWF.Models
         public string Email { get; set; }
         [RegularExpression(@"0\d{9}", ErrorMessage = "Vui lòng nhập đúng định dạng số điện thoại")]
         public string Phone { get; set; }
+
         [StringLength(50)]
         public string Address { get; set; }
         [InverseProperty("Provider")]
         public ICollection<ImportOrder> ImportOrders { get; set; } = new List<ImportOrder>();
+        [NotMapped]
+        public string NameWithPhone
+        {
+            get { return ProviderName + "-" + Phone; }
+        }
 
     }
 }

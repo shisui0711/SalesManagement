@@ -15,6 +15,7 @@ namespace QLCHBanHoaQuaWF.Views.Employee
         public int EmployeeID
         {
             get { return int.Parse(txtEmployeeID.Text); }
+            set { txtEmployeeID.Text = value.ToString(); }
         }
         public string EmployeeName
         {
@@ -33,7 +34,7 @@ namespace QLCHBanHoaQuaWF.Views.Employee
             get { return txtAddress.Text; }
             set { txtAddress.Text = value; }
         }
-        public decimal Salary  {
+        public decimal? Salary  {
             get { return decimal.Parse(txtSalary.Text); }
             set { txtSalary.Text = value.ToString(); }
         }
@@ -71,6 +72,11 @@ namespace QLCHBanHoaQuaWF.Views.Employee
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             UpdateEmployee?.Invoke(sender,e);
+        }
+
+        private void frmUpdateEmployee_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

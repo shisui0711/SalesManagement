@@ -4,7 +4,7 @@ using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Employee;
 using QLCHBanHoaQuaWF.Views.Product;
 using System.ComponentModel.DataAnnotations;
-using AppContext = QLCHBanHoaQuaWF.Models.AppContext;
+using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF.Presenters;
 
@@ -13,8 +13,8 @@ public class ProductPresenter:PresenterCRUD
     private IViewProduct _viewProduct;
     private IAddProduct _addProduct;
     private IUpdateProduct _updateProduct;
-    private AppContext _context;
-    public ProductPresenter(IViewProduct viewProduct,IAddProduct addProduct,IUpdateProduct updateProduct,AppContext context)
+    private MyAppContext _context;
+    public ProductPresenter(IViewProduct viewProduct,IAddProduct addProduct,IUpdateProduct updateProduct,MyAppContext context)
     {
         _viewProduct = viewProduct;
         _addProduct = addProduct;
@@ -43,6 +43,20 @@ public class ProductPresenter:PresenterCRUD
 
     public void ShowUpdateForm()
     {
+        var updated = _viewProduct.ProductBindingSource.Current as Product;
+        if (updated == null)
+        {
+            return;
+        }
+
+        _updateProduct.ProductID = updated.ProductID;
+        _updateProduct.ProductName = updated.ProductName;
+        _updateProduct.CalculationUnit = updated.CalculationUnit;
+        _updateProduct.ImportUnitPrice = updated.ImportUnitPrice;
+        _updateProduct.UnitPrice = updated.UnitPrice;
+        _updateProduct.ImageData = updated.ImageData;
+        _updateProduct.Description = updated.Description;
+
         if (_updateProduct.GetType().IsAssignableTo(typeof(Form)))
         {
             var form = _addProduct as Form;
@@ -64,13 +78,13 @@ public class ProductPresenter:PresenterCRUD
         }
 
         _context.Products.Add(product);
-        _viewProduct.ProductBindingSource.EndEdit();
         _context.SaveChanges();
+        _viewProduct.ProductBindingSource.EndEdit();
     }
 
     public override void Update()
     {
-        var product = new Product();
+        Product product = new Product();
         product.ProductID = _updateProduct.ProductID;
         product.ProductName = _updateProduct.ProductName;
         product.CalculationUnit = _addProduct.CalculationUnit;
@@ -83,7 +97,7 @@ public class ProductPresenter:PresenterCRUD
             return;
         }
 
-        var productExist = _context.Products.Find(product.ProductID);
+        Product productExist = _context.Products.Find(product.ProductID);
         _context.Entry(productExist).CurrentValues.SetValues(product);
         _context.SaveChanges();
         _viewProduct.ProductBindingSource.EndEdit();
@@ -92,14 +106,17 @@ public class ProductPresenter:PresenterCRUD
 
     public override void Remove()
     {
+        var deleted = _viewProduct.ProductBindingSource.Current as Product;
+        if (deleted == null)
+        {
+            return;
+        }
         var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
             MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         if (dialogResult == DialogResult.Cancel)
         {
             return;
         }
-
-        var deleted = _viewProduct.ProductBindingSource.Current as Product;
         using (var transaction = _context.Database.BeginTransaction())
         {
             try

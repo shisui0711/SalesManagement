@@ -39,11 +39,21 @@ namespace QLCHBanHoaQuaWF.Views.Employee
             get { return txtAddress.Text; }
             set { txtAddress.Text = value; }
         }
-        public decimal Salary
+        public decimal? Salary
         {
-            get { return decimal.Parse(txtSalary.Text); }
+            get {
+                try
+                {
+                    return decimal.Parse(txtSalary.Text);
+                }
+                catch
+                {
+                    return null;
+                }
+            }
             set { txtSalary.Text = value.ToString(); }
         }
+
         public event EventHandler AddEmployee;
 
         public void Focus(string name)
@@ -68,6 +78,19 @@ namespace QLCHBanHoaQuaWF.Views.Employee
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddEmployee?.Invoke(sender,e);
+        }
+
+        private void txtSalary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void frmAddEmployee_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

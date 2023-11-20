@@ -37,5 +37,9 @@ namespace QLCHBanHoaQuaWF.Models
         [InverseProperty("Product")]
         public virtual ICollection<DetailSalesOrder> DetailSalesOrders { get; set; } = new List<DetailSalesOrder>();
 
+        public override string ToString()
+        {
+            return ProductName;
+        }
     }
 }

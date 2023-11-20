@@ -28,5 +28,15 @@ namespace QLCHBanHoaQuaWF.Models
         public DateTime DateCreated { get; set; } = DateTime.Now;
         [InverseProperty("Customer")]
         public virtual ICollection<SalesOrder> SalesOrders { get; set; } = new List<SalesOrder>();
+
+        public override string ToString()
+        {
+            return CustomerName;
+        }
+        [NotMapped]
+        public string NameWithPhone
+        {
+            get { return CustomerName + "-" + Phone; }
+        }
     }
 }

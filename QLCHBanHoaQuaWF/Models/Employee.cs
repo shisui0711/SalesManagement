@@ -25,16 +25,19 @@ namespace QLCHBanHoaQuaWF.Models
         [RegularExpression(@"0\d{9}", ErrorMessage = "Vui lòng nhập đúng định dạng số điện thoại")]
         public string Phone { get; set; }
         [StringLength(50)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
         [Column(TypeName = "decimal(10,2)")]
         public decimal? Salary { get; set; }
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;
         [InverseProperty("Employee")]
-        public virtual ICollection<Shift> Shifts { get; set; }
-        [InverseProperty("Employee")]
         public virtual ICollection<SalesOrder> SalesOrders { get; set; } = new List<SalesOrder>();
         [InverseProperty("Employee")]
         public virtual ICollection<ImportOrder> ImportOrders { get; set; } = new List<ImportOrder>();
+
+        public override string ToString()
+        {
+            return EmployeeName;
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,28 @@ namespace QLCHBanHoaQuaWF.Views.Product
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string CalculationUnit { get; set; }
-        public byte[] ImageData { get; }
-        public decimal ImportUnitPrice { get; set; }
-        public decimal UnitPrice { get; set; }
+
+        public byte[] ImageData
+        {
+            get
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    ptbUpload.Image.Save(ms,ImageFormat.Png);
+                    return ms.ToArray();
+                }
+            }
+            set
+            {
+                using (MemoryStream ms = new MemoryStream(value))
+                {
+                    ptbUpload.Image = Image.FromStream(ms);
+                }
+            }
+        }
+
+        public decimal? ImportUnitPrice { get; set; }
+        public decimal? UnitPrice { get; set; }
         public string Description { get; set; }
         public event EventHandler? UpdateProduct;
         public string Message
@@ -40,7 +60,8 @@ namespace QLCHBanHoaQuaWF.Views.Product
             if (textBoxField != null && textBoxField.GetType().IsAssignableTo(typeof(UserControl)))
             {
                 var textBox = (UserControl)textBoxField.GetValue(this);
-                textBox.Focus();
+                if(textBox != null)
+                    textBox.Focus();
             }
         }
     }

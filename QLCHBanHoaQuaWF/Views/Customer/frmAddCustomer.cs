@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using String = System.String;
 
 namespace QLCHBanHoaQuaWF.Views.Customer
 {
@@ -50,6 +51,17 @@ namespace QLCHBanHoaQuaWF.Views.Customer
                 var textBox = (UserControl)textBoxField.GetValue(this);
                 textBox.Focus();
             }
+        }
+
+        public void Reset()
+        {
+           var fieldTypes = this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
+                .Where(f => f.Name.StartsWith("txt"));
+           foreach (var fieldType in fieldTypes)
+           {
+               UserControl control = (UserControl)fieldType.GetValue(this);
+               control.Text = String.Empty;
+           }
         }
 
         public event EventHandler AddCustomer;

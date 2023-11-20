@@ -37,7 +37,9 @@ namespace QLCHBanHoaQuaWF.Views.Provider
 
         public int ProviderID
         {
-            get { return int.Parse(txtProviderID.Text);} }
+            get { return int.Parse(txtProviderID.Text);}
+            set { txtProviderID.Text = value.ToString(); }
+        }
         public string ProviderName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }

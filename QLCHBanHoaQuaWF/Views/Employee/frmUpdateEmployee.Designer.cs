@@ -51,12 +51,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateEmployee));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnlTop = new Guna.UI2.WinForms.Guna2Panel();
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
+            this.userRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.txtEmployeeID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,6 +75,7 @@
             this.txtEmployeeName = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlTop.SuspendLayout();
             this.pnlBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userRoleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -90,7 +93,7 @@
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            this.pnlTop.Size = new System.Drawing.Size(800, 47);
+            this.pnlTop.Size = new System.Drawing.Size(609, 47);
             this.pnlTop.TabIndex = 0;
             // 
             // btnClose
@@ -103,7 +106,7 @@
             this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(749, 7);
+            this.btnClose.Location = new System.Drawing.Point(558, 7);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges20;
             this.btnClose.Size = new System.Drawing.Size(44, 33);
@@ -148,22 +151,28 @@
             this.pnlBody.Location = new System.Drawing.Point(0, 47);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            this.pnlBody.Size = new System.Drawing.Size(800, 512);
+            this.pnlBody.Size = new System.Drawing.Size(609, 507);
             this.pnlBody.TabIndex = 1;
+            // 
+            // userRoleBindingSource
+            // 
+            this.userRoleBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.UserRole);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(181, 16);
+            this.label8.Location = new System.Drawing.Point(70, 27);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 28);
+            this.label8.Size = new System.Drawing.Size(141, 28);
             this.label8.TabIndex = 35;
-            this.label8.Text = "ID";
+            this.label8.Text = "Mã nhân viên:";
             // 
             // txtEmployeeID
             // 
             this.txtEmployeeID.Animated = true;
+            this.txtEmployeeID.AutoRoundedCorners = true;
+            this.txtEmployeeID.BorderRadius = 19;
             this.txtEmployeeID.CustomizableEdges = customizableEdges5;
             this.txtEmployeeID.DefaultText = "";
             this.txtEmployeeID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -174,7 +183,7 @@
             this.txtEmployeeID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmployeeID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEmployeeID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmployeeID.Location = new System.Drawing.Point(343, 16);
+            this.txtEmployeeID.Location = new System.Drawing.Point(232, 15);
             this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.PasswordChar = '\0';
@@ -188,15 +197,17 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(184, 365);
+            this.label6.Location = new System.Drawing.Point(136, 372);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 28);
+            this.label6.Size = new System.Drawing.Size(75, 28);
             this.label6.TabIndex = 31;
-            this.label6.Text = "Lương";
+            this.label6.Text = "Lương:";
             // 
             // txtSalary
             // 
             this.txtSalary.Animated = true;
+            this.txtSalary.AutoRoundedCorners = true;
+            this.txtSalary.BorderRadius = 20;
             this.txtSalary.CustomizableEdges = customizableEdges7;
             this.txtSalary.DefaultText = "";
             this.txtSalary.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -206,7 +217,7 @@
             this.txtSalary.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSalary.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSalary.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSalary.Location = new System.Drawing.Point(343, 365);
+            this.txtSalary.Location = new System.Drawing.Point(232, 361);
             this.txtSalary.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.PasswordChar = '\0';
@@ -219,6 +230,8 @@
             // txtEmail
             // 
             this.txtEmail.Animated = true;
+            this.txtEmail.AutoRoundedCorners = true;
+            this.txtEmail.BorderRadius = 21;
             this.txtEmail.CustomizableEdges = customizableEdges9;
             this.txtEmail.DefaultText = "";
             this.txtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -228,7 +241,7 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(343, 150);
+            this.txtEmail.Location = new System.Drawing.Point(232, 149);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
@@ -240,7 +253,10 @@
             // 
             // btnExit
             // 
+            this.btnExit.Animated = true;
+            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnExit.BorderRadius = 22;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -253,7 +269,7 @@
             this.btnExit.HoverState.BorderColor = System.Drawing.Color.Red;
             this.btnExit.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnExit.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(457, 434);
+            this.btnExit.Location = new System.Drawing.Point(343, 432);
             this.btnExit.Name = "btnExit";
             this.btnExit.ShadowDecoration.CustomizableEdges = customizableEdges4;
             this.btnExit.Size = new System.Drawing.Size(166, 47);
@@ -263,6 +279,9 @@
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Animated = true;
+            this.btnUpdate.AutoRoundedCorners = true;
+            this.btnUpdate.BorderRadius = 22;
             this.btnUpdate.CustomizableEdges = customizableEdges1;
             this.btnUpdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnUpdate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -270,7 +289,7 @@
             this.btnUpdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(212, 434);
+            this.btnUpdate.Location = new System.Drawing.Point(98, 432);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.btnUpdate.Size = new System.Drawing.Size(166, 47);
@@ -282,45 +301,47 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(181, 306);
+            this.label3.Location = new System.Drawing.Point(133, 303);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 28);
+            this.label3.Size = new System.Drawing.Size(78, 28);
             this.label3.TabIndex = 23;
-            this.label3.Text = "Địa chỉ";
+            this.label3.Text = "Địa chỉ:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(180, 226);
+            this.label2.Location = new System.Drawing.Point(73, 234);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 28);
+            this.label2.Size = new System.Drawing.Size(138, 28);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Số điện thoại";
+            this.label2.Text = "Số điện thoại:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(181, 81);
+            this.label4.Location = new System.Drawing.Point(66, 96);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 28);
+            this.label4.Size = new System.Drawing.Size(145, 28);
             this.label4.TabIndex = 21;
-            this.label4.Text = "Tên";
+            this.label4.Text = "Tên nhân viên:";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(184, 167);
+            this.lblName.Location = new System.Drawing.Point(146, 165);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(60, 28);
+            this.lblName.Size = new System.Drawing.Size(65, 28);
             this.lblName.TabIndex = 20;
-            this.lblName.Text = "Email";
+            this.lblName.Text = "Email:";
             // 
             // txtAddress
             // 
             this.txtAddress.Animated = true;
+            this.txtAddress.AutoRoundedCorners = true;
+            this.txtAddress.BorderRadius = 20;
             this.txtAddress.CustomizableEdges = customizableEdges11;
             this.txtAddress.DefaultText = "";
             this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -330,7 +351,7 @@
             this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddress.Location = new System.Drawing.Point(343, 291);
+            this.txtAddress.Location = new System.Drawing.Point(232, 291);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.PasswordChar = '\0';
@@ -343,6 +364,8 @@
             // txtPhone
             // 
             this.txtPhone.Animated = true;
+            this.txtPhone.AutoRoundedCorners = true;
+            this.txtPhone.BorderRadius = 20;
             this.txtPhone.CustomizableEdges = customizableEdges13;
             this.txtPhone.DefaultText = "";
             this.txtPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -352,7 +375,7 @@
             this.txtPhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhone.Location = new System.Drawing.Point(343, 226);
+            this.txtPhone.Location = new System.Drawing.Point(232, 221);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.PasswordChar = '\0';
@@ -365,6 +388,8 @@
             // txtEmployeeName
             // 
             this.txtEmployeeName.Animated = true;
+            this.txtEmployeeName.AutoRoundedCorners = true;
+            this.txtEmployeeName.BorderRadius = 19;
             this.txtEmployeeName.CustomizableEdges = customizableEdges15;
             this.txtEmployeeName.DefaultText = "";
             this.txtEmployeeName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -374,7 +399,7 @@
             this.txtEmployeeName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmployeeName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEmployeeName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmployeeName.Location = new System.Drawing.Point(343, 81);
+            this.txtEmployeeName.Location = new System.Drawing.Point(232, 82);
             this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmployeeName.Name = "txtEmployeeName";
             this.txtEmployeeName.PasswordChar = '\0';
@@ -390,16 +415,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(800, 559);
+            this.ClientSize = new System.Drawing.Size(609, 554);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUpdateEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmUpdateEmployee";
+            this.Load += new System.EventHandler(this.frmUpdateEmployee_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userRoleBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -426,5 +455,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtAddress;
         private Guna.UI2.WinForms.Guna2TextBox txtPhone;
         private Guna.UI2.WinForms.Guna2TextBox txtEmployeeName;
+        private BindingSource userRoleBindingSource;
     }
 }

@@ -1,12 +1,19 @@
+using System.Reflection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QLCHBanHoaQuaWF.Presenters;
 using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Customer;
 using QLCHBanHoaQuaWF.Views.Employee;
+using QLCHBanHoaQuaWF.Views.ImportOrder;
 using QLCHBanHoaQuaWF.Views.Product;
 using QLCHBanHoaQuaWF.Views.Provider;
-using AppContext = QLCHBanHoaQuaWF.Models.AppContext;
+using QLCHBanHoaQuaWF.Views.SalesOrder;
+using QLCHBanHoaQuaWF.Views.User;
+using QLCHBanHoaQuaWF.Views.UserRole;
+using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF
 {
@@ -16,31 +23,35 @@ namespace QLCHBanHoaQuaWF
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            var _host = CreateHostBuilder(args).Build();
             _host.Start();
             ApplicationConfiguration.Initialize();
-            var authPresenter = _host.Services.GetRequiredService<AuthPresenter>();
-            var customerPresenter = _host.Services.GetRequiredService<CustomerPresenter>();
-            var employeePresenter = _host.Services.GetRequiredService<EmployeePresenter>();
-            var productPresenter = _host.Services.GetRequiredService<ProductPresenter>();
-            var providerPresenter = _host.Services.GetRequiredService<ProviderPresenter>();
+            var presenterTypes =
+                Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Name.Contains("Presenter") && t.IsClass && !t.IsAbstract);
+            foreach (var type in presenterTypes)
+            {
+                _host.Services.GetRequiredService(type);
+            }
 
-            var mainControl = _host.Services.GetRequiredService<MainControl>();
+            
             Application.Run((Form)_host.Services.GetRequiredService<IViewLogin>());
             _host.StopAsync().GetAwaiter().GetResult();
             _host.Dispose();
         }
 
-        private static readonly IHost _host = CreateHostBuilder().Build();
-
-        static IHostBuilder CreateHostBuilder()
+        static IHostBuilder CreateHostBuilder(string[] args)
         {
-            return Host.CreateDefaultBuilder().ConfigureServices((services) =>
+            return Host.CreateDefaultBuilder(args).ConfigureHostConfiguration(config =>
             {
-                services.AddDbContext<AppContext>();
+                config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                config.AddEnvironmentVariables();
+            }).ConfigureServices((services) =>
+            {
+                services.AddDbContext<MyAppContext>();
                 services.AddSingleton<IViewMain,frmMain>();
                 services.AddSingleton<IViewCustomer, frmViewCustomer>();
                 services.AddSingleton<IAddCustomer, frmAddCustomer>();
@@ -54,13 +65,26 @@ namespace QLCHBanHoaQuaWF
                 services.AddSingleton<IViewProvider, frmViewProvider>();
                 services.AddSingleton<IAddProvider, frmAddProvider>();
                 services.AddSingleton<IUpdateProvider, frmUpdateProvider>();
+                services.AddSingleton<IViewSalesOrder,frmViewSalesOrder>();
+                services.AddSingleton<IAddSalesOrder, frmAddSalesOrder>();
+                services.AddSingleton<IViewImportOrder, frmViewImportOrder>();
+                services.AddSingleton<IAddImportOrder, frmAddImportOrder>();
+                services.AddSingleton<IViewUser, frmViewUser>();
+                services.AddSingleton<IChangePassword, frmChangePassword>();
+                services.AddSingleton<IViewUserRole, frmViewUserRole>();
+                services.AddSingleton<IAddUserRole, frmAddUserRole>();
+                services.AddSingleton<IUpdateUserRole, frmUpdateUserRole>();
                 services.AddSingleton<IViewLogin,frmLogin>();
                 services.AddSingleton<AuthPresenter>();
                 services.AddSingleton<CustomerPresenter>();
                 services.AddSingleton<EmployeePresenter>();
                 services.AddSingleton<ProductPresenter>();
                 services.AddSingleton<ProviderPresenter>();
-                services.AddSingleton<MainControl>();
+                services.AddSingleton<SalesOrderPresenter>();
+                services.AddSingleton<ImportOrderPresenter>();
+                services.AddSingleton<UserRolePresenter>();
+                services.AddSingleton<MainPresenter>();
+
             });
         }
     }

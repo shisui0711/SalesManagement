@@ -16,8 +16,6 @@ namespace QLCHBanHoaQuaWF.Models
         [Column(TypeName = "date")]
         public DateTime OrderDate { get; set; }
         [Column(TypeName = "decimal(10,2)")]
-        public decimal Discount { get; set; }
-        [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
         [ForeignKey("EmployeeID")]
         public Employee? Employee { get; set; }

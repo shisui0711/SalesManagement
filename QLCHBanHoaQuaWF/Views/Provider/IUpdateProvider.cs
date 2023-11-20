@@ -2,7 +2,7 @@
 
 public interface IUpdateProvider: IValidateControl
 {
-    public int ProviderID { get;}
+    public int ProviderID { get; set; }
     public string ProviderName { get; set; }
     public string Email { get; set; }
     public string Phone { get; set; }
