@@ -1,35 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace QLCHBanHoaQuaWF.Views
+﻿namespace QLCHBanHoaQuaWF.Views
 {
-    public partial class frmLogin : Form,IViewLogin
+    public partial class frmLogin : Form, IViewLogin
     {
         private frmMain FormMain;
         private bool isHiden = true;
         public string Username
         {
-            get { return txtUsername.Text;}
+            get { return txtUsername.Text; }
             set { txtUsername.Text = value; }
         }
-        public string Password {
+        public string Password
+        {
             get { return txtPassword.Text; }
             set { txtPassword.Text = value; }
         }
-        public string Role {
-            get {
+        public string Role
+        {
+            get
+            {
                 if (rdoQuanLy.Checked)
                 {
                     return "Quản lý";
-                }else if (rdoNhanVien.Checked)
+                }
+                else if (rdoNhanVien.Checked)
                 {
                     return "Nhân Viên";
                 }
@@ -44,7 +37,7 @@ namespace QLCHBanHoaQuaWF.Views
         {
             InitializeComponent();
         }
-        
+
 
         private void txtPassword_IconRightClick(object sender, EventArgs e)
         {
@@ -69,7 +62,7 @@ namespace QLCHBanHoaQuaWF.Views
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            LoginEvent?.Invoke(sender,e);
+            LoginEvent?.Invoke(sender, e);
         }
     }
 }

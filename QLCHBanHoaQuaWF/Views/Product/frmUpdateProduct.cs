@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Drawing.Imaging;
+using System.IO;
 
 namespace QLCHBanHoaQuaWF.Views.Product
 {
-    public partial class frmUpdateProduct : Form,IUpdateProduct
+    public partial class frmUpdateProduct : Form, IUpdateProduct
     {
         public frmUpdateProduct()
         {
@@ -28,7 +20,7 @@ namespace QLCHBanHoaQuaWF.Views.Product
             {
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    ptbUpload.Image.Save(ms,ImageFormat.Png);
+                    ptbUpload.Image.Save(ms, ImageFormat.Png);
                     return ms.ToArray();
                 }
             }
@@ -47,8 +39,10 @@ namespace QLCHBanHoaQuaWF.Views.Product
         public event EventHandler? UpdateProduct;
         public string Message
         {
-            get { return _message;}
-            set { _message = value;
+            get { return _message; }
+            set
+            {
+                _message = value;
                 MessageBox.Show(_message, "Thông báo");
             }
         }
@@ -60,7 +54,7 @@ namespace QLCHBanHoaQuaWF.Views.Product
             if (textBoxField != null && textBoxField.GetType().IsAssignableTo(typeof(UserControl)))
             {
                 var textBox = (UserControl)textBoxField.GetValue(this);
-                if(textBox != null)
+                if (textBox != null)
                     textBox.Focus();
             }
         }

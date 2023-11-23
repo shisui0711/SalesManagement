@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using QLCHBanHoaQuaWF.Views.Customer;
+﻿using System.Drawing.Imaging;
+using System.IO;
 
 namespace QLCHBanHoaQuaWF.Views.Product
 {
-    public partial class frmAddProduct : Form,IAddProduct
+    public partial class frmAddProduct : Form, IAddProduct
     {
         private OpenFileDialog openFileDialog;
         public frmAddProduct()
@@ -38,15 +29,17 @@ namespace QLCHBanHoaQuaWF.Views.Product
 
         public string Message
         {
-            get { return _message;}
-            set { _message = value;
+            get { return _message; }
+            set
+            {
+                _message = value;
                 MessageBox.Show(_message, "Thông báo");
             }
         }
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetField("txt" + name);
-            if (textBoxField !=null && textBoxField.GetType().IsAssignableTo(typeof(UserControl)))
+            if (textBoxField != null && textBoxField.GetType().IsAssignableTo(typeof(UserControl)))
             {
                 var textBox = (UserControl)textBoxField.GetValue(this);
                 textBox.Focus();
@@ -55,23 +48,27 @@ namespace QLCHBanHoaQuaWF.Views.Product
 
         public string ProductName
         {
-            get { return txtProductName.Text;}
+            get { return txtProductName.Text; }
             set { txtProductName.Text = value; }
         }
-        public string CalculationUnit {
+        public string CalculationUnit
+        {
             get { return txtCalculationUnit.Text; }
             set { txtCalculationUnit.Text = value; }
         }
         public byte[] ImageData { get; private set; }
-        public decimal ImportUnitPrice {
+        public decimal ImportUnitPrice
+        {
             get { return decimal.Parse(txtImportUnitPrice.Text); }
             set { txtCalculationUnit.Text = value.ToString(); }
         }
-        public decimal UnitPrice {
+        public decimal UnitPrice
+        {
             get { return decimal.Parse(txtUnitPrice.Text); }
             set { txtUnitPrice.Text = value.ToString(); }
         }
-        public string Description {
+        public string Description
+        {
             get { return txtDescription.Text; }
             set { txtDescription.Text = value; }
         }
@@ -121,13 +118,13 @@ namespace QLCHBanHoaQuaWF.Views.Product
                         }
                         else
                         {
-                            ptbUpload.Image.Save(ms,ImageFormat.Png);
+                            ptbUpload.Image.Save(ms, ImageFormat.Png);
                         }
 
                         ImageData = ms.ToArray();
                     }
                 }
-            } 
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -137,7 +134,7 @@ namespace QLCHBanHoaQuaWF.Views.Product
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddProduct?.Invoke(sender,e);
+            AddProduct?.Invoke(sender, e);
         }
     }
 }

@@ -15,7 +15,7 @@ public class UserRole
 
     public UserRole()
     {
-        
+
     }
 
     [Key]

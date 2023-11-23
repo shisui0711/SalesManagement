@@ -1,6 +1,6 @@
 ﻿namespace QLCHBanHoaQuaWF.Views.Customer;
 
-public interface IUpdateCustomer: IValidateControl
+public interface IUpdateCustomer : IValidateControl
 {
     public int CustomerID { get; set; }
     public string CustomerName { get; set; }

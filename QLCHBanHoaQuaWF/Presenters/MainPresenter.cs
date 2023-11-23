@@ -1,14 +1,14 @@
-﻿using System.Reflection;
-using System.Windows.Forms;
-using QLCHBanHoaQuaWF.Views;
+﻿using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Customer;
 using QLCHBanHoaQuaWF.Views.Employee;
 using QLCHBanHoaQuaWF.Views.ImportOrder;
+using QLCHBanHoaQuaWF.Views.Options;
 using QLCHBanHoaQuaWF.Views.Product;
 using QLCHBanHoaQuaWF.Views.Provider;
 using QLCHBanHoaQuaWF.Views.SalesOrder;
 using QLCHBanHoaQuaWF.Views.User;
 using QLCHBanHoaQuaWF.Views.UserRole;
+using System.Reflection;
 
 namespace QLCHBanHoaQuaWF.Presenters;
 
@@ -23,7 +23,8 @@ public class MainPresenter
     private readonly IViewImportOrder _viewImportOrder;
     private readonly IViewUser _viewUser;
     private readonly IViewUserRole _viewUserRole;
-    public MainPresenter(IViewMain viewMain, IViewCustomer viewCustomer, IViewEmployee viewEmployee, IViewProduct viewProduct, IViewProvider viewProvider, IViewSalesOrder viewSalesOrder, IViewImportOrder viewImportOrder,IViewUser viewUser,IViewUserRole viewUserRole)
+    private readonly IViewOptions _viewOptions;
+    public MainPresenter(IViewMain viewMain, IViewCustomer viewCustomer, IViewEmployee viewEmployee, IViewProduct viewProduct, IViewProvider viewProvider, IViewSalesOrder viewSalesOrder, IViewImportOrder viewImportOrder, IViewUser viewUser, IViewUserRole viewUserRole, IViewOptions viewOptions)
     {
         _viewMain = viewMain;
         _viewCustomer = viewCustomer;
@@ -34,6 +35,7 @@ public class MainPresenter
         _viewImportOrder = viewImportOrder;
         _viewUser = viewUser;
         _viewUserRole = viewUserRole;
+        _viewOptions = viewOptions;
 
         _viewMain.LoadPages += delegate { LoadPages(); };
     }

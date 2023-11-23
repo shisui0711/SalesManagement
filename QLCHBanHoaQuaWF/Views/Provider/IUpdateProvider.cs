@@ -1,6 +1,6 @@
 ﻿namespace QLCHBanHoaQuaWF.Views.Provider;
 
-public interface IUpdateProvider: IValidateControl
+public interface IUpdateProvider : IValidateControl
 {
     public int ProviderID { get; set; }
     public string ProviderName { get; set; }

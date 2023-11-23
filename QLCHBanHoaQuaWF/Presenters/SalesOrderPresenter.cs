@@ -1,36 +1,35 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Reporting.WinForms;
 using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views.Customer;
 using QLCHBanHoaQuaWF.Views.Product;
-using QLCHBanHoaQuaWF.Views.Provider;
 using QLCHBanHoaQuaWF.Views.SalesOrder;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF.Presenters
 {
-    public class SalesOrderPresenter: PresenterCRUD
+    public class SalesOrderPresenter : PresenterCRUD
     {
         private readonly IViewSalesOrder _viewSalesOrder;
         private readonly IAddSalesOrder _addSalesOrder;
+        private readonly IReportSalesOrder _report;
         private readonly MyAppContext _context;
-        private Dictionary<Product, int> productOrdered = new Dictionary<Product, int>();
+        private Dictionary<Product, int> productOrdered;
 
-        public SalesOrderPresenter(IViewSalesOrder viewSalesOrder, IAddSalesOrder addSalesOrder, MyAppContext context)
+        public SalesOrderPresenter(IViewSalesOrder viewSalesOrder, IAddSalesOrder addSalesOrder, IReportSalesOrder report, MyAppContext context)
         {
+            productOrdered = new Dictionary<Product, int>();
             _viewSalesOrder = viewSalesOrder;
             _addSalesOrder = addSalesOrder;
+            _report = report;
             _context = context;
+            _context.SalesOrders.Load();
 
             _viewSalesOrder.ShowAdd += delegate { ShowAddFrom(); };
             _viewSalesOrder.RemoveSalesOrder += delegate { Remove(); };
             _viewSalesOrder.LoadSalesOrder += delegate { Load(); };
             _viewSalesOrder.SearchSalesOrder += delegate { Search(); };
+            _viewSalesOrder.ShowReport += delegate { ShowReport(); };
 
             _addSalesOrder.RemoveProduct += RemoveProduct;
             _addSalesOrder.LoadCustomer += delegate { LoadCustomer(); };
@@ -38,6 +37,75 @@ namespace QLCHBanHoaQuaWF.Presenters
             _addSalesOrder.SearchCustomer += delegate { SearchCustomer(); };
             _addSalesOrder.SearchProduct += delegate { LoadProduct(_addSalesOrder.ProductSearchText); };
             _addSalesOrder.AddSalesOrder += delegate { Add(); };
+
+            _report.LoadReport += delegate { LoadReport(); };
+        }
+
+        void LoadReport()
+        {
+            AppInfo info = _context.AppInfos.FirstOrDefault();
+            if (info == null) { return; }
+            SalesOrder current = _viewSalesOrder.OrderBindingSource.Current as SalesOrder;
+            SalesOrder order = _context.SalesOrders.Find(current.OrderID);
+            var orderData = (from s in _context.SalesOrders
+                             join c in _context.Customers on s.CustomerID equals c.CustomerID
+                             where s.OrderID == order.OrderID
+                             select new
+                             {
+                                 DateCreated = s.OrderDate,
+                                 OrderID = s.OrderID,
+                                 CustomerName = c.CustomerName,
+                                 CustomerPhone = c.Phone,
+                                 CustomerAddress = c.Address,
+                                 TotalPrice = s.TotalPrice,
+                                 PurchasePrice = s.PurchasePrice,
+                                 ChangePrice = s.ChangePrice
+                             }).FirstOrDefault();
+            var orderFullData = new
+            {
+                DateCreated = orderData.DateCreated,
+                AppName = info.AppName,
+                AppAddress = info.Address,
+                AppPhone = info.Phone,
+                OrderID = orderData.OrderID,
+                CustomerName = orderData.CustomerName,
+                CustomerPhone = orderData.CustomerPhone,
+                CustomerAddress = orderData.CustomerAddress,
+                TotalPrice = orderData.TotalPrice,
+                PurchasePrice = orderData.PurchasePrice,
+                ChangePrice = orderData.ChangePrice
+            };
+
+            var detailData = from d in _context.DetailSalesOrders
+                             join p in _context.Products
+                                 on d.ProductID equals p.ProductID
+                             where d.OrderID == order.OrderID
+                             select new
+                             {
+                                 ProductName = p.ProductName,
+                                 Quantity = d.Quantity,
+                                 UnitPrice = d.UnitPrice,
+                                 TotalPrice = d.TotalPrice
+                             };
+            _report.ReportViewer.LocalReport.ReportPath = "./Reports/ReportSalesOrder.rdlc";
+            ReportDataSource detailDataSource = new ReportDataSource();
+            detailDataSource.Name = "DataSetDetailSalesOrder";
+            detailDataSource.Value = detailData;
+            _report.ReportViewer.LocalReport.DataSources.Add(detailDataSource);
+            foreach (var propertyInfo in orderFullData.GetType().GetProperties())
+            {
+                _report.ReportViewer.LocalReport.SetParameters(new ReportParameter(propertyInfo.Name, propertyInfo.GetValue(orderFullData).ToString()));
+            }
+            _report.ReportViewer.RefreshReport();
+
+        }
+        void ShowReport()
+        {
+            var form = _report as Form;
+            if (form != null)
+            {
+                form.ShowDialog();
+            }
         }
 
         public void ShowAddFrom()
@@ -54,31 +122,36 @@ namespace QLCHBanHoaQuaWF.Presenters
             {
                 try
                 {
-                    SalesOrder salesOrder = new SalesOrder();
-                    salesOrder.Employee = _context.Employees.Where(e=>e.Email == AuthPresenter.User.Email).FirstOrDefault();
+                    SalesOrder? salesOrder = new SalesOrder();
+                    salesOrder.Employee = _context.Employees.Find(_addSalesOrder.EmployeeID);
                     salesOrder.Customer = _context.Customers.Find(_addSalesOrder.CustomerID);
+                    salesOrder.PurchasePrice = _addSalesOrder.PurchasePrice;
+                    salesOrder.ChangePrice = _addSalesOrder.ChangePrice;
                     salesOrder.TotalPrice = _addSalesOrder.TotalPrice;
                     _context.SalesOrders.Add(salesOrder);
-                    _viewSalesOrder.OrderBindingSource.EndEdit();
-                    _context.SaveChanges();
 
                     foreach (DataGridViewRow row in _addSalesOrder.OrderedGridView.Rows)
                     {
-                        Product product = _context.Products.Find(row.Cells["ProductIDColumn"].Value);
+                        Product product = _context.Products.Find(row.Cells["ProductIDColumn"].Value)!;
                         DetailSalesOrder detail = new DetailSalesOrder();
                         detail.Product = product;
-                        detail.UnitPrice = decimal.Parse(row.Cells["UnitPricePriceColumn"].Value.ToString());
+                        detail.UnitPrice = decimal.Parse(row.Cells["UnitPriceColumn"].Value.ToString());
                         detail.SalesOrder = salesOrder;
                         detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString());
-                        detail.TotalPrice = int.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
+                        detail.TotalPrice = decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
                         detail.OrderID = salesOrder.OrderID;
                         _context.DetailSalesOrders.Add(detail);
                     }
+
+                    _context.SaveChanges();
                     transaction.Commit();
+                    MessageBox.Show("Thanh toán thành công");
+                    _viewSalesOrder.OrderBindingSource.EndEdit();
                 }
-                catch (Exception e)
+                catch (SqlException e)
                 {
                     transaction.Rollback();
+                    MessageBox.Show("Lỗi cơ sở dữ liệu. Thanh toán thất bại");
                 }
             }
         }
@@ -90,7 +163,7 @@ namespace QLCHBanHoaQuaWF.Presenters
 
         public override void Remove()
         {
-            SalesOrder deleted = _viewSalesOrder.OrderBindingSource.Current as SalesOrder;
+            SalesOrder? deleted = _viewSalesOrder.OrderBindingSource.Current as SalesOrder;
             if (deleted == null)
             {
                 return;
@@ -119,7 +192,7 @@ namespace QLCHBanHoaQuaWF.Presenters
 
         public override void Search()
         {
-            List<SalesOrder> salesOrders = null;
+            List<SalesOrder?> salesOrders = null;
             switch (_viewSalesOrder.OptionIndex)
             {
                 case 1:
@@ -159,12 +232,12 @@ namespace QLCHBanHoaQuaWF.Presenters
             _addSalesOrder.CustomerBindingSource.DataSource = _context.Customers.ToList();
         }
 
-        public void LoadProduct(string name = null)
+        public void LoadProduct(string? name = null)
         {
             _addSalesOrder.ClearControl();
             if (name != null)
             {
-                foreach (var product in _context.Products.Where(p=>p.ProductName.Contains(name)).ToList())
+                foreach (var product in _context.Products.Where(p => p.ProductName.Contains(name)).ToList())
                 {
                     frmProduct form = new frmProduct(product);
                     form.Clicked += OrderProduct;
@@ -184,10 +257,10 @@ namespace QLCHBanHoaQuaWF.Presenters
                     form.Show();
                 }
             }
-            
+
         }
 
-        public void OrderProduct(object sender,EventArgs e)
+        public void OrderProduct(object sender, EventArgs e)
         {
             var formProduct = (frmProduct)sender;
             var product = formProduct.Product;
@@ -199,12 +272,12 @@ namespace QLCHBanHoaQuaWF.Presenters
             }
             else
             {
-                _addSalesOrder.OrderedGridView.Rows.Add(product.ProductName, product.UnitPrice, 1, product.UnitPrice,product.ProductID);
-                productOrdered.Add(product,_addSalesOrder.OrderedGridView.Rows.Count-1);
+                _addSalesOrder.OrderedGridView.Rows.Add(product.ProductName, product.UnitPrice, 1, product.UnitPrice, product.ProductID);
+                productOrdered.Add(product, _addSalesOrder.OrderedGridView.Rows.Count - 1);
             }
         }
 
-        public void RemoveProduct(object sender,DataGridViewCellEventArgs e)
+        public void RemoveProduct(object sender, DataGridViewCellEventArgs e)
         {
             var product = productOrdered.Keys.ToList().Find(p => p.ProductID.ToString() == _addSalesOrder.OrderedGridView.Rows[e.RowIndex].Cells["ProductIDColumn"].Value.ToString());
             productOrdered.Remove(product);

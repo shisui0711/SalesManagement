@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QLCHBanHoaQuaWF.Models
 {
@@ -14,11 +9,14 @@ namespace QLCHBanHoaQuaWF.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
         [Column(TypeName = "date")]
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.Now;
         [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
+
         [ForeignKey("EmployeeID")]
         public Employee? Employee { get; set; }
+
+        public int ProviderID { get; set; }
         [ForeignKey("ProviderID")]
         [InverseProperty("ImportOrders")]
         public Provider? Provider { get; set; }

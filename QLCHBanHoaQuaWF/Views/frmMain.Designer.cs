@@ -82,10 +82,11 @@
             this.tabProvider = new System.Windows.Forms.TabPage();
             this.tabEmployee = new System.Windows.Forms.TabPage();
             this.tabUser = new System.Windows.Forms.TabPage();
-            this.tabOption = new System.Windows.Forms.TabPage();
+            this.tabUserRole = new System.Windows.Forms.TabPage();
+            this.tabOptions = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timerAnimation = new System.Windows.Forms.Timer(this.components);
-            this.tabUserRole = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             this.pnlInfo.SuspendLayout();
             this.pnlPicture.SuspendLayout();
@@ -95,6 +96,7 @@
             this.pnlTop.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.tbcNav.SuspendLayout();
+            this.tabStatistics.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2DragControl1
@@ -354,7 +356,7 @@
             this.tbcNav.Controls.Add(this.tabEmployee);
             this.tbcNav.Controls.Add(this.tabUser);
             this.tbcNav.Controls.Add(this.tabUserRole);
-            this.tbcNav.Controls.Add(this.tabOption);
+            this.tbcNav.Controls.Add(this.tabOptions);
             this.tbcNav.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcNav.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tbcNav.ImageList = this.imageList1;
@@ -385,6 +387,7 @@
             // tabStatistics
             // 
             this.tabStatistics.AllowDrop = true;
+            this.tabStatistics.Controls.Add(this.button1);
             this.tabStatistics.ImageIndex = 0;
             this.tabStatistics.Location = new System.Drawing.Point(226, 4);
             this.tabStatistics.Name = "tabStatistics";
@@ -479,16 +482,27 @@
             this.tabUser.Text = "Tài khoản";
             this.tabUser.UseVisualStyleBackColor = true;
             // 
-            // tabOption
+            // tabUserRole
             // 
-            this.tabOption.ImageIndex = 9;
-            this.tabOption.Location = new System.Drawing.Point(226, 4);
-            this.tabOption.Name = "tabOption";
-            this.tabOption.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOption.Size = new System.Drawing.Size(992, 567);
-            this.tabOption.TabIndex = 8;
-            this.tabOption.Text = "Thiết Lập";
-            this.tabOption.UseVisualStyleBackColor = true;
+            this.tabUserRole.ImageIndex = 8;
+            this.tabUserRole.Location = new System.Drawing.Point(226, 4);
+            this.tabUserRole.Name = "tabUserRole";
+            this.tabUserRole.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUserRole.Size = new System.Drawing.Size(992, 567);
+            this.tabUserRole.TabIndex = 9;
+            this.tabUserRole.Text = "Vai trò";
+            this.tabUserRole.UseVisualStyleBackColor = true;
+            // 
+            // tabOptions
+            // 
+            this.tabOptions.ImageIndex = 9;
+            this.tabOptions.Location = new System.Drawing.Point(226, 4);
+            this.tabOptions.Name = "tabOptions";
+            this.tabOptions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOptions.Size = new System.Drawing.Size(992, 567);
+            this.tabOptions.TabIndex = 8;
+            this.tabOptions.Text = "Thiết Lập";
+            this.tabOptions.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -511,16 +525,14 @@
             this.timerAnimation.Interval = 50;
             this.timerAnimation.Tick += new System.EventHandler(this.timerAnimation_Tick);
             // 
-            // tabUserRole
+            // button1
             // 
-            this.tabUserRole.ImageIndex = 8;
-            this.tabUserRole.Location = new System.Drawing.Point(226, 4);
-            this.tabUserRole.Name = "tabUserRole";
-            this.tabUserRole.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUserRole.Size = new System.Drawing.Size(992, 567);
-            this.tabUserRole.TabIndex = 9;
-            this.tabUserRole.Text = "Vai trò";
-            this.tabUserRole.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(107, 321);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(172, 92);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
@@ -550,6 +562,7 @@
             this.pnlFooter.ResumeLayout(false);
             this.pnlFooter.PerformLayout();
             this.tbcNav.ResumeLayout(false);
+            this.tabStatistics.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -576,7 +589,7 @@
         private Guna.UI2.WinForms.Guna2ControlBox btnClose;
         private Guna.UI2.WinForms.Guna2Button btnLogout;
         private ImageList imageList1;
-        private TabPage tabOption;
+        private TabPage tabOptions;
         private System.Windows.Forms.Timer timerAnimation;
         private Guna.UI2.WinForms.Guna2Panel pnlPicture;
         private Guna.UI2.WinForms.Guna2Panel pnlLogo;
@@ -587,5 +600,6 @@
         private Label label2;
         private Label lblUser;
         private TabPage tabUserRole;
+        private Button button1;
     }
 }

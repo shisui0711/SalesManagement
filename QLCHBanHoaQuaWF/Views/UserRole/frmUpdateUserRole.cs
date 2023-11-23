@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace QLCHBanHoaQuaWF.Views.UserRole
+﻿namespace QLCHBanHoaQuaWF.Views.UserRole
 {
-    public partial class frmUpdateUserRole : Form,IUpdateUserRole
+    public partial class frmUpdateUserRole : Form, IUpdateUserRole
     {
         public frmUpdateUserRole()
         {
@@ -19,17 +9,17 @@ namespace QLCHBanHoaQuaWF.Views.UserRole
 
         public int RoleID
         {
-            get { return int.Parse(txtRoleID.Text);}
+            get { return int.Parse(txtRoleID.Text); }
             set { txtRoleID.Text = value.ToString(); }
         }
         public string RoleName
         {
-            get { return txtRoleName.Text;}
+            get { return txtRoleName.Text; }
             set { txtRoleName.Text = value; }
         }
         public string Description
         {
-            get { return txtDescription.Text;}
+            get { return txtDescription.Text; }
             set { txtDescription.Text = value; }
         }
         public CheckedListBox PermissionSelected
@@ -41,7 +31,7 @@ namespace QLCHBanHoaQuaWF.Views.UserRole
 
         private void frmUpdateUserRole_Load(object sender, EventArgs e)
         {
-            LoadPermission?.Invoke(sender,e);
+            LoadPermission?.Invoke(sender, e);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -51,10 +41,11 @@ namespace QLCHBanHoaQuaWF.Views.UserRole
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            UpdateUserRole?.Invoke(sender,e);
+            UpdateUserRole?.Invoke(sender, e);
         }
 
-        public string Message {
+        public string Message
+        {
             get { return _message; }
             set
             {

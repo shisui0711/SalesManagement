@@ -1,6 +1,5 @@
-﻿using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.Product;
+﻿using Microsoft.EntityFrameworkCore;
+using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views.Provider;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
@@ -12,12 +11,13 @@ public class ProviderPresenter : PresenterCRUD
     private IAddProvider _addProvider;
     private IUpdateProvider _updateProvider;
     private MyAppContext _context;
-    public ProviderPresenter(IViewProvider viewProvider,IAddProvider addProvider,IUpdateProvider updateProvider,MyAppContext context)
+    public ProviderPresenter(IViewProvider viewProvider, IAddProvider addProvider, IUpdateProvider updateProvider, MyAppContext context)
     {
         _viewProvider = viewProvider;
         _addProvider = addProvider;
         _updateProvider = updateProvider;
         _context = context;
+        _context.Providers.Load();
 
         _viewProvider.LoadProvider += delegate { Load(); };
         _viewProvider.RemoveProvider += delegate { Remove(); };
@@ -66,7 +66,7 @@ public class ProviderPresenter : PresenterCRUD
         provider.Email = _addProvider.Email;
         provider.Phone = _addProvider.Phone;
         provider.Address = _addProvider.Address;
-        if (!IsValid(provider,_addProvider))
+        if (!IsValid(provider, _addProvider))
         {
             return;
         }
@@ -84,7 +84,7 @@ public class ProviderPresenter : PresenterCRUD
         provider.Phone = _updateProvider.Phone;
         provider.Address = _updateProvider.Address;
         if (!IsValid(provider, _updateProvider))
-        {   
+        {
             _context.Entry(provider).Reload();
             return;
         }

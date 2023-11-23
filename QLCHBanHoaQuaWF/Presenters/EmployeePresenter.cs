@@ -1,13 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views.Customer;
 using QLCHBanHoaQuaWF.Views.Employee;
-using System.ComponentModel.DataAnnotations;
-using QLCHBanHoaQuaWF.Views;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF.Presenters;
-public class EmployeePresenter:PresenterCRUD
+public class EmployeePresenter : PresenterCRUD
 {
     private readonly IViewEmployee _viewEmployee;
     private readonly IAddEmployee _addEmployee;
@@ -16,7 +13,7 @@ public class EmployeePresenter:PresenterCRUD
     private readonly AuthPresenter _auth;
 
 
-    public EmployeePresenter(IViewEmployee viewEmployee,IAddEmployee addEmployee,IUpdateEmployee updateEmployee,MyAppContext context,AuthPresenter auth)
+    public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee, MyAppContext context, AuthPresenter auth)
     {
         _viewEmployee = viewEmployee;
         _addEmployee = addEmployee;
@@ -41,7 +38,7 @@ public class EmployeePresenter:PresenterCRUD
 
     public void PurchaseHistory()
     {
-        
+
     }
 
     public void ImportHistory()
@@ -94,12 +91,12 @@ public class EmployeePresenter:PresenterCRUD
         employee.Phone = _addEmployee.Phone;
         employee.Address = _addEmployee.Address;
         employee.Salary = _addEmployee.Salary;
-        if (!IsValid(employee,_addEmployee))
+        if (!IsValid(employee, _addEmployee))
         {
             return;
         }
 
-        if (_context.Employees.Any(e=>e.Email ==_addEmployee.Email))
+        if (_context.Employees.Any(e => e.Email == _addEmployee.Email))
         {
             MessageBox.Show("Email đã tồn tại trên hệ thống");
             return;
@@ -107,7 +104,7 @@ public class EmployeePresenter:PresenterCRUD
 
         _context.Employees.Add(employee);
         _context.SaveChanges();
-        _auth.Register(employee.Email,"123456",1);
+        _auth.Register(employee.Email, "123456", 1);
         _viewEmployee.EmployeeBindingSource.EndEdit();
     }
 

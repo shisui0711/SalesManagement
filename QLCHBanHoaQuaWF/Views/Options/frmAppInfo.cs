@@ -1,20 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace QLCHBanHoaQuaWF.Views.Options
+﻿namespace QLCHBanHoaQuaWF.Views.Options
 {
-    public partial class frmInfoApp : Form
+    public partial class frmAppInfo : Form, IAppInfo
     {
-        public frmInfoApp()
+        public frmAppInfo()
         {
             InitializeComponent();
+        }
+
+        public string AppName
+        {
+            get { return txtAppName.Text; }
+            set { txtAppName.Text = value; }
+        }
+        public string Phone
+        {
+            get { return txtPhone.Text; }
+            set { txtPhone.Text = value; }
+        }
+        public string Email
+        {
+            get { return txtEmail.Text; }
+            set { txtEmail.Text = value; }
+        }
+        public string Address
+        {
+            get { return txtAddress.Text; }
+            set { txtAddress.Text = value; }
+        }
+        public byte[]? PrintFormat { get; set; }
+        public event EventHandler? UpdateAppInfo;
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            UpdateAppInfo?.Invoke(sender, e);
         }
     }
 }

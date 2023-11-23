@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace QLCHBanHoaQuaWF.Views.SalesOrder
+﻿namespace QLCHBanHoaQuaWF.Views.SalesOrder
 {
-    public partial class frmViewSalesOrder : Form,IViewSalesOrder
+    public partial class frmViewSalesOrder : Form, IViewSalesOrder
     {
         public frmViewSalesOrder()
         {
@@ -19,13 +9,13 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
 
         public string SearchText
         {
-            get { return txtSearch.Text;}
+            get { return txtSearch.Text; }
             set { txtSearch.Text = value; }
         }
 
         public int OptionIndex
         {
-            get { return cboOptionSearch.SelectedIndex;}
+            get { return cboOptionSearch.SelectedIndex; }
             set { cboOptionSearch.SelectedIndex = value; }
         }
 
@@ -77,10 +67,11 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
         public event EventHandler? RemoveSalesOrder;
         public event EventHandler? SearchSalesOrder;
         public event EventHandler? ShowAdd;
+        public event EventHandler? ShowReport;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ShowAdd?.Invoke(sender,e);
+            ShowAdd?.Invoke(sender, e);
         }
 
         private void cboDateCreated_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,6 +90,7 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
 
         private void frmViewSalesOrder_Load(object sender, EventArgs e)
         {
+            LoadSalesOrder?.Invoke(sender, e);
         }
 
         private void btnExportFile_Click(object sender, EventArgs e)
@@ -108,21 +100,25 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
             saveFileDialog.Title = "Save an Excel File";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                this.ExportToExcel(dgvSalesOrder, saveFileDialog.FileName);
+                dgvSalesOrder.ExportToExcel(saveFileDialog.FileName);
                 MessageBox.Show("Xuất thành công!");
             }
         }
 
-        private void btnImportFile_Click(object sender, EventArgs e)
+
+        private void btnReload_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Excel Files|*.xlsx";
-            openFileDialog.Title = "Select an Excel File";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.ImportFromExcel(dgvSalesOrder,openFileDialog.FileName);
-                MessageBox.Show("Nhập thành công");
-            }
+            LoadSalesOrder?.Invoke(sender, e);
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            SearchSalesOrder?.Invoke(sender, e);
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            ShowReport?.Invoke(sender, e);
         }
     }
 }

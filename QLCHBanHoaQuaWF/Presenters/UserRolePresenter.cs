@@ -1,19 +1,17 @@
-﻿using System.ComponentModel;
-using System.Reflection;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views.SalesOrder;
 using QLCHBanHoaQuaWF.Views.UserRole;
+using System.ComponentModel;
 
 namespace QLCHBanHoaQuaWF.Presenters;
 
-public class UserRolePresenter:PresenterCRUD
+public class UserRolePresenter : PresenterCRUD
 {
     private readonly IViewUserRole _viewUserRole;
     private readonly IAddUserRole _addUserRole;
     private readonly IUpdateUserRole _updateUserRole;
     private readonly MyAppContext _context;
-    public UserRolePresenter(IViewUserRole viewUserRole,IAddUserRole addUserRole,IUpdateUserRole updateUserRole,MyAppContext context)
+    public UserRolePresenter(IViewUserRole viewUserRole, IAddUserRole addUserRole, IUpdateUserRole updateUserRole, MyAppContext context)
     {
         _viewUserRole = viewUserRole;
         _addUserRole = addUserRole;
@@ -60,7 +58,7 @@ public class UserRolePresenter:PresenterCRUD
         UserRole userRole = new UserRole();
         userRole.RoleName = _addUserRole.RoleName;
         userRole.Description = _addUserRole.Description;
-        if (!IsValid(userRole,_addUserRole))
+        if (!IsValid(userRole, _addUserRole))
         {
             return;
         }
@@ -87,8 +85,8 @@ public class UserRolePresenter:PresenterCRUD
                     if (property != null)
                     {
 
-                        property.SetValue(permission,true);
-                        
+                        property.SetValue(permission, true);
+
                     }
                 }
 
@@ -105,7 +103,7 @@ public class UserRolePresenter:PresenterCRUD
 
     public override void Update()
     {
-        
+
     }
 
     public override void Remove()
@@ -148,7 +146,7 @@ public class UserRolePresenter:PresenterCRUD
     {
         List<UserRole> userRoles = null;
         userRoles = _context.UserRoles.Where(u => u.RoleName.Contains(_viewUserRole.SearchText)).ToList();
-        if (userRoles !=null && userRoles.Count > 0)
+        if (userRoles != null && userRoles.Count > 0)
         {
             _viewUserRole.UserRoleBindingSource.DataSource = userRoles;
         }
@@ -166,15 +164,15 @@ public class UserRolePresenter:PresenterCRUD
 
     private void LoadPermission()
     {
-       var properties = typeof(Permission).GetProperties();
-       foreach (var propertyInfo in properties)
-       {
+        var properties = typeof(Permission).GetProperties();
+        foreach (var propertyInfo in properties)
+        {
             var displayNamAttribute = (DisplayNameAttribute)propertyInfo.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
             if (displayNamAttribute != null)
             {
                 _addUserRole.PermissionSelected.Items.Add(displayNamAttribute.DisplayName);
             }
-       }
+        }
     }
 
     private void LoadUpdatePermission()
@@ -192,7 +190,7 @@ public class UserRolePresenter:PresenterCRUD
                     bool value = (bool)propertyInfo.GetValue(permission);
                     _updateUserRole.PermissionSelected.Items.Add(displayNamAttribute.DisplayName);
                     int index = _updateUserRole.PermissionSelected.Items.Count - 1;
-                    _updateUserRole.PermissionSelected.SetItemChecked(index,value);
+                    _updateUserRole.PermissionSelected.SetItemChecked(index, value);
                 }
             }
         }

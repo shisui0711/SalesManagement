@@ -11,6 +11,5 @@ public interface IViewImportOrder
     public event EventHandler RemoveImportOrder;
     public event EventHandler SearchImportOrder;
     public event EventHandler ShowAdd;
-    public event EventHandler ExportFile;
-    public event EventHandler ImportFile;
+    public event EventHandler ShowReport;
 }

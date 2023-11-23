@@ -22,6 +22,35 @@ namespace QLCHBanHoaQuaWF.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.AppInfo", b =>
+                {
+                    b.Property<string>("AppName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AppName");
+
+                    b.ToTable("AppInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            AppName = "Cửa hàng của bạn",
+                            Address = "Hưng Yên",
+                            Phone = "0987654321"
+                        });
+                });
+
             modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerID")
@@ -407,6 +436,9 @@ namespace QLCHBanHoaQuaWF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
+                    b.Property<decimal>("ChangePrice")
+                        .HasColumnType("decimal(10,2)");
+
                     b.Property<int?>("CustomerID")
                         .HasColumnType("int");
 
@@ -415,6 +447,9 @@ namespace QLCHBanHoaQuaWF.Migrations
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("date");
+
+                    b.Property<decimal>("PurchasePrice")
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(10,2)");
@@ -490,7 +525,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                         new
                         {
                             RoleID = 1,
-                            DateCreated = new DateTime(2023, 11, 19, 20, 16, 10, 135, DateTimeKind.Local).AddTicks(8959),
+                            DateCreated = new DateTime(2023, 11, 21, 13, 52, 14, 120, DateTimeKind.Local).AddTicks(3484),
                             RoleName = "Nhân viên"
                         });
                 });

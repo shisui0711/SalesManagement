@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QLCHBanHoaQuaWF.Models
 {
@@ -20,10 +15,10 @@ namespace QLCHBanHoaQuaWF.Models
         [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng email")]
         [StringLength(50)]
         public string Email { get; set; }
-        [RegularExpression(@"0\d{9}",ErrorMessage = "Vui lòng nhập đúng định dạng số điện thoại")]
+        [RegularExpression(@"0\d{9}", ErrorMessage = "Vui lòng nhập đúng định dạng số điện thoại")]
         public string Phone { get; set; }
         [StringLength(50)]
-        public string  Address { get; set; }
+        public string Address { get; set; }
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;
         [InverseProperty("Customer")]

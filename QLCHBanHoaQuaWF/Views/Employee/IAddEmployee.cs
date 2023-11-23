@@ -1,6 +1,6 @@
 ﻿namespace QLCHBanHoaQuaWF.Views.Employee;
 
-public interface IAddEmployee:IValidateControl
+public interface IAddEmployee : IValidateControl
 {
     public string EmployeeName { get; set; }
     public string Email { get; set; }

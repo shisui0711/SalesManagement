@@ -1,6 +1,6 @@
 ﻿namespace QLCHBanHoaQuaWF.Views.UserRole;
 
-public interface IUpdateUserRole:IValidateControl
+public interface IUpdateUserRole : IValidateControl
 {
     public int RoleID { get; set; }
     public string RoleName { get; set; }

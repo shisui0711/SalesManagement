@@ -1,19 +1,22 @@
 ﻿using OfficeOpenXml;
 using System.Data;
-using System.Windows.Forms;
+using System.IO;
 
 namespace QLCHBanHoaQuaWF;
 
 public static class MyExtensionMethod
 {
-    public static void ExportToExcel(this Form form,DataGridView dataGridView,string filePath)
+    public static void ExportToExcel(this DataGridView dataGridView, string filePath)
     {
         using (ExcelPackage package = new ExcelPackage())
         {
             ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
-
             for (int i = 0; i < dataGridView.Columns.Count; i++)
             {
+                if (dataGridView.Columns[i].Visible)
+                {
+                    continue;
+                }
                 worksheet.Cells[1, i + 1].Value = dataGridView.Columns[i].HeaderText;
             }
 
@@ -21,6 +24,10 @@ public static class MyExtensionMethod
             {
                 for (int j = 0; j < dataGridView.Columns.Count; j++)
                 {
+                    if (dataGridView.Columns[i].Visible)
+                    {
+                        continue;
+                    }
                     worksheet.Cells[i + 2, j + 1].Value = dataGridView.Rows[i].Cells[j].Value.ToString();
                 }
             }
@@ -30,7 +37,7 @@ public static class MyExtensionMethod
         }
     }
 
-    public static void ImportFromExcel(this Form form, DataGridView dataGridView, string filePath)
+    public static void ImportFromExcel(this DataGridView dataGridView, string filePath)
     {
         FileInfo fileInfo = new FileInfo(filePath);
         using (ExcelPackage package = new ExcelPackage(fileInfo))

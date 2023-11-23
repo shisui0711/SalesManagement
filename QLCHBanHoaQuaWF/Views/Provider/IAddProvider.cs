@@ -1,6 +1,6 @@
 ﻿namespace QLCHBanHoaQuaWF.Views.Provider;
 
-public interface IAddProvider:IValidateControl
+public interface IAddProvider : IValidateControl
 {
     public string ProviderName { get; set; }
     public string Email { get; set; }

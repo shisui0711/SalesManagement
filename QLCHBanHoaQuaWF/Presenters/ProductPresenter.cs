@@ -1,26 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.Employee;
 using QLCHBanHoaQuaWF.Views.Product;
-using System.ComponentModel.DataAnnotations;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF.Presenters;
 
-public class ProductPresenter:PresenterCRUD
+public class ProductPresenter : PresenterCRUD
 {
     private IViewProduct _viewProduct;
     private IAddProduct _addProduct;
     private IUpdateProduct _updateProduct;
     private MyAppContext _context;
-    public ProductPresenter(IViewProduct viewProduct,IAddProduct addProduct,IUpdateProduct updateProduct,MyAppContext context)
+    public ProductPresenter(IViewProduct viewProduct, IAddProduct addProduct, IUpdateProduct updateProduct, MyAppContext context)
     {
         _viewProduct = viewProduct;
         _addProduct = addProduct;
         _updateProduct = updateProduct;
         _context = context;
-        
+
         _context.Products.Load();
         _viewProduct.ShowAddProduct += delegate { ShowAddForm(); };
         _viewProduct.ShowUpdateProduct += delegate { ShowUpdateForm(); };
@@ -72,7 +69,7 @@ public class ProductPresenter:PresenterCRUD
         product.ImportUnitPrice = _addProduct.ImportUnitPrice;
         product.UnitPrice = _addProduct.UnitPrice;
         product.Description = _addProduct.Description;
-        if (!IsValid(product,_addProduct))
+        if (!IsValid(product, _addProduct))
         {
             return;
         }
@@ -92,7 +89,7 @@ public class ProductPresenter:PresenterCRUD
         product.ImportUnitPrice = _addProduct.ImportUnitPrice;
         product.UnitPrice = _addProduct.UnitPrice;
         product.Description = _addProduct.Description;
-        if (!IsValid(product,_updateProduct))
+        if (!IsValid(product, _updateProduct))
         {
             return;
         }
@@ -101,7 +98,7 @@ public class ProductPresenter:PresenterCRUD
         _context.Entry(productExist).CurrentValues.SetValues(product);
         _context.SaveChanges();
         _viewProduct.ProductBindingSource.EndEdit();
-        
+
     }
 
     public override void Remove()

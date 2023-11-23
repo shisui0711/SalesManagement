@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Customer;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
@@ -19,7 +12,7 @@ namespace QLCHBanHoaQuaWF.Presenters
         private IUpdateCustomer _updateCustomer;
         private MyAppContext _context;
 
-        public CustomerPresenter(IViewCustomer viewCustomer,IAddCustomer addCustomer,IUpdateCustomer updateCustomer,MyAppContext context)
+        public CustomerPresenter(IViewCustomer viewCustomer, IAddCustomer addCustomer, IUpdateCustomer updateCustomer, MyAppContext context)
         {
             _viewCustomer = viewCustomer;
             _addCustomer = addCustomer;
@@ -70,7 +63,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             customer.Email = _addCustomer.Email;
             customer.Phone = _addCustomer.Phone;
             customer.Address = _addCustomer.Address;
-            if (!IsValid(customer,_addCustomer))
+            if (!IsValid(customer, _addCustomer))
             {
                 return;
             }
@@ -88,7 +81,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             customer.Email = _updateCustomer.Email;
             customer.Phone = _updateCustomer.Phone;
             customer.Address = _updateCustomer.Address;
-            if (!IsValid(customer,_updateCustomer))
+            if (!IsValid(customer, _updateCustomer))
             {
                 _context.Entry(customer).Reload();
                 return;
@@ -101,8 +94,8 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             var deleted = _viewCustomer.CustomerBindingSource.Current as Customer;
             if (deleted == null)
-            { 
-              return;  
+            {
+                return;
             }
             var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -111,7 +104,7 @@ namespace QLCHBanHoaQuaWF.Presenters
                 return;
             }
 
-            
+
             using (var transaction = _context.Database.BeginTransaction())
             {
                 try

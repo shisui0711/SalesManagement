@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QLCHBanHoaQuaWF.Models
 {
@@ -22,7 +17,7 @@ namespace QLCHBanHoaQuaWF.Models
 
         public User()
         {
-            
+
         }
         public int EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
@@ -30,7 +25,7 @@ namespace QLCHBanHoaQuaWF.Models
         [EmailAddress]
         [StringLength(50)]
         public string Email { get; set; }
-        [MinLength(8,ErrorMessage = "Mật khẩu phải dài ít nhất 8 ký tự.")]
+        [MinLength(8, ErrorMessage = "Mật khẩu phải dài ít nhất 8 ký tự.")]
         public string Password { get; set; }
 
         public DateTime LastLogin { get; set; }
@@ -39,7 +34,7 @@ namespace QLCHBanHoaQuaWF.Models
         public int RoleID { get; set; }
         [ForeignKey("RoleID")]
         public UserRole UserRole { get; set; }
-        
-        
+
+
     }
 }

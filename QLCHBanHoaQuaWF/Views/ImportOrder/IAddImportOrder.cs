@@ -3,9 +3,9 @@
 public interface IAddImportOrder
 {
     public string ProviderSearchText { get; set; }
-    public string ProductSearchText { get; set; }
+    public string? ProductSearchText { get; set; }
     public decimal TotalPrice { get; set; }
-    public int EmployeeID { get;}
+    public int EmployeeID { get; }
     public int ProviderID { get; }
     public void AddControl(Control control);
     public void ClearControl();
@@ -16,5 +16,5 @@ public interface IAddImportOrder
     public event EventHandler? LoadProvider;
     public event EventHandler? SearchProvider;
     public event EventHandler? SearchProduct;
-    public event EventHandler? AddSalesOrder;
+    public event EventHandler? AddImportOrder;
 }

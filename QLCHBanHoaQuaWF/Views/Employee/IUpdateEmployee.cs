@@ -1,6 +1,6 @@
 ﻿namespace QLCHBanHoaQuaWF.Views.Employee;
 
-public interface IUpdateEmployee: IValidateControl
+public interface IUpdateEmployee : IValidateControl
 {
     public int EmployeeID { get; set; }
     public string EmployeeName { get; set; }

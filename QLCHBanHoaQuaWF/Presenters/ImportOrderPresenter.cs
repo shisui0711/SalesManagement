@@ -1,39 +1,101 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Reporting.WinForms;
 using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views.ImportOrder;
 using QLCHBanHoaQuaWF.Views.Product;
-using QLCHBanHoaQuaWF.Views.SalesOrder;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF.Presenters;
 
-public class ImportOrderPresenter:PresenterCRUD
+public class ImportOrderPresenter : PresenterCRUD
 {
     private Dictionary<Product, int> productOrdered = new Dictionary<Product, int>();
     private readonly IViewImportOrder _viewImportOrder;
     private readonly IAddImportOrder _addImportOrder;
+    private readonly IReportImportOrder _report;
     private readonly MyAppContext _context;
-    public ImportOrderPresenter(IViewImportOrder viewImportOrder,IAddImportOrder addImportOrder,MyAppContext context)
+    public ImportOrderPresenter(IViewImportOrder viewImportOrder, IAddImportOrder addImportOrder, IReportImportOrder report, MyAppContext context)
     {
         _viewImportOrder = viewImportOrder;
         _addImportOrder = addImportOrder;
+        _report = report;
         _context = context;
+        _context.ImportOrders.Load();
 
         _viewImportOrder.ShowAdd += delegate { ShowAddForm(); };
         _viewImportOrder.LoadImportOrder += delegate { Load(); };
         _viewImportOrder.RemoveImportOrder += delegate { Remove(); };
         _viewImportOrder.SearchImportOrder += delegate { Search(); };
+        _viewImportOrder.ShowReport += delegate { ShowReport(); };
 
-        _addImportOrder.LoadProduct += delegate{LoadProduct();};
+        _addImportOrder.LoadProduct += delegate { LoadProduct(); };
         _addImportOrder.LoadProvider += delegate { LoadProvider(); };
         _addImportOrder.RemoveProduct += RemoveProduct;
         _addImportOrder.SearchProvider += delegate { SearchProvider(); };
         _addImportOrder.SearchProduct += delegate { LoadProduct(_addImportOrder.ProductSearchText); };
-        _addImportOrder.AddSalesOrder += delegate { Add(); };
+        _addImportOrder.AddImportOrder += delegate { Add(); };
 
+        _report.LoadReport += delegate { LoadReport(); };
 
     }
 
+    void LoadReport()
+    {
+        AppInfo info = _context.AppInfos.FirstOrDefault();
+        if (info == null) { return; }
+        ImportOrder current = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
+        ImportOrder order = _context.ImportOrders.Find(current.OrderID);
+        var orderData = (from s in _context.ImportOrders
+                         join p in _context.Providers on s.ProviderID equals p.ProviderID
+                         where s.OrderID == order.OrderID
+                         select new
+                         {
+                             DateCreated = s.OrderDate,
+                             OrderID = s.OrderID,
+                             ProviderName = p.ProviderName,
+                             TotalPrice = s.TotalPrice
+                         }).FirstOrDefault();
+        var orderFullData = new
+        {
+            DateCreated = orderData.DateCreated,
+            AppName = info.AppName,
+            AppAddress = info.Address,
+            AppPhone = info.Phone,
+            OrderID = orderData.OrderID,
+            TotalPrice = orderData.TotalPrice
+        };
+
+        var detailData = from d in _context.DetailImportOrders
+                         join p in _context.Products
+                             on d.ProductID equals p.ProductID
+                         where d.OrderID == order.OrderID
+                         select new
+                         {
+                             ProductName = p.ProductName,
+                             Quantity = d.Quantity,
+                             UnitPrice = d.UnitPrice,
+                             TotalPrice = d.TotalPrice
+                         };
+        _report.ReportViewer.LocalReport.ReportPath = "./Reports/ReportImportOrder.rdlc";
+        ReportDataSource detailDataSource = new ReportDataSource();
+        detailDataSource.Name = "DataSetDetailImportOrder";
+        detailDataSource.Value = detailData;
+        _report.ReportViewer.LocalReport.DataSources.Add(detailDataSource);
+        foreach (var propertyInfo in orderFullData.GetType().GetProperties())
+        {
+            _report.ReportViewer.LocalReport.SetParameters(new ReportParameter(propertyInfo.Name, propertyInfo.GetValue(orderFullData).ToString()));
+        }
+        _report.ReportViewer.RefreshReport();
+    }
+    void ShowReport()
+    {
+        Form form = (Form)_report;
+        if (form != null)
+        {
+            form.ShowDialog();
+        }
+    }
     public void ShowAddForm()
     {
         var form = _addImportOrder as Form;
@@ -53,26 +115,30 @@ public class ImportOrderPresenter:PresenterCRUD
                 importOrder.Provider = _context.Providers.Find(_addImportOrder.ProviderID);
                 importOrder.TotalPrice = _addImportOrder.TotalPrice;
                 _context.ImportOrders.Add(importOrder);
-                _viewImportOrder.OrderBindingSource.EndEdit();
                 _context.SaveChanges();
 
                 foreach (DataGridViewRow row in _addImportOrder.OrderedGridView.Rows)
                 {
-                    Product product = _context.Products.Find(row.Cells["ProductIDColumn"].Value);
+                    Product product = _context.Products.Find(row.Cells["ProductIDColumn"].Value)!;
                     DetailImportOrder detail = new DetailImportOrder();
                     detail.Product = product;
-                    detail.UnitPrice = decimal.Parse(row.Cells["UnitPricePriceColumn"].Value.ToString());
                     detail.ImportOrder = importOrder;
-                    detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString());
-                    detail.TotalPrice = int.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
+                    detail.UnitPrice = decimal.Parse(row.Cells["UnitPriceColumn"].Value.ToString());
+                    detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString()!);
+                    detail.TotalPrice = decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
                     detail.OrderID = importOrder.OrderID;
                     _context.DetailImportOrders.Add(detail);
                 }
+
+                _context.SaveChanges();
                 transaction.Commit();
+                MessageBox.Show("Đặt hàng thành công");
+                _viewImportOrder.OrderBindingSource.EndEdit();
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
                 transaction.Rollback();
+                MessageBox.Show("Lỗi cơ sở dữ liệu. Đặt hàng thất bại");
             }
         }
     }
@@ -84,7 +150,7 @@ public class ImportOrderPresenter:PresenterCRUD
 
     public override void Remove()
     {
-        ImportOrder deleted = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
+        ImportOrder? deleted = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
         if (deleted == null)
         {
             return;
@@ -113,15 +179,15 @@ public class ImportOrderPresenter:PresenterCRUD
 
     public override void Search()
     {
-        List<ImportOrder> importOrders = null;
+        List<ImportOrder?>? importOrders = null;
         switch (_viewImportOrder.OptionIndex)
         {
             case 1:
-                importOrders = _context.ImportOrders.Where(x => x.OrderID.ToString().Contains(_viewImportOrder.SearchText)).ToList();
+                importOrders = _context.ImportOrders.Where(x => x != null && x.OrderID.ToString().Contains(_viewImportOrder.SearchText)).ToList();
                 break;
             case 2:
-                importOrders = _context.ImportOrders.Include(s => s.Employee)
-                    .Where(s => s.Employee.EmployeeName.Contains(_viewImportOrder.SearchText)).ToList();
+                importOrders = _context.ImportOrders.Include(s => s!.Employee)
+                    .Where(s => s.Employee.EmployeeName.Contains(_viewImportOrder.SearchText)).ToList()!;
                 break;
             case 3:
                 importOrders = _context.ImportOrders.Include(s => s.Provider)
@@ -153,7 +219,7 @@ public class ImportOrderPresenter:PresenterCRUD
         _addImportOrder.ProviderBindingSource.DataSource = _context.Providers.ToList();
     }
 
-    public void LoadProduct(string name = null)
+    public void LoadProduct(string? name = null)
     {
         _addImportOrder.ClearControl();
         if (name != null)
@@ -172,7 +238,7 @@ public class ImportOrderPresenter:PresenterCRUD
             foreach (var product in _context.Products.ToList())
             {
                 frmProduct form = new frmProduct(product);
-                form.Clicked += OrderProduct;
+                form.Clicked += OrderProduct!;
                 form.TopLevel = false;
                 _addImportOrder.AddControl(form);
                 form.Show();
@@ -203,7 +269,7 @@ public class ImportOrderPresenter:PresenterCRUD
     }
     public void SearchProvider()
     {
-        List<Provider> providers = null;
+        List<Provider>? providers = null;
         providers = _context.Providers.Where(p => p.ProviderName.Contains(_addImportOrder.ProviderSearchText))
             .ToList();
         if (providers != null)

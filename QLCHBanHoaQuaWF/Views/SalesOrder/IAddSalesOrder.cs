@@ -3,7 +3,9 @@
 public interface IAddSalesOrder
 {
     public string CustomerSearchText { get; set; }
-    public string ProductSearchText { get; set; }
+    public string? ProductSearchText { get; set; }
+    public decimal PurchasePrice { get; set; }
+    public decimal ChangePrice { get; set; }
     public decimal TotalPrice { get; set; }
     public int EmployeeID { get; }
     public int CustomerID { get; }

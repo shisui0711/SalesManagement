@@ -316,6 +316,8 @@
             this.dgvProductSelect.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductSelect_CellClick);
             this.dgvProductSelect.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductSelect_CellEndEdit);
             this.dgvProductSelect.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductSelect_CellValueChanged);
+            this.dgvProductSelect.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvProductSelect_RowsAdded);
+            this.dgvProductSelect.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvProductSelect_RowsRemoved);
             // 
             // productNameDataGridViewTextBoxColumn
             // 

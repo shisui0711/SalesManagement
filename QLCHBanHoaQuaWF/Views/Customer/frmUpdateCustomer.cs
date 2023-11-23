@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace QLCHBanHoaQuaWF.Views.Customer
+﻿namespace QLCHBanHoaQuaWF.Views.Customer
 {
-    public partial class frmUpdateCustomer : Form,IUpdateCustomer
+    public partial class frmUpdateCustomer : Form, IUpdateCustomer
     {
-        public int CustomerID {
+        public int CustomerID
+        {
             get { return int.Parse(txtID.Text); }
             set { txtID.Text = value.ToString(); }
         }
@@ -71,7 +61,7 @@ namespace QLCHBanHoaQuaWF.Views.Customer
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            UpdateCustomer?.Invoke(sender,e);
+            UpdateCustomer?.Invoke(sender, e);
             this.Close();
         }
 

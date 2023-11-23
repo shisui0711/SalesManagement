@@ -1,18 +1,19 @@
-using System.Reflection;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OfficeOpenXml;
 using QLCHBanHoaQuaWF.Presenters;
 using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Customer;
 using QLCHBanHoaQuaWF.Views.Employee;
 using QLCHBanHoaQuaWF.Views.ImportOrder;
+using QLCHBanHoaQuaWF.Views.Options;
 using QLCHBanHoaQuaWF.Views.Product;
 using QLCHBanHoaQuaWF.Views.Provider;
 using QLCHBanHoaQuaWF.Views.SalesOrder;
 using QLCHBanHoaQuaWF.Views.User;
 using QLCHBanHoaQuaWF.Views.UserRole;
+using System.Reflection;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF
@@ -27,9 +28,10 @@ namespace QLCHBanHoaQuaWF
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var _host = CreateHostBuilder(args).Build();
             _host.Start();
-            ApplicationConfiguration.Initialize();
             var presenterTypes =
                 Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Name.Contains("Presenter") && t.IsClass && !t.IsAbstract);
             foreach (var type in presenterTypes)
@@ -37,7 +39,6 @@ namespace QLCHBanHoaQuaWF
                 _host.Services.GetRequiredService(type);
             }
 
-            
             Application.Run((Form)_host.Services.GetRequiredService<IViewLogin>());
             _host.StopAsync().GetAwaiter().GetResult();
             _host.Dispose();
@@ -52,7 +53,7 @@ namespace QLCHBanHoaQuaWF
             }).ConfigureServices((services) =>
             {
                 services.AddDbContext<MyAppContext>();
-                services.AddSingleton<IViewMain,frmMain>();
+                services.AddSingleton<IViewMain, frmMain>();
                 services.AddSingleton<IViewCustomer, frmViewCustomer>();
                 services.AddSingleton<IAddCustomer, frmAddCustomer>();
                 services.AddSingleton<IUpdateCustomer, frmUpdateCustomer>();
@@ -65,16 +66,20 @@ namespace QLCHBanHoaQuaWF
                 services.AddSingleton<IViewProvider, frmViewProvider>();
                 services.AddSingleton<IAddProvider, frmAddProvider>();
                 services.AddSingleton<IUpdateProvider, frmUpdateProvider>();
-                services.AddSingleton<IViewSalesOrder,frmViewSalesOrder>();
+                services.AddSingleton<IViewSalesOrder, frmViewSalesOrder>();
                 services.AddSingleton<IAddSalesOrder, frmAddSalesOrder>();
+                services.AddSingleton<IReportSalesOrder, frmReportSalesOrder>();
                 services.AddSingleton<IViewImportOrder, frmViewImportOrder>();
                 services.AddSingleton<IAddImportOrder, frmAddImportOrder>();
+                services.AddSingleton<IReportImportOrder, frmReportImportOrder>();
                 services.AddSingleton<IViewUser, frmViewUser>();
                 services.AddSingleton<IChangePassword, frmChangePassword>();
                 services.AddSingleton<IViewUserRole, frmViewUserRole>();
                 services.AddSingleton<IAddUserRole, frmAddUserRole>();
                 services.AddSingleton<IUpdateUserRole, frmUpdateUserRole>();
-                services.AddSingleton<IViewLogin,frmLogin>();
+                services.AddSingleton<IViewOptions, frmViewOptions>();
+                services.AddSingleton<IAppInfo, frmAppInfo>();
+                services.AddSingleton<IViewLogin, frmLogin>();
                 services.AddSingleton<AuthPresenter>();
                 services.AddSingleton<CustomerPresenter>();
                 services.AddSingleton<EmployeePresenter>();
@@ -83,6 +88,7 @@ namespace QLCHBanHoaQuaWF
                 services.AddSingleton<SalesOrderPresenter>();
                 services.AddSingleton<ImportOrderPresenter>();
                 services.AddSingleton<UserRolePresenter>();
+                services.AddSingleton<OptionsPresenter>();
                 services.AddSingleton<MainPresenter>();
 
             });

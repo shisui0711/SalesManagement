@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using Guna.UI2.WinForms;
+using QLCHBanHoaQuaWF.Presenters;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Guna.UI2.WinForms;
 
 namespace QLCHBanHoaQuaWF.Views.SalesOrder
 {
@@ -22,18 +14,29 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
 
         private void frmAddSalesOrder_Resize(object sender, EventArgs e)
         {
-            pnlBodyLeft.Width = this.Width *2/5;
+            pnlBodyLeft.Width = this.Width * 2 / 5;
         }
 
         public string CustomerSearchText
         {
-            get { return txtCustomerSearch.Text;}
+            get { return txtCustomerSearch.Text; }
             set { txtCustomerSearch.Text = value; }
         }
-        public string ProductSearchText
+        public string? ProductSearchText
         {
-            get { return txtSearch.Text;}
+            get { return txtSearch.Text; }
             set { txtSearch.Text = value; }
+        }
+
+        public decimal PurchasePrice
+        {
+            get { return decimal.Parse(txtPurchasePrice.Text); }
+            set { txtPurchasePrice.Text = value.ToString(); }
+        }
+        public decimal ChangePrice
+        {
+            get { return decimal.Parse(lblChangePrice.Text); }
+            set { lblChangePrice.Text = value.ToString(); }
         }
 
         public decimal TotalPrice
@@ -44,10 +47,11 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
 
         public int EmployeeID
         {
-            get { return int.Parse(lsbCustomer.SelectedValue.ToString());}
+            get { return AuthPresenter.User.EmployeeID; }
         }
-        public int CustomerID {
-            get { return int.Parse(lsbCustomer.SelectedValue.ToString()); }
+        public int CustomerID
+        {
+            get { return int.Parse(lsbCustomer.SelectedValue!.ToString() ?? throw new InvalidOperationException()); }
         }
 
         public BindingSource CustomerBindingSource
@@ -57,7 +61,7 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
 
         public DataGridView OrderedGridView
         {
-            get { return dgvProductSelect;}
+            get { return dgvProductSelect; }
             set { dgvProductSelect = value as Guna2DataGridView; }
         }
 
@@ -80,13 +84,13 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
         public event EventHandler? AddSalesOrder;
         private void frmAddSalesOrder_Load(object sender, EventArgs e)
         {
-            LoadCustomer?.Invoke(sender,e);
-            LoadProduct?.Invoke(sender,e);
+            LoadCustomer?.Invoke(sender, e);
+            LoadProduct?.Invoke(sender, e);
         }
 
         private void dgvProductSelect_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvProductSelect.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >=0)
+            if (dgvProductSelect.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 if (e.ColumnIndex == dgvProductSelect.ColumnCount - 3)
                 {
@@ -95,7 +99,7 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
                     if (quantity > 1)
                     {
                         cells["QuantityColumn"].Value = quantity - 1;
-                        cells["TotalPriceColumn"].Value = decimal.Parse(cells["UnitPriceColumn"].Value.ToString()) * (quantity - 1);
+                        cells["TotalPriceColumn"].Value = decimal.Parse(cells["UnitPriceColumn"].Value.ToString()!) * (quantity - 1);
                     }
                 }
                 if (e.ColumnIndex == dgvProductSelect.ColumnCount - 2)
@@ -105,19 +109,19 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
                     cells["TotalPriceColumn"].Value = decimal.Parse(cells["UnitPriceColumn"].Value.ToString()) * int.Parse(cells["QuantityColumn"].Value.ToString());
                 }
 
-                
+
 
                 if (e.ColumnIndex == dgvProductSelect.ColumnCount - 1)
                 {
-                    RemoveProduct?.Invoke(sender,e);
+                    RemoveProduct?.Invoke(sender, e);
                 }
             }
         }
 
         private void dgvProductSelect_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            string cellValue = dgvProductSelect.Rows[e.RowIndex].Cells["QuantityColumn"].Value.ToString();
-            if (!Regex.IsMatch(cellValue,@"\d+") || int .Parse(cellValue) < 1)
+            string? cellValue = dgvProductSelect.Rows[e.RowIndex].Cells["QuantityColumn"].Value.ToString();
+            if (!Regex.IsMatch(cellValue ?? string.Empty, @"\d+") || int.Parse(cellValue) < 1)
             {
                 dgvProductSelect.Rows[e.RowIndex].Cells["QuantityColumn"].Value = _quantityBackup;
                 MessageBox.Show("Số lượng không hợp lệ", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -136,7 +140,7 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddSalesOrder?.Invoke(sender,e);
+            AddSalesOrder?.Invoke(sender, e);
         }
 
         private void dgvProductSelect_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -146,19 +150,22 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
                 return;
             }
 
-            decimal sum = 0;
-            foreach (DataGridViewRow row in dgvProductSelect.Rows)
-            {
-                sum += decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
-            }
+            RecalculateTotalPrice();
 
-            lblTotalPrice.Text = sum.ToString();
         }
 
         private void txtPurchasePrice_TextChanged(object sender, EventArgs e)
         {
             decimal totalPrice = decimal.Parse(lblTotalPrice.Text);
-            decimal purchasePrice = decimal.Parse(txtPurchasePrice.Text);
+            decimal purchasePrice = 0;
+            try
+            {
+                purchasePrice = decimal.Parse(txtPurchasePrice.Text);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
             lblChangePrice.Text = (totalPrice - purchasePrice).ToString();
         }
 
@@ -177,22 +184,49 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
 
         private void btnLoadCustomer_Click(object sender, EventArgs e)
         {
-            LoadCustomer?.Invoke(sender,e);
+            LoadCustomer?.Invoke(sender, e);
         }
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
-            SearchCustomer?.Invoke(sender,e);
+            SearchCustomer?.Invoke(sender, e);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            SearchProduct?.Invoke(sender,e);
+            SearchProduct?.Invoke(sender, e);
         }
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            LoadProduct?.Invoke(sender,e);
+            LoadProduct?.Invoke(sender, e);
+        }
+
+        private void dgvProductSelect_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            RecalculateTotalPrice();
+        }
+
+        private void dgvProductSelect_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (dgvProductSelect.RowCount == 0)
+            {
+                lblTotalPrice.Text = "0";
+                return;
+            }
+
+            RecalculateTotalPrice();
+        }
+
+        private void RecalculateTotalPrice()
+        {
+            decimal sum = 0;
+            foreach (DataGridViewRow row in dgvProductSelect.Rows)
+            {
+                sum += decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
+            }
+
+            lblTotalPrice.Text = sum.ToString();
         }
     }
 }

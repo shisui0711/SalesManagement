@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using QLCHBanHoaQuaWF.Views;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.Customer;
 
 namespace QLCHBanHoaQuaWF.Presenters
 {

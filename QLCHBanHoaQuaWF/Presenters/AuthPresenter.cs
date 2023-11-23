@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.User;
+using System.Security.Cryptography;
+using System.Text;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF.Presenters
@@ -24,7 +18,7 @@ namespace QLCHBanHoaQuaWF.Presenters
         private readonly IChangePassword _changePassword;
         private readonly MyAppContext _context;
         private readonly IConfiguration _configuration;
-        public AuthPresenter(IViewLogin viewLogin,IViewMain viewMain,IViewUser viewUser,IChangePassword changePassword,MyAppContext context,IConfiguration configuration)
+        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IChangePassword changePassword, MyAppContext context, IConfiguration configuration)
         {
             _viewLogin = viewLogin;
             _viewMain = viewMain;
@@ -107,7 +101,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             loginForm.Show();
         }
 
-        public void Register(string email,string password,int roleId)
+        public void Register(string email, string password, int roleId)
         {
             UserRole userRole = _context.UserRoles.Find(roleId);
             Employee employee = _context.Employees.Where(e => e.Email == email).FirstOrDefault();
@@ -147,7 +141,7 @@ namespace QLCHBanHoaQuaWF.Presenters
                 return;
             }
 
-            if (MessageBox.Show("Bạn có chắc chắn muốn khóa tài khoản đã chọn","Thông báo",MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Bạn có chắc chắn muốn khóa tài khoản đã chọn", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
             }
@@ -182,7 +176,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             List<User> users = null;
             users = _context.Users.Include(u => u.Employee)
                 .Where(u => u.Employee.EmployeeName.Contains(_viewUser.SearchText)).ToList();
-            if (users != null && users.Count > 0) 
+            if (users != null && users.Count > 0)
             {
                 _viewUser.UserBindingSource.DataSource = users;
             }
@@ -202,7 +196,7 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             using (SHA256 md5Hash = SHA256.Create())
             {
-                
+
                 byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
                 StringBuilder stringBuilder = new StringBuilder();
 

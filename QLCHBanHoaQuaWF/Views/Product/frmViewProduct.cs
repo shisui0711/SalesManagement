@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace QLCHBanHoaQuaWF.Views.Product
+﻿namespace QLCHBanHoaQuaWF.Views.Product
 {
-    public partial class frmViewProduct : Form,IViewProduct
+    public partial class frmViewProduct : Form, IViewProduct
     {
         public string SearchText
         {
-            get { return txtSearch.Text;}
+            get { return txtSearch.Text; }
             set { txtSearch.Text = value; }
         }
-        public int OptionIndex {
+        public int OptionIndex
+        {
             get { return cboOptionSearch.SelectedIndex; }
             set { cboOptionSearch.SelectedIndex = value; }
         }
@@ -40,27 +31,27 @@ namespace QLCHBanHoaQuaWF.Views.Product
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ShowAddProduct?.Invoke(sender,e);
+            ShowAddProduct?.Invoke(sender, e);
         }
 
         private void frmViewProduct_Load(object sender, EventArgs e)
         {
-            LoadProduct?.Invoke(sender,e);
+            LoadProduct?.Invoke(sender, e);
         }
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            LoadProduct?.Invoke(sender,e);
+            LoadProduct?.Invoke(sender, e);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            ShowUpdateProduct?.Invoke(sender,e);
+            ShowUpdateProduct?.Invoke(sender, e);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            RemoveProduct?.Invoke(sender,e);
+            RemoveProduct?.Invoke(sender, e);
         }
     }
 }

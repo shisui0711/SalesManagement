@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
@@ -7,7 +6,6 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Resources\24625.jpg" />
     <None Remove="Resources\green_leaves_vector.jpg" />
@@ -17,12 +15,11 @@
     <None Remove="Resources\user.png" />
     <None Remove="Views\MainPresenter" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="Presenters\MainPresenter.cs" />
   </ItemGroup>
-
   <ItemGroup>
+    <PackageReference Include="DevExpress.Win.Design" Version="22.1.3" />
     <PackageReference Include="EPPlus" Version="7.0.1" />
     <PackageReference Include="Guna.Charts.WinForms" Version="1.0.9" />
     <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.5" />
@@ -39,31 +36,47 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.19" />
+    <PackageReference Include="System.Data.Odbc" Version="8.0.0" />
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+    <PackageReference Include="System.Runtime.Serialization.Schema" Version="8.0.0" />
+    <PackageReference Include="System.ServiceModel.Syndication" Version="8.0.0" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="8.0.0" />
   </ItemGroup>
-
   <ItemGroup>
+    <Compile Update="dsDetailOrder.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>dsDetailOrder.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="dsDetailOrder.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDetailOrder.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Reports\ReportImportOrder.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Reports\ReportSalesOrder.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Servies\" />
   </ItemGroup>
-
 </Project>
