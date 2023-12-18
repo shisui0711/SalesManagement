@@ -1,4 +1,6 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Provider
+﻿using System.Reflection;
+
+namespace QLCHBanHoaQuaWF.Views.Provider
 {
     public partial class frmAddProvider : Form, IAddProvider
     {
@@ -42,6 +44,18 @@
             get { return txtAddress.Text; }
             set { txtAddress.Text = value; }
         }
+
+        public void Reset()
+        {
+            var fieldTypes = this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
+                .Where(f => f.Name.StartsWith("txt"));
+            foreach (var fieldType in fieldTypes)
+            {
+                UserControl control = (UserControl)fieldType.GetValue(this);
+                control.Text = String.Empty;
+            }
+        }
+
         public event EventHandler? AddProvider;
         public frmAddProvider()
         {

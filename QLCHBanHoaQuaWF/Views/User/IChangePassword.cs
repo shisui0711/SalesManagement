@@ -1,9 +1,10 @@
 ﻿namespace QLCHBanHoaQuaWF.Views.User;
 
-public interface IChangePassword : IValidateControl
+public interface IChangePassword
 {
     public string Email { get; set; }
-    public string Password { get; set; }
+    public string OldPassword { get; set; }
+    public string NewPassword { get; set; }
     public string Repassword { get; set; }
     public event EventHandler ChangePassowrd;
 }

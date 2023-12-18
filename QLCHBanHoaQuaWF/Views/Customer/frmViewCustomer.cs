@@ -21,6 +21,8 @@
         public event EventHandler? SearchCustomer;
         public event EventHandler ShowAddCustomer;
         public event EventHandler ShowUpdateCustomer;
+        public event EventHandler ShowSalesHistory;
+
         public frmViewCustomer()
         {
             InitializeComponent();
@@ -60,6 +62,11 @@
         private void btnDelete_Click(object sender, EventArgs e)
         {
             RemoveCustomer?.Invoke(sender, e);
+        }
+
+        private void btnPurchaseHistory_Click(object sender, EventArgs e)
+        {
+            ShowSalesHistory?.Invoke(sender,e);
         }
     }
 }

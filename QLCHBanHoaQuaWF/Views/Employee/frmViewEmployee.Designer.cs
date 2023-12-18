@@ -47,23 +47,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnstrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.btnPurchaseHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnImportHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnShiftHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvEmployee = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pnlGridView = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
-            this.cboOptionSearch = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnReload = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
-            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.pnlControl = new Guna.UI2.WinForms.Guna2Panel();
             this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,79 +55,27 @@
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shiftsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salesOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mnstrip.SuspendLayout();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pnlGridView = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
+            this.cboOptionSearch = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.btnReload = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
+            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pnlControl = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPurchaseHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnImportHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.pnlGridView.SuspendLayout();
             this.pnlControl.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.TargetControl = this;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(201, 26);
-            this.btnDelete.Text = "Xóa";
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(201, 26);
-            this.btnUpdate.Text = "Sửa thông tin";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // mnstrip
-            // 
-            this.mnstrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.mnstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnUpdate,
-            this.btnDelete,
-            this.btnPurchaseHistory,
-            this.btnImportHistory,
-            this.btnShiftHistory});
-            this.mnstrip.Name = "mnstrip";
-            this.mnstrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.mnstrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.mnstrip.RenderStyle.ColorTable = null;
-            this.mnstrip.RenderStyle.RoundedEdges = true;
-            this.mnstrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.mnstrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.mnstrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.mnstrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.mnstrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.mnstrip.Size = new System.Drawing.Size(202, 134);
-            // 
-            // btnPurchaseHistory
-            // 
-            this.btnPurchaseHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
-            this.btnPurchaseHistory.Name = "btnPurchaseHistory";
-            this.btnPurchaseHistory.Size = new System.Drawing.Size(201, 26);
-            this.btnPurchaseHistory.Text = "Lịch sử bán hàng";
-            this.btnPurchaseHistory.Click += new System.EventHandler(this.btnPurchaseHistory_Click);
-            // 
-            // btnImportHistory
-            // 
-            this.btnImportHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
-            this.btnImportHistory.Name = "btnImportHistory";
-            this.btnImportHistory.Size = new System.Drawing.Size(201, 26);
-            this.btnImportHistory.Text = "Lịch sử nhập hàng";
-            this.btnImportHistory.Click += new System.EventHandler(this.btnImportHistory_Click);
-            // 
-            // btnShiftHistory
-            // 
-            this.btnShiftHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.user;
-            this.btnShiftHistory.Name = "btnShiftHistory";
-            this.btnShiftHistory.Size = new System.Drawing.Size(201, 26);
-            this.btnShiftHistory.Text = "Các ca đã làm";
-            this.btnShiftHistory.Click += new System.EventHandler(this.btnShiftHistory_Click);
             // 
             // dgvEmployee
             // 
@@ -153,11 +85,11 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvEmployee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEmployee.AutoGenerateColumns = false;
-            this.dgvEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvEmployee.BackgroundColor = System.Drawing.Color.Aqua;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -166,7 +98,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvEmployee.ColumnHeadersHeight = 50;
+            this.dgvEmployee.ColumnHeadersHeight = 40;
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.employeeIDDataGridViewTextBoxColumn,
@@ -176,16 +108,15 @@
             this.addressDataGridViewTextBoxColumn,
             this.salaryDataGridViewTextBoxColumn,
             this.DateCreated,
-            this.shiftsDataGridViewTextBoxColumn,
             this.salesOrdersDataGridViewTextBoxColumn,
             this.importOrdersDataGridViewTextBoxColumn});
-            this.dgvEmployee.ContextMenuStrip = this.mnstrip;
+            this.dgvEmployee.ContextMenuStrip = this.contextMenuStrip;
             this.dgvEmployee.DataSource = this.employeeBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvEmployee.DefaultCellStyle = dataGridViewCellStyle3;
@@ -206,7 +137,7 @@
             this.dgvEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEmployee.RowHeadersVisible = false;
             this.dgvEmployee.RowHeadersWidth = 100;
-            this.dgvEmployee.RowTemplate.Height = 29;
+            this.dgvEmployee.RowTemplate.Height = 30;
             this.dgvEmployee.Size = new System.Drawing.Size(992, 435);
             this.dgvEmployee.TabIndex = 0;
             this.dgvEmployee.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -214,22 +145,96 @@
             this.dgvEmployee.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.dgvEmployee.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgvEmployee.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvEmployee.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvEmployee.ThemeStyle.BackColor = System.Drawing.Color.Aqua;
             this.dgvEmployee.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvEmployee.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.dgvEmployee.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvEmployee.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dgvEmployee.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvEmployee.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvEmployee.ThemeStyle.HeaderStyle.Height = 50;
+            this.dgvEmployee.ThemeStyle.HeaderStyle.Height = 40;
             this.dgvEmployee.ThemeStyle.ReadOnly = true;
             this.dgvEmployee.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvEmployee.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvEmployee.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dgvEmployee.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvEmployee.ThemeStyle.RowsStyle.Height = 29;
+            this.dgvEmployee.ThemeStyle.RowsStyle.Height = 30;
             this.dgvEmployee.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvEmployee.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // employeeIDDataGridViewTextBoxColumn
+            // 
+            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
+            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "Mã nhân viên";
+            this.employeeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
+            this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // employeeNameDataGridViewTextBoxColumn
+            // 
+            this.employeeNameDataGridViewTextBoxColumn.DataPropertyName = "EmployeeName";
+            this.employeeNameDataGridViewTextBoxColumn.HeaderText = "Tên";
+            this.employeeNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.employeeNameDataGridViewTextBoxColumn.Name = "employeeNameDataGridViewTextBoxColumn";
+            this.employeeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Số điện thoại";
+            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Địa chỉ";
+            this.addressDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // salaryDataGridViewTextBoxColumn
+            // 
+            this.salaryDataGridViewTextBoxColumn.DataPropertyName = "Salary";
+            this.salaryDataGridViewTextBoxColumn.HeaderText = "Lương";
+            this.salaryDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.salaryDataGridViewTextBoxColumn.Name = "salaryDataGridViewTextBoxColumn";
+            this.salaryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // DateCreated
+            // 
+            this.DateCreated.DataPropertyName = "DateCreated";
+            this.DateCreated.HeaderText = "Ngày tạo";
+            this.DateCreated.MinimumWidth = 6;
+            this.DateCreated.Name = "DateCreated";
+            this.DateCreated.ReadOnly = true;
+            // 
+            // salesOrdersDataGridViewTextBoxColumn
+            // 
+            this.salesOrdersDataGridViewTextBoxColumn.DataPropertyName = "SalesOrders";
+            this.salesOrdersDataGridViewTextBoxColumn.HeaderText = "SalesOrders";
+            this.salesOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.salesOrdersDataGridViewTextBoxColumn.Name = "salesOrdersDataGridViewTextBoxColumn";
+            this.salesOrdersDataGridViewTextBoxColumn.ReadOnly = true;
+            this.salesOrdersDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // importOrdersDataGridViewTextBoxColumn
+            // 
+            this.importOrdersDataGridViewTextBoxColumn.DataPropertyName = "ImportOrders";
+            this.importOrdersDataGridViewTextBoxColumn.HeaderText = "ImportOrders";
+            this.importOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.importOrdersDataGridViewTextBoxColumn.Name = "importOrdersDataGridViewTextBoxColumn";
+            this.importOrdersDataGridViewTextBoxColumn.ReadOnly = true;
+            this.importOrdersDataGridViewTextBoxColumn.Visible = false;
             // 
             // employeeBindingSource
             // 
@@ -375,88 +380,56 @@
             this.pnlControl.Size = new System.Drawing.Size(992, 65);
             this.pnlControl.TabIndex = 2;
             // 
-            // employeeIDDataGridViewTextBoxColumn
+            // btnUpdate
             // 
-            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
-            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.employeeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
-            this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(214, 26);
+            this.btnUpdate.Text = "Sửa thông tin";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // employeeNameDataGridViewTextBoxColumn
+            // btnDelete
             // 
-            this.employeeNameDataGridViewTextBoxColumn.DataPropertyName = "EmployeeName";
-            this.employeeNameDataGridViewTextBoxColumn.HeaderText = "Tên";
-            this.employeeNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.employeeNameDataGridViewTextBoxColumn.Name = "employeeNameDataGridViewTextBoxColumn";
-            this.employeeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.btnDelete.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(214, 26);
+            this.btnDelete.Text = "Xóa";
             // 
-            // emailDataGridViewTextBoxColumn
+            // btnPurchaseHistory
             // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.btnPurchaseHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
+            this.btnPurchaseHistory.Name = "btnPurchaseHistory";
+            this.btnPurchaseHistory.Size = new System.Drawing.Size(214, 26);
+            this.btnPurchaseHistory.Text = "Lịch sử bán hàng";
+            this.btnPurchaseHistory.Click += new System.EventHandler(this.btnPurchaseHistory_Click);
             // 
-            // phoneDataGridViewTextBoxColumn
+            // btnImportHistory
             // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Số điện thoại";
-            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.btnImportHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
+            this.btnImportHistory.Name = "btnImportHistory";
+            this.btnImportHistory.Size = new System.Drawing.Size(214, 26);
+            this.btnImportHistory.Text = "Lịch sử nhập hàng";
+            this.btnImportHistory.Click += new System.EventHandler(this.btnImportHistory_Click);
             // 
-            // addressDataGridViewTextBoxColumn
+            // contextMenuStrip
             // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Địa chỉ";
-            this.addressDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // salaryDataGridViewTextBoxColumn
-            // 
-            this.salaryDataGridViewTextBoxColumn.DataPropertyName = "Salary";
-            this.salaryDataGridViewTextBoxColumn.HeaderText = "Lương";
-            this.salaryDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.salaryDataGridViewTextBoxColumn.Name = "salaryDataGridViewTextBoxColumn";
-            this.salaryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // DateCreated
-            // 
-            this.DateCreated.DataPropertyName = "DateCreated";
-            this.DateCreated.HeaderText = "Ngày tạo";
-            this.DateCreated.MinimumWidth = 6;
-            this.DateCreated.Name = "DateCreated";
-            this.DateCreated.ReadOnly = true;
-            // 
-            // shiftsDataGridViewTextBoxColumn
-            // 
-            this.shiftsDataGridViewTextBoxColumn.DataPropertyName = "Shifts";
-            this.shiftsDataGridViewTextBoxColumn.HeaderText = "Shifts";
-            this.shiftsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.shiftsDataGridViewTextBoxColumn.Name = "shiftsDataGridViewTextBoxColumn";
-            this.shiftsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.shiftsDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // salesOrdersDataGridViewTextBoxColumn
-            // 
-            this.salesOrdersDataGridViewTextBoxColumn.DataPropertyName = "SalesOrders";
-            this.salesOrdersDataGridViewTextBoxColumn.HeaderText = "SalesOrders";
-            this.salesOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.salesOrdersDataGridViewTextBoxColumn.Name = "salesOrdersDataGridViewTextBoxColumn";
-            this.salesOrdersDataGridViewTextBoxColumn.ReadOnly = true;
-            this.salesOrdersDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // importOrdersDataGridViewTextBoxColumn
-            // 
-            this.importOrdersDataGridViewTextBoxColumn.DataPropertyName = "ImportOrders";
-            this.importOrdersDataGridViewTextBoxColumn.HeaderText = "ImportOrders";
-            this.importOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.importOrdersDataGridViewTextBoxColumn.Name = "importOrdersDataGridViewTextBoxColumn";
-            this.importOrdersDataGridViewTextBoxColumn.ReadOnly = true;
-            this.importOrdersDataGridViewTextBoxColumn.Visible = false;
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnUpdate,
+            this.btnDelete,
+            this.btnPurchaseHistory,
+            this.btnImportHistory});
+            this.contextMenuStrip.Name = "mnstrip";
+            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.contextMenuStrip.RenderStyle.ColorTable = null;
+            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
+            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.contextMenuStrip.Size = new System.Drawing.Size(215, 136);
             // 
             // frmViewEmployee
             // 
@@ -469,34 +442,26 @@
             this.Name = "frmViewEmployee";
             this.Text = "frmViewEmployee";
             this.Load += new System.EventHandler(this.frmViewEmployee_Load);
-            this.mnstrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.pnlGridView.ResumeLayout(false);
             this.pnlControl.ResumeLayout(false);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Panel pnlGridView;
         private Guna.UI2.WinForms.Guna2DataGridView dgvEmployee;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip mnstrip;
-        private ToolStripMenuItem btnUpdate;
-        private ToolStripMenuItem btnDelete;
-        private ToolStripMenuItem btnPurchaseHistory;
-        private ToolStripMenuItem btnImportHistory;
-        private ToolStripMenuItem btnShiftHistory;
         private Guna.UI2.WinForms.Guna2Panel pnlControl;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private Guna.UI2.WinForms.Guna2ComboBox cboOptionSearch;
         private Guna.UI2.WinForms.Guna2Button btnReload;
         private Guna.UI2.WinForms.Guna2Button btnSearch;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private BindingSource employeeBindingSource;
+        private DataGridViewTextBoxColumn shiftsDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn employeeNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
@@ -504,8 +469,12 @@
         private DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn DateCreated;
-        private DataGridViewTextBoxColumn shiftsDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salesOrdersDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn importOrdersDataGridViewTextBoxColumn;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip contextMenuStrip;
+        private ToolStripMenuItem btnUpdate;
+        private ToolStripMenuItem btnDelete;
+        private ToolStripMenuItem btnPurchaseHistory;
+        private ToolStripMenuItem btnImportHistory;
     }
 }

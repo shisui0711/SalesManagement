@@ -1,5 +1,6 @@
 ﻿using System.Drawing.Imaging;
 using System.IO;
+using System.Reflection;
 
 namespace QLCHBanHoaQuaWF.Views.Product
 {
@@ -20,7 +21,7 @@ namespace QLCHBanHoaQuaWF.Views.Product
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true;
         }
-        private bool IsImageFile(string filePath)
+        private static bool IsImageFile(string filePath)
         {
             string extension = Path.GetExtension(filePath).ToLower();
             return extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif" || extension == ".bmp";
@@ -72,6 +73,18 @@ namespace QLCHBanHoaQuaWF.Views.Product
             get { return txtDescription.Text; }
             set { txtDescription.Text = value; }
         }
+
+        public void Reset()
+        {
+            var fieldTypes = this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
+                .Where(f => f.Name.StartsWith("txt"));
+            foreach (var fieldType in fieldTypes)
+            {
+                UserControl control = (UserControl)fieldType.GetValue(this);
+                control.Text = String.Empty;
+            }
+        }
+
         public event EventHandler? AddProduct;
 
         private void ptbUpload_Click(object sender, EventArgs e)

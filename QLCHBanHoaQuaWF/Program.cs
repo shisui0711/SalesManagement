@@ -14,6 +14,7 @@ using QLCHBanHoaQuaWF.Views.SalesOrder;
 using QLCHBanHoaQuaWF.Views.User;
 using QLCHBanHoaQuaWF.Views.UserRole;
 using System.Reflection;
+using QLCHBanHoaQuaWF.Views.Statistics;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF
@@ -68,18 +69,24 @@ namespace QLCHBanHoaQuaWF
                 services.AddSingleton<IUpdateProvider, frmUpdateProvider>();
                 services.AddSingleton<IViewSalesOrder, frmViewSalesOrder>();
                 services.AddSingleton<IAddSalesOrder, frmAddSalesOrder>();
+                services.AddSingleton<IDetailSalesOrder, frmViewDetailSales>();
                 services.AddSingleton<IReportSalesOrder, frmReportSalesOrder>();
                 services.AddSingleton<IViewImportOrder, frmViewImportOrder>();
                 services.AddSingleton<IAddImportOrder, frmAddImportOrder>();
+                services.AddSingleton<IDetailImportOrder, frmViewDetailImport>();
                 services.AddSingleton<IReportImportOrder, frmReportImportOrder>();
                 services.AddSingleton<IViewUser, frmViewUser>();
+                services.AddSingleton<IUpdatePassword, frmUpdatePassword>();
                 services.AddSingleton<IChangePassword, frmChangePassword>();
                 services.AddSingleton<IViewUserRole, frmViewUserRole>();
                 services.AddSingleton<IAddUserRole, frmAddUserRole>();
                 services.AddSingleton<IUpdateUserRole, frmUpdateUserRole>();
                 services.AddSingleton<IViewOptions, frmViewOptions>();
+                services.AddSingleton<IViewStatistics, frmStatistics>();
                 services.AddSingleton<IAppInfo, frmAppInfo>();
                 services.AddSingleton<IViewLogin, frmLogin>();
+                services.AddSingleton<IHistoryImport, frmHistoryImportOrder>();
+                services.AddSingleton<IHistorySales, frmHistorySalesOrder>();
                 services.AddSingleton<AuthPresenter>();
                 services.AddSingleton<CustomerPresenter>();
                 services.AddSingleton<EmployeePresenter>();
@@ -89,6 +96,7 @@ namespace QLCHBanHoaQuaWF
                 services.AddSingleton<ImportOrderPresenter>();
                 services.AddSingleton<UserRolePresenter>();
                 services.AddSingleton<OptionsPresenter>();
+                services.AddSingleton<StatisticsPresenter>();
                 services.AddSingleton<MainPresenter>();
 
             });

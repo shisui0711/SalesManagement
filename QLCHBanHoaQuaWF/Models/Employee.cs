@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace QLCHBanHoaQuaWF.Models
 {
@@ -13,6 +14,7 @@ namespace QLCHBanHoaQuaWF.Models
         [Column(TypeName = "nvarchar")]
         [StringLength(30)]
         public string EmployeeName { get; set; }
+        [Required]
         [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng email")]
         [StringLength(50)]
         public string Email { get; set; }

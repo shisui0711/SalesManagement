@@ -9,4 +9,5 @@ public interface IViewProvider
     public event EventHandler SearchProvider;
     public event EventHandler ShowAddProvider;
     public event EventHandler ShowUpdateProvider;
+    public event EventHandler ShowOrderHistory;
 }

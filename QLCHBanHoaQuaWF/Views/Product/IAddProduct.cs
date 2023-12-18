@@ -8,5 +8,6 @@ public interface IAddProduct : IValidateControl
     public decimal ImportUnitPrice { get; set; }
     public decimal UnitPrice { get; set; }
     public string Description { get; set; }
+    public void Reset();
     public event EventHandler AddProduct;
 }

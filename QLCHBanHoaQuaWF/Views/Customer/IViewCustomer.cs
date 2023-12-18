@@ -10,4 +10,5 @@ public interface IViewCustomer
     public event EventHandler SearchCustomer;
     public event EventHandler ShowAddCustomer;
     public event EventHandler ShowUpdateCustomer;
+    public event EventHandler ShowSalesHistory;
 }

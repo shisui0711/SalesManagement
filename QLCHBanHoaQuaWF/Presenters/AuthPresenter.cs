@@ -15,14 +15,16 @@ namespace QLCHBanHoaQuaWF.Presenters
         private readonly IViewLogin _viewLogin;
         private readonly IViewMain _viewMain;
         private readonly IViewUser _viewUser;
+        private readonly IUpdatePassword _updatePassword;
         private readonly IChangePassword _changePassword;
         private readonly MyAppContext _context;
         private readonly IConfiguration _configuration;
-        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IChangePassword changePassword, MyAppContext context, IConfiguration configuration)
+        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IUpdatePassword updatePassword,IChangePassword changePassword, MyAppContext context, IConfiguration configuration)
         {
             _viewLogin = viewLogin;
             _viewMain = viewMain;
             _viewUser = viewUser;
+            _updatePassword = updatePassword;
             _changePassword = changePassword;
             _context = context;
             _configuration = configuration;
@@ -37,6 +39,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             _viewUser.LockUser += delegate { LockUser(); };
             _viewUser.UnlockUser += delegate { UnlockUser(); };
 
+            _updatePassword.UpdatePassowrd += delegate { UpdatePassword(); };
             _changePassword.ChangePassowrd += delegate { ChangePassword(); };
         }
 
@@ -45,7 +48,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             string Role = _viewLogin.Role;
             if (Role == "Nhân Viên")
             {
-                var user = _context.Users.Where(e => e.Email == _viewLogin.Username).FirstOrDefault();
+                var user = _context.Users.Include(u=>u.UserRole).ThenInclude(u=>u.Permission).Where(e => e.Email == _viewLogin.Username).FirstOrDefault();
                 if (user == null)
                 {
                     MessageBox.Show("Email không tồn tại!", "Chú ý");
@@ -90,7 +93,7 @@ namespace QLCHBanHoaQuaWF.Presenters
                 user.UserRole = userRole;
                 Permission? permission = new Permission();
                 permission.IsAdmin = true;
-                permission.UserRole = userRole;
+                userRole.Permission = permission;
                 User = user;
 
             }
@@ -117,22 +120,45 @@ namespace QLCHBanHoaQuaWF.Presenters
             }
         }
 
-        public void ChangePassword()
+        public void UpdatePassword()
         {
-            Models.User user = _context.Users.Where(u => u.Email == _changePassword.Email).FirstOrDefault();
+            Models.User user = _context.Users.Where(u => u.Email == _updatePassword.Email).FirstOrDefault();
             if (user != null)
             {
-                if (_changePassword.Password != _changePassword.Repassword)
+                if (_updatePassword.Password != _updatePassword.Repassword)
                 {
                     MessageBox.Show("Mật khẩu không khớp");
                     return;
                 }
 
-                user.Password = GetSha256Hash(_changePassword.Password);
+                user.Password = GetSha256Hash(_updatePassword.Password);
                 _context.SaveChanges();
+                MessageBox.Show("Đổi mật khẩu thành công");
             }
         }
 
+        void ChangePassword()
+        {
+            Models.User user = _context.Users.Where(u => u.Email == _changePassword.Email).FirstOrDefault();
+            if (user != null)
+            {
+                if (user.Password != GetSha256Hash(_changePassword.OldPassword))
+                {
+                    MessageBox.Show("Mật khẩu cũ không đúng");
+                    return;
+                }
+
+                if (_changePassword.NewPassword != _changePassword.Repassword)
+                {
+                    MessageBox.Show("Mật khẩu mới không khớp");
+                    return;
+                }
+
+                user.Password = GetSha256Hash(_changePassword.NewPassword);
+                _context.SaveChanges();
+                MessageBox.Show("Đổi mật khẩu thành công");
+            }
+        }
         private void LockUser()
         {
             Models.User userTarget = _viewUser.UserBindingSource.Current as User;
@@ -188,8 +214,8 @@ namespace QLCHBanHoaQuaWF.Presenters
             {
                 return;
             }
-            _changePassword.Email = userChanged.Email;
-            Form form = (Form)_changePassword;
+            _updatePassword.Email = userChanged.Email;
+            Form form = (Form)_updatePassword;
             form.ShowDialog();
         }
         private string GetSha256Hash(string input)

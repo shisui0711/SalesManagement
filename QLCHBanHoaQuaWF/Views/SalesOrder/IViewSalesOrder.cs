@@ -12,4 +12,5 @@ public interface IViewSalesOrder
     public event EventHandler SearchSalesOrder;
     public event EventHandler ShowAdd;
     public event EventHandler ShowReport;
+    public event EventHandler ShowDetail;
 }

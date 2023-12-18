@@ -24,7 +24,9 @@ public class UserRole
     public string RoleName { get; set; }
     public DateTime DateCreated { get; set; } = DateTime.Now;
     public string? Description { get; set; }
-    public virtual Permission Permission { get; set; }
+    public int PermissionID { get; set; }
+    [ForeignKey("PermissionID")]
+    public Permission Permission { get; set; }
     [InverseProperty("UserRole")]
     public virtual ICollection<User> Users { get; set; }
 

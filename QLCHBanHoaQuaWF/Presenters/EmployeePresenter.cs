@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
+using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Employee;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
@@ -9,15 +10,19 @@ public class EmployeePresenter : PresenterCRUD
     private readonly IViewEmployee _viewEmployee;
     private readonly IAddEmployee _addEmployee;
     private readonly IUpdateEmployee _updateEmployee;
+    private readonly IHistoryImport _historyImport;
+    private readonly IHistorySales _historySales;
     private readonly MyAppContext _context;
     private readonly AuthPresenter _auth;
 
 
-    public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee, MyAppContext context, AuthPresenter auth)
+    public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee, IHistoryImport historyImport, IHistorySales historySales, MyAppContext context, AuthPresenter auth)
     {
         _viewEmployee = viewEmployee;
         _addEmployee = addEmployee;
         _updateEmployee = updateEmployee;
+        _historyImport = historyImport;
+        _historySales = historySales;
         _context = context;
         _auth = auth;
 
@@ -28,27 +33,52 @@ public class EmployeePresenter : PresenterCRUD
         _viewEmployee.RemoveEmployee += delegate { Remove(); };
         _viewEmployee.ShowAddEmployee += delegate { ShowAddForm(); };
         _viewEmployee.ShowUpdateEmployee += delegate { ShowUpdateForm(); };
-        _viewEmployee.ShowPurchaseHistory += delegate { PurchaseHistory(); };
+        _viewEmployee.ShowSalesHistory += delegate { SalesHistory(); };
         _viewEmployee.ShowImportHistory += delegate { ImportHistory(); };
-        _viewEmployee.ShowShiftHistory += delegate { ShiftHistory(); };
 
         _addEmployee.AddEmployee += delegate { Add(); };
         _updateEmployee.UpdateEmployee += delegate { Update(); };
     }
 
-    public void PurchaseHistory()
+    public void SalesHistory()
     {
+        if (_viewEmployee.EmployeeBindingSource.Current == null)
+        {
+            MessageBox.Show("Chưa bản ghi nào được chọn");
+            return;
+        }
+        Employee currentEmployee = _viewEmployee.EmployeeBindingSource.Current as Employee;
+        Employee employee = _context.Employees.Include(e => e.SalesOrders)
+            .First(e => e.EmployeeID == currentEmployee.EmployeeID);
+        if (employee.SalesOrders.Count == 0)
+        {
+            MessageBox.Show("Nhân viên này chưa bán đơn hàng nào");
+            return;
+        }
+        _historySales.SalesBindingSource.DataSource = employee.SalesOrders.ToList();
+        Form form = (Form)_historySales;
+        form?.ShowDialog();
 
     }
 
     public void ImportHistory()
     {
-
-    }
-
-    public void ShiftHistory()
-    {
-
+        if (_viewEmployee.EmployeeBindingSource.Current == null)
+        {
+            MessageBox.Show("Chưa bản ghi nào được chọn");
+            return;
+        }
+        Employee currentEmployee = _viewEmployee.EmployeeBindingSource.Current as Employee;
+        Employee employee = _context.Employees.Include(e => e.ImportOrders)
+            .First(e => e.EmployeeID == currentEmployee.EmployeeID);
+        if (employee.ImportOrders.Count == 0)
+        {
+            MessageBox.Show("Nhân viên này chưa nhập đơn hàng nào");
+            return;
+        }
+        _historyImport.ImportBindingSource.DataSource = employee.ImportOrders.ToList();
+        Form form = (Form)_historyImport;
+        form?.ShowDialog();
     }
     public void ShowAddForm()
     {

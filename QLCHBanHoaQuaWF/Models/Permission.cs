@@ -8,10 +8,7 @@ namespace QLCHBanHoaQuaWF.Models
     {
         [Key]
         public int PermissionID { get; set; }
-
-        public int UserRoleID { get; set; }
-        [ForeignKey("UserRoleID")]
-        public UserRole UserRole { get; set; }
+        public virtual UserRole UserRole { get; set; }
         [DisplayName("Cho phép xem sản phẩm")]
         public bool CanReadProduct { get; set; }
         [DisplayName("Cho phép thêm sản phẩm")]
@@ -20,22 +17,10 @@ namespace QLCHBanHoaQuaWF.Models
         public bool CanUpdateProduct { get; set; }
         [DisplayName("Cho phép xóa sản phẩm")]
         public bool CanDeleteProduct { get; set; }
-        [DisplayName("Cho phép xuất file sản phẩm")]
-        public bool CanExportProduct { get; set; }
-        [DisplayName("Cho phép nhập file sản phẩm")]
-        public bool CanImportProduct { get; set; }
-        [DisplayName("Cho phép xóa đơn hàng nhập")]
-        public bool CanDeleteImportOrder { get; set; }
         [DisplayName("Cho phép xuất file đơn hàng nhập")]
         public bool CanExportImportOrder { get; set; }
-        [DisplayName("Cho phép nhập file đơn hàng nhập")]
-        public bool CanImportImportOrder { get; set; }
-        [DisplayName("Cho phép xóa đơn hàng bán")]
-        public bool CanDeleteSalesOrder { get; set; }
         [DisplayName("Cho phép xuất file đơn hàng bán")]
         public bool CanExportSalesOrder { get; set; }
-        [DisplayName("Cho phép nhập file đơn hàng bán")]
-        public bool CanImportSalesOrder { get; set; }
         [DisplayName("Cho phép xem khách hàng")]
         public bool CanReadCustomer { get; set; }
         [DisplayName("Cho phép thêm khách hàng")]
@@ -62,8 +47,39 @@ namespace QLCHBanHoaQuaWF.Models
         public bool CanDeleteEmployee { get; set; }
         [DisplayName("Cho phép xem chi tiết đơn hàng nhập")]
         public bool CanReadDetailImportOrder { get; set; }
+
         [DisplayName("Cho phép xem chi tiết đơn hàng bán")]
         public bool CanReadDetailSalesOrder { get; set; }
-        public bool IsAdmin { get; set; }
+        [DisplayName("Cho phép xem thống kê")]
+        public bool CanReadStatistics { get; set; }
+        [DisplayName("Cho phép xem người dùng")]
+        public bool CanReadUser { get; set; }
+        [DisplayName("Cho phép xem vai trò")]
+        public bool CanReadUserRole { get; set; }
+        [DisplayName("Cho phép thêm vai trò")]
+        public bool CanCreateUserRole { get; set; }
+        [DisplayName("Cho phép sửa vai trò")]
+        public bool CanUpdateUserRole { get; set; }
+        [DisplayName("Cho phép xóa vai trò")]
+        public bool CanDeleteUserRole { get; set; }
+        [DisplayName("Cho phép xem thiết lập")]
+        public bool CanReadOptions { get; set; }
+        [DisplayName("Cho phép xem đơn hàng bán")]
+        public bool CanReadSalesOrder { get; set; }
+        [DisplayName("Cho phép thêm đơn hàng bán")]
+        public bool CanCreateSalesOrder { get; set; }
+        [DisplayName("Cho phép xóa đơn hàng bán")]
+        public bool CanDeleteSalesOrder { get; set; }
+        [DisplayName("Cho phép in đơn hàng bán")]
+        public bool CanPrintSalesOrder { get; set; }
+        [DisplayName("Cho phép xem đơn hàng nhập")]
+        public bool CanReadImportOrder { get; set; }
+        [DisplayName("Cho phép thêm đơn hàng nhập")]
+        public bool CanCreateImportOrder { get; set; }
+        [DisplayName("Cho phép xóa đơn hàng nhập")]
+        public bool CanDeleteImportOrder { get; set; }
+        [DisplayName("Cho phép in đơn hàng nhập")]
+        public bool CanPrintImportOrder { get; set; }
+        public bool IsAdmin { get; set; } = false;
     }
 }

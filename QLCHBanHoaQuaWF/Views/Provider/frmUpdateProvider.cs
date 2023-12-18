@@ -32,10 +32,28 @@
             get { return int.Parse(txtProviderID.Text); }
             set { txtProviderID.Text = value.ToString(); }
         }
-        public string ProviderName { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
+        public string ProviderName
+        {
+            get { return txtProviderName.Text;}
+            set { txtProviderName.Text = value; }
+        }
+        public string Email {
+            get { return txtEmail.Text; }
+            set { txtEmail.Text = value; }
+        }
+        public string Phone {
+            get { return txtPhone.Text; }
+            set { txtPhone.Text = value; }
+        }
+        public string Address {
+            get { return txtAddress.Text; }
+            set { txtAddress.Text = value; }
+        }
         public event EventHandler? UpdateProvider;
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

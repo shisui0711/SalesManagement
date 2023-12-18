@@ -178,16 +178,18 @@
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.Controls.Add(this.clbPermission);
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.Cyan;
             this.guna2GroupBox1.CustomizableEdges = customizableEdges5;
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 219);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
             this.guna2GroupBox1.Size = new System.Drawing.Size(869, 340);
             this.guna2GroupBox1.TabIndex = 15;
             this.guna2GroupBox1.Text = "Các quyền";
+            this.guna2GroupBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // clbPermission
             // 

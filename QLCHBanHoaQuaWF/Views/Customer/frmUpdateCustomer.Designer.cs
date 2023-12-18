@@ -186,7 +186,7 @@
             this.btnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnExit.HoverState.BorderColor = System.Drawing.Color.Red;
-            this.btnExit.HoverState.FillColor = System.Drawing.Color.Red;
+            this.btnExit.HoverState.FillColor = System.Drawing.Color.White;
             this.btnExit.Location = new System.Drawing.Point(456, 352);
             this.btnExit.Name = "btnExit";
             this.btnExit.ShadowDecoration.CustomizableEdges = customizableEdges4;

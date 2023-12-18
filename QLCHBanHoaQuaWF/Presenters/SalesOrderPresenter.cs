@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
 using QLCHBanHoaQuaWF.Models;
+using QLCHBanHoaQuaWF.Views.ImportOrder;
 using QLCHBanHoaQuaWF.Views.Product;
 using QLCHBanHoaQuaWF.Views.SalesOrder;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
@@ -13,15 +14,17 @@ namespace QLCHBanHoaQuaWF.Presenters
         private readonly IViewSalesOrder _viewSalesOrder;
         private readonly IAddSalesOrder _addSalesOrder;
         private readonly IReportSalesOrder _report;
+        private readonly IDetailSalesOrder _detailSales;
         private readonly MyAppContext _context;
         private Dictionary<Product, int> productOrdered;
 
-        public SalesOrderPresenter(IViewSalesOrder viewSalesOrder, IAddSalesOrder addSalesOrder, IReportSalesOrder report, MyAppContext context)
+        public SalesOrderPresenter(IViewSalesOrder viewSalesOrder, IAddSalesOrder addSalesOrder, IReportSalesOrder report, IDetailSalesOrder detailSales, MyAppContext context)
         {
             productOrdered = new Dictionary<Product, int>();
             _viewSalesOrder = viewSalesOrder;
             _addSalesOrder = addSalesOrder;
             _report = report;
+            _detailSales = detailSales;
             _context = context;
             _context.SalesOrders.Load();
 
@@ -30,6 +33,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             _viewSalesOrder.LoadSalesOrder += delegate { Load(); };
             _viewSalesOrder.SearchSalesOrder += delegate { Search(); };
             _viewSalesOrder.ShowReport += delegate { ShowReport(); };
+            _viewSalesOrder.ShowDetail += delegate { ShowDetail(); };
 
             _addSalesOrder.RemoveProduct += RemoveProduct;
             _addSalesOrder.LoadCustomer += delegate { LoadCustomer(); };
@@ -41,6 +45,19 @@ namespace QLCHBanHoaQuaWF.Presenters
             _report.LoadReport += delegate { LoadReport(); };
         }
 
+        void ShowDetail()
+        {
+            if (_viewSalesOrder.OrderBindingSource.Current == null)
+            {
+                MessageBox.Show("Chưa bản ghi nào được chọn");
+                return;
+            }
+            SalesOrder curentOrder = _viewSalesOrder.OrderBindingSource.Current as SalesOrder;
+            SalesOrder order = _context.SalesOrders.Include(o => o.DetailSalesOrders).First(o => o.OrderID == curentOrder.OrderID);
+            _detailSales.DetailOrderBindingSource.DataSource = order.DetailSalesOrders.ToList();
+            Form form = (Form)_detailSales;
+            form.ShowDialog();
+        }
         void LoadReport()
         {
             AppInfo info = _context.AppInfos.FirstOrDefault();
@@ -101,6 +118,11 @@ namespace QLCHBanHoaQuaWF.Presenters
         }
         void ShowReport()
         {
+            if (_viewSalesOrder.OrderBindingSource.Current == null)
+            {
+                MessageBox.Show("Chưa bản ghi nào được chọn");
+                return;
+            }
             var form = _report as Form;
             if (form != null)
             {
@@ -122,12 +144,27 @@ namespace QLCHBanHoaQuaWF.Presenters
             {
                 try
                 {
+                    if (_addSalesOrder.OrderedGridView.RowCount == 0)
+                    {
+                        MessageBox.Show("Đơn hàng chưa có sản phẩm nào", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        transaction.Rollback();
+                        return;
+                    }
                     SalesOrder? salesOrder = new SalesOrder();
                     salesOrder.Employee = _context.Employees.Find(_addSalesOrder.EmployeeID);
                     salesOrder.Customer = _context.Customers.Find(_addSalesOrder.CustomerID);
                     salesOrder.PurchasePrice = _addSalesOrder.PurchasePrice;
                     salesOrder.ChangePrice = _addSalesOrder.ChangePrice;
                     salesOrder.TotalPrice = _addSalesOrder.TotalPrice;
+                    if (salesOrder.PurchasePrice < salesOrder.TotalPrice)
+                    {
+                        var result = MessageBox.Show("Khách chưa trả đủ tiển có muốn tiếp tục ?","Thông báo", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.No)
+                        {
+                            transaction.Rollback();
+                            return;
+                        }
+                    }
                     _context.SalesOrders.Add(salesOrder);
 
                     foreach (DataGridViewRow row in _addSalesOrder.OrderedGridView.Rows)
@@ -138,9 +175,17 @@ namespace QLCHBanHoaQuaWF.Presenters
                         detail.UnitPrice = decimal.Parse(row.Cells["UnitPriceColumn"].Value.ToString());
                         detail.SalesOrder = salesOrder;
                         detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString());
+                        if (detail.Quantity > product.Inventory)
+                        {
+                            MessageBox.Show($"Số lượng trong kho không đủ cho sản phẩm: {product.ProductName}");
+                            _context.Entry(salesOrder).State = EntityState.Detached;
+                            transaction.Rollback();
+                            return;
+                        }
                         detail.TotalPrice = decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
                         detail.OrderID = salesOrder.OrderID;
                         _context.DetailSalesOrders.Add(detail);
+                        product.Inventory -= detail.Quantity;
                     }
 
                     _context.SaveChanges();

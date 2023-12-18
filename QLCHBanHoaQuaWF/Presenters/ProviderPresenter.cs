@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
+using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Provider;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
@@ -7,15 +8,17 @@ namespace QLCHBanHoaQuaWF.Presenters;
 
 public class ProviderPresenter : PresenterCRUD
 {
-    private IViewProvider _viewProvider;
-    private IAddProvider _addProvider;
-    private IUpdateProvider _updateProvider;
+    private readonly IViewProvider _viewProvider;
+    private readonly IAddProvider _addProvider;
+    private readonly IUpdateProvider _updateProvider;
+    private readonly IHistoryImport _historyImport;
     private MyAppContext _context;
-    public ProviderPresenter(IViewProvider viewProvider, IAddProvider addProvider, IUpdateProvider updateProvider, MyAppContext context)
+    public ProviderPresenter(IViewProvider viewProvider, IAddProvider addProvider, IUpdateProvider updateProvider, IHistoryImport historyImport, MyAppContext context)
     {
         _viewProvider = viewProvider;
         _addProvider = addProvider;
         _updateProvider = updateProvider;
+        _historyImport = historyImport;
         _context = context;
         _context.Providers.Load();
 
@@ -24,12 +27,32 @@ public class ProviderPresenter : PresenterCRUD
         _viewProvider.SearchProvider += delegate { Search(); };
         _viewProvider.ShowAddProvider += delegate { ShowAddForm(); };
         _viewProvider.ShowUpdateProvider += delegate { ShowUpdateForm(); };
+        _viewProvider.ShowOrderHistory += delegate { ShowHistoryImport(); };
 
         _addProvider.AddProvider += delegate { Add(); };
 
         _updateProvider.UpdateProvider += delegate { Update(); };
     }
 
+    void ShowHistoryImport()
+    {
+        if (_viewProvider.ProviderBindingSource.Current == null)
+        {
+            MessageBox.Show("Chưa bản ghi nào được chọn");
+            return;
+        }
+        Provider currentProvider = _viewProvider.ProviderBindingSource.Current as Provider;
+        Provider provider = _context.Providers.Include(p => p.ImportOrders)
+            .First(p => p.ProviderID == currentProvider.ProviderID);
+        if (provider.ImportOrders.Count == 0)
+        {
+            MessageBox.Show("Chưa nhập đơn nào từ nhà cung cấp này");
+            return;
+        }
+        _historyImport.ImportBindingSource.DataSource = provider.ImportOrders.ToList();
+        Form form = (Form)_historyImport;
+        form?.ShowDialog();
+    }
     public void ShowAddForm()
     {
         var form = _addProvider as Form;

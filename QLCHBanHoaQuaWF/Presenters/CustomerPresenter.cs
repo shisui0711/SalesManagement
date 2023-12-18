@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
+using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Customer;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
@@ -7,28 +8,50 @@ namespace QLCHBanHoaQuaWF.Presenters
 {
     public class CustomerPresenter : PresenterCRUD
     {
-        private IViewCustomer _viewCustomer;
-        private IAddCustomer _addCustomer;
-        private IUpdateCustomer _updateCustomer;
+        private readonly IViewCustomer _viewCustomer;
+        private readonly IAddCustomer _addCustomer;
+        private readonly IUpdateCustomer _updateCustomer;
+        private readonly IHistorySales _historySales;
         private MyAppContext _context;
 
-        public CustomerPresenter(IViewCustomer viewCustomer, IAddCustomer addCustomer, IUpdateCustomer updateCustomer, MyAppContext context)
+        public CustomerPresenter(IViewCustomer viewCustomer, IAddCustomer addCustomer, IUpdateCustomer updateCustomer, IHistorySales historySales, MyAppContext context)
         {
             _viewCustomer = viewCustomer;
             _addCustomer = addCustomer;
             _updateCustomer = updateCustomer;
+            _historySales = historySales;
             _context = context;
             _viewCustomer.LoadCustomer += delegate { Load(); };
             _viewCustomer.RemoveCustomer += delegate { Remove(); };
             _viewCustomer.SearchCustomer += delegate { Search(); };
             _viewCustomer.ShowAddCustomer += delegate { ShowAddForm(); };
             _viewCustomer.ShowUpdateCustomer += delegate { ShowUpdateForm(); };
+            _viewCustomer.ShowSalesHistory += delegate { SalesHistory(); };
             _addCustomer.AddCustomer += delegate { Add(); };
             _updateCustomer.UpdateCustomer += delegate { Update(); };
 
             _context.Customers.Load();
         }
 
+        void SalesHistory()
+        {
+            if (_viewCustomer.CustomerBindingSource.Current == null)
+            {
+                MessageBox.Show("Chưa bản ghi nào được chọn");
+                return;
+            }
+            Customer currentCustomer = _viewCustomer.CustomerBindingSource.Current as Customer;
+            Customer customer = _context.Customers.Include(c => c.SalesOrders)
+                .First(c => c.CustomerID == currentCustomer.CustomerID);
+            if (customer.SalesOrders.Count == 0)
+            {
+                MessageBox.Show("Khách hàng này chưa mua hàng lần nào");
+                return;
+            }
+            _historySales.SalesBindingSource.DataSource = customer.SalesOrders.ToList();
+            Form form = (Form)_historySales;
+            form?.ShowDialog();
+        }
         public void ShowAddForm()
         {
             var form = _addCustomer as Form;

@@ -1,5 +1,6 @@
 ﻿using OfficeOpenXml;
 using System.Data;
+using System.Drawing.Drawing2D;
 using System.IO;
 
 namespace QLCHBanHoaQuaWF;
@@ -71,5 +72,15 @@ public static class MyExtensionMethod
 
             dataGridView.DataSource = dataTable;
         }
+    }
+    public static void SetBorderRadius(this Control control, int borderRadius)
+    {
+        GraphicsPath path = new GraphicsPath();
+        path.AddArc(0, 0, borderRadius, borderRadius, 180, 90);
+        path.AddArc(control.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
+        path.AddArc(control.Width - borderRadius, control.Height - borderRadius, borderRadius, borderRadius, 0, 90);
+        path.AddArc(0, control.Height - borderRadius, borderRadius, borderRadius, 90, 90);
+
+        control.Region = new Region(path);
     }
 }

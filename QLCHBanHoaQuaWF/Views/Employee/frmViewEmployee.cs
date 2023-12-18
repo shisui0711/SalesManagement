@@ -16,7 +16,7 @@
         public event EventHandler? LoadEmployee;
         public event EventHandler? RemoveEmployee;
         public event EventHandler? SearchEmployee;
-        public event EventHandler? ShowPurchaseHistory;
+        public event EventHandler? ShowSalesHistory;
         public event EventHandler? ShowImportHistory;
         public event EventHandler? ShowShiftHistory;
         public event EventHandler? ShowAddEmployee;
@@ -59,7 +59,7 @@
 
         private void btnPurchaseHistory_Click(object sender, EventArgs e)
         {
-            ShowPurchaseHistory?.Invoke(sender, e);
+            ShowSalesHistory?.Invoke(sender, e);
         }
 
         private void btnImportHistory_Click(object sender, EventArgs e)
@@ -70,6 +70,11 @@
         private void btnShiftHistory_Click(object sender, EventArgs e)
         {
             ShowShiftHistory?.Invoke(sender, e);
+        }
+
+        private void mnstrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }

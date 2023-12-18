@@ -101,9 +101,9 @@
             this.lblTitile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
             this.lblTitile.Location = new System.Drawing.Point(12, 14);
             this.lblTitile.Name = "lblTitile";
-            this.lblTitile.Size = new System.Drawing.Size(112, 23);
+            this.lblTitile.Size = new System.Drawing.Size(97, 23);
             this.lblTitile.TabIndex = 22;
-            this.lblTitile.Text = "Thêm vai trò";
+            this.lblTitile.Text = "Sửa vai trò";
             // 
             // btnClose
             // 
@@ -191,7 +191,7 @@
             this.btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges4;
             this.btnAdd.Size = new System.Drawing.Size(166, 47);
             this.btnAdd.TabIndex = 28;
-            this.btnAdd.Text = "Thêm";
+            this.btnAdd.Text = "Lưu";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnExit
@@ -222,16 +222,18 @@
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.Controls.Add(this.clbPermission);
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.Cyan;
             this.guna2GroupBox1.CustomizableEdges = customizableEdges7;
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 187);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             this.guna2GroupBox1.Size = new System.Drawing.Size(800, 250);
             this.guna2GroupBox1.TabIndex = 27;
             this.guna2GroupBox1.Text = "Các quyền";
+            this.guna2GroupBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // clbPermission
             // 

@@ -9,6 +9,10 @@ using QLCHBanHoaQuaWF.Views.SalesOrder;
 using QLCHBanHoaQuaWF.Views.User;
 using QLCHBanHoaQuaWF.Views.UserRole;
 using System.Reflection;
+using System.Text.RegularExpressions;
+using DevExpress.XtraEditors.Senders;
+using QLCHBanHoaQuaWF.Models;
+using QLCHBanHoaQuaWF.Views.Statistics;
 
 namespace QLCHBanHoaQuaWF.Presenters;
 
@@ -24,7 +28,9 @@ public class MainPresenter
     private readonly IViewUser _viewUser;
     private readonly IViewUserRole _viewUserRole;
     private readonly IViewOptions _viewOptions;
-    public MainPresenter(IViewMain viewMain, IViewCustomer viewCustomer, IViewEmployee viewEmployee, IViewProduct viewProduct, IViewProvider viewProvider, IViewSalesOrder viewSalesOrder, IViewImportOrder viewImportOrder, IViewUser viewUser, IViewUserRole viewUserRole, IViewOptions viewOptions)
+    private readonly IViewStatistics _viewStatistics;
+    private readonly IChangePassword _changePassword;
+    public MainPresenter(IViewMain viewMain, IViewCustomer viewCustomer, IViewEmployee viewEmployee, IViewProduct viewProduct, IViewProvider viewProvider, IViewSalesOrder viewSalesOrder, IViewImportOrder viewImportOrder, IViewUser viewUser, IViewUserRole viewUserRole, IViewOptions viewOptions,IChangePassword changePassword,IViewStatistics viewStatistics)
     {
         _viewMain = viewMain;
         _viewCustomer = viewCustomer;
@@ -36,32 +42,42 @@ public class MainPresenter
         _viewUser = viewUser;
         _viewUserRole = viewUserRole;
         _viewOptions = viewOptions;
+        _viewStatistics = viewStatistics;
+        _changePassword = changePassword;
 
-        _viewMain.LoadPages += delegate { LoadPages(); };
+        Init();
+        _viewMain.ShowChangePassword += delegate { ShowChangePassword(); };
     }
 
-    public void LoadPages()
+    void Init()
     {
-        _viewMain.User = AuthPresenter.User.Email;
-        _viewMain.Role = AuthPresenter.User.UserRole.RoleName;
-
-        List<FieldInfo> fieldViews = GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(f => f.FieldType.Name.StartsWith("IView")).ToList();
-        foreach (TabPage tabPage in _viewMain.NavigationBar.TabPages)
+        var events = _viewMain.GetType().GetEvents(BindingFlags.Public | BindingFlags.Instance).Where(x=>Regex.IsMatch(x.Name,@"Show[A-Z].*") && !x.Name.Contains("ChangePassword")).ToList();
+        foreach (var eventInfo in events)
         {
-            string name = tabPage.Name.Substring(3);
-            var field = fieldViews.Find(f => f.FieldType.Name.Substring(5) == name);
-            if (field != null)
+            EventHandler handler = (sender, e) =>
             {
-                Form form = (Form)field.GetValue(this);
-                if (form != null)
-                {
-                    form.TopLevel = false;
-                    tabPage.Controls.Add(form);
-                    form.Dock = DockStyle.Fill;
-                    form.Show();
-                }
-            }
-
+                ShowForm(eventInfo.Name.Substring(4));
+            };
+            eventInfo.AddEventHandler(_viewMain,handler);
+        }
+    }
+    void ShowForm(string formName)
+    {
+        var fieldForm = GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(f => f.FieldType.Name.StartsWith("IView")).FirstOrDefault(x=>x.Name.Substring(5) == formName);
+        Form form = (Form)fieldForm.GetValue(this);
+        form.TopLevel = false;
+        form.Dock = DockStyle.Fill;
+        _viewMain.BodyPanel.Controls.Clear();
+        _viewMain.BodyPanel.Controls.Add(form);
+        form.Show();
+    }
+    void ShowChangePassword()
+    {
+        _changePassword.Email = AuthPresenter.User.Email;
+        Form form = (Form)_changePassword;
+        if (form != null)
+        {
+            form.ShowDialog();
         }
     }
 }

@@ -1,8 +1,7 @@
 ﻿namespace QLCHBanHoaQuaWF.Views
 {
     public partial class frmLogin : Form, IViewLogin
-    {
-        private frmMain FormMain;
+    { 
         private bool isHiden = true;
         public string Username
         {
@@ -64,5 +63,6 @@
         {
             LoginEvent?.Invoke(sender, e);
         }
+
     }
 }

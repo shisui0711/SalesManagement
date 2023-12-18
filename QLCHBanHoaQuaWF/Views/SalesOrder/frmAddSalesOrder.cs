@@ -30,7 +30,12 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
 
         public decimal PurchasePrice
         {
-            get { return decimal.Parse(txtPurchasePrice.Text); }
+            get
+            {
+                decimal purchasePrice = 0;
+                decimal.TryParse(txtPurchasePrice.Text,out purchasePrice);
+                return purchasePrice;
+            }
             set { txtPurchasePrice.Text = value.ToString(); }
         }
         public decimal ChangePrice

@@ -8,7 +8,7 @@ public interface IViewEmployee
     public event EventHandler RemoveEmployee;
     public event EventHandler LoadEmployee;
     public event EventHandler SearchEmployee;
-    public event EventHandler ShowPurchaseHistory;
+    public event EventHandler ShowSalesHistory;
     public event EventHandler ShowImportHistory;
     public event EventHandler ShowShiftHistory;
     public event EventHandler ShowAddEmployee;

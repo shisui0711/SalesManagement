@@ -67,6 +67,7 @@
         public event EventHandler? SearchImportOrder;
         public event EventHandler? ShowAdd;
         public event EventHandler? ShowReport;
+        public event EventHandler ShowDetail;
 
         private void cboDateCreated_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -117,6 +118,11 @@
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchImportOrder?.Invoke(sender,e);
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            ShowDetail?.Invoke(sender,e);
         }
     }
 }

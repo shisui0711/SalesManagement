@@ -12,4 +12,5 @@ public interface IViewImportOrder
     public event EventHandler SearchImportOrder;
     public event EventHandler ShowAdd;
     public event EventHandler ShowReport;
+    public event EventHandler ShowDetail;
 }

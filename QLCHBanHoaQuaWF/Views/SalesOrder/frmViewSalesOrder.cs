@@ -68,6 +68,7 @@
         public event EventHandler? SearchSalesOrder;
         public event EventHandler? ShowAdd;
         public event EventHandler? ShowReport;
+        public event EventHandler ShowDetail;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -119,6 +120,16 @@
         private void btnReport_Click(object sender, EventArgs e)
         {
             ShowReport?.Invoke(sender, e);
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            RemoveSalesOrder?.Invoke(sender,e);
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            ShowDetail?.Invoke(sender,e);
         }
     }
 }

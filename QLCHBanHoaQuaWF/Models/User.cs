@@ -22,6 +22,7 @@ namespace QLCHBanHoaQuaWF.Models
         public int EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
         public Employee Employee { get; set; }
+        [Required]
         [EmailAddress]
         [StringLength(50)]
         public string Email { get; set; }

@@ -177,9 +177,8 @@ public class UserRolePresenter : PresenterCRUD
 
     private void LoadUpdatePermission()
     {
-        Permission permission =
-            _context.Permissions.Where(p => p.UserRoleID == _updateUserRole.RoleID).FirstOrDefault();
-        if (permission != null)
+        Permission permission = _context.UserRoles.Include(u => u.Permission)
+            .Where(u => u.RoleID == _updateUserRole.RoleID).FirstOrDefault().Permission;
         {
             var properties = typeof(Permission).GetProperties();
             foreach (var propertyInfo in properties)

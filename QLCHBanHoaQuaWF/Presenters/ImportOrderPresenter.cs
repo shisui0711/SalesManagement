@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using DevExpress.XtraRichEdit.Layout.Engine;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
 using QLCHBanHoaQuaWF.Models;
@@ -14,12 +15,14 @@ public class ImportOrderPresenter : PresenterCRUD
     private readonly IViewImportOrder _viewImportOrder;
     private readonly IAddImportOrder _addImportOrder;
     private readonly IReportImportOrder _report;
+    private readonly IDetailImportOrder _detailImport;
     private readonly MyAppContext _context;
-    public ImportOrderPresenter(IViewImportOrder viewImportOrder, IAddImportOrder addImportOrder, IReportImportOrder report, MyAppContext context)
+    public ImportOrderPresenter(IViewImportOrder viewImportOrder, IAddImportOrder addImportOrder, IReportImportOrder report, IDetailImportOrder detailImport, MyAppContext context)
     {
         _viewImportOrder = viewImportOrder;
         _addImportOrder = addImportOrder;
         _report = report;
+        _detailImport = detailImport;
         _context = context;
         _context.ImportOrders.Load();
 
@@ -28,6 +31,7 @@ public class ImportOrderPresenter : PresenterCRUD
         _viewImportOrder.RemoveImportOrder += delegate { Remove(); };
         _viewImportOrder.SearchImportOrder += delegate { Search(); };
         _viewImportOrder.ShowReport += delegate { ShowReport(); };
+        _viewImportOrder.ShowDetail += delegate { ShowDetail(); };
 
         _addImportOrder.LoadProduct += delegate { LoadProduct(); };
         _addImportOrder.LoadProvider += delegate { LoadProvider(); };
@@ -40,8 +44,22 @@ public class ImportOrderPresenter : PresenterCRUD
 
     }
 
+    void ShowDetail()
+    {
+        if (_viewImportOrder.OrderBindingSource.Current == null)
+        {
+            MessageBox.Show("Chưa bản ghi nào được chọn");
+            return;
+        }
+        ImportOrder curentOrder = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
+        ImportOrder order = _context.ImportOrders.Include(o => o.DetailImportOrders).First(o => o.OrderID == curentOrder.OrderID);
+        _detailImport.DetailOrderBindingSource.DataSource = order.DetailImportOrders.ToList();
+        Form form = (Form)_detailImport;
+        form.ShowDialog();
+    }
     void LoadReport()
     {
+        
         AppInfo info = _context.AppInfos.FirstOrDefault();
         if (info == null) { return; }
         ImportOrder current = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
@@ -63,7 +81,8 @@ public class ImportOrderPresenter : PresenterCRUD
             AppAddress = info.Address,
             AppPhone = info.Phone,
             OrderID = orderData.OrderID,
-            TotalPrice = orderData.TotalPrice
+            TotalPrice = orderData.TotalPrice,
+            ProviderName = orderData.ProviderName
         };
 
         var detailData = from d in _context.DetailImportOrders
@@ -90,6 +109,11 @@ public class ImportOrderPresenter : PresenterCRUD
     }
     void ShowReport()
     {
+        if (_viewImportOrder.OrderBindingSource.Current == null)
+        {
+            MessageBox.Show("Chưa bản ghi nào được chọn");
+            return;
+        }
         Form form = (Form)_report;
         if (form != null)
         {
@@ -128,6 +152,7 @@ public class ImportOrderPresenter : PresenterCRUD
                     detail.TotalPrice = decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
                     detail.OrderID = importOrder.OrderID;
                     _context.DetailImportOrders.Add(detail);
+                    product.Inventory += detail.Quantity;
                 }
 
                 _context.SaveChanges();

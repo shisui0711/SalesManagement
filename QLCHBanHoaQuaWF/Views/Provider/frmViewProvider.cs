@@ -16,6 +16,7 @@
         public event EventHandler? SearchProvider;
         public event EventHandler? ShowAddProvider;
         public event EventHandler? ShowUpdateProvider;
+        public event EventHandler ShowOrderHistory;
 
         public frmViewProvider()
         {
@@ -50,6 +51,11 @@
         private void btnRemove_Click(object sender, EventArgs e)
         {
             RemoveProvider?.Invoke(sender, e);
+        }
+
+        private void btnHistoryImport_Click(object sender, EventArgs e)
+        {
+            ShowOrderHistory?.Invoke(sender,e);
         }
     }
 }
