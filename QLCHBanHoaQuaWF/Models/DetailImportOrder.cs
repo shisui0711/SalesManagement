@@ -17,7 +17,9 @@ namespace QLCHBanHoaQuaWF.Models
         [Column(TypeName = "decimal(10,2)")]
         public decimal UnitPrice { get; set; }
         [Column(TypeName = "decimal(10,2)")]
-        public decimal TotalPrice { get; set; }
+        public decimal TotalPrice
+        {
+            get { return Quantity * UnitPrice;} }
 
         public int ProductID { get; set; }
         [ForeignKey("ProductID")]

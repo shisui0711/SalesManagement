@@ -11,12 +11,10 @@ namespace QLCHBanHoaQuaWF.Models
         [Required(ErrorMessage = "Tên không được để trống")]
         [StringLength(30)]
         public string ProductName { get; set; }
-        [Required(ErrorMessage = "Đơn vị tính không được để trống")]
         [StringLength(30)]
         public string? CalculationUnit { get; set; }
 
         public int Inventory { get; set; } = 0;
-        [Required(ErrorMessage = "Vui lòng chọn ảnh")]
         public byte[]? ImageData { get; set; }
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;

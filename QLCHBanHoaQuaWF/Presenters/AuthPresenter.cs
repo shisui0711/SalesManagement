@@ -218,7 +218,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             Form form = (Form)_updatePassword;
             form.ShowDialog();
         }
-        private string GetSha256Hash(string input)
+        public static string GetSha256Hash(string input)
         {
             using (SHA256 md5Hash = SHA256.Create())
             {
