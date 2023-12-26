@@ -182,7 +182,6 @@ namespace QLCHBanHoaQuaWF.Presenters
                             transaction.Rollback();
                             return;
                         }
-                        detail.TotalPrice = decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
                         detail.OrderID = salesOrder.OrderID;
                         _context.DetailSalesOrders.Add(detail);
                         product.Inventory -= detail.Quantity;

@@ -149,7 +149,6 @@ public class ImportOrderPresenter : PresenterCRUD
                     detail.ImportOrder = importOrder;
                     detail.UnitPrice = decimal.Parse(row.Cells["UnitPriceColumn"].Value.ToString());
                     detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString()!);
-                    detail.TotalPrice = decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
                     detail.OrderID = importOrder.OrderID;
                     _context.DetailImportOrders.Add(detail);
                     product.Inventory += detail.Quantity;

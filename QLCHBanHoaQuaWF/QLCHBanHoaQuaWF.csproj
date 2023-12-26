@@ -15,6 +15,11 @@
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Servies\**" />
+    <EmbeddedResource Remove="Servies\**" />
+    <None Remove="Servies\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="K.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -71,8 +76,5 @@
     <None Update="Reports\ReportSalesOrder.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Servies\" />
   </ItemGroup>
 </Project>

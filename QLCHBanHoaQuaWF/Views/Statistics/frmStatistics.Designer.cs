@@ -675,10 +675,6 @@
             this.chartProduct.TabIndex = 3;
             this.chartProduct.Text = "Top sản phẩm bán chạy";
             // 
-            // topProductBindingSource
-            // 
-            this.topProductBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.TopProduct);
-            // 
             // guna2TileButton5
             // 
             this.guna2TileButton5.BorderRadius = 20;
