@@ -10,7 +10,7 @@ public interface IViewEmployee
     public event EventHandler SearchEmployee;
     public event EventHandler ShowSalesHistory;
     public event EventHandler ShowImportHistory;
-    public event EventHandler ShowShiftHistory;
+    public event EventHandler ShowSalary;
     public event EventHandler ShowAddEmployee;
     public event EventHandler ShowUpdateEmployee;
 }

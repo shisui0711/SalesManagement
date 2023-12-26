@@ -14,7 +14,7 @@ public static class MyExtensionMethod
             ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
             for (int i = 0; i < dataGridView.Columns.Count; i++)
             {
-                if (dataGridView.Columns[i].Visible)
+                if (!dataGridView.Columns[i].Visible)
                 {
                     continue;
                 }
@@ -25,7 +25,7 @@ public static class MyExtensionMethod
             {
                 for (int j = 0; j < dataGridView.Columns.Count; j++)
                 {
-                    if (dataGridView.Columns[i].Visible)
+                    if (!dataGridView.Columns[j].Visible)
                     {
                         continue;
                     }

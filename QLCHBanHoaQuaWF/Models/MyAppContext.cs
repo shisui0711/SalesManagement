@@ -121,33 +121,24 @@ namespace QLCHBanHoaQuaWF.Models
 
             });
             //Seed Database
-            //Customer
             List<Customer> customers = GetFakeCustomers(100);
-            modelBuilder.Entity<Customer>().HasData(customers);
-
-            //Provider
             List<Provider> providers = GetFakeProviders(100);
-            modelBuilder.Entity<Provider>().HasData(providers);
-
-            //Employee
             List<string> emails = GetEmailsDistinct(100);
             List<Employee> employees = GetFakeEmployees(100, emails);
-            modelBuilder.Entity<Employee>().HasData(employees);
-
-            //User
-            modelBuilder.Entity<User>().HasData(GetFakeUsers(100, employees));
-
-            //Product
             List<Product> products = GetFakeProducts(100);
-            modelBuilder.Entity<Product>().HasData(products);
-
-            //ImportOrder
             List<DetailImportOrder> detailImports = GetFakeDetailImports(100, products);
+            List<DetailSalesOrder> detailSales = GetFakeDetailSales(100, products);
+            for (int i = 0; i < products.Count; i++)
+            {
+                products[i].Inventory = detailImports[i].Quantity - detailSales[i].Quantity;
+            }
+            modelBuilder.Entity<Customer>().HasData(customers);
+            modelBuilder.Entity<Provider>().HasData(providers);
+            modelBuilder.Entity<Employee>().HasData(employees);
+            modelBuilder.Entity<User>().HasData(GetFakeUsers(100, employees));
+            modelBuilder.Entity<Product>().HasData(products);
             modelBuilder.Entity<ImportOrder>().HasData(GetFakeImportOrders(100, employees,providers,detailImports));
             modelBuilder.Entity<DetailImportOrder>().HasData(detailImports);
-
-            //SalesOrder
-            List<DetailSalesOrder> detailSales = GetFakeDetailSales(100, products);
             modelBuilder.Entity<SalesOrder>().HasData(GetFakeSalesOrders(100, employees, customers, detailSales));
             modelBuilder.Entity<DetailSalesOrder>().HasData(detailSales);
         }
@@ -224,7 +215,7 @@ namespace QLCHBanHoaQuaWF.Models
                 "Dừa xiêm hạt dẻ", "Dừa xiêm trắng", "Dừa xiêm xanh", "Dưa lưới lạc đà", "Mận dầm", "Mận đỏ", "Lý chua ngọt",
                 "Lý chua Thái", "Quýt dẻo", "Cây lựu Anh", "Hồng xiêm", "Đu đủ hồng", "Ổi mận", "Ổi hồng", "Việt quất chín",
                 "Dứa hấu Golden", "Cây dừa vòi voi", "Dừa tươi", "Táo Fuji", "Táo Green Smith", "Kiwi hayward", "Cherry Rainier",
-                "Cây lựu đỏ khô", "Cam Caravela"
+                "Cây lựu đỏ khô", "Cam Caravela","Sake"
             };
 
             Faker<Product> fakerProduct = new Faker<Product>("vi");
@@ -239,9 +230,11 @@ namespace QLCHBanHoaQuaWF.Models
         {
             Faker<ImportOrder> fakerImport = new Faker<ImportOrder>("vi");
             fakerImport.RuleFor(i => i.OrderID, f => f.IndexFaker + 1);
-            fakerImport.RuleFor(i => i.Employee, f => f.PickRandom(employees));
-            fakerImport.RuleFor(i => i.Provider, f => f.PickRandom(providers));
+            fakerImport.RuleFor(i => i.EmployeeID, f => f.PickRandom(employees).EmployeeID);
+            fakerImport.RuleFor(i => i.ProviderID, f => f.PickRandom(providers).ProviderID);
             fakerImport.RuleFor(i => i.TotalPrice, f => detailImport[f.IndexFaker].TotalPrice);
+            fakerImport.RuleFor(i => i.OrderDate,
+                f => f.Date.Between(new DateTime(2023, 11, 1), new DateTime(2023, 11, 30)));
             return fakerImport.Generate(count);
         }
 
@@ -260,11 +253,13 @@ namespace QLCHBanHoaQuaWF.Models
         {
             Faker<SalesOrder> fakerSales = new Faker<SalesOrder>("vi");
             fakerSales.RuleFor(s => s.OrderID, f => f.IndexFaker + 1);
-            fakerSales.RuleFor(s => s.Employee, f => f.PickRandom(employees));
-            fakerSales.RuleFor(s => s.Customer, f => f.PickRandom(customers));
+            fakerSales.RuleFor(s => s.EmployeeID, f => f.PickRandom(employees).EmployeeID);
+            fakerSales.RuleFor(s => s.CustomerID, f => f.PickRandom(customers).CustomerID);
             fakerSales.RuleFor(s => s.TotalPrice, f => detailSales[f.IndexFaker].TotalPrice);
             fakerSales.RuleFor(s => s.PurchasePrice, f => detailSales[f.IndexFaker].TotalPrice);
             fakerSales.RuleFor(s => s.ChangePrice, f => 0);
+            fakerSales.RuleFor(s => s.OrderDate,
+                f => f.Date.Between(new DateTime(2023, 12, 1), new DateTime(2023, 12, 31)));
             return fakerSales.Generate(count);
         }
 

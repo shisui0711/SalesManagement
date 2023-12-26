@@ -12,17 +12,19 @@ public class EmployeePresenter : PresenterCRUD
     private readonly IUpdateEmployee _updateEmployee;
     private readonly IHistoryImport _historyImport;
     private readonly IHistorySales _historySales;
+    private readonly IViewSalary _viewSalary;
     private readonly MyAppContext _context;
     private readonly AuthPresenter _auth;
 
 
-    public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee, IHistoryImport historyImport, IHistorySales historySales, MyAppContext context, AuthPresenter auth)
+    public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee, IHistoryImport historyImport, IHistorySales historySales, IViewSalary viewSalary, MyAppContext context, AuthPresenter auth)
     {
         _viewEmployee = viewEmployee;
         _addEmployee = addEmployee;
         _updateEmployee = updateEmployee;
         _historyImport = historyImport;
         _historySales = historySales;
+        _viewSalary = viewSalary;
         _context = context;
         _auth = auth;
 
@@ -35,12 +37,63 @@ public class EmployeePresenter : PresenterCRUD
         _viewEmployee.ShowUpdateEmployee += delegate { ShowUpdateForm(); };
         _viewEmployee.ShowSalesHistory += delegate { SalesHistory(); };
         _viewEmployee.ShowImportHistory += delegate { ImportHistory(); };
+        _viewEmployee.ShowSalary += delegate { ShowSalaryTable(); };
 
         _addEmployee.AddEmployee += delegate { Add(); };
         _updateEmployee.UpdateEmployee += delegate { Update(); };
+
+        _viewSalary.CalculateSalary += delegate { CalculateSalary(); };
     }
 
-    public void SalesHistory()
+    void CalculateSalary()
+    {
+        List<SalaryTable> salesSalary = (from employee in _context.Employees
+            join sales in _context.SalesOrders
+                on employee.EmployeeID equals sales.EmployeeID
+            where sales.OrderDate >= _viewSalary.StartDate 
+                  && sales.OrderDate <= _viewSalary.EndDate && employee.Salary != null
+            group sales by new
+            {
+                employee.EmployeeID,
+                employee.EmployeeName,
+                employee.Salary
+            }
+            into g
+            select new SalaryTable
+            {
+                EmployeeID = g.Key.EmployeeID,
+                EmployeeName = g.Key.EmployeeName,
+                Salary = (decimal)g.Key.Salary,
+                TotalWorked = g.Count()
+            }).ToList();
+        List<SalaryTable> importSalary = (from employee in _context.Employees
+            join import in _context.ImportOrders
+                on employee.EmployeeID equals import.EmployeeID
+            where import.OrderDate >= _viewSalary.StartDate
+                  && import.OrderDate <= _viewSalary.EndDate && employee.Salary != null
+            group import by new
+            {
+                employee.EmployeeID,
+                employee.EmployeeName,
+                employee.Salary
+            }
+            into g
+            select new SalaryTable
+            {
+                EmployeeID = g.Key.EmployeeID,
+                EmployeeName = g.Key.EmployeeName,
+                Salary = (decimal)g.Key.Salary,
+                TotalWorked = g.Count()
+            }).ToList();
+        List<SalaryTable> salaryTables = salesSalary.Concat(importSalary).ToList();
+        _viewSalary.SalaryBindingSource.DataSource = salaryTables;
+    }
+    void ShowSalaryTable()
+    {
+        Form form = (Form)_viewSalary;
+        form?.ShowDialog();
+    }
+    void SalesHistory()
     {
         if (_viewEmployee.EmployeeBindingSource.Current == null)
         {

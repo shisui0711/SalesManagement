@@ -88,9 +88,9 @@ namespace QLCHBanHoaQuaWF.Presenters
                 CustomerName = orderData.CustomerName,
                 CustomerPhone = orderData.CustomerPhone,
                 CustomerAddress = orderData.CustomerAddress,
-                TotalPrice = orderData.TotalPrice,
-                PurchasePrice = orderData.PurchasePrice,
-                ChangePrice = orderData.ChangePrice
+                TotalPrice = orderData.TotalPrice.ToString("C0"),
+                PurchasePrice = orderData.PurchasePrice.ToString("C0"),
+                ChangePrice = orderData.ChangePrice.ToString("C0")
             };
 
             var detailData = from d in _context.DetailSalesOrders
@@ -101,8 +101,8 @@ namespace QLCHBanHoaQuaWF.Presenters
                              {
                                  ProductName = p.ProductName,
                                  Quantity = d.Quantity,
-                                 UnitPrice = d.UnitPrice,
-                                 TotalPrice = d.TotalPrice
+                                 UnitPrice = d.UnitPrice.ToString("C0"),
+                                 TotalPrice = d.TotalPrice.ToString("C0")
                              };
             _report.ReportViewer.LocalReport.ReportPath = "./Reports/ReportSalesOrder.rdlc";
             ReportDataSource detailDataSource = new ReportDataSource();

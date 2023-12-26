@@ -351,6 +351,7 @@
             this.dgvSalesOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSalesOrder.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvSalesOrder.Location = new System.Drawing.Point(0, 0);
+            this.dgvSalesOrder.MultiSelect = false;
             this.dgvSalesOrder.Name = "dgvSalesOrder";
             this.dgvSalesOrder.ReadOnly = true;
             this.dgvSalesOrder.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -456,32 +457,36 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(211, 128);
+            this.contextMenuStrip.Size = new System.Drawing.Size(197, 108);
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(210, 24);
+            this.btnUpdate.Size = new System.Drawing.Size(196, 26);
             this.btnUpdate.Text = "Sửa";
             // 
             // btnRemove
             // 
+            this.btnRemove.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(210, 24);
+            this.btnRemove.Size = new System.Drawing.Size(196, 26);
             this.btnRemove.Text = "Xóa";
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnDetail
             // 
+            this.btnDetail.Image = global::QLCHBanHoaQuaWF.Properties.Resources._3d_magnifier;
             this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(210, 24);
+            this.btnDetail.Size = new System.Drawing.Size(196, 26);
             this.btnDetail.Text = "Chi tiết đơn hàng";
             this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // btnReport
             // 
+            this.btnReport.Image = global::QLCHBanHoaQuaWF.Properties.Resources.Print;
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(210, 24);
+            this.btnReport.Size = new System.Drawing.Size(196, 26);
             this.btnReport.Text = "In hóa đơn";
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 

@@ -5,7 +5,6 @@ namespace QLCHBanHoaQuaWF.Views.Statistics;
 
 public interface IViewStatistics
 {
-    public BindingSource TopProductBindingSource { get; }
     public BindingSource TopCustomerBindingSource { get; }
     public BindingSource TopEmployeeBindingSource { get; }
     public Chart RevenueChart { get; }

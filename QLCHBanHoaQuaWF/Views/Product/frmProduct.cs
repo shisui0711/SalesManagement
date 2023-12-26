@@ -15,11 +15,17 @@ namespace QLCHBanHoaQuaWF.Views.Product
         {
             InitializeComponent();
             _product = product;
-            using (MemoryStream ms = new MemoryStream(product.ImageData))
+            if (product.ImageData == null)
             {
-                ptbProduct.Image = Image.FromStream(ms);
+                ptbProduct.Image = ptbProduct.ErrorImage;
             }
-
+            else
+            {
+                using (MemoryStream ms = new MemoryStream(product.ImageData))
+                {
+                    ptbProduct.Image = Image.FromStream(ms);
+                }
+            }
             lblProductName.Text = _product.ProductName;
             lblUnitPrice.Text = _product.UnitPrice.ToString();
             lblInventory.Text = _product.Inventory.ToString();

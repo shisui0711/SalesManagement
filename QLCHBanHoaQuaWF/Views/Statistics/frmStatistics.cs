@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms.DataVisualization.Charting;
+﻿using System.Globalization;
+using System.Windows.Forms.DataVisualization.Charting;
 using QLCHBanHoaQuaWF.Models;
 
 namespace QLCHBanHoaQuaWF.Views.Statistics
@@ -8,11 +9,6 @@ namespace QLCHBanHoaQuaWF.Views.Statistics
         public frmStatistics()
         {
             InitializeComponent();
-        }
-
-        public BindingSource TopProductBindingSource
-        {
-            get { return topProductBindingSource; }
         }
         public BindingSource TopCustomerBindingSource
         {
@@ -101,13 +97,13 @@ namespace QLCHBanHoaQuaWF.Views.Statistics
         }
         public decimal Revenue
         {
-            get { return decimal.Parse(lblRevenue.Text);}
-            set { lblRevenue.Text = value.ToString(); }
+            get { return decimal.Parse(lblRevenue.Text, NumberStyles.Currency);}
+            set { lblRevenue.Text = value.ToString("C0"); }
         }
         public decimal Profit
         {
-            get {return decimal.Parse(lblProfit.Text);}
-            set { lblProfit.Text = value.ToString(); }
+            get {return decimal.Parse(lblProfit.Text, NumberStyles.Currency);}
+            set { lblProfit.Text = value.ToString("C0"); }
         }
         public int CountEmployee
         {
@@ -181,5 +177,9 @@ namespace QLCHBanHoaQuaWF.Views.Statistics
             }
         }
 
+        private void btnToday_Click(object sender, EventArgs e)
+        {
+            LoadStatistics?.Invoke(sender, e);
+        }
     }
 }

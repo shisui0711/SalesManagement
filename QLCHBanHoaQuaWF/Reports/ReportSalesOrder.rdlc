@@ -2,24 +2,42 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="dsDetailSalesOrder">
+    <DataSource Name="dsDetailOrder">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>f69b02c3-e25e-4a57-8e12-3f56a5c6d7cd</rd:DataSourceID>
+      <rd:DataSourceID>3cbd5548-038f-46fc-bb4d-920adff97f85</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSetDetailSalesOrder">
       <Query>
-        <DataSourceName>dsDetailSalesOrder</DataSourceName>
+        <DataSourceName>dsDetailOrder</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
+      <Fields>
+        <Field Name="ProductName">
+          <DataField>ProductName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="UnitPrice">
+          <DataField>UnitPrice</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalPrice">
+          <DataField>TotalPrice</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsDetailSalesOrder</rd:DataSetName>
-        <rd:SchemaPath>D:\c#\BTL_WF\QLCHBanHoaQuaWF\dsDetailSalesOrder.xsd</rd:SchemaPath>
-        <rd:TableName>DetailSalesOrders</rd:TableName>
+        <rd:DataSetName>dsDetailOrder</rd:DataSetName>
+        <rd:SchemaPath>D:\Github\QCLH_BanHoaQua_WF\QLCHBanHoaQuaWF\dsDetailOrder.xsd</rd:SchemaPath>
+        <rd:TableName>DetailOrders</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
@@ -34,7 +52,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>7.91257cm</Width>
+                  <Width>5.0226cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.6049cm</Width>
@@ -329,7 +347,7 @@
             <Top>0.17639cm</Top>
             <Left>0.92287cm</Left>
             <Height>1.85616cm</Height>
-            <Width>16.49493cm</Width>
+            <Width>13.60496cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -340,7 +358,7 @@
         <Height>1.41667in</Height>
         <Style />
       </Body>
-      <Width>7.17259in</Width>
+      <Width>7.08926in</Width>
       <Page>
         <PageHeader>
           <Height>9.22753cm</Height>

@@ -16,7 +16,6 @@ public class StatisticsPresenter
 
         _viewStatistics.LoadStatistics += delegate { Load(); };
     }
-
     public void Load()
     {
         LoadCount();
@@ -32,12 +31,15 @@ public class StatisticsPresenter
         _viewStatistics.CountEmployee = _context.Employees.Count();
         _viewStatistics.CountProvider = _context.Providers.Count();
         _viewStatistics.CountProduct = _context.Products.Count();
-        _viewStatistics.SalesOrdered = _context.SalesOrders.Count();
-        _viewStatistics.ImportOrdered = _context.ImportOrders.Count();
-        _viewStatistics.Revenue = _context.SalesOrders.Sum(x => x.TotalPrice);
-        _viewStatistics.Profit = _viewStatistics.Revenue - _context.ImportOrders.Sum(x => x.TotalPrice);
+        List<SalesOrder> salesOrders = _context.SalesOrders.Where(s =>
+            s.OrderDate >= _viewStatistics.StartDate && s.OrderDate <= _viewStatistics.EndDate).ToList();
+        List<ImportOrder> importOrders = _context.ImportOrders
+            .Where(i => i.OrderDate >= _viewStatistics.StartDate && i.OrderDate <= _viewStatistics.EndDate).ToList();
+        _viewStatistics.SalesOrdered = salesOrders.Count();
+        _viewStatistics.ImportOrdered = importOrders.Count();
+        _viewStatistics.Revenue = salesOrders.Sum(x => x.TotalPrice);
+        _viewStatistics.Profit = _viewStatistics.Revenue - importOrders.Sum(x => x.TotalPrice);
         _viewStatistics.Profit = _viewStatistics.Profit >= 0 ? _viewStatistics.Profit : 0;
-        _viewStatistics.Revenue = Math.Round(_viewStatistics.Revenue);
     }
     private void LoadTopEmployee()
     {
@@ -53,8 +55,11 @@ public class StatisticsPresenter
                 EmployeeID = g.Key.EmployeeID,
                 EmployeeName = g.Key.EmployeeName,
                 TotalSold = g.Count()
-            });
-        _viewStatistics.TopEmployeeBindingSource.DataSource = topEmployee.ToList();
+            }).ToList();
+        if (topEmployee != null)
+        {
+            _viewStatistics.TopEmployeeBindingSource.DataSource = topEmployee;
+        }
     }
 
     private void LoadTopCustomer()
@@ -71,8 +76,11 @@ public class StatisticsPresenter
                 CustomerID = g.Key.CustomerID,
                 CustomerName = g.Key.CustomerName,
                 TotalBought = g.Count()
-            });
-        _viewStatistics.TopCustomerBindingSource.DataSource = topCustomer.ToList();
+            }).ToList();
+        if (topCustomer != null)
+        {
+            _viewStatistics.TopCustomerBindingSource.DataSource = topCustomer;
+        }
     }
 
     private void LoadTopProduct()
@@ -88,16 +96,20 @@ public class StatisticsPresenter
             {
                 ProductName = g.Key.ProductName,
                 TotalSold = g.Sum(x => x.Quantity)
-            });
-        int count = topProduct.Count();
+            }).ToList();
+        if (topProduct == null)
+        {
+            return;
+        }
+        int count = topProduct.Count;
         if (count > 0)
         {
             if (count > 5)
             {
-                topProduct = topProduct.Take(5);
+                topProduct = topProduct.Take(5).ToList();
             }
 
-            _viewStatistics.ProductChart.DataSource = topProduct.ToList()
+            _viewStatistics.ProductChart.DataSource = topProduct
                 .ConvertAll(x => new KeyValuePair<string, int>(x.ProductName, x.TotalSold));
             _viewStatistics.ProductChart.Series[0].XValueMember = "Key";
             _viewStatistics.ProductChart.Series[0].YValueMembers = "Value";

@@ -61,6 +61,7 @@ namespace QLCHBanHoaQuaWF
                 services.AddSingleton<IViewEmployee, frmViewEmployee>();
                 services.AddSingleton<IAddEmployee, frmAddEmployee>();
                 services.AddSingleton<IUpdateEmployee, frmUpdateEmployee>();
+                services.AddSingleton<IViewSalary, frmViewSalary>();
                 services.AddSingleton<IViewProduct, frmViewProduct>();
                 services.AddSingleton<IAddProduct, frmAddProduct>();
                 services.AddSingleton<IUpdateProduct, frmUpdateProduct>();

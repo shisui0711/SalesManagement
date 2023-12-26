@@ -7,11 +7,6 @@
             get { return txtSearch.Text; }
             set { txtSearch.Text = value; }
         }
-        public int OptionIndex
-        {
-            get { return cboOptionSearch.SelectedIndex; }
-            set { cboOptionSearch.SelectedIndex = value; }
-        }
         public BindingSource ProductBindingSource
         {
             get { return productBindingSource; }

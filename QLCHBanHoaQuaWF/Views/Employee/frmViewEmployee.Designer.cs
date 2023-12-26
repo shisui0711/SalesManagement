@@ -45,6 +45,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             this.dgvEmployee = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -57,6 +59,11 @@
             this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salesOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPurchaseHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnImportHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlGridView = new Guna.UI2.WinForms.Guna2Panel();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
@@ -65,16 +72,12 @@
             this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlControl = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnPurchaseHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnImportHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.btnSalary = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.pnlGridView.SuspendLayout();
             this.pnlControl.SuspendLayout();
-            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvEmployee
@@ -236,6 +239,57 @@
             this.importOrdersDataGridViewTextBoxColumn.ReadOnly = true;
             this.importOrdersDataGridViewTextBoxColumn.Visible = false;
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnUpdate,
+            this.btnDelete,
+            this.btnPurchaseHistory,
+            this.btnImportHistory});
+            this.contextMenuStrip.Name = "mnstrip";
+            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.contextMenuStrip.RenderStyle.ColorTable = null;
+            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
+            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.contextMenuStrip.Size = new System.Drawing.Size(202, 108);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(201, 26);
+            this.btnUpdate.Text = "Sửa thông tin";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(201, 26);
+            this.btnDelete.Text = "Xóa";
+            // 
+            // btnPurchaseHistory
+            // 
+            this.btnPurchaseHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
+            this.btnPurchaseHistory.Name = "btnPurchaseHistory";
+            this.btnPurchaseHistory.Size = new System.Drawing.Size(201, 26);
+            this.btnPurchaseHistory.Text = "Lịch sử bán hàng";
+            this.btnPurchaseHistory.Click += new System.EventHandler(this.btnPurchaseHistory_Click);
+            // 
+            // btnImportHistory
+            // 
+            this.btnImportHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
+            this.btnImportHistory.Name = "btnImportHistory";
+            this.btnImportHistory.Size = new System.Drawing.Size(201, 26);
+            this.btnImportHistory.Text = "Lịch sử nhập hàng";
+            this.btnImportHistory.Click += new System.EventHandler(this.btnImportHistory_Click);
+            // 
             // employeeBindingSource
             // 
             this.employeeBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.Employee);
@@ -367,69 +421,39 @@
             // pnlControl
             // 
             this.pnlControl.BackColor = System.Drawing.Color.White;
+            this.pnlControl.Controls.Add(this.btnSalary);
             this.pnlControl.Controls.Add(this.btnAdd);
             this.pnlControl.Controls.Add(this.cboOptionSearch);
             this.pnlControl.Controls.Add(this.btnReload);
             this.pnlControl.Controls.Add(this.btnSearch);
             this.pnlControl.Controls.Add(this.txtSearch);
-            this.pnlControl.CustomizableEdges = customizableEdges13;
+            this.pnlControl.CustomizableEdges = customizableEdges15;
             this.pnlControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlControl.Location = new System.Drawing.Point(0, 0);
             this.pnlControl.Name = "pnlControl";
-            this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges16;
             this.pnlControl.Size = new System.Drawing.Size(992, 65);
             this.pnlControl.TabIndex = 2;
             // 
-            // btnUpdate
+            // btnSalary
             // 
-            this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(214, 26);
-            this.btnUpdate.Text = "Sửa thông tin";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(214, 26);
-            this.btnDelete.Text = "Xóa";
-            // 
-            // btnPurchaseHistory
-            // 
-            this.btnPurchaseHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
-            this.btnPurchaseHistory.Name = "btnPurchaseHistory";
-            this.btnPurchaseHistory.Size = new System.Drawing.Size(214, 26);
-            this.btnPurchaseHistory.Text = "Lịch sử bán hàng";
-            this.btnPurchaseHistory.Click += new System.EventHandler(this.btnPurchaseHistory_Click);
-            // 
-            // btnImportHistory
-            // 
-            this.btnImportHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
-            this.btnImportHistory.Name = "btnImportHistory";
-            this.btnImportHistory.Size = new System.Drawing.Size(214, 26);
-            this.btnImportHistory.Text = "Lịch sử nhập hàng";
-            this.btnImportHistory.Click += new System.EventHandler(this.btnImportHistory_Click);
-            // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnUpdate,
-            this.btnDelete,
-            this.btnPurchaseHistory,
-            this.btnImportHistory});
-            this.contextMenuStrip.Name = "mnstrip";
-            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.ColorTable = null;
-            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
-            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(215, 136);
+            this.btnSalary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalary.Animated = true;
+            this.btnSalary.CustomizableEdges = customizableEdges13;
+            this.btnSalary.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSalary.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSalary.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSalary.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSalary.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
+            this.btnSalary.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSalary.ForeColor = System.Drawing.Color.White;
+            this.btnSalary.Location = new System.Drawing.Point(622, 15);
+            this.btnSalary.Name = "btnSalary";
+            this.btnSalary.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            this.btnSalary.Size = new System.Drawing.Size(171, 35);
+            this.btnSalary.TabIndex = 4;
+            this.btnSalary.Text = "Tính lương";
+            this.btnSalary.Click += new System.EventHandler(this.btnSalary_Click);
             // 
             // frmViewEmployee
             // 
@@ -443,10 +467,10 @@
             this.Text = "frmViewEmployee";
             this.Load += new System.EventHandler(this.frmViewEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.pnlGridView.ResumeLayout(false);
             this.pnlControl.ResumeLayout(false);
-            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -476,5 +500,6 @@
         private ToolStripMenuItem btnDelete;
         private ToolStripMenuItem btnPurchaseHistory;
         private ToolStripMenuItem btnImportHistory;
+        private Guna.UI2.WinForms.Guna2Button btnSalary;
     }
 }

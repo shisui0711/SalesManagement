@@ -18,7 +18,7 @@
         public event EventHandler? SearchEmployee;
         public event EventHandler? ShowSalesHistory;
         public event EventHandler? ShowImportHistory;
-        public event EventHandler? ShowShiftHistory;
+        public event EventHandler ShowSalary;
         public event EventHandler? ShowAddEmployee;
         public event EventHandler? ShowUpdateEmployee;
         public frmViewEmployee()
@@ -67,14 +67,9 @@
             ShowImportHistory?.Invoke(sender, e);
         }
 
-        private void btnShiftHistory_Click(object sender, EventArgs e)
+        private void btnSalary_Click(object sender, EventArgs e)
         {
-            ShowShiftHistory?.Invoke(sender, e);
-        }
-
-        private void mnstrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
+            ShowSalary?.Invoke(sender,e);
         }
     }
 }

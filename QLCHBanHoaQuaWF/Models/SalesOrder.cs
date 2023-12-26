@@ -16,6 +16,8 @@ namespace QLCHBanHoaQuaWF.Models
         public decimal ChangePrice { get; set; }
         [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
+
+        public int EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
         [InverseProperty("SalesOrders")]
         public Employee? Employee { get; set; }

@@ -81,7 +81,7 @@ public class ImportOrderPresenter : PresenterCRUD
             AppAddress = info.Address,
             AppPhone = info.Phone,
             OrderID = orderData.OrderID,
-            TotalPrice = orderData.TotalPrice,
+            TotalPrice = orderData.TotalPrice.ToString("C0"),
             ProviderName = orderData.ProviderName
         };
 
@@ -93,8 +93,8 @@ public class ImportOrderPresenter : PresenterCRUD
                          {
                              ProductName = p.ProductName,
                              Quantity = d.Quantity,
-                             UnitPrice = d.UnitPrice,
-                             TotalPrice = d.TotalPrice
+                             UnitPrice = d.UnitPrice.ToString("C0"),
+                             TotalPrice = d.TotalPrice.ToString("C0")
                          };
         _report.ReportViewer.LocalReport.ReportPath = "./Reports/ReportImportOrder.rdlc";
         ReportDataSource detailDataSource = new ReportDataSource();
