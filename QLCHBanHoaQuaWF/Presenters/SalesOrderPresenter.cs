@@ -118,6 +118,11 @@ namespace QLCHBanHoaQuaWF.Presenters
         }
         void ShowReport()
         {
+            if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanPrintSalesOrder == false)
+            {
+                MessageBox.Show("Bạn không có quyền này");
+                return;
+            }
             if (_viewSalesOrder.OrderBindingSource.Current == null)
             {
                 MessageBox.Show("Chưa bản ghi nào được chọn");
@@ -132,6 +137,11 @@ namespace QLCHBanHoaQuaWF.Presenters
 
         public void ShowAddFrom()
         {
+            if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateSalesOrder == false)
+            {
+                MessageBox.Show("Bạn không có quyền này");
+                return;
+            }
             var form = _addSalesOrder as Form;
             if (form != null)
             {
@@ -207,6 +217,11 @@ namespace QLCHBanHoaQuaWF.Presenters
 
         public override void Remove()
         {
+            if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteSalesOrder == false)
+            {
+                MessageBox.Show("Bạn không có quyền này");
+                return;
+            }
             SalesOrder? deleted = _viewSalesOrder.OrderBindingSource.Current as SalesOrder;
             if (deleted == null)
             {

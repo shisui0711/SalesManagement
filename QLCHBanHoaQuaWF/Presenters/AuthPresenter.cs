@@ -1,8 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DevExpress.Diagram.Core.Native.Generation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using QLCHBanHoaQuaWF.Attributes;
 using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.User;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
@@ -42,7 +45,27 @@ namespace QLCHBanHoaQuaWF.Presenters
             _updatePassword.UpdatePassowrd += delegate { UpdatePassword(); };
             _changePassword.ChangePassowrd += delegate { ChangePassword(); };
         }
-
+        void CheckPermission(IChangeControl control)
+        {
+            if (AuthPresenter.User == null)
+            {
+                return;
+            }
+            var permissionTypes = AuthPresenter.User.UserRole.Permission.GetType().GetProperties()
+                .Where(x => x.PropertyType == typeof(bool) && x.Name.StartsWith("CanRead"));
+            foreach (var permission in permissionTypes)
+            {
+                string permissionName = permission.Name.Substring(7);
+                if (!(bool)permission.GetValue(AuthPresenter.User.UserRole.Permission))
+                {
+                    control.ChangeVisible("btn" + permissionName,false);
+                }
+                else
+                {
+                    control.ChangeVisible("btn" + permissionName, true);
+                }
+            }
+        }
         public void Login()
         {
             string Role = _viewLogin.Role;
@@ -92,13 +115,17 @@ namespace QLCHBanHoaQuaWF.Presenters
                 user.Email = email;
                 user.UserRole = userRole;
                 Permission? permission = new Permission();
-                permission.IsAdmin = true;
+                foreach (var propertyInfo in permission.GetType().GetProperties().Where(x => x.PropertyType == typeof(bool)))
+                {
+                    propertyInfo.SetValue(permission,true);
+                }
                 userRole.Permission = permission;
                 User = user;
 
             }
             var loginForm = _viewLogin as Form;
             var mainForm = _viewMain as Form;
+            CheckPermission(_viewMain);
             loginForm.Hide();
             mainForm.ShowDialog();
             loginForm.Show();

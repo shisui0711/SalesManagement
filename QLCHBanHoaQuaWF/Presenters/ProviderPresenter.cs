@@ -55,6 +55,11 @@ public class ProviderPresenter : PresenterCRUD
     }
     public void ShowAddForm()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreatedProvider == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         var form = _addProvider as Form;
         if (form != null)
         {
@@ -64,6 +69,11 @@ public class ProviderPresenter : PresenterCRUD
 
     public void ShowUpdateForm()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateProvider == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         Provider updated = _viewProvider.ProviderBindingSource.Current as Provider;
         if (updated == null)
         {
@@ -117,6 +127,11 @@ public class ProviderPresenter : PresenterCRUD
 
     public override void Remove()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteProvider == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         var deleted = _viewProvider.ProviderBindingSource.Current as Provider;
         if (deleted == null)
         {

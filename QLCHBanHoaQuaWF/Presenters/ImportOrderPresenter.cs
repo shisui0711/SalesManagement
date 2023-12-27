@@ -109,6 +109,11 @@ public class ImportOrderPresenter : PresenterCRUD
     }
     void ShowReport()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanPrintImportOrder == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         if (_viewImportOrder.OrderBindingSource.Current == null)
         {
             MessageBox.Show("Chưa bản ghi nào được chọn");
@@ -122,6 +127,11 @@ public class ImportOrderPresenter : PresenterCRUD
     }
     public void ShowAddForm()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateImportOrder == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         var form = _addImportOrder as Form;
         if (form != null)
         {

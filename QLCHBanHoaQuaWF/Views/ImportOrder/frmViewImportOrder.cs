@@ -1,4 +1,6 @@
-﻿namespace QLCHBanHoaQuaWF.Views.ImportOrder
+﻿using QLCHBanHoaQuaWF.Presenters;
+
+namespace QLCHBanHoaQuaWF.Views.ImportOrder
 {
     public partial class frmViewImportOrder : Form, IViewImportOrder
     {
@@ -90,6 +92,14 @@
 
         private void btnExportFile_Click(object sender, EventArgs e)
         {
+            if (AuthPresenter.User != null)
+            {
+                if (AuthPresenter.User.UserRole.Permission.CanExportImportOrder == false)
+                {
+                    MessageBox.Show("Bạn không có quyền này.");
+                    return;
+                }
+            }
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Excel Files|*.xlsx";
             saveFileDialog.Title = "Save an Excel File";

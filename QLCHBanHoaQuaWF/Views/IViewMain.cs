@@ -1,6 +1,6 @@
 ﻿namespace QLCHBanHoaQuaWF.Views;
 
-public interface IViewMain
+public interface IViewMain : IChangeControl
 {
     public string User { get; set; }
     public string Role { get; set; }

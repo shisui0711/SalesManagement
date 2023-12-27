@@ -1,5 +1,7 @@
 ﻿
 
+using System.Reflection;
+
 namespace QLCHBanHoaQuaWF.Views
 {
     public partial class frmMain : Form, IViewMain
@@ -108,6 +110,21 @@ namespace QLCHBanHoaQuaWF.Views
         {
             IsLogout = true;
             this.Close();
+        }
+
+        public void ChangeVisible(string controlName,bool value)
+        {
+            var type = GetType().GetField(controlName, BindingFlags.Instance | BindingFlags.NonPublic);
+            if (type == null)
+            {
+                return;
+            }
+
+            var control = (Control)type.GetValue(this);
+            if (control != null)
+            {
+                control.Visible = value;
+            }
         }
     }
 }

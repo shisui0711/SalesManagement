@@ -135,6 +135,11 @@ public class EmployeePresenter : PresenterCRUD
     }
     public void ShowAddForm()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateEmployee == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         if (_addEmployee.GetType().IsAssignableTo(typeof(Form)))
         {
             var form = _addEmployee as Form;
@@ -147,6 +152,11 @@ public class EmployeePresenter : PresenterCRUD
 
     public void ShowUpdateForm()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateProduct == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         var updated = _viewEmployee.EmployeeBindingSource.Current as Employee;
         if (updated == null)
         {

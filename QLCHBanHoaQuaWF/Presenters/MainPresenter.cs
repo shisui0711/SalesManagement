@@ -11,6 +11,7 @@ using QLCHBanHoaQuaWF.Views.UserRole;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using DevExpress.XtraEditors.Senders;
+using QLCHBanHoaQuaWF.Attributes;
 using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views.Statistics;
 
@@ -30,7 +31,8 @@ public class MainPresenter
     private readonly IViewOptions _viewOptions;
     private readonly IViewStatistics _viewStatistics;
     private readonly IChangePassword _changePassword;
-    public MainPresenter(IViewMain viewMain, IViewCustomer viewCustomer, IViewEmployee viewEmployee, IViewProduct viewProduct, IViewProvider viewProvider, IViewSalesOrder viewSalesOrder, IViewImportOrder viewImportOrder, IViewUser viewUser, IViewUserRole viewUserRole, IViewOptions viewOptions,IChangePassword changePassword,IViewStatistics viewStatistics)
+    private readonly MyAppContext _context;
+    public MainPresenter(IViewMain viewMain, IViewCustomer viewCustomer, IViewEmployee viewEmployee, IViewProduct viewProduct, IViewProvider viewProvider, IViewSalesOrder viewSalesOrder, IViewImportOrder viewImportOrder, IViewUser viewUser, IViewUserRole viewUserRole, IViewOptions viewOptions,IChangePassword changePassword,IViewStatistics viewStatistics,MyAppContext context)
     {
         _viewMain = viewMain;
         _viewCustomer = viewCustomer;
@@ -44,11 +46,11 @@ public class MainPresenter
         _viewOptions = viewOptions;
         _viewStatistics = viewStatistics;
         _changePassword = changePassword;
+        _context = context;
 
         Init();
         _viewMain.ShowChangePassword += delegate { ShowChangePassword(); };
     }
-
     void Init()
     {
         var events = _viewMain.GetType().GetEvents(BindingFlags.Public | BindingFlags.Instance).Where(x=>Regex.IsMatch(x.Name,@"Show[A-Z].*") && !x.Name.Contains("ChangePassword")).ToList();

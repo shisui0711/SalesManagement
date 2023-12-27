@@ -35,6 +35,11 @@ public class UserRolePresenter : PresenterCRUD
 
     private void ShowAddForm()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateUserRole == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         Form form = (Form)_addUserRole;
         if (form != null)
         {
@@ -44,9 +49,30 @@ public class UserRolePresenter : PresenterCRUD
 
     private void ShowUpdateForm()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateUserRole == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         var userRoleUpdate = _viewUserRole.UserRoleBindingSource.Current as UserRole;
         _updateUserRole.RoleID = userRoleUpdate.RoleID;
+        _updateUserRole.RoleName = userRoleUpdate.RoleName;
         _updateUserRole.Description = userRoleUpdate.Description;
+        for (int i = 0; i < _updateUserRole.PermissionSelected.Items.Count; i++)
+        {
+            var property = typeof(Permission).GetProperties().Where(x =>
+            {
+                var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
+                if (displayNamAttribute != null)
+                {
+                    return displayNamAttribute.DisplayName == _updateUserRole.PermissionSelected.Items[i].ToString();
+                }
+
+                return false;
+            }).FirstOrDefault();
+            bool value = (bool)property.GetValue(userRoleUpdate.Permission);
+            _updateUserRole.PermissionSelected.SetItemChecked(i, value);
+        }
         Form form = (Form)_updateUserRole;
         if (form != null)
         {
@@ -93,6 +119,7 @@ public class UserRolePresenter : PresenterCRUD
                 _context.Permissions.Add(permission);
                 _context.SaveChanges();
                 transaction.Commit();
+                MessageBox.Show("Thêm thành công");
             }
             catch (Exception e)
             {
@@ -103,11 +130,54 @@ public class UserRolePresenter : PresenterCRUD
 
     public override void Update()
     {
+        UserRole userRole = _context.UserRoles.Find(_updateUserRole.RoleID);
+        if (!IsValid(userRole, _updateUserRole))
+        {
+            return;
+        }
 
+        using (var transaction = _context.Database.BeginTransaction())
+        {
+            try
+            {
+                Permission permission = _context.Permissions.Find(userRole.Permission.PermissionID);
+                foreach (var item in _updateUserRole.PermissionSelected.CheckedItems)
+                {
+                    var property = typeof(Permission).GetProperties().Where(x =>
+                    {
+                        var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
+                        if (displayNamAttribute != null)
+                        {
+                            return displayNamAttribute.DisplayName == item.ToString();
+                        }
+
+                        return false;
+                    }).FirstOrDefault();
+                    if (property != null)
+                    {
+
+                        property.SetValue(permission, true);
+
+                    }
+                }
+                _context.SaveChanges();
+                transaction.Commit();
+                MessageBox.Show("Sửa thành công");
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+            }
+        }
     }
 
     public override void Remove()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteUserRole == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         var deleted = _viewUserRole.UserRoleBindingSource.Current as UserRole;
         if (deleted == null)
         {
@@ -134,6 +204,7 @@ public class UserRolePresenter : PresenterCRUD
                 _context.SaveChanges();
                 _viewUserRole.UserRoleBindingSource.Remove(deleted);
                 transaction.Commit();
+                MessageBox.Show("Xóa thành công");
             }
             catch (Exception e)
             {

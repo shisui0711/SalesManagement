@@ -26,9 +26,16 @@ namespace QLCHBanHoaQuaWF.Views.Product
             }
             set
             {
-                using (MemoryStream ms = new MemoryStream(value))
+                if (value == null)
                 {
-                    ptbUpload.Image = Image.FromStream(ms);
+                    ptbUpload.Image = ptbUpload.ErrorImage;
+                }
+                else
+                {
+                    using (MemoryStream ms = new MemoryStream(value))
+                    {
+                        ptbUpload.Image = Image.FromStream(ms);
+                    }
                 }
             }
         }

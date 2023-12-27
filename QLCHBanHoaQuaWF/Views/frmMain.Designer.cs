@@ -201,7 +201,6 @@
             // 
             this.btnLogout.Animated = true;
             this.btnLogout.BorderRadius = 20;
-            this.btnLogout.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btnLogout.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(160)))), ((int)(((byte)(236)))));
             this.btnLogout.CheckedState.ForeColor = System.Drawing.Color.White;
             this.btnLogout.CustomizableEdges = customizableEdges7;

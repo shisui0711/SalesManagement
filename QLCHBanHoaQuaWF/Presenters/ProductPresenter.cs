@@ -31,6 +31,11 @@ public class ProductPresenter : PresenterCRUD
 
     public void ShowAddForm()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateProduct == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         if (_addProduct.GetType().IsAssignableTo(typeof(Form)))
         {
             var form = _addProduct as Form;
@@ -40,6 +45,11 @@ public class ProductPresenter : PresenterCRUD
 
     public void ShowUpdateForm()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateProduct == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         var updated = _viewProduct.ProductBindingSource.Current as Product;
         if (updated == null)
         {
@@ -103,6 +113,11 @@ public class ProductPresenter : PresenterCRUD
 
     public override void Remove()
     {
+        if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteProduct == false)
+        {
+            MessageBox.Show("Bạn không có quyền này");
+            return;
+        }
         var deleted = _viewProduct.ProductBindingSource.Current as Product;
         if (deleted == null)
         {

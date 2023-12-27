@@ -54,6 +54,11 @@ namespace QLCHBanHoaQuaWF.Presenters
         }
         public void ShowAddForm()
         {
+            if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateCustomer == false)
+            {
+                MessageBox.Show("Bạn không có quyền này");
+                return;
+            }
             var form = _addCustomer as Form;
             if (form != null)
             {
@@ -63,6 +68,11 @@ namespace QLCHBanHoaQuaWF.Presenters
 
         public void ShowUpdateForm()
         {
+            if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateCustomer == false && AuthPresenter.User.UserRole.Permission.IsAdmin == false)
+            {
+                MessageBox.Show("Bạn không có quyền này");
+                return;
+            }
             var updated = _viewCustomer.CustomerBindingSource.Current as Customer;
             if (updated == null)
             {
@@ -115,6 +125,11 @@ namespace QLCHBanHoaQuaWF.Presenters
 
         public override void Remove()
         {
+            if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteCustomer == false && AuthPresenter.User.UserRole.Permission.IsAdmin == false)
+            {
+                MessageBox.Show("Bạn không có quyền này");
+                return;
+            }
             var deleted = _viewCustomer.CustomerBindingSource.Current as Customer;
             if (deleted == null)
             {
