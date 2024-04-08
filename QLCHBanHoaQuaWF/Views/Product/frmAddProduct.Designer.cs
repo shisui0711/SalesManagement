@@ -164,6 +164,9 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.Animated = true;
+            this.btnAdd.AutoRoundedCorners = true;
+            this.btnAdd.BorderRadius = 22;
             this.btnAdd.CustomizableEdges = customizableEdges1;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -181,7 +184,10 @@
             // 
             // btnExit
             // 
+            this.btnExit.Animated = true;
+            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnExit.BorderRadius = 22;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -223,7 +229,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(137, 533);
+            this.label5.Location = new System.Drawing.Point(194, 533);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 28);
             this.label5.TabIndex = 16;
@@ -232,6 +238,8 @@
             // txtDescription
             // 
             this.txtDescription.Animated = true;
+            this.txtDescription.AutoRoundedCorners = true;
+            this.txtDescription.BorderRadius = 19;
             this.txtDescription.CustomizableEdges = customizableEdges9;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -257,15 +265,17 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(137, 475);
+            this.label4.Location = new System.Drawing.Point(193, 475);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 28);
+            this.label4.Size = new System.Drawing.Size(86, 28);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Giá Bán";
+            this.label4.Text = "Giá Bán:";
             // 
             // txtUnitPrice
             // 
             this.txtUnitPrice.Animated = true;
+            this.txtUnitPrice.AutoRoundedCorners = true;
+            this.txtUnitPrice.BorderRadius = 19;
             this.txtUnitPrice.CustomizableEdges = customizableEdges11;
             this.txtUnitPrice.DefaultText = "";
             this.txtUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -285,20 +295,23 @@
             this.txtUnitPrice.ShadowDecoration.CustomizableEdges = customizableEdges12;
             this.txtUnitPrice.Size = new System.Drawing.Size(280, 40);
             this.txtUnitPrice.TabIndex = 4;
+            this.txtUnitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitPrice_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(137, 410);
+            this.label3.Location = new System.Drawing.Point(178, 410);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 28);
+            this.label3.Size = new System.Drawing.Size(101, 28);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Giá Nhập";
+            this.label3.Text = "Giá Nhập:";
             // 
             // txtImportUnitPrice
             // 
             this.txtImportUnitPrice.Animated = true;
+            this.txtImportUnitPrice.AutoRoundedCorners = true;
+            this.txtImportUnitPrice.BorderRadius = 19;
             this.txtImportUnitPrice.CustomizableEdges = customizableEdges13;
             this.txtImportUnitPrice.DefaultText = "";
             this.txtImportUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -318,30 +331,33 @@
             this.txtImportUnitPrice.ShadowDecoration.CustomizableEdges = customizableEdges14;
             this.txtImportUnitPrice.Size = new System.Drawing.Size(280, 40);
             this.txtImportUnitPrice.TabIndex = 3;
+            this.txtImportUnitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImportUnitPrice_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(137, 258);
+            this.label2.Location = new System.Drawing.Point(225, 258);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 28);
+            this.label2.Size = new System.Drawing.Size(54, 28);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Ảnh";
+            this.label2.Text = "Ảnh:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(137, 110);
+            this.label1.Location = new System.Drawing.Point(161, 110);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 28);
+            this.label1.Size = new System.Drawing.Size(118, 28);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Đơn vị tính";
+            this.label1.Text = "Đơn vị tính:";
             // 
             // txtCalculationUnit
             // 
             this.txtCalculationUnit.Animated = true;
+            this.txtCalculationUnit.AutoRoundedCorners = true;
+            this.txtCalculationUnit.BorderRadius = 19;
             this.txtCalculationUnit.CustomizableEdges = customizableEdges15;
             this.txtCalculationUnit.DefaultText = "";
             this.txtCalculationUnit.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -366,15 +382,17 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(137, 43);
+            this.lblName.Location = new System.Drawing.Point(137, 37);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(44, 28);
+            this.lblName.Size = new System.Drawing.Size(142, 28);
             this.lblName.TabIndex = 6;
-            this.lblName.Text = "Tên";
+            this.lblName.Text = "Tên mặt hàng:";
             // 
             // txtProductName
             // 
             this.txtProductName.Animated = true;
+            this.txtProductName.AutoRoundedCorners = true;
+            this.txtProductName.BorderRadius = 19;
             this.txtProductName.CustomizableEdges = customizableEdges17;
             this.txtProductName.DefaultText = "";
             this.txtProductName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

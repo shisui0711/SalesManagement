@@ -40,6 +40,7 @@ namespace QLCHBanHoaQuaWF.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Config Fluent Api
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Employee>(entity =>
             {
@@ -50,10 +51,15 @@ namespace QLCHBanHoaQuaWF.Models
                 entity.HasKey(e => new { e.EmployeeID, e.RoleID });
                 entity.HasIndex(e => e.Email).IsUnique();
             });
-            modelBuilder.Entity<Employee>(entity =>
+            modelBuilder.Entity<DetailSalesOrder>(entity =>
             {
-                entity.HasIndex(e => e.Email).IsUnique();
+                entity.HasKey(e => new { e.OrderID, e.ProductID });
             });
+            modelBuilder.Entity<DetailImportOrder>(entity =>
+            {
+                entity.HasKey(e => new { e.OrderID, e.ProductID });
+            });
+            // Set default role
             modelBuilder.Entity<UserRole>(entity =>
             {
                 entity.HasIndex(e => e.RoleName).IsUnique();
@@ -89,9 +95,13 @@ namespace QLCHBanHoaQuaWF.Models
                         CanReadCustomer = true,
                         CanReadDetailSalesOrder = true,
                         CanReadSalesOrder = true,
+                        CanCreateSalesOrder = true,
                         CanExportSalesOrder = true,
                         CanPrintSalesOrder = true,
                         CanReadProduct = true,
+                        CanCreateProduct = true,
+                        CanUpdateProduct = true,
+                        CanDeleteProduct = true
                     },
                     new Permission
                     {
@@ -102,9 +112,13 @@ namespace QLCHBanHoaQuaWF.Models
                         CanReadProvider = true,
                         CanReadDetailImportOrder = true,
                         CanReadImportOrder = true,
+                        CanCreateImportOrder = true,
                         CanExportImportOrder = true,
                         CanPrintImportOrder = true,
                         CanReadProduct = true,
+                        CanCreateProduct = true,
+                        CanUpdateProduct = true,
+                        CanDeleteProduct = true
                     }
                 );
             });
@@ -173,7 +187,6 @@ namespace QLCHBanHoaQuaWF.Models
             {
                 emailSet.Add(emailFaker.Internet.Email());
             }
-
             return emailSet.ToList();
         }
 
@@ -203,19 +216,20 @@ namespace QLCHBanHoaQuaWF.Models
         {
             List<string> fruits = new List<string>
             {
-                "Táo", "Chuối", "Dứa", "Cam", "Kiwi", "Cherry", "Lựu", "Dâu tây", "Nho", "Lê", "Dừa", "Bưởi",
-                "Dưa hấu", "Mâm xôi", "Bơ", "Xoài", "Cà chua", "Dừa xiêm", "Dưa lưới", "Mận", "Lý chua", "Quýt",
-                "Cây lựu đỏ", "Hồng", "Đu đủ", "Ổi", "Việt quất", "Dứa hấu", "Cây dừa sen", "Cherry đỏ", "Cây dừa nước",
-                "Nho đen", "Cây dừa cạn", "Dừa xanh", "Táo xanh", "Lê Mỹ", "Bưởi da xanh", "Bưởi da đỏ", "Xoài ruột đỏ",
-                "Bưởi vàng", "Đào", "Cây hồng đỏ", "Đào mỹ", "Kiwi vàng", "Lựu năm cánh", "Cây lê trái hình bầu dục", 
-                "Bơ Fuerte", "Bơ Hass", "Bơ lụi", "Dâu", "Dâu rừng", "Dâu tây mỹ", "Cây cam vàng", "Cây cam sành",
-                "Cam quýt", "Cam chanh", "Cây dâu chứng", "Dứa cayenne", "Dứa Victoria", "Cây lựu Đài Loan", "Lựu Thái",
-                "Dưa gang", "Dưa chuột", "Dưa hấu mật ong", "Mâm xôi trái dẹt", "Mâm xôi nước", "Mâm xôi mỹ", "Bưởi mật",
-                "Xoài Cầu", "Xoài Cát", "Cà chua cherry", "Cà chua bi", "Cà chua Roma", "Cà chua đen", "Dừa macapuno",
-                "Dừa xiêm hạt dẻ", "Dừa xiêm trắng", "Dừa xiêm xanh", "Dưa lưới lạc đà", "Mận dầm", "Mận đỏ", "Lý chua ngọt",
-                "Lý chua Thái", "Quýt dẻo", "Cây lựu Anh", "Hồng xiêm", "Đu đủ hồng", "Ổi mận", "Ổi hồng", "Việt quất chín",
-                "Dứa hấu Golden", "Cây dừa vòi voi", "Dừa tươi", "Táo Fuji", "Táo Green Smith", "Kiwi hayward", "Cherry Rainier",
-                "Cây lựu đỏ khô", "Cam Caravela","Sake"
+                "Tivi", "Máy giặt", "Tủ lạnh", "Máy sấy tóc", "Quạt điện", "Bình nóng lạnh", "Máy lọc không khí", "Bếp điện từ", "Lò vi sóng",
+                "Lò nướng", "Máy xay cà phê", "Máy là", "Máy hút bụi", "Bàn ủi hơi nước", "Bàn ủi điện", "Máy sưởi dầu", "Máy sưởi hơi", 
+                "Máy lọc nước", "Đèn sưởi", "Máy làm bánh", "Máy làm kem", "Máy làm mỳ", "Đèn trang trí", "Máy chiếu phim", "Điều hòa không khí",
+                "Máy lạnh", "Quạt trần", "Máy tính xách tay", "Máy hút mùi", "Bếp điện đa năng", "Bàn phím điện tử", "Chuột máy tính",
+                "Ổ điện thông minh", "Thiết bị kết nối Wifi", "Điện thoại di động", "Máy tính bảng", "Máy in", "Máy quét", "Máy fax",
+                "Máy ảnh số", "Máy quay phim", "Máy nghe nhạc MP3", "Loa di động", "Tai nghe không dây", "Bộ sạc pin dự phòng", "Robot hút bụi", 
+                "Robot lau nhà", "Bếp từ", "Máy pha trà", "Máy sấy quần áo", "Đèn chùm", "Đèn LED", "Bình siêu tốc", "Đèn bàn",
+                "Đèn ngủ", "Máy rửa xe", "Nồi cơm điện", "Loa kéo", "Vòi hoa sen", "Đèn năng lượng mặt trời", "Quạt treo tường",
+                "Dây điện", "Quạt đứng", "Cầu dao tự động", "Đèn sự cố chống cháy nổ", "Phích cắm 3 chân", "Công tắc Schneider", "Thiết bị điện Peha",
+                "Ổ cắm Schuko", "Đèn pin", "Đèn tích điện", "Nồi áp suất điện", "Nồi nhôm Sunhouse", "Vợt muỗi", "Chảo chống dính",
+                "Cửa ABS", "Cửa căn hộ", "Cửa công nghiệp", "Bình thủy điện", "Bộ nội Ceramic", "Máy phát điện", "Bình sạc",
+                "Máy xay sinh tố", "Máy xay thịt", "Máy rửa chén", "Máy massage", "Máy rửa kính", "Máy tạo độ ẩm", "Máy khử mùi", "Máy đánh trứng",
+                "Máy phun sương", "Máy xay đá", "Máy xay hạt cả phê", "Máy nén khí", "Máy làm mứt", "Máy ép nước mía", "Máy hút chân không",
+                "Máy pha trà", "Máy đánh sữa","Máy cắt cỏ"
             };
 
             Faker<Product> fakerProduct = new Faker<Product>("vi");
@@ -234,14 +248,13 @@ namespace QLCHBanHoaQuaWF.Models
             fakerImport.RuleFor(i => i.ProviderID, f => f.PickRandom(providers).ProviderID);
             fakerImport.RuleFor(i => i.TotalPrice, f => detailImport[f.IndexFaker].TotalPrice);
             fakerImport.RuleFor(i => i.OrderDate,
-                f => f.Date.Between(new DateTime(2023, 11, 1), new DateTime(2023, 11, 30)));
+                f => f.Date.Between(new DateTime(2024,5 , 1), new DateTime(2024, 5, 30)));
             return fakerImport.Generate(count);
         }
 
         private List<DetailImportOrder> GetFakeDetailImports(int count,List<Product> products)
         {
             Faker<DetailImportOrder> fakerDetail = new Faker<DetailImportOrder>("vi");
-            fakerDetail.RuleFor(d => d.DetailOrderID, f => f.IndexFaker + 1);
             fakerDetail.RuleFor(d => d.OrderID, f => f.IndexFaker + 1);
             fakerDetail.RuleFor(d => d.Quantity, f => f.Random.Byte(100, 200));
             fakerDetail.RuleFor(d => d.ProductID, f => products[f.IndexFaker].ProductID);
@@ -259,14 +272,13 @@ namespace QLCHBanHoaQuaWF.Models
             fakerSales.RuleFor(s => s.PurchasePrice, f => detailSales[f.IndexFaker].TotalPrice);
             fakerSales.RuleFor(s => s.ChangePrice, f => 0);
             fakerSales.RuleFor(s => s.OrderDate,
-                f => f.Date.Between(new DateTime(2023, 12, 1), new DateTime(2023, 12, 31)));
+                f => f.Date.Between(new DateTime(2024, 5, 1), new DateTime(2024, 5, 30)));
             return fakerSales.Generate(count);
         }
 
         private List<DetailSalesOrder> GetFakeDetailSales(int count, List<Product> products)
         {
             Faker<DetailSalesOrder> fakerDetail = new Faker<DetailSalesOrder>("vi");
-            fakerDetail.RuleFor(d => d.DetailOrderID, f => f.IndexFaker + 1);
             fakerDetail.RuleFor(d => d.OrderID, f => f.IndexFaker + 1);
             fakerDetail.RuleFor(d => d.Quantity,f=>f.Random.Byte(50,90));
             fakerDetail.RuleFor(d => d.ProductID, f => products[f.IndexFaker].ProductID);

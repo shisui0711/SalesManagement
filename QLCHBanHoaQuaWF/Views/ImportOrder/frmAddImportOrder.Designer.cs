@@ -634,6 +634,7 @@
             this.btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
             this.btnSearch.Size = new System.Drawing.Size(41, 35);
             this.btnSearch.TabIndex = 4;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 

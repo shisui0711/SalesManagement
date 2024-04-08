@@ -39,6 +39,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -48,9 +49,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.pnlHeader = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
@@ -78,6 +79,7 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Controls.Add(this.guna2ControlBox2);
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.CustomizableEdges = customizableEdges18;
@@ -85,8 +87,19 @@
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges19;
-            this.pnlHeader.Size = new System.Drawing.Size(771, 50);
+            this.pnlHeader.Size = new System.Drawing.Size(867, 50);
             this.pnlHeader.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.lblTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(98, 23);
+            this.lblTitle.TabIndex = 6;
+            this.lblTitle.Text = "Đăng nhập";
             // 
             // guna2ControlBox2
             // 
@@ -100,7 +113,7 @@
             this.guna2ControlBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(133)))), ((int)(((byte)(205)))));
             this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(663, 8);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(759, 8);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges15;
             this.guna2ControlBox2.Size = new System.Drawing.Size(50, 35);
@@ -117,7 +130,7 @@
             this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(719, 8);
+            this.btnClose.Location = new System.Drawing.Point(815, 8);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges17;
             this.btnClose.Size = new System.Drawing.Size(47, 35);
@@ -141,7 +154,7 @@
             this.pnlBody.Location = new System.Drawing.Point(0, 50);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges13;
-            this.pnlBody.Size = new System.Drawing.Size(771, 578);
+            this.pnlBody.Size = new System.Drawing.Size(867, 578);
             this.pnlBody.TabIndex = 1;
             // 
             // pnlControl
@@ -157,7 +170,7 @@
             this.pnlControl.Controls.Add(this.txtPassword);
             this.pnlControl.Controls.Add(this.btnLogin);
             this.pnlControl.CustomizableEdges = customizableEdges8;
-            this.pnlControl.Location = new System.Drawing.Point(153, 91);
+            this.pnlControl.Location = new System.Drawing.Point(201, 91);
             this.pnlControl.Name = "pnlControl";
             this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges9;
             this.pnlControl.Size = new System.Drawing.Size(465, 396);
@@ -167,7 +180,7 @@
             // 
             this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.Image = global::QLCHBanHoaQuaWF.Properties.Resources.fruit2;
+            this.guna2CirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox1.Image")));
             this.guna2CirclePictureBox1.ImageRotate = 0F;
             this.guna2CirclePictureBox1.Location = new System.Drawing.Point(118, 23);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
@@ -305,14 +318,15 @@
             // 
             // ptbBackground
             // 
+            this.ptbBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ptbBackground.CustomizableEdges = customizableEdges10;
             this.ptbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ptbBackground.Image = global::QLCHBanHoaQuaWF.Properties.Resources.orangebg1;
+            this.ptbBackground.Image = ((System.Drawing.Image)(resources.GetObject("ptbBackground.Image")));
             this.ptbBackground.ImageRotate = 0F;
             this.ptbBackground.Location = new System.Drawing.Point(0, 0);
             this.ptbBackground.Name = "ptbBackground";
             this.ptbBackground.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            this.ptbBackground.Size = new System.Drawing.Size(771, 578);
+            this.ptbBackground.Size = new System.Drawing.Size(867, 578);
             this.ptbBackground.TabIndex = 0;
             this.ptbBackground.TabStop = false;
             // 
@@ -321,7 +335,7 @@
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 628);
+            this.ClientSize = new System.Drawing.Size(867, 628);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -331,6 +345,7 @@
             this.Text = "Quản lý cửa hàng bán hoa quả";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
             this.pnlBody.ResumeLayout(false);
             this.pnlControl.ResumeLayout(false);
             this.pnlControl.PerformLayout();
@@ -356,5 +371,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2GradientButton btnLogin;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private Label lblTitle;
     }
 }

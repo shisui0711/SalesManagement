@@ -9,6 +9,7 @@ public interface IAddSalesOrder
     public decimal TotalPrice { get; set; }
     public int EmployeeID { get; }
     public int CustomerID { get; }
+    public int Page { get; set; }
     public void AddControl(Control control);
     public void ClearControl();
     public BindingSource CustomerBindingSource { get; }
@@ -19,4 +20,6 @@ public interface IAddSalesOrder
     public event EventHandler? SearchCustomer;
     public event EventHandler? SearchProduct;
     public event EventHandler? AddSalesOrder;
+    public event EventHandler NextPage;
+    public event EventHandler PreviousPage;
 }

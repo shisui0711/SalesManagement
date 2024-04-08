@@ -31,7 +31,6 @@ namespace QLCHBanHoaQuaWF.Views.Employee
             get { return salaryTableBindingSource; }
         }
         public event EventHandler CalculateSalary;
-        public event EventHandler ExportFile;
 
         private void btnCaculate_Click(object sender, EventArgs e)
         {

@@ -149,5 +149,15 @@ namespace QLCHBanHoaQuaWF.Views.Product
         {
             AddProduct?.Invoke(sender, e);
         }
+
+        private void txtImportUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Program.DecimalPressed(sender,e);
+        }
+
+        private void txtUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Program.DecimalPressed(sender,e);
+        }
     }
 }

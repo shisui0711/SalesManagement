@@ -16,6 +16,7 @@ namespace QLCHBanHoaQuaWF.Models
         [StringLength(50)]
         public string Email { get; set; }
         [RegularExpression(@"0\d{9}", ErrorMessage = "Vui lòng nhập đúng định dạng số điện thoại")]
+        [StringLength(10)]
         public string Phone { get; set; }
         [StringLength(50)]
         public string Address { get; set; }

@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QLCHBanHoaQuaWF.Models;
 
+[Table("UserRole")]
 public class UserRole
 {
     public UserRole(int roleId, string roleName, string description, Permission permission)
@@ -21,8 +22,11 @@ public class UserRole
     [Key]
     public int RoleID { get; set; }
     [Required]
+    [StringLength(30)]
     public string RoleName { get; set; }
+    [Column(TypeName = "date")]
     public DateTime DateCreated { get; set; } = DateTime.Now;
+    [StringLength(100)]
     public string? Description { get; set; }
     public int PermissionID { get; set; }
     [ForeignKey("PermissionID")]

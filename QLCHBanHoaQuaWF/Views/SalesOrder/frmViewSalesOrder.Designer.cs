@@ -74,7 +74,6 @@
             this.employeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailSalesOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReport = new System.Windows.Forms.ToolStripMenuItem();
@@ -443,7 +442,6 @@
             // 
             this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnUpdate,
             this.btnRemove,
             this.btnDetail,
             this.btnReport});
@@ -457,20 +455,13 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(197, 108);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(196, 26);
-            this.btnUpdate.Text = "Sửa";
+            this.contextMenuStrip.Size = new System.Drawing.Size(215, 110);
             // 
             // btnRemove
             // 
             this.btnRemove.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(196, 26);
+            this.btnRemove.Size = new System.Drawing.Size(214, 26);
             this.btnRemove.Text = "Xóa";
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
@@ -478,7 +469,7 @@
             // 
             this.btnDetail.Image = global::QLCHBanHoaQuaWF.Properties.Resources._3d_magnifier;
             this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(196, 26);
+            this.btnDetail.Size = new System.Drawing.Size(214, 26);
             this.btnDetail.Text = "Chi tiết đơn hàng";
             this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
@@ -486,7 +477,7 @@
             // 
             this.btnReport.Image = global::QLCHBanHoaQuaWF.Properties.Resources.Print;
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(196, 26);
+            this.btnReport.Size = new System.Drawing.Size(214, 26);
             this.btnReport.Text = "In hóa đơn";
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
@@ -535,7 +526,6 @@
         private DataGridViewTextBoxColumn employeeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn detailSalesOrdersDataGridViewTextBoxColumn;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip contextMenuStrip;
-        private ToolStripMenuItem btnUpdate;
         private ToolStripMenuItem btnRemove;
         private ToolStripMenuItem btnDetail;
         private ToolStripMenuItem btnReport;

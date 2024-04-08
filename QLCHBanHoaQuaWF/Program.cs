@@ -39,7 +39,6 @@ namespace QLCHBanHoaQuaWF
             {
                 _host.Services.GetRequiredService(type);
             }
-
             Application.Run((Form)_host.Services.GetRequiredService<IViewLogin>());
             _host.StopAsync().GetAwaiter().GetResult();
             _host.Dispose();
@@ -101,6 +100,14 @@ namespace QLCHBanHoaQuaWF
                 services.AddSingleton<MainPresenter>();
 
             });
+        }
+
+        public static void DecimalPressed(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

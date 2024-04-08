@@ -3,12 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QLCHBanHoaQuaWF.Models
 {
+    [Table("DetailImportOrder")]
     public class DetailImportOrder
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DetailOrderID { get; set; }
-
         public int OrderID { get; set; }
         [ForeignKey("OrderID")]
         [InverseProperty("DetailImportOrders")]

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
 using QLCHBanHoaQuaWF.Models;
+using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.ImportOrder;
 using QLCHBanHoaQuaWF.Views.Product;
 using QLCHBanHoaQuaWF.Views.SalesOrder;
@@ -9,18 +10,20 @@ using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
 
 namespace QLCHBanHoaQuaWF.Presenters
 {
-    public class SalesOrderPresenter : PresenterCRUD
+    public class SalesOrderPresenter
     {
         private readonly IViewSalesOrder _viewSalesOrder;
         private readonly IAddSalesOrder _addSalesOrder;
         private readonly IReportSalesOrder _report;
         private readonly IDetailSalesOrder _detailSales;
+        private readonly IViewMain _viewMain;
         private readonly MyAppContext _context;
         private Dictionary<Product, int> productOrdered;
 
-        public SalesOrderPresenter(IViewSalesOrder viewSalesOrder, IAddSalesOrder addSalesOrder, IReportSalesOrder report, IDetailSalesOrder detailSales, MyAppContext context)
+        public SalesOrderPresenter(IViewSalesOrder viewSalesOrder, IAddSalesOrder addSalesOrder, IReportSalesOrder report, IDetailSalesOrder detailSales, IViewMain viewMain, MyAppContext context)
         {
             productOrdered = new Dictionary<Product, int>();
+            _viewMain = viewMain;
             _viewSalesOrder = viewSalesOrder;
             _addSalesOrder = addSalesOrder;
             _report = report;
@@ -39,7 +42,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             _addSalesOrder.LoadCustomer += delegate { LoadCustomer(); };
             _addSalesOrder.LoadProduct += delegate { LoadProduct(); };
             _addSalesOrder.SearchCustomer += delegate { SearchCustomer(); };
-            _addSalesOrder.SearchProduct += delegate { LoadProduct(_addSalesOrder.ProductSearchText); };
+            _addSalesOrder.SearchProduct += delegate { LoadProduct(); };
             _addSalesOrder.AddSalesOrder += delegate { Add(); };
 
             _report.LoadReport += delegate { LoadReport(); };
@@ -142,13 +145,16 @@ namespace QLCHBanHoaQuaWF.Presenters
                 MessageBox.Show("Bạn không có quyền này");
                 return;
             }
-            var form = _addSalesOrder as Form;
-            if (form != null)
+            var addSalesOrderForm = _addSalesOrder as Form;
+            var viewMain = _viewMain as Form;
+            if (viewMain != null && addSalesOrderForm != null)
             {
-                form.ShowDialog();
+                viewMain.Hide();
+                addSalesOrderForm.ShowDialog();
+                viewMain.Show();
             }
         }
-        public override void Add()
+        public void Add()
         {
             using (var transaction = _context.Database.BeginTransaction())
             {
@@ -210,12 +216,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             }
         }
 
-        public override void Update()
-        {
-
-        }
-
-        public override void Remove()
+        public void Remove()
         {
             if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteSalesOrder == false)
             {
@@ -249,7 +250,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             }
         }
 
-        public override void Search()
+        public void Search()
         {
             List<SalesOrder?> salesOrders = null;
             switch (_viewSalesOrder.OptionIndex)
@@ -280,7 +281,7 @@ namespace QLCHBanHoaQuaWF.Presenters
             }
         }
 
-        public override void Load()
+        public void Load()
         {
             _viewSalesOrder.OrderBindingSource.ResetBindings(true);
             _viewSalesOrder.OrderBindingSource.DataSource = _context.SalesOrders.Local.ToBindingList();
@@ -291,12 +292,16 @@ namespace QLCHBanHoaQuaWF.Presenters
             _addSalesOrder.CustomerBindingSource.DataSource = _context.Customers.ToList();
         }
 
-        public void LoadProduct(string? name = null)
+        public void LoadProduct()
         {
             _addSalesOrder.ClearControl();
-            if (name != null)
+            if (!string.IsNullOrEmpty(_addSalesOrder.ProductSearchText))
             {
-                foreach (var product in _context.Products.Where(p => p.ProductName.Contains(name)).ToList())
+                var products = _context.Products.Where(p => p.ProductName.Contains(_addSalesOrder.ProductSearchText))
+                    .ToList();
+                int itemsPerPage = 6;
+                int skipStep = (_addSalesOrder.Page - 1) * itemsPerPage;
+                foreach (var product in products.Skip(skipStep).Take(itemsPerPage))
                 {
                     frmProduct form = new frmProduct(product);
                     form.Clicked += OrderProduct;
@@ -307,7 +312,10 @@ namespace QLCHBanHoaQuaWF.Presenters
             }
             else
             {
-                foreach (var product in _context.Products.ToList())
+                var products = _context.Products.ToList();
+                int itemsPerPage = 6;
+                int skipStep = (_addSalesOrder.Page - 1) * itemsPerPage;
+                foreach (var product in products.Skip(skipStep).Take(itemsPerPage))
                 {
                     frmProduct form = new frmProduct(product);
                     form.Clicked += OrderProduct;

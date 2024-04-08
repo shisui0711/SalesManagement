@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QLCHBanHoaQuaWF.Models
 {
+    [Table("Product")]
     public class Product
     {
         [Key]

@@ -1,7 +1,7 @@
 ﻿namespace QLCHBanHoaQuaWF.Views
 {
     public partial class frmLogin : Form, IViewLogin
-    { 
+    {
         private bool isHiden = true;
         public string Username
         {
@@ -36,8 +36,6 @@
         {
             InitializeComponent();
         }
-
-
         private void txtPassword_IconRightClick(object sender, EventArgs e)
         {
             if (isHiden)

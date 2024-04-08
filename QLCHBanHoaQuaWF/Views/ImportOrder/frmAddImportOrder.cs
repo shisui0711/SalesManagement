@@ -169,5 +169,10 @@ namespace QLCHBanHoaQuaWF.Views.ImportOrder
 
             lblTotalPrice.Text = sum.ToString();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            SearchProduct?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

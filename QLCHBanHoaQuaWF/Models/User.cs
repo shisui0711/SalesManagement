@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QLCHBanHoaQuaWF.Models
 {
+    [Table("User")]
     public class User
     {
         public User(int employeeId, Employee employee, string email, string password, int roleId, UserRole userRole)
@@ -26,6 +27,7 @@ namespace QLCHBanHoaQuaWF.Models
         [EmailAddress]
         [StringLength(50)]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
         [MinLength(8, ErrorMessage = "Mật khẩu phải dài ít nhất 8 ký tự.")]
         public string Password { get; set; }
 

@@ -87,7 +87,7 @@
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            this.pnlTop.Size = new System.Drawing.Size(800, 47);
+            this.pnlTop.Size = new System.Drawing.Size(625, 47);
             this.pnlTop.TabIndex = 0;
             // 
             // btnClose
@@ -100,7 +100,7 @@
             this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(744, 7);
+            this.btnClose.Location = new System.Drawing.Point(569, 7);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges18;
             this.btnClose.Size = new System.Drawing.Size(44, 33);
@@ -119,6 +119,8 @@
             // 
             // pnlBody
             // 
+            this.pnlBody.AutoRoundedCorners = true;
+            this.pnlBody.BorderRadius = 212;
             this.pnlBody.Controls.Add(this.label5);
             this.pnlBody.Controls.Add(this.txtID);
             this.pnlBody.Controls.Add(this.btnExit);
@@ -136,22 +138,24 @@
             this.pnlBody.Location = new System.Drawing.Point(0, 47);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            this.pnlBody.Size = new System.Drawing.Size(800, 427);
+            this.pnlBody.Size = new System.Drawing.Size(625, 427);
             this.pnlBody.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(180, 32);
+            this.label5.Location = new System.Drawing.Point(91, 35);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 28);
+            this.label5.Size = new System.Drawing.Size(157, 28);
             this.label5.TabIndex = 20;
-            this.label5.Text = "ID";
+            this.label5.Text = "Mã khách hàng:";
             // 
             // txtID
             // 
             this.txtID.Animated = true;
+            this.txtID.AutoRoundedCorners = true;
+            this.txtID.BorderRadius = 20;
             this.txtID.CustomizableEdges = customizableEdges5;
             this.txtID.DefaultText = "";
             this.txtID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -162,7 +166,7 @@
             this.txtID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtID.Location = new System.Drawing.Point(342, 17);
+            this.txtID.Location = new System.Drawing.Point(253, 28);
             this.txtID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtID.Name = "txtID";
             this.txtID.PasswordChar = '\0';
@@ -175,7 +179,9 @@
             // 
             // btnExit
             // 
+            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnExit.BorderRadius = 22;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -187,7 +193,7 @@
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnExit.HoverState.BorderColor = System.Drawing.Color.Red;
             this.btnExit.HoverState.FillColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(456, 352);
+            this.btnExit.Location = new System.Drawing.Point(367, 355);
             this.btnExit.Name = "btnExit";
             this.btnExit.ShadowDecoration.CustomizableEdges = customizableEdges4;
             this.btnExit.Size = new System.Drawing.Size(166, 47);
@@ -197,6 +203,8 @@
             // 
             // btnUpdate
             // 
+            this.btnUpdate.AutoRoundedCorners = true;
+            this.btnUpdate.BorderRadius = 22;
             this.btnUpdate.CustomizableEdges = customizableEdges1;
             this.btnUpdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnUpdate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -204,7 +212,7 @@
             this.btnUpdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(214, 352);
+            this.btnUpdate.Location = new System.Drawing.Point(125, 355);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.btnUpdate.Size = new System.Drawing.Size(166, 47);
@@ -216,45 +224,47 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(180, 297);
+            this.label3.Location = new System.Drawing.Point(170, 291);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 28);
+            this.label3.Size = new System.Drawing.Size(78, 28);
             this.label3.TabIndex = 16;
-            this.label3.Text = "Địa chỉ";
+            this.label3.Text = "Địa chỉ:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(180, 232);
+            this.label2.Location = new System.Drawing.Point(110, 225);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 28);
+            this.label2.Size = new System.Drawing.Size(138, 28);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Số điện thoại";
+            this.label2.Text = "Số điện thoại:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(180, 79);
+            this.label4.Location = new System.Drawing.Point(87, 101);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 28);
+            this.label4.Size = new System.Drawing.Size(161, 28);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Tên";
+            this.label4.Text = "Tên khách hàng:";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(180, 150);
+            this.lblName.Location = new System.Drawing.Point(183, 159);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(60, 28);
+            this.lblName.Size = new System.Drawing.Size(65, 28);
             this.lblName.TabIndex = 14;
-            this.lblName.Text = "Email";
+            this.lblName.Text = "Email:";
             // 
             // txtAddress
             // 
             this.txtAddress.Animated = true;
+            this.txtAddress.AutoRoundedCorners = true;
+            this.txtAddress.BorderRadius = 20;
             this.txtAddress.CustomizableEdges = customizableEdges7;
             this.txtAddress.DefaultText = "";
             this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -264,7 +274,7 @@
             this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddress.Location = new System.Drawing.Point(342, 282);
+            this.txtAddress.Location = new System.Drawing.Point(253, 284);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAddress.MaxLength = 100;
             this.txtAddress.Name = "txtAddress";
@@ -278,6 +288,8 @@
             // txtPhone
             // 
             this.txtPhone.Animated = true;
+            this.txtPhone.AutoRoundedCorners = true;
+            this.txtPhone.BorderRadius = 20;
             this.txtPhone.CustomizableEdges = customizableEdges9;
             this.txtPhone.DefaultText = "";
             this.txtPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -287,7 +299,7 @@
             this.txtPhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhone.Location = new System.Drawing.Point(342, 217);
+            this.txtPhone.Location = new System.Drawing.Point(253, 218);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.MaxLength = 10;
             this.txtPhone.Name = "txtPhone";
@@ -301,6 +313,8 @@
             // txtEmail
             // 
             this.txtEmail.Animated = true;
+            this.txtEmail.AutoRoundedCorners = true;
+            this.txtEmail.BorderRadius = 20;
             this.txtEmail.CustomizableEdges = customizableEdges11;
             this.txtEmail.DefaultText = "";
             this.txtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -310,7 +324,7 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(342, 150);
+            this.txtEmail.Location = new System.Drawing.Point(253, 152);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
@@ -324,6 +338,8 @@
             // txtCustomerName
             // 
             this.txtCustomerName.Animated = true;
+            this.txtCustomerName.AutoRoundedCorners = true;
+            this.txtCustomerName.BorderRadius = 20;
             this.txtCustomerName.CustomizableEdges = customizableEdges13;
             this.txtCustomerName.DefaultText = "";
             this.txtCustomerName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -333,7 +349,7 @@
             this.txtCustomerName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCustomerName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCustomerName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCustomerName.Location = new System.Drawing.Point(342, 79);
+            this.txtCustomerName.Location = new System.Drawing.Point(253, 94);
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCustomerName.MaxLength = 50;
             this.txtCustomerName.Name = "txtCustomerName";
@@ -356,7 +372,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(800, 474);
+            this.ClientSize = new System.Drawing.Size(625, 474);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

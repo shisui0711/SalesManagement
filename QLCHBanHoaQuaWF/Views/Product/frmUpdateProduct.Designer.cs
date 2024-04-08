@@ -65,7 +65,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.txtProductName = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtID = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlButtuon = new Guna.UI2.WinForms.Guna2Panel();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
@@ -149,21 +149,21 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(130, 356);
+            this.label2.Location = new System.Drawing.Point(214, 356);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 28);
+            this.label2.Size = new System.Drawing.Size(54, 28);
             this.label2.TabIndex = 24;
-            this.label2.Text = "Ảnh";
+            this.label2.Text = "Ảnh:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(130, 208);
+            this.label1.Location = new System.Drawing.Point(150, 208);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 28);
+            this.label1.Size = new System.Drawing.Size(118, 28);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Đơn vị tính";
+            this.label1.Text = "Đơn vị tính:";
             // 
             // txtCalculationUnit
             // 
@@ -192,15 +192,17 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(130, 141);
+            this.lblName.Location = new System.Drawing.Point(219, 141);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(44, 28);
+            this.lblName.Size = new System.Drawing.Size(49, 28);
             this.lblName.TabIndex = 21;
-            this.lblName.Text = "Tên";
+            this.lblName.Text = "Tên:";
             // 
             // txtProductName
             // 
             this.txtProductName.Animated = true;
+            this.txtProductName.AutoRoundedCorners = true;
+            this.txtProductName.BorderRadius = 19;
             this.txtProductName.CustomizableEdges = customizableEdges19;
             this.txtProductName.DefaultText = "";
             this.txtProductName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -225,33 +227,35 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(130, 72);
+            this.label3.Location = new System.Drawing.Point(130, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 28);
+            this.label3.Size = new System.Drawing.Size(138, 28);
             this.label3.TabIndex = 27;
-            this.label3.Text = "ID";
+            this.label3.Text = "Mã mặt hàng:";
             // 
-            // guna2TextBox1
+            // txtID
             // 
-            this.guna2TextBox1.Animated = true;
-            this.guna2TextBox1.CustomizableEdges = customizableEdges13;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(292, 60);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            this.guna2TextBox1.Size = new System.Drawing.Size(280, 40);
-            this.guna2TextBox1.TabIndex = 0;
+            this.txtID.Animated = true;
+            this.txtID.AutoRoundedCorners = true;
+            this.txtID.BorderRadius = 19;
+            this.txtID.CustomizableEdges = customizableEdges13;
+            this.txtID.DefaultText = "";
+            this.txtID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtID.Location = new System.Drawing.Point(292, 60);
+            this.txtID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtID.Name = "txtID";
+            this.txtID.PasswordChar = '\0';
+            this.txtID.PlaceholderText = "";
+            this.txtID.SelectedText = "";
+            this.txtID.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            this.txtID.Size = new System.Drawing.Size(280, 40);
+            this.txtID.TabIndex = 0;
             // 
             // pnlButtuon
             // 
@@ -266,6 +270,9 @@
             // 
             // btnSave
             // 
+            this.btnSave.Animated = true;
+            this.btnSave.AutoRoundedCorners = true;
+            this.btnSave.BorderRadius = 22;
             this.btnSave.CustomizableEdges = customizableEdges1;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -279,10 +286,14 @@
             this.btnSave.Size = new System.Drawing.Size(166, 47);
             this.btnSave.TabIndex = 17;
             this.btnSave.Text = "Lưu";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnExit
             // 
+            this.btnExit.Animated = true;
+            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnExit.BorderRadius = 22;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -306,15 +317,17 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(130, 623);
+            this.label5.Location = new System.Drawing.Point(178, 623);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 28);
+            this.label5.Size = new System.Drawing.Size(90, 28);
             this.label5.TabIndex = 33;
-            this.label5.Text = "Ghi Chú";
+            this.label5.Text = "Ghi Chú:";
             // 
             // txtDescription
             // 
             this.txtDescription.Animated = true;
+            this.txtDescription.AutoRoundedCorners = true;
+            this.txtDescription.BorderRadius = 19;
             this.txtDescription.CustomizableEdges = customizableEdges7;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -340,15 +353,17 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(130, 565);
+            this.label4.Location = new System.Drawing.Point(182, 565);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 28);
+            this.label4.Size = new System.Drawing.Size(86, 28);
             this.label4.TabIndex = 31;
-            this.label4.Text = "Giá Bán";
+            this.label4.Text = "Giá Bán:";
             // 
             // txtUnitPrice
             // 
             this.txtUnitPrice.Animated = true;
+            this.txtUnitPrice.AutoRoundedCorners = true;
+            this.txtUnitPrice.BorderRadius = 19;
             this.txtUnitPrice.CustomizableEdges = customizableEdges9;
             this.txtUnitPrice.DefaultText = "";
             this.txtUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -368,20 +383,23 @@
             this.txtUnitPrice.ShadowDecoration.CustomizableEdges = customizableEdges10;
             this.txtUnitPrice.Size = new System.Drawing.Size(280, 40);
             this.txtUnitPrice.TabIndex = 4;
+            this.txtUnitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitPrice_KeyPress);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(130, 500);
+            this.label6.Location = new System.Drawing.Point(167, 500);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 28);
+            this.label6.Size = new System.Drawing.Size(101, 28);
             this.label6.TabIndex = 29;
-            this.label6.Text = "Giá Nhập";
+            this.label6.Text = "Giá Nhập:";
             // 
             // txtImportUnitPrice
             // 
             this.txtImportUnitPrice.Animated = true;
+            this.txtImportUnitPrice.AutoRoundedCorners = true;
+            this.txtImportUnitPrice.BorderRadius = 19;
             this.txtImportUnitPrice.CustomizableEdges = customizableEdges11;
             this.txtImportUnitPrice.DefaultText = "";
             this.txtImportUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -401,6 +419,7 @@
             this.txtImportUnitPrice.ShadowDecoration.CustomizableEdges = customizableEdges12;
             this.txtImportUnitPrice.Size = new System.Drawing.Size(280, 40);
             this.txtImportUnitPrice.TabIndex = 3;
+            this.txtImportUnitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImportUnitPrice_KeyPress);
             // 
             // frmUpdateProduct
             // 
@@ -416,7 +435,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtImportUnitPrice);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.ptbUpload);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -451,7 +470,7 @@
         private Label lblName;
         private Guna.UI2.WinForms.Guna2TextBox txtProductName;
         private Label label3;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtID;
         private Guna.UI2.WinForms.Guna2Panel pnlButtuon;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnExit;

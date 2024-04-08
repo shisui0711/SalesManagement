@@ -48,5 +48,10 @@
         {
             RemoveProduct?.Invoke(sender, e);
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            SearchProduct?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

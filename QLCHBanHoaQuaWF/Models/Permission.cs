@@ -5,6 +5,7 @@ using QLCHBanHoaQuaWF.Attributes;
 
 namespace QLCHBanHoaQuaWF.Models
 {
+    [Table("Permission")]
     public class Permission
     {
         [Key]

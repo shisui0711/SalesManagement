@@ -5,7 +5,7 @@ using System.IO;
 
 namespace QLCHBanHoaQuaWF;
 
-public static class MyExtensionMethod
+public static class MyExtensionMethods
 {
     public static void ExportToExcel(this DataGridView dataGridView, string filePath)
     {
