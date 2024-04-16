@@ -16,6 +16,5 @@ public interface IViewMain : IChangeControl
     public event EventHandler ShowUserRole;
     public event EventHandler ShowOptions;
     public event EventHandler ShowChangePassword;
-    public event EventHandler Logout;
 
 }

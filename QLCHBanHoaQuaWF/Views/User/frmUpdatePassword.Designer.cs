@@ -56,6 +56,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtRepassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
@@ -117,6 +118,7 @@
             this.pnlBody.Controls.Add(this.btnChange);
             this.pnlBody.Controls.Add(this.btnExit);
             this.pnlBody.Controls.Add(this.label1);
+            this.pnlBody.Controls.Add(this.label2);
             this.pnlBody.Controls.Add(this.lblPassword);
             this.pnlBody.Controls.Add(this.txtRepassword);
             this.pnlBody.Controls.Add(this.txtPassword);
@@ -132,7 +134,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblEmail.Location = new System.Drawing.Point(99, 16);
+            this.lblEmail.Location = new System.Drawing.Point(232, 14);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(60, 28);
             this.lblEmail.TabIndex = 27;
@@ -251,7 +253,17 @@
             this.txtPassword.Size = new System.Drawing.Size(280, 40);
             this.txtPassword.TabIndex = 21;
             // 
-            // frmChangePassword
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(161, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 28);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Email:";
+            // 
+            // frmUpdatePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -259,7 +271,7 @@
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmChangePassword";
+            this.Name = "frmUpdatePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmChangePassword";
             this.pnlHeader.ResumeLayout(false);
@@ -285,5 +297,6 @@
         private Guna.UI2.WinForms.Guna2Button btnChange;
         private Guna.UI2.WinForms.Guna2Button btnExit;
         private Label lblEmail;
+        private Label label2;
     }
 }

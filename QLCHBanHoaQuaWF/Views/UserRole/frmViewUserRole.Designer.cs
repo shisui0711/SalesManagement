@@ -88,6 +88,8 @@
             this.btnAdd.AllowDrop = true;
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Animated = true;
+            this.btnAdd.AutoRoundedCorners = true;
+            this.btnAdd.BorderRadius = 16;
             this.btnAdd.CustomizableEdges = customizableEdges1;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -149,6 +151,8 @@
             // txtSearch
             // 
             this.txtSearch.Animated = true;
+            this.txtSearch.AutoRoundedCorners = true;
+            this.txtSearch.BorderRadius = 16;
             this.txtSearch.CustomizableEdges = customizableEdges7;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -192,11 +196,12 @@
             this.dgvUserRole.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUserRole.AutoGenerateColumns = false;
             this.dgvUserRole.BackgroundColor = System.Drawing.Color.Aqua;
+            this.dgvUserRole.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUserRole.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -326,13 +331,13 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(215, 84);
+            this.contextMenuStrip.Size = new System.Drawing.Size(109, 56);
             // 
             // btnUpdate
             // 
             this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(214, 26);
+            this.btnUpdate.Size = new System.Drawing.Size(108, 26);
             this.btnUpdate.Text = "Sửa";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -340,7 +345,7 @@
             // 
             this.btnRemove.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(214, 26);
+            this.btnRemove.Size = new System.Drawing.Size(108, 26);
             this.btnRemove.Text = "Xóa";
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 

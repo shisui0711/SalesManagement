@@ -174,5 +174,10 @@ namespace QLCHBanHoaQuaWF.Views.ImportOrder
         {
             SearchProduct?.Invoke(this, EventArgs.Empty);
         }
+
+        private void btnSearchProvider_Click(object sender, EventArgs e)
+        {
+            SearchProvider?.Invoke(sender,e);
+        }
     }
 }

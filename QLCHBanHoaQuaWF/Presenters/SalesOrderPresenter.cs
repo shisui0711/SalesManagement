@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
 using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.ImportOrder;
 using QLCHBanHoaQuaWF.Views.Product;
 using QLCHBanHoaQuaWF.Views.SalesOrder;
 using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
@@ -291,40 +290,19 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             _addSalesOrder.CustomerBindingSource.DataSource = _context.Customers.ToList();
         }
-
-        public void LoadProduct()
+        protected void LoadProduct()
         {
             _addSalesOrder.ClearControl();
-            if (!string.IsNullOrEmpty(_addSalesOrder.ProductSearchText))
+            var products = _context.Products.Where(p => p.ProductName.Contains(_addSalesOrder.ProductSearchText))
+                .ToList();
+            foreach (var product in products)
             {
-                var products = _context.Products.Where(p => p.ProductName.Contains(_addSalesOrder.ProductSearchText))
-                    .ToList();
-                int itemsPerPage = 6;
-                int skipStep = (_addSalesOrder.Page - 1) * itemsPerPage;
-                foreach (var product in products.Skip(skipStep).Take(itemsPerPage))
-                {
-                    frmProduct form = new frmProduct(product);
-                    form.Clicked += OrderProduct;
-                    form.TopLevel = false;
-                    _addSalesOrder.AddControl(form);
-                    form.Show();
-                }
+                frmProduct form = new frmProduct(product);
+                form.Clicked += OrderProduct;
+                form.TopLevel = false;
+                _addSalesOrder.AddControl(form);
+                form.Show();
             }
-            else
-            {
-                var products = _context.Products.ToList();
-                int itemsPerPage = 6;
-                int skipStep = (_addSalesOrder.Page - 1) * itemsPerPage;
-                foreach (var product in products.Skip(skipStep).Take(itemsPerPage))
-                {
-                    frmProduct form = new frmProduct(product);
-                    form.Clicked += OrderProduct;
-                    form.TopLevel = false;
-                    _addSalesOrder.AddControl(form);
-                    form.Show();
-                }
-            }
-
         }
 
         public void OrderProduct(object sender, EventArgs e)
@@ -365,5 +343,7 @@ namespace QLCHBanHoaQuaWF.Presenters
                 MessageBox.Show("Không có khách hàng nào được tìm thấy", "Thông báo");
             }
         }
+
+        
     }
 }

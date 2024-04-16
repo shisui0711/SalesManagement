@@ -134,5 +134,10 @@ namespace QLCHBanHoaQuaWF.Views.ImportOrder
         {
             ShowDetail?.Invoke(sender,e);
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            RemoveImportOrder?.Invoke(sender,e);
+        }
     }
 }

@@ -436,7 +436,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private BindingSource bindingSourceCustomer;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip contextMenuStrip;
         private ToolStripMenuItem btnUpdate;
         private ToolStripMenuItem btnDelete;

@@ -58,21 +58,6 @@ public class UserRolePresenter : PresenterCRUD
         _updateUserRole.RoleID = userRoleUpdate.RoleID;
         _updateUserRole.RoleName = userRoleUpdate.RoleName;
         _updateUserRole.Description = userRoleUpdate.Description;
-        for (int i = 0; i < _updateUserRole.PermissionSelected.Items.Count; i++)
-        {
-            var property = typeof(Permission).GetProperties().Where(x =>
-            {
-                var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
-                if (displayNamAttribute != null)
-                {
-                    return displayNamAttribute.DisplayName == _updateUserRole.PermissionSelected.Items[i].ToString();
-                }
-
-                return false;
-            }).FirstOrDefault();
-            bool value = (bool)property.GetValue(userRoleUpdate.Permission);
-            _updateUserRole.PermissionSelected.SetItemChecked(i, value);
-        }
         Form form = (Form)_updateUserRole;
         if (form != null)
         {
@@ -141,23 +126,22 @@ public class UserRolePresenter : PresenterCRUD
             try
             {
                 Permission permission = _context.Permissions.Find(userRole.Permission.PermissionID);
-                foreach (var item in _updateUserRole.PermissionSelected.CheckedItems)
+                for(int i =0; i < _updateUserRole.PermissionSelected.Items.Count; i++)
                 {
                     var property = typeof(Permission).GetProperties().Where(x =>
                     {
                         var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
                         if (displayNamAttribute != null)
                         {
-                            return displayNamAttribute.DisplayName == item.ToString();
+                            return displayNamAttribute.DisplayName == _updateUserRole.PermissionSelected.Items[i].ToString();
                         }
 
                         return false;
                     }).FirstOrDefault();
                     if (property != null)
                     {
-
-                        property.SetValue(permission, true);
-
+                        bool value = _updateUserRole.PermissionSelected.GetItemChecked(i);
+                        property.SetValue(permission, value);
                     }
                 }
                 _context.SaveChanges();
@@ -248,6 +232,7 @@ public class UserRolePresenter : PresenterCRUD
 
     private void LoadUpdatePermission()
     {
+        _updateUserRole.PermissionSelected.Items.Clear();
         Permission permission = _context.UserRoles.Include(u => u.Permission)
             .Where(u => u.RoleID == _updateUserRole.RoleID).FirstOrDefault().Permission;
         {

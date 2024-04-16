@@ -168,6 +168,8 @@
             // txtCalculationUnit
             // 
             this.txtCalculationUnit.Animated = true;
+            this.txtCalculationUnit.AutoRoundedCorners = true;
+            this.txtCalculationUnit.BorderRadius = 19;
             this.txtCalculationUnit.CustomizableEdges = customizableEdges17;
             this.txtCalculationUnit.DefaultText = "";
             this.txtCalculationUnit.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

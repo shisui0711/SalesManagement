@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows.Forms.DataVisualization.Charting;
+using Guna.Charts.WinForms;
 using QLCHBanHoaQuaWF.Models;
 
 namespace QLCHBanHoaQuaWF.Views.Statistics
@@ -19,9 +20,13 @@ namespace QLCHBanHoaQuaWF.Views.Statistics
         {
             get { return topEmployeeBindingSource; }
         }
-        public Chart RevenueChart
+
+        public GunaBarDataset RevenueDataset
         {
-            get { return chartRevenue; }
+            get
+            {
+                return revenueDataSet;
+            }
         }
         public Chart ProductChart
         {
@@ -124,7 +129,6 @@ namespace QLCHBanHoaQuaWF.Views.Statistics
         }
 
         public event EventHandler LoadStatistics;
-        public event EventHandler CountAnimation;
 
         private void frmStatistics_Load(object sender, EventArgs e)
         {

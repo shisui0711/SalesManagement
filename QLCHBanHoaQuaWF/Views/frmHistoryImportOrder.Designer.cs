@@ -31,24 +31,22 @@
             this.components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeader = new Guna.UI2.WinForms.Guna2Panel();
-            this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
-            this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.btnMinimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.importOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.orderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +54,8 @@
             this.providerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.providerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailImportOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.importOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlHeader.SuspendLayout();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
@@ -74,24 +74,6 @@
             this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges14;
             this.pnlHeader.Size = new System.Drawing.Size(985, 50);
             this.pnlHeader.TabIndex = 0;
-            // 
-            // pnlBody
-            // 
-            this.pnlBody.Controls.Add(this.guna2DataGridView1);
-            this.pnlBody.CustomizableEdges = customizableEdges15;
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 50);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            this.pnlBody.Size = new System.Drawing.Size(985, 505);
-            this.pnlBody.TabIndex = 1;
-            this.pnlBody.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
-            // 
-            // dragControl
-            // 
-            this.dragControl.DockIndicatorTransparencyValue = 0.6D;
-            this.dragControl.TargetControl = this.pnlHeader;
-            this.dragControl.UseTransparentDrag = true;
             // 
             // label4
             // 
@@ -137,6 +119,18 @@
             this.btnClose.Size = new System.Drawing.Size(44, 33);
             this.btnClose.TabIndex = 24;
             // 
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.guna2DataGridView1);
+            this.pnlBody.CustomizableEdges = customizableEdges15;
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 50);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            this.pnlBody.Size = new System.Drawing.Size(985, 505);
+            this.pnlBody.TabIndex = 1;
+            this.pnlBody.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            // 
             // guna2DataGridView1
             // 
             this.guna2DataGridView1.AllowUserToAddRows = false;
@@ -152,10 +146,10 @@
             this.guna2DataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
@@ -219,10 +213,6 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
-            // importOrderBindingSource
-            // 
-            this.importOrderBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.ImportOrder);
-            // 
             // orderIDDataGridViewTextBoxColumn
             // 
             this.orderIDDataGridViewTextBoxColumn.DataPropertyName = "OrderID";
@@ -280,6 +270,16 @@
             this.detailImportOrdersDataGridViewTextBoxColumn.Name = "detailImportOrdersDataGridViewTextBoxColumn";
             this.detailImportOrdersDataGridViewTextBoxColumn.ReadOnly = true;
             this.detailImportOrdersDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // importOrderBindingSource
+            // 
+            this.importOrderBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.ImportOrder);
+            // 
+            // dragControl
+            // 
+            this.dragControl.DockIndicatorTransparencyValue = 0.6D;
+            this.dragControl.TargetControl = this.pnlHeader;
+            this.dragControl.UseTransparentDrag = true;
             // 
             // frmHistoryImportOrder
             // 

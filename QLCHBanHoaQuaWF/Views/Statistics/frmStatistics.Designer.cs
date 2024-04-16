@@ -64,10 +64,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -84,6 +80,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.Charts.WinForms.ChartFont chartFont1 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont2 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont3 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont4 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid1 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.Tick tick1 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont5 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid2 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.Tick tick2 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont6 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid3 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.PointLabel pointLabel1 = new Guna.Charts.WinForms.PointLabel();
+            Guna.Charts.WinForms.ChartFont chartFont7 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Tick tick3 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont8 = new Guna.Charts.WinForms.ChartFont();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnThisWeek = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnYesterday = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -108,7 +119,6 @@
             this.guna2TileButton3 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton2 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
-            this.chartRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartProduct = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2TileButton5 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton7 = new Guna.UI2.WinForms.Guna2TileButton();
@@ -132,9 +142,10 @@
             this.lblCountEmployee = new System.Windows.Forms.Label();
             this.lblCountProvider = new System.Windows.Forms.Label();
             this.lblCountProduct = new System.Windows.Forms.Label();
+            this.gunaChart1 = new Guna.Charts.WinForms.GunaChart();
+            this.revenueDataSet = new Guna.Charts.WinForms.GunaBarDataset();
             this.guna2Panel1.SuspendLayout();
             this.pnlOverview.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.topCustomerBindingSource)).BeginInit();
@@ -638,39 +649,19 @@
             this.guna2TileButton1.Size = new System.Drawing.Size(240, 134);
             this.guna2TileButton1.TabIndex = 0;
             // 
-            // chartRevenue
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chartRevenue.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartRevenue.Legends.Add(legend1);
-            this.chartRevenue.Location = new System.Drawing.Point(25, 244);
-            this.chartRevenue.Name = "chartRevenue";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartRevenue.Series.Add(series1);
-            this.chartRevenue.Size = new System.Drawing.Size(855, 306);
-            this.chartRevenue.TabIndex = 2;
-            this.chartRevenue.Text = "Doanh thu";
-            title1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            title1.Name = "Title1";
-            title1.Text = "Biến động doanh thu";
-            this.chartRevenue.Titles.Add(title1);
-            // 
             // chartProduct
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartProduct.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartProduct.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartProduct.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartProduct.Legends.Add(legend1);
             this.chartProduct.Location = new System.Drawing.Point(895, 244);
             this.chartProduct.Name = "chartProduct";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartProduct.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartProduct.Series.Add(series1);
             this.chartProduct.Size = new System.Drawing.Size(399, 306);
             this.chartProduct.TabIndex = 3;
             this.chartProduct.Text = "Top sản phẩm bán chạy";
@@ -1057,12 +1048,54 @@
             this.lblCountProduct.TabIndex = 17;
             this.lblCountProduct.Text = "0";
             // 
+            // gunaChart1
+            // 
+            this.gunaChart1.Datasets.AddRange(new Guna.Charts.Interfaces.IGunaDataset[] {
+            this.revenueDataSet});
+            chartFont1.FontName = "Arial";
+            this.gunaChart1.Legend.LabelFont = chartFont1;
+            this.gunaChart1.Location = new System.Drawing.Point(26, 239);
+            this.gunaChart1.Name = "gunaChart1";
+            this.gunaChart1.Size = new System.Drawing.Size(854, 295);
+            this.gunaChart1.TabIndex = 18;
+            chartFont2.FontName = "Arial";
+            chartFont2.Size = 12;
+            chartFont2.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
+            this.gunaChart1.Title.Font = chartFont2;
+            chartFont3.FontName = "Arial";
+            this.gunaChart1.Tooltips.BodyFont = chartFont3;
+            chartFont4.FontName = "Arial";
+            chartFont4.Size = 9;
+            chartFont4.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
+            this.gunaChart1.Tooltips.TitleFont = chartFont4;
+            this.gunaChart1.XAxes.GridLines = grid1;
+            chartFont5.FontName = "Arial";
+            tick1.Font = chartFont5;
+            this.gunaChart1.XAxes.Ticks = tick1;
+            this.gunaChart1.YAxes.GridLines = grid2;
+            chartFont6.FontName = "Arial";
+            tick2.Font = chartFont6;
+            this.gunaChart1.YAxes.Ticks = tick2;
+            this.gunaChart1.ZAxes.GridLines = grid3;
+            chartFont7.FontName = "Arial";
+            pointLabel1.Font = chartFont7;
+            this.gunaChart1.ZAxes.PointLabels = pointLabel1;
+            chartFont8.FontName = "Arial";
+            tick3.Font = chartFont8;
+            this.gunaChart1.ZAxes.Ticks = tick3;
+            // 
+            // revenueDataSet
+            // 
+            this.revenueDataSet.Label = "Biến động doanh thu";
+            this.revenueDataSet.TargetChart = this.gunaChart1;
+            // 
             // frmStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(1306, 736);
+            this.Controls.Add(this.gunaChart1);
             this.Controls.Add(this.lblCountProduct);
             this.Controls.Add(this.lblCountProvider);
             this.Controls.Add(this.lblCountEmployee);
@@ -1078,7 +1111,6 @@
             this.Controls.Add(this.guna2TileButton7);
             this.Controls.Add(this.guna2TileButton5);
             this.Controls.Add(this.chartProduct);
-            this.Controls.Add(this.chartRevenue);
             this.Controls.Add(this.pnlOverview);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1089,7 +1121,6 @@
             this.guna2Panel1.ResumeLayout(false);
             this.pnlOverview.ResumeLayout(false);
             this.pnlOverview.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.topCustomerBindingSource)).EndInit();
@@ -1119,7 +1150,6 @@
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton3;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton2;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartRevenue;
         private Label lblProfit;
         private Label lblRevenue;
         private Label lblSalesOrdered;
@@ -1149,5 +1179,7 @@
         private BindingSource topCustomerBindingSource;
         private Guna.UI2.WinForms.Guna2GradientButton btnYesterday;
         private Guna.UI2.WinForms.Guna2GradientButton btnThisWeek;
+        private Guna.Charts.WinForms.GunaChart gunaChart1;
+        private Guna.Charts.WinForms.GunaBarDataset revenueDataSet;
     }
 }

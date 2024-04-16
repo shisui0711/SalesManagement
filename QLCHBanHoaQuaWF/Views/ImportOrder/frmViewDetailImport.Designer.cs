@@ -47,7 +47,6 @@
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvDetailImport = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.detailOrderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -153,7 +152,6 @@
             this.dgvDetailImport.ColumnHeadersHeight = 40;
             this.dgvDetailImport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvDetailImport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.detailOrderIDDataGridViewTextBoxColumn,
             this.orderIDDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.unitPriceDataGridViewTextBoxColumn,
@@ -209,14 +207,6 @@
             this.dgvDetailImport.ThemeStyle.RowsStyle.Height = 30;
             this.dgvDetailImport.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDetailImport.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // detailOrderIDDataGridViewTextBoxColumn
-            // 
-            this.detailOrderIDDataGridViewTextBoxColumn.DataPropertyName = "DetailOrderID";
-            this.detailOrderIDDataGridViewTextBoxColumn.HeaderText = "Mã chi tiết đơn hàng";
-            this.detailOrderIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.detailOrderIDDataGridViewTextBoxColumn.Name = "detailOrderIDDataGridViewTextBoxColumn";
-            this.detailOrderIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // orderIDDataGridViewTextBoxColumn
             // 

@@ -71,5 +71,10 @@
         {
             ShowSalary?.Invoke(sender,e);
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            RemoveEmployee?.Invoke(sender,e);
+        }
     }
 }

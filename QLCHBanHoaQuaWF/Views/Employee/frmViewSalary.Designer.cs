@@ -404,7 +404,7 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvSalary;
         private Guna.UI2.WinForms.Guna2Button btnCaculate;
         private Guna.UI2.WinForms.Guna2Button btnExportFile;
-        private DataGridViewTextBoxColumn totalSoldDataGridViewTextBoxColumn;
+
         private DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn employeeNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;

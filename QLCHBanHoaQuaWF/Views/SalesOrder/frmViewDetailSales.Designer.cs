@@ -47,7 +47,6 @@
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvDetailSales = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.detailOrderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -144,18 +143,18 @@
             this.dgvDetailSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDetailSales.AutoGenerateColumns = false;
             this.dgvDetailSales.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvDetailSales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDetailSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDetailSales.ColumnHeadersHeight = 42;
             this.dgvDetailSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvDetailSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.detailOrderIDDataGridViewTextBoxColumn,
             this.orderIDDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.unitPriceDataGridViewTextBoxColumn,
@@ -211,14 +210,6 @@
             this.dgvDetailSales.ThemeStyle.RowsStyle.Height = 30;
             this.dgvDetailSales.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDetailSales.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // detailOrderIDDataGridViewTextBoxColumn
-            // 
-            this.detailOrderIDDataGridViewTextBoxColumn.DataPropertyName = "DetailOrderID";
-            this.detailOrderIDDataGridViewTextBoxColumn.HeaderText = "Mã chi tiết đơn hàng";
-            this.detailOrderIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.detailOrderIDDataGridViewTextBoxColumn.Name = "detailOrderIDDataGridViewTextBoxColumn";
-            this.detailOrderIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // orderIDDataGridViewTextBoxColumn
             // 

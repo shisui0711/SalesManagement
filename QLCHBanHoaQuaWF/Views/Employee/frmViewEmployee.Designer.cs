@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             this.dgvEmployee = new Guna.UI2.WinForms.Guna2DataGridView();
             this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,22 +85,22 @@
             this.dgvEmployee.AllowUserToAddRows = false;
             this.dgvEmployee.AllowUserToDeleteRows = false;
             this.dgvEmployee.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvEmployee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvEmployee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEmployee.AutoGenerateColumns = false;
             this.dgvEmployee.BackgroundColor = System.Drawing.Color.Aqua;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEmployee.ColumnHeadersHeight = 40;
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -115,14 +115,14 @@
             this.importOrdersDataGridViewTextBoxColumn});
             this.dgvEmployee.ContextMenuStrip = this.contextMenuStrip;
             this.dgvEmployee.DataSource = this.employeeBindingSource;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmployee.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmployee.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEmployee.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvEmployee.Location = new System.Drawing.Point(0, 0);
@@ -130,14 +130,14 @@
             this.dgvEmployee.Name = "dgvEmployee";
             this.dgvEmployee.ReadOnly = true;
             this.dgvEmployee.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEmployee.RowHeadersVisible = false;
             this.dgvEmployee.RowHeadersWidth = 100;
             this.dgvEmployee.RowTemplate.Height = 30;
@@ -257,13 +257,13 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(202, 108);
+            this.contextMenuStrip.Size = new System.Drawing.Size(215, 136);
             // 
             // btnUpdate
             // 
             this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(201, 26);
+            this.btnUpdate.Size = new System.Drawing.Size(214, 26);
             this.btnUpdate.Text = "Sửa thông tin";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -271,14 +271,15 @@
             // 
             this.btnDelete.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(201, 26);
+            this.btnDelete.Size = new System.Drawing.Size(214, 26);
             this.btnDelete.Text = "Xóa";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnPurchaseHistory
             // 
             this.btnPurchaseHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
             this.btnPurchaseHistory.Name = "btnPurchaseHistory";
-            this.btnPurchaseHistory.Size = new System.Drawing.Size(201, 26);
+            this.btnPurchaseHistory.Size = new System.Drawing.Size(214, 26);
             this.btnPurchaseHistory.Text = "Lịch sử bán hàng";
             this.btnPurchaseHistory.Click += new System.EventHandler(this.btnPurchaseHistory_Click);
             // 
@@ -286,7 +287,7 @@
             // 
             this.btnImportHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
             this.btnImportHistory.Name = "btnImportHistory";
-            this.btnImportHistory.Size = new System.Drawing.Size(201, 26);
+            this.btnImportHistory.Size = new System.Drawing.Size(214, 26);
             this.btnImportHistory.Text = "Lịch sử nhập hàng";
             this.btnImportHistory.Click += new System.EventHandler(this.btnImportHistory_Click);
             // 
@@ -297,11 +298,11 @@
             // pnlGridView
             // 
             this.pnlGridView.Controls.Add(this.dgvEmployee);
-            this.pnlGridView.CustomizableEdges = customizableEdges17;
+            this.pnlGridView.CustomizableEdges = customizableEdges1;
             this.pnlGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGridView.Location = new System.Drawing.Point(0, 65);
             this.pnlGridView.Name = "pnlGridView";
-            this.pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            this.pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.pnlGridView.Size = new System.Drawing.Size(992, 435);
             this.pnlGridView.TabIndex = 3;
             // 
@@ -311,7 +312,7 @@
             this.btnAdd.Animated = true;
             this.btnAdd.AutoRoundedCorners = true;
             this.btnAdd.BorderRadius = 16;
-            this.btnAdd.CustomizableEdges = customizableEdges19;
+            this.btnAdd.CustomizableEdges = customizableEdges3;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -321,7 +322,7 @@
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(809, 15);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            this.btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges4;
             this.btnAdd.Size = new System.Drawing.Size(171, 35);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Thêm";
@@ -333,7 +334,7 @@
             this.cboOptionSearch.BackColor = System.Drawing.Color.Transparent;
             this.cboOptionSearch.BorderRadius = 17;
             this.cboOptionSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cboOptionSearch.CustomizableEdges = customizableEdges21;
+            this.cboOptionSearch.CustomizableEdges = customizableEdges5;
             this.cboOptionSearch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboOptionSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOptionSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
@@ -352,7 +353,7 @@
             "Ngày Sinh"});
             this.cboOptionSearch.Location = new System.Drawing.Point(398, 13);
             this.cboOptionSearch.Name = "cboOptionSearch";
-            this.cboOptionSearch.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            this.cboOptionSearch.ShadowDecoration.CustomizableEdges = customizableEdges6;
             this.cboOptionSearch.Size = new System.Drawing.Size(175, 36);
             this.cboOptionSearch.StartIndex = 0;
             this.cboOptionSearch.TabIndex = 3;
@@ -362,7 +363,7 @@
             // 
             this.btnReload.Animated = true;
             this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReload.CustomizableEdges = customizableEdges23;
+            this.btnReload.CustomizableEdges = customizableEdges7;
             this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnReload.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnReload.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -374,7 +375,7 @@
             this.btnReload.ImageSize = new System.Drawing.Size(30, 30);
             this.btnReload.Location = new System.Drawing.Point(351, 15);
             this.btnReload.Name = "btnReload";
-            this.btnReload.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            this.btnReload.ShadowDecoration.CustomizableEdges = customizableEdges8;
             this.btnReload.Size = new System.Drawing.Size(41, 35);
             this.btnReload.TabIndex = 2;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
@@ -383,7 +384,7 @@
             // 
             this.btnSearch.Animated = true;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.CustomizableEdges = customizableEdges25;
+            this.btnSearch.CustomizableEdges = customizableEdges9;
             this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -395,7 +396,7 @@
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearch.Location = new System.Drawing.Point(304, 15);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            this.btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
             this.btnSearch.Size = new System.Drawing.Size(41, 35);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -405,7 +406,7 @@
             this.txtSearch.Animated = true;
             this.txtSearch.AutoRoundedCorners = true;
             this.txtSearch.BorderRadius = 16;
-            this.txtSearch.CustomizableEdges = customizableEdges27;
+            this.txtSearch.CustomizableEdges = customizableEdges11;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -420,7 +421,7 @@
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "Tìm kiếm";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            this.txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges12;
             this.txtSearch.Size = new System.Drawing.Size(286, 35);
             this.txtSearch.TabIndex = 0;
             // 
@@ -433,11 +434,11 @@
             this.pnlControl.Controls.Add(this.btnReload);
             this.pnlControl.Controls.Add(this.btnSearch);
             this.pnlControl.Controls.Add(this.txtSearch);
-            this.pnlControl.CustomizableEdges = customizableEdges31;
+            this.pnlControl.CustomizableEdges = customizableEdges15;
             this.pnlControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlControl.Location = new System.Drawing.Point(0, 0);
             this.pnlControl.Name = "pnlControl";
-            this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges16;
             this.pnlControl.Size = new System.Drawing.Size(992, 65);
             this.pnlControl.TabIndex = 2;
             // 
@@ -447,7 +448,7 @@
             this.btnSalary.Animated = true;
             this.btnSalary.AutoRoundedCorners = true;
             this.btnSalary.BorderRadius = 16;
-            this.btnSalary.CustomizableEdges = customizableEdges29;
+            this.btnSalary.CustomizableEdges = customizableEdges13;
             this.btnSalary.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSalary.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSalary.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -457,7 +458,7 @@
             this.btnSalary.ForeColor = System.Drawing.Color.White;
             this.btnSalary.Location = new System.Drawing.Point(622, 15);
             this.btnSalary.Name = "btnSalary";
-            this.btnSalary.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            this.btnSalary.ShadowDecoration.CustomizableEdges = customizableEdges14;
             this.btnSalary.Size = new System.Drawing.Size(171, 35);
             this.btnSalary.TabIndex = 4;
             this.btnSalary.Text = "Tính lương";
@@ -493,7 +494,6 @@
         private Guna.UI2.WinForms.Guna2Button btnSearch;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private BindingSource employeeBindingSource;
-        private DataGridViewTextBoxColumn shiftsDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn employeeNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;

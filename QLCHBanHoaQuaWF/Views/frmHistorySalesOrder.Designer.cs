@@ -47,7 +47,6 @@
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.salesOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.orderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchasePriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +56,7 @@
             this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailSalesOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salesOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlHeader.SuspendLayout();
             this.pnlBody.SuspendLayout();
@@ -147,10 +147,10 @@
             this.guna2DataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -215,10 +215,6 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 30;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // salesOrderBindingSource
-            // 
-            this.salesOrderBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.SalesOrder);
             // 
             // orderIDDataGridViewTextBoxColumn
             // 
@@ -296,6 +292,10 @@
             this.detailSalesOrdersDataGridViewTextBoxColumn.Name = "detailSalesOrdersDataGridViewTextBoxColumn";
             this.detailSalesOrdersDataGridViewTextBoxColumn.ReadOnly = true;
             this.detailSalesOrdersDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // salesOrderBindingSource
+            // 
+            this.salesOrderBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.SalesOrder);
             // 
             // dragControl
             // 

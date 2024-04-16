@@ -23,7 +23,6 @@ namespace QLCHBanHoaQuaWF.Views
         public event EventHandler ShowUserRole;
         public event EventHandler ShowOptions;
         public event EventHandler? ShowChangePassword;
-        public event EventHandler? Logout;
         private bool IsLogout;
         public frmMain()
         {

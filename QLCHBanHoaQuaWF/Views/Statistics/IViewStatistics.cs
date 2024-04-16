@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms.DataVisualization.Charting;
+using Guna.Charts.WinForms;
 using QLCHBanHoaQuaWF.Models;
 
 namespace QLCHBanHoaQuaWF.Views.Statistics;
@@ -7,7 +8,7 @@ public interface IViewStatistics
 {
     public BindingSource TopCustomerBindingSource { get; }
     public BindingSource TopEmployeeBindingSource { get; }
-    public Chart RevenueChart { get; }
+    public GunaBarDataset RevenueDataset { get; }
     public Chart ProductChart { get; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }

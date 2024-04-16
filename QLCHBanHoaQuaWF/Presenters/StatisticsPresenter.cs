@@ -1,6 +1,7 @@
 ﻿using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views.Statistics;
 using System.Globalization;
+using Guna.Charts.WinForms;
 using Timer = System.Windows.Forms.Timer;
 
 namespace QLCHBanHoaQuaWF.Presenters;
@@ -129,10 +130,11 @@ public class StatisticsPresenter
                 Key = g.Key,
                 Value = g.Sum(x => x.TotalPrice)
             }).ToList();
+        List<RevenueByDate> DataSource = null;
         //Nhóm theo giờ
         if (days <= 1)
         {
-            _viewStatistics.RevenueChart.DataSource = (from o in orderFullTime
+            DataSource = (from o in orderFullTime
                                        group o by o.Key.ToString("hh tt") into g
                                        select new RevenueByDate
                                        {
@@ -144,7 +146,7 @@ public class StatisticsPresenter
         else if (days <= 30)
         {
             var orderFullTime_Change = orderFullTime.ConvertAll(x => new { Key = x.Key.ToString("dd MMM"), Value = x.Value });
-            _viewStatistics.RevenueChart.DataSource = (from o in orderFullTime_Change
+            DataSource = (from o in orderFullTime_Change
                                        group o by o.Key into g
                                        select new RevenueByDate
                                        {
@@ -155,7 +157,7 @@ public class StatisticsPresenter
         //nhóm theo tuần
         else if (days <= 92)
         {
-            _viewStatistics.RevenueChart.DataSource = (from o in orderFullTime
+            DataSource = (from o in orderFullTime
                                        group o by CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
                                          o.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) into g
                                        select new RevenueByDate
@@ -168,7 +170,7 @@ public class StatisticsPresenter
         else if (days <= (365 * 2))
         {
             bool isYear = days <= 365 ? true : false;
-            _viewStatistics.RevenueChart.DataSource = (from o in orderFullTime
+            DataSource = (from o in orderFullTime
                                        group o by o.Key.ToString("MMM yyyy") into g
                                        select new RevenueByDate
                                        {
@@ -179,7 +181,7 @@ public class StatisticsPresenter
         //nhóm theo năm
         else
         {
-            _viewStatistics.RevenueChart.DataSource = (from o in orderFullTime
+            DataSource = (from o in orderFullTime
                                        group o by o.Key.ToString("yyyy") into g
                                        select new RevenueByDate
                                        {
@@ -187,9 +189,11 @@ public class StatisticsPresenter
                                            TotalAmount = g.Sum(o => o.Value)
                                        }).ToList();
         }
-        _viewStatistics.RevenueChart.Series[0].XValueMember = "Date";
-        _viewStatistics.RevenueChart.Series[0].YValueMembers = "TotalAmount";
-        _viewStatistics.RevenueChart.Series[0].Name = "Doanh thu";
-        _viewStatistics.RevenueChart.DataBind();
+
+        List<LPoint> lPoints = DataSource.ConvertAll(x =>
+        {
+            return new LPoint(x.Date,(double)x.TotalAmount);
+        });
+        _viewStatistics.RevenueDataset.DataPoints.AddRange(lPoints);
     }
 }

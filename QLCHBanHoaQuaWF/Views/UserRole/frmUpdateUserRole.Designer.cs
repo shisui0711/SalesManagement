@@ -225,7 +225,7 @@
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.Cyan;
             this.guna2GroupBox1.CustomizableEdges = customizableEdges7;
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 187);
             this.guna2GroupBox1.Name = "guna2GroupBox1";

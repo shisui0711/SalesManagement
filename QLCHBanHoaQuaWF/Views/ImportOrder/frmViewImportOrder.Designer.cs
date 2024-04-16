@@ -107,6 +107,8 @@
             // 
             // dtpEnd
             // 
+            this.dtpEnd.AutoRoundedCorners = true;
+            this.dtpEnd.BorderRadius = 21;
             this.dtpEnd.Checked = true;
             this.dtpEnd.CustomizableEdges = customizableEdges1;
             this.dtpEnd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -123,6 +125,8 @@
             // 
             // dtpStart
             // 
+            this.dtpStart.AutoRoundedCorners = true;
+            this.dtpStart.BorderRadius = 21;
             this.dtpStart.Checked = true;
             this.dtpStart.CustomizableEdges = customizableEdges3;
             this.dtpStart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -139,7 +143,9 @@
             // 
             // cboDateCreated
             // 
+            this.cboDateCreated.AutoRoundedCorners = true;
             this.cboDateCreated.BackColor = System.Drawing.Color.Transparent;
+            this.cboDateCreated.BorderRadius = 17;
             this.cboDateCreated.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboDateCreated.CustomizableEdges = customizableEdges5;
             this.cboDateCreated.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -171,6 +177,8 @@
             // 
             this.btnExportFile.AllowDrop = true;
             this.btnExportFile.Animated = true;
+            this.btnExportFile.AutoRoundedCorners = true;
+            this.btnExportFile.BorderRadius = 22;
             this.btnExportFile.CustomizableEdges = customizableEdges7;
             this.btnExportFile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnExportFile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -189,7 +197,9 @@
             // 
             // cboOptionSearch
             // 
+            this.cboOptionSearch.AutoRoundedCorners = true;
             this.cboOptionSearch.BackColor = System.Drawing.Color.Transparent;
+            this.cboOptionSearch.BorderRadius = 17;
             this.cboOptionSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboOptionSearch.CustomizableEdges = customizableEdges9;
             this.cboOptionSearch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -217,6 +227,8 @@
             this.btnAdd.AllowDrop = true;
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Animated = true;
+            this.btnAdd.AutoRoundedCorners = true;
+            this.btnAdd.BorderRadius = 21;
             this.btnAdd.CustomizableEdges = customizableEdges11;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -278,6 +290,8 @@
             // txtSearch
             // 
             this.txtSearch.Animated = true;
+            this.txtSearch.AutoRoundedCorners = true;
+            this.txtSearch.BorderRadius = 16;
             this.txtSearch.CustomizableEdges = customizableEdges17;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -457,27 +471,28 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(197, 108);
+            this.contextMenuStrip.Size = new System.Drawing.Size(215, 136);
             // 
             // btnUpdate
             // 
             this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(196, 26);
+            this.btnUpdate.Size = new System.Drawing.Size(214, 26);
             this.btnUpdate.Text = "Sửa";
             // 
             // btnRemove
             // 
             this.btnRemove.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(196, 26);
+            this.btnRemove.Size = new System.Drawing.Size(214, 26);
             this.btnRemove.Text = "Xóa";
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnDetail
             // 
             this.btnDetail.Image = global::QLCHBanHoaQuaWF.Properties.Resources._3d_magnifier;
             this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(196, 26);
+            this.btnDetail.Size = new System.Drawing.Size(214, 26);
             this.btnDetail.Text = "Chi tiết đơn hàng";
             this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
@@ -485,7 +500,7 @@
             // 
             this.btnPrint.Image = global::QLCHBanHoaQuaWF.Properties.Resources.Print;
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(196, 26);
+            this.btnPrint.Size = new System.Drawing.Size(214, 26);
             this.btnPrint.Text = "In hóa đơn";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 

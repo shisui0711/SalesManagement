@@ -59,12 +59,6 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
             get { return int.Parse(lsbCustomer.SelectedValue!.ToString() ?? throw new InvalidOperationException()); }
         }
 
-        public int Page
-        {
-            get { return int.Parse(lblPage.Text);}
-            set { lblPage.Text = value.ToString(); }
-        }
-
         public BindingSource CustomerBindingSource
         {
             get { return customerBindingSource; }
@@ -93,8 +87,6 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
         public event EventHandler? SearchCustomer;
         public event EventHandler? SearchProduct;
         public event EventHandler? AddSalesOrder;
-        public event EventHandler NextPage;
-        public event EventHandler PreviousPage;
 
         private void frmAddSalesOrder_Load(object sender, EventArgs e)
         {
@@ -239,16 +231,6 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
             }
 
             lblTotalPrice.Text = sum.ToString();
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            NextPage?.Invoke(sender,e);
-        }
-
-        private void btnPrevios_Click(object sender, EventArgs e)
-        {
-            PreviousPage?.Invoke(sender,e);
         }
     }
 }
