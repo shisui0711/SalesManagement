@@ -117,6 +117,7 @@
             // 
             // pnlBody
             // 
+            this.pnlBody.BorderRadius = 5;
             this.pnlBody.Controls.Add(this.label4);
             this.pnlBody.Controls.Add(this.txtProviderID);
             this.pnlBody.Controls.Add(this.btnSave);
@@ -150,8 +151,7 @@
             // txtProviderID
             // 
             this.txtProviderID.Animated = true;
-            this.txtProviderID.AutoRoundedCorners = true;
-            this.txtProviderID.BorderRadius = 19;
+            this.txtProviderID.BorderRadius = 5;
             this.txtProviderID.CustomizableEdges = customizableEdges1;
             this.txtProviderID.DefaultText = "";
             this.txtProviderID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -173,8 +173,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.AutoRoundedCorners = true;
-            this.btnSave.BorderRadius = 22;
+            this.btnSave.BorderRadius = 5;
             this.btnSave.CustomizableEdges = customizableEdges3;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -192,9 +191,8 @@
             // 
             // btnExit
             // 
-            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnExit.BorderRadius = 22;
+            this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges5;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -228,8 +226,7 @@
             // txtAddress
             // 
             this.txtAddress.Animated = true;
-            this.txtAddress.AutoRoundedCorners = true;
-            this.txtAddress.BorderRadius = 19;
+            this.txtAddress.BorderRadius = 5;
             this.txtAddress.CustomizableEdges = customizableEdges7;
             this.txtAddress.DefaultText = "";
             this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -262,8 +259,7 @@
             // txtPhone
             // 
             this.txtPhone.Animated = true;
-            this.txtPhone.AutoRoundedCorners = true;
-            this.txtPhone.BorderRadius = 19;
+            this.txtPhone.BorderRadius = 5;
             this.txtPhone.CustomizableEdges = customizableEdges9;
             this.txtPhone.DefaultText = "";
             this.txtPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -296,8 +292,7 @@
             // txtEmail
             // 
             this.txtEmail.Animated = true;
-            this.txtEmail.AutoRoundedCorners = true;
-            this.txtEmail.BorderRadius = 19;
+            this.txtEmail.BorderRadius = 5;
             this.txtEmail.CustomizableEdges = customizableEdges11;
             this.txtEmail.DefaultText = "";
             this.txtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -330,8 +325,7 @@
             // txtProviderName
             // 
             this.txtProviderName.Animated = true;
-            this.txtProviderName.AutoRoundedCorners = true;
-            this.txtProviderName.BorderRadius = 19;
+            this.txtProviderName.BorderRadius = 5;
             this.txtProviderName.CustomizableEdges = customizableEdges13;
             this.txtProviderName.DefaultText = "";
             this.txtProviderName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

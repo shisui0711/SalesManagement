@@ -58,14 +58,30 @@ namespace QLCHBanHoaQuaWF.Views.Product
             set { txtCalculationUnit.Text = value; }
         }
         public byte[] ImageData { get; private set; }
-        public decimal ImportUnitPrice
+        public decimal? ImportUnitPrice
         {
-            get { return decimal.Parse(txtImportUnitPrice.Text); }
+            get { try
+                {
+                    return decimal.Parse(txtImportUnitPrice.Text);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
             set { txtCalculationUnit.Text = value.ToString(); }
         }
-        public decimal UnitPrice
+        public decimal? UnitPrice
         {
-            get { return decimal.Parse(txtUnitPrice.Text); }
+            get { try
+                {
+                    return decimal.Parse(txtUnitPrice.Text);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
             set { txtUnitPrice.Text = value.ToString(); }
         }
         public string Description

@@ -106,8 +106,7 @@
             // 
             // dtpEnd
             // 
-            this.dtpEnd.AutoRoundedCorners = true;
-            this.dtpEnd.BorderRadius = 21;
+            this.dtpEnd.BorderRadius = 5;
             this.dtpEnd.Checked = true;
             this.dtpEnd.CustomizableEdges = customizableEdges1;
             this.dtpEnd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -124,8 +123,7 @@
             // 
             // dtpStart
             // 
-            this.dtpStart.AutoRoundedCorners = true;
-            this.dtpStart.BorderRadius = 21;
+            this.dtpStart.BorderRadius = 5;
             this.dtpStart.Checked = true;
             this.dtpStart.CustomizableEdges = customizableEdges3;
             this.dtpStart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -142,9 +140,8 @@
             // 
             // cboDateCreated
             // 
-            this.cboDateCreated.AutoRoundedCorners = true;
             this.cboDateCreated.BackColor = System.Drawing.Color.Transparent;
-            this.cboDateCreated.BorderRadius = 17;
+            this.cboDateCreated.BorderRadius = 5;
             this.cboDateCreated.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboDateCreated.CustomizableEdges = customizableEdges5;
             this.cboDateCreated.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -176,8 +173,7 @@
             // 
             this.btnExportFile.AllowDrop = true;
             this.btnExportFile.Animated = true;
-            this.btnExportFile.AutoRoundedCorners = true;
-            this.btnExportFile.BorderRadius = 22;
+            this.btnExportFile.BorderRadius = 5;
             this.btnExportFile.CustomizableEdges = customizableEdges7;
             this.btnExportFile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnExportFile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -196,9 +192,8 @@
             // 
             // cboOptionSearch
             // 
-            this.cboOptionSearch.AutoRoundedCorners = true;
             this.cboOptionSearch.BackColor = System.Drawing.Color.Transparent;
-            this.cboOptionSearch.BorderRadius = 17;
+            this.cboOptionSearch.BorderRadius = 5;
             this.cboOptionSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboOptionSearch.CustomizableEdges = customizableEdges9;
             this.cboOptionSearch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -226,8 +221,7 @@
             this.btnAdd.AllowDrop = true;
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Animated = true;
-            this.btnAdd.AutoRoundedCorners = true;
-            this.btnAdd.BorderRadius = 21;
+            this.btnAdd.BorderRadius = 5;
             this.btnAdd.CustomizableEdges = customizableEdges11;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -247,6 +241,7 @@
             // btnReload
             // 
             this.btnReload.Animated = true;
+            this.btnReload.BorderRadius = 5;
             this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReload.CustomizableEdges = customizableEdges13;
             this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -268,6 +263,7 @@
             // btnSearch
             // 
             this.btnSearch.Animated = true;
+            this.btnSearch.BorderRadius = 5;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.CustomizableEdges = customizableEdges15;
             this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -289,8 +285,7 @@
             // txtSearch
             // 
             this.txtSearch.Animated = true;
-            this.txtSearch.AutoRoundedCorners = true;
-            this.txtSearch.BorderRadius = 16;
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.CustomizableEdges = customizableEdges17;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -334,7 +329,6 @@
             this.dgvSalesOrder.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSalesOrder.AutoGenerateColumns = false;
             this.dgvSalesOrder.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvSalesOrder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

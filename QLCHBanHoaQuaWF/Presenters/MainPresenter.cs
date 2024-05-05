@@ -10,7 +10,6 @@ using QLCHBanHoaQuaWF.Views.User;
 using QLCHBanHoaQuaWF.Views.UserRole;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using DevExpress.XtraEditors.Senders;
 using QLCHBanHoaQuaWF.Attributes;
 using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views.Statistics;

@@ -28,18 +28,18 @@ public class StatisticsPresenter
 
     private void LoadCount()
     {
-        _viewStatistics.CountCustomer = _context.Customers.Count();
-        _viewStatistics.CountEmployee = _context.Employees.Count();
-        _viewStatistics.CountProvider = _context.Providers.Count();
-        _viewStatistics.CountProduct = _context.Products.Count();
+        _viewStatistics.CountCustomer = _context.Customers.ToList().Count();
+        _viewStatistics.CountEmployee = _context.Employees.ToList().Count();
+        _viewStatistics.CountProvider = _context.Providers.ToList().Count();
+        _viewStatistics.CountProduct = _context.Products.ToList().Count();
         List<SalesOrder> salesOrders = _context.SalesOrders.Where(s =>
             s.OrderDate >= _viewStatistics.StartDate && s.OrderDate <= _viewStatistics.EndDate).ToList();
         List<ImportOrder> importOrders = _context.ImportOrders
             .Where(i => i.OrderDate >= _viewStatistics.StartDate && i.OrderDate <= _viewStatistics.EndDate).ToList();
-        _viewStatistics.SalesOrdered = salesOrders.Count();
-        _viewStatistics.ImportOrdered = importOrders.Count();
-        _viewStatistics.Revenue = salesOrders.Sum(x => x.TotalPrice);
-        _viewStatistics.Profit = _viewStatistics.Revenue - importOrders.Sum(x => x.TotalPrice);
+        _viewStatistics.SalesOrdered = salesOrders.ToList().Count();
+        _viewStatistics.ImportOrdered = importOrders.ToList().Count();
+        _viewStatistics.Revenue = salesOrders.ToList().Sum(x => x.TotalPrice);
+        _viewStatistics.Profit = _viewStatistics.Revenue - importOrders.ToList().Sum(x => x.TotalPrice);
         _viewStatistics.Profit = _viewStatistics.Profit >= 0 ? _viewStatistics.Profit : 0;
     }
     private void LoadTopEmployee()
@@ -194,6 +194,7 @@ public class StatisticsPresenter
         {
             return new LPoint(x.Date,(double)x.TotalAmount);
         });
+        _viewStatistics.RevenueDataset.DataPoints.Clear();
         _viewStatistics.RevenueDataset.DataPoints.AddRange(lPoints);
     }
 }

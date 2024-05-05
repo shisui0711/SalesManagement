@@ -108,7 +108,7 @@
             this.lblTitile.Name = "lblTitile";
             this.lblTitile.Size = new System.Drawing.Size(137, 23);
             this.lblTitile.TabIndex = 16;
-            this.lblTitile.Text = "Thêm sản phẩm";
+            this.lblTitile.Text = "Thêm mặt hàng";
             // 
             // btnClose
             // 
@@ -130,6 +130,7 @@
             // 
             this.pnlBody.AllowDrop = true;
             this.pnlBody.AutoScroll = true;
+            this.pnlBody.BorderRadius = 5;
             this.pnlBody.Controls.Add(this.pnlButtuon);
             this.pnlBody.Controls.Add(this.ptbUpload);
             this.pnlBody.Controls.Add(this.label5);
@@ -165,8 +166,7 @@
             // btnAdd
             // 
             this.btnAdd.Animated = true;
-            this.btnAdd.AutoRoundedCorners = true;
-            this.btnAdd.BorderRadius = 22;
+            this.btnAdd.BorderRadius = 5;
             this.btnAdd.CustomizableEdges = customizableEdges1;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -185,9 +185,8 @@
             // btnExit
             // 
             this.btnExit.Animated = true;
-            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnExit.BorderRadius = 22;
+            this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -211,6 +210,7 @@
             // ptbUpload
             // 
             this.ptbUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.ptbUpload.BorderRadius = 5;
             this.ptbUpload.CustomizableEdges = customizableEdges7;
             this.ptbUpload.Image = global::QLCHBanHoaQuaWF.Properties.Resources.upload;
             this.ptbUpload.ImageRotate = 0F;
@@ -238,8 +238,7 @@
             // txtDescription
             // 
             this.txtDescription.Animated = true;
-            this.txtDescription.AutoRoundedCorners = true;
-            this.txtDescription.BorderRadius = 19;
+            this.txtDescription.BorderRadius = 5;
             this.txtDescription.CustomizableEdges = customizableEdges9;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -274,8 +273,7 @@
             // txtUnitPrice
             // 
             this.txtUnitPrice.Animated = true;
-            this.txtUnitPrice.AutoRoundedCorners = true;
-            this.txtUnitPrice.BorderRadius = 19;
+            this.txtUnitPrice.BorderRadius = 5;
             this.txtUnitPrice.CustomizableEdges = customizableEdges11;
             this.txtUnitPrice.DefaultText = "";
             this.txtUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -310,8 +308,7 @@
             // txtImportUnitPrice
             // 
             this.txtImportUnitPrice.Animated = true;
-            this.txtImportUnitPrice.AutoRoundedCorners = true;
-            this.txtImportUnitPrice.BorderRadius = 19;
+            this.txtImportUnitPrice.BorderRadius = 5;
             this.txtImportUnitPrice.CustomizableEdges = customizableEdges13;
             this.txtImportUnitPrice.DefaultText = "";
             this.txtImportUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -356,8 +353,7 @@
             // txtCalculationUnit
             // 
             this.txtCalculationUnit.Animated = true;
-            this.txtCalculationUnit.AutoRoundedCorners = true;
-            this.txtCalculationUnit.BorderRadius = 19;
+            this.txtCalculationUnit.BorderRadius = 5;
             this.txtCalculationUnit.CustomizableEdges = customizableEdges15;
             this.txtCalculationUnit.DefaultText = "";
             this.txtCalculationUnit.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -391,8 +387,7 @@
             // txtProductName
             // 
             this.txtProductName.Animated = true;
-            this.txtProductName.AutoRoundedCorners = true;
-            this.txtProductName.BorderRadius = 19;
+            this.txtProductName.BorderRadius = 5;
             this.txtProductName.CustomizableEdges = customizableEdges17;
             this.txtProductName.DefaultText = "";
             this.txtProductName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

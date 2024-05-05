@@ -66,7 +66,7 @@ public class ProductPresenter : PresenterCRUD
 
         if (_updateProduct.GetType().IsAssignableTo(typeof(Form)))
         {
-            var form = _addProduct as Form;
+            var form = _updateProduct as Form;
             form.ShowDialog();
         }
     }
@@ -87,6 +87,7 @@ public class ProductPresenter : PresenterCRUD
         _context.Products.Add(product);
         _context.SaveChanges();
         _viewProduct.ProductBindingSource.EndEdit();
+        MessageBox.Show("Thêm thành công");
     }
 
     public override void Update()
@@ -94,11 +95,11 @@ public class ProductPresenter : PresenterCRUD
         Product product = new Product();
         product.ProductID = _updateProduct.ProductID;
         product.ProductName = _updateProduct.ProductName;
-        product.CalculationUnit = _addProduct.CalculationUnit;
-        product.ImageData = _addProduct.ImageData;
-        product.ImportUnitPrice = _addProduct.ImportUnitPrice;
-        product.UnitPrice = _addProduct.UnitPrice;
-        product.Description = _addProduct.Description;
+        product.CalculationUnit = _updateProduct.CalculationUnit;
+        product.ImageData = _updateProduct.ImageData;
+        product.ImportUnitPrice = _updateProduct.ImportUnitPrice;
+        product.UnitPrice = _updateProduct.UnitPrice;
+        product.Description = _updateProduct.Description;
         if (!IsValid(product, _updateProduct))
         {
             return;
@@ -108,7 +109,7 @@ public class ProductPresenter : PresenterCRUD
         _context.Entry(productExist).CurrentValues.SetValues(product);
         _context.SaveChanges();
         _viewProduct.ProductBindingSource.EndEdit();
-
+        MessageBox.Show("Cập nhật thành cộng");
     }
 
     public override void Remove()
@@ -137,10 +138,12 @@ public class ProductPresenter : PresenterCRUD
                 _context.SaveChanges();
                 transaction.Commit();
                 _viewProduct.ProductBindingSource.Remove(deleted);
+                MessageBox.Show("Xóa thành công");
             }
             catch (Exception e)
             {
                 transaction.Rollback();
+                MessageBox.Show($"Xóa thất bại: {e.Message}");
             }
         }
     }

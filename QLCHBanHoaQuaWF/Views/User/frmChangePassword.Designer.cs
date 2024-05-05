@@ -134,8 +134,7 @@
             // txtEmail
             // 
             this.txtEmail.Animated = true;
-            this.txtEmail.AutoRoundedCorners = true;
-            this.txtEmail.BorderRadius = 19;
+            this.txtEmail.BorderRadius = 5;
             this.txtEmail.CustomizableEdges = customizableEdges1;
             this.txtEmail.DefaultText = "";
             this.txtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -169,8 +168,7 @@
             // txtOldPassword
             // 
             this.txtOldPassword.Animated = true;
-            this.txtOldPassword.AutoRoundedCorners = true;
-            this.txtOldPassword.BorderRadius = 19;
+            this.txtOldPassword.BorderRadius = 5;
             this.txtOldPassword.CustomizableEdges = customizableEdges3;
             this.txtOldPassword.DefaultText = "";
             this.txtOldPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -202,8 +200,8 @@
             // 
             // btnChange
             // 
-            this.btnChange.AutoRoundedCorners = true;
-            this.btnChange.BorderRadius = 22;
+            this.btnChange.Animated = true;
+            this.btnChange.BorderRadius = 5;
             this.btnChange.CustomizableEdges = customizableEdges5;
             this.btnChange.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnChange.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -221,9 +219,9 @@
             // 
             // btnExit
             // 
-            this.btnExit.AutoRoundedCorners = true;
+            this.btnExit.Animated = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnExit.BorderRadius = 22;
+            this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges7;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -267,8 +265,7 @@
             // txtRepassword
             // 
             this.txtRepassword.Animated = true;
-            this.txtRepassword.AutoRoundedCorners = true;
-            this.txtRepassword.BorderRadius = 19;
+            this.txtRepassword.BorderRadius = 5;
             this.txtRepassword.CustomizableEdges = customizableEdges9;
             this.txtRepassword.DefaultText = "";
             this.txtRepassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -291,8 +288,7 @@
             // txtNewPassword
             // 
             this.txtNewPassword.Animated = true;
-            this.txtNewPassword.AutoRoundedCorners = true;
-            this.txtNewPassword.BorderRadius = 19;
+            this.txtNewPassword.BorderRadius = 5;
             this.txtNewPassword.CustomizableEdges = customizableEdges11;
             this.txtNewPassword.DefaultText = "";
             this.txtNewPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

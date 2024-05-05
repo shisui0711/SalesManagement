@@ -53,10 +53,10 @@
             this.btnChange = new Guna.UI2.WinForms.Guna2Button();
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtRepassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
@@ -143,8 +143,8 @@
             // 
             // btnChange
             // 
-            this.btnChange.AutoRoundedCorners = true;
-            this.btnChange.BorderRadius = 22;
+            this.btnChange.Animated = true;
+            this.btnChange.BorderRadius = 5;
             this.btnChange.CustomizableEdges = customizableEdges1;
             this.btnChange.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnChange.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -162,9 +162,9 @@
             // 
             // btnExit
             // 
-            this.btnExit.AutoRoundedCorners = true;
+            this.btnExit.Animated = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnExit.BorderRadius = 22;
+            this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -195,6 +195,16 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "Nhập lại mật khẩu:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(161, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 28);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Email:";
+            // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
@@ -208,8 +218,7 @@
             // txtRepassword
             // 
             this.txtRepassword.Animated = true;
-            this.txtRepassword.AutoRoundedCorners = true;
-            this.txtRepassword.BorderRadius = 19;
+            this.txtRepassword.BorderRadius = 5;
             this.txtRepassword.CustomizableEdges = customizableEdges5;
             this.txtRepassword.DefaultText = "";
             this.txtRepassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -232,8 +241,7 @@
             // txtPassword
             // 
             this.txtPassword.Animated = true;
-            this.txtPassword.AutoRoundedCorners = true;
-            this.txtPassword.BorderRadius = 19;
+            this.txtPassword.BorderRadius = 5;
             this.txtPassword.CustomizableEdges = customizableEdges7;
             this.txtPassword.DefaultText = "";
             this.txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -252,16 +260,6 @@
             this.txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges8;
             this.txtPassword.Size = new System.Drawing.Size(280, 40);
             this.txtPassword.TabIndex = 21;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(161, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 28);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Email:";
             // 
             // frmUpdatePassword
             // 

@@ -134,8 +134,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.AutoRoundedCorners = true;
-            this.btnAdd.BorderRadius = 22;
+            this.btnAdd.BorderRadius = 5;
             this.btnAdd.CustomizableEdges = customizableEdges1;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -143,7 +142,7 @@
             this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(155, 322);
+            this.btnAdd.Location = new System.Drawing.Point(174, 322);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.btnAdd.Size = new System.Drawing.Size(166, 47);
@@ -153,9 +152,8 @@
             // 
             // btnExit
             // 
-            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnExit.BorderRadius = 22;
+            this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -168,7 +166,7 @@
             this.btnExit.HoverState.BorderColor = System.Drawing.Color.Red;
             this.btnExit.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnExit.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(396, 322);
+            this.btnExit.Location = new System.Drawing.Point(374, 322);
             this.btnExit.Name = "btnExit";
             this.btnExit.ShadowDecoration.CustomizableEdges = customizableEdges4;
             this.btnExit.Size = new System.Drawing.Size(166, 47);
@@ -180,17 +178,16 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(117, 263);
+            this.label3.Location = new System.Drawing.Point(186, 257);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 28);
+            this.label3.Size = new System.Drawing.Size(78, 28);
             this.label3.TabIndex = 14;
-            this.label3.Text = "Địa chỉ";
+            this.label3.Text = "Địa chỉ:";
             // 
             // txtAddress
             // 
             this.txtAddress.Animated = true;
-            this.txtAddress.AutoRoundedCorners = true;
-            this.txtAddress.BorderRadius = 19;
+            this.txtAddress.BorderRadius = 5;
             this.txtAddress.CustomizableEdges = customizableEdges5;
             this.txtAddress.DefaultText = "";
             this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -215,17 +212,16 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(117, 194);
+            this.label2.Location = new System.Drawing.Point(126, 188);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 28);
+            this.label2.Size = new System.Drawing.Size(138, 28);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Số điện thoại";
+            this.label2.Text = "Số điện thoại:";
             // 
             // txtPhone
             // 
             this.txtPhone.Animated = true;
-            this.txtPhone.AutoRoundedCorners = true;
-            this.txtPhone.BorderRadius = 19;
+            this.txtPhone.BorderRadius = 5;
             this.txtPhone.CustomizableEdges = customizableEdges7;
             this.txtPhone.DefaultText = "";
             this.txtPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -250,17 +246,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(117, 116);
+            this.label1.Location = new System.Drawing.Point(199, 110);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 28);
+            this.label1.Size = new System.Drawing.Size(65, 28);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Email";
+            this.label1.Text = "Email:";
             // 
             // txtEmail
             // 
             this.txtEmail.Animated = true;
-            this.txtEmail.AutoRoundedCorners = true;
-            this.txtEmail.BorderRadius = 19;
+            this.txtEmail.BorderRadius = 5;
             this.txtEmail.CustomizableEdges = customizableEdges9;
             this.txtEmail.DefaultText = "";
             this.txtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -285,17 +280,16 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(117, 47);
+            this.lblName.Location = new System.Drawing.Point(215, 41);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(44, 28);
+            this.lblName.Size = new System.Drawing.Size(49, 28);
             this.lblName.TabIndex = 8;
-            this.lblName.Text = "Tên";
+            this.lblName.Text = "Tên:";
             // 
             // txtProviderName
             // 
             this.txtProviderName.Animated = true;
-            this.txtProviderName.AutoRoundedCorners = true;
-            this.txtProviderName.BorderRadius = 19;
+            this.txtProviderName.BorderRadius = 5;
             this.txtProviderName.CustomizableEdges = customizableEdges11;
             this.txtProviderName.DefaultText = "";
             this.txtProviderName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

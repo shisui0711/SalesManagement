@@ -88,8 +88,7 @@
             this.btnAdd.AllowDrop = true;
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Animated = true;
-            this.btnAdd.AutoRoundedCorners = true;
-            this.btnAdd.BorderRadius = 16;
+            this.btnAdd.BorderRadius = 5;
             this.btnAdd.CustomizableEdges = customizableEdges1;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -109,6 +108,7 @@
             // btnReload
             // 
             this.btnReload.Animated = true;
+            this.btnReload.BorderRadius = 5;
             this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReload.CustomizableEdges = customizableEdges3;
             this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -130,6 +130,7 @@
             // btnSearch
             // 
             this.btnSearch.Animated = true;
+            this.btnSearch.BorderRadius = 5;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.CustomizableEdges = customizableEdges5;
             this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -151,8 +152,7 @@
             // txtSearch
             // 
             this.txtSearch.Animated = true;
-            this.txtSearch.AutoRoundedCorners = true;
-            this.txtSearch.BorderRadius = 16;
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.CustomizableEdges = customizableEdges7;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -196,7 +196,6 @@
             this.dgvUserRole.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUserRole.AutoGenerateColumns = false;
             this.dgvUserRole.BackgroundColor = System.Drawing.Color.Aqua;
-            this.dgvUserRole.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

@@ -144,6 +144,7 @@
             this.ptbUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbUpload.TabIndex = 25;
             this.ptbUpload.TabStop = false;
+            this.ptbUpload.Click += new System.EventHandler(this.ptbUpload_Click);
             // 
             // label2
             // 
@@ -168,8 +169,7 @@
             // txtCalculationUnit
             // 
             this.txtCalculationUnit.Animated = true;
-            this.txtCalculationUnit.AutoRoundedCorners = true;
-            this.txtCalculationUnit.BorderRadius = 19;
+            this.txtCalculationUnit.BorderRadius = 5;
             this.txtCalculationUnit.CustomizableEdges = customizableEdges17;
             this.txtCalculationUnit.DefaultText = "";
             this.txtCalculationUnit.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -203,8 +203,7 @@
             // txtProductName
             // 
             this.txtProductName.Animated = true;
-            this.txtProductName.AutoRoundedCorners = true;
-            this.txtProductName.BorderRadius = 19;
+            this.txtProductName.BorderRadius = 5;
             this.txtProductName.CustomizableEdges = customizableEdges19;
             this.txtProductName.DefaultText = "";
             this.txtProductName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -238,8 +237,7 @@
             // txtID
             // 
             this.txtID.Animated = true;
-            this.txtID.AutoRoundedCorners = true;
-            this.txtID.BorderRadius = 19;
+            this.txtID.BorderRadius = 5;
             this.txtID.CustomizableEdges = customizableEdges13;
             this.txtID.DefaultText = "";
             this.txtID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -273,8 +271,7 @@
             // btnSave
             // 
             this.btnSave.Animated = true;
-            this.btnSave.AutoRoundedCorners = true;
-            this.btnSave.BorderRadius = 22;
+            this.btnSave.BorderRadius = 5;
             this.btnSave.CustomizableEdges = customizableEdges1;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -293,9 +290,8 @@
             // btnExit
             // 
             this.btnExit.Animated = true;
-            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnExit.BorderRadius = 22;
+            this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -314,6 +310,7 @@
             this.btnExit.Size = new System.Drawing.Size(166, 47);
             this.btnExit.TabIndex = 18;
             this.btnExit.Text = "Đóng";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label5
             // 
@@ -328,8 +325,7 @@
             // txtDescription
             // 
             this.txtDescription.Animated = true;
-            this.txtDescription.AutoRoundedCorners = true;
-            this.txtDescription.BorderRadius = 19;
+            this.txtDescription.BorderRadius = 5;
             this.txtDescription.CustomizableEdges = customizableEdges7;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -364,8 +360,7 @@
             // txtUnitPrice
             // 
             this.txtUnitPrice.Animated = true;
-            this.txtUnitPrice.AutoRoundedCorners = true;
-            this.txtUnitPrice.BorderRadius = 19;
+            this.txtUnitPrice.BorderRadius = 5;
             this.txtUnitPrice.CustomizableEdges = customizableEdges9;
             this.txtUnitPrice.DefaultText = "";
             this.txtUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -400,8 +395,7 @@
             // txtImportUnitPrice
             // 
             this.txtImportUnitPrice.Animated = true;
-            this.txtImportUnitPrice.AutoRoundedCorners = true;
-            this.txtImportUnitPrice.BorderRadius = 19;
+            this.txtImportUnitPrice.BorderRadius = 5;
             this.txtImportUnitPrice.CustomizableEdges = customizableEdges11;
             this.txtImportUnitPrice.DefaultText = "";
             this.txtImportUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

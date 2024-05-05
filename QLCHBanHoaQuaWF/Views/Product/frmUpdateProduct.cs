@@ -32,7 +32,8 @@ namespace QLCHBanHoaQuaWF.Views.Product
             {
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    ptbUpload.Image.Save(ms, ImageFormat.Png);
+                    var bitmap = new Bitmap(ptbUpload.Image);
+                    bitmap.Save(ms,ptbUpload.Image.RawFormat);
                     return ms.ToArray();
                 }
             }
@@ -54,12 +55,28 @@ namespace QLCHBanHoaQuaWF.Views.Product
 
         public decimal? ImportUnitPrice
         {
-            get { return decimal.Parse(txtImportUnitPrice.Text);}
+            get { try
+                {
+                    return decimal.Parse(txtImportUnitPrice.Text);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
             set { txtImportUnitPrice.Text = value.ToString(); }
         }
         public decimal? UnitPrice
         {
-            get { return decimal.Parse(txtUnitPrice.Text);}
+            get { try
+                {
+                    return decimal.Parse(txtUnitPrice.Text);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+                ;}
             set { txtUnitPrice.Text = value.ToString(); }
         }
         public string Description
@@ -103,6 +120,28 @@ namespace QLCHBanHoaQuaWF.Views.Product
         private void txtUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             Program.DecimalPressed(sender,e);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void ptbUpload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (var fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    using (var br = new BinaryReader(fs))
+                    {
+                        long numBytes = new FileInfo(openFileDialog.FileName).Length;
+                        ImageData = br.ReadBytes((int)numBytes);
+                        ptbUpload.Image = Image.FromStream(fs);
+                    }
+                }
+            }
         }
     }
 }

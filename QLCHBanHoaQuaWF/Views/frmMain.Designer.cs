@@ -389,7 +389,7 @@
             this.btnProduct.ShadowDecoration.CustomizableEdges = customizableEdges20;
             this.btnProduct.Size = new System.Drawing.Size(215, 56);
             this.btnProduct.TabIndex = 4;
-            this.btnProduct.Text = "Sản phẩm";
+            this.btnProduct.Text = "Mặt hàng";
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // btnCustomer

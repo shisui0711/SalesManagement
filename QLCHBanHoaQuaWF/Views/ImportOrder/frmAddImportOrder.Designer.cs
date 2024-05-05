@@ -84,6 +84,14 @@
             this.pnlBodyLeft = new Guna.UI2.WinForms.Guna2Panel();
             this.gboDetaiOrder = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvProductSelect = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.ProductNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDecrese = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnIncrese = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnRemove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.gboCustomerInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             this.pnlCustomer = new Guna.UI2.WinForms.Guna2Panel();
             this.lsbProvider = new System.Windows.Forms.ListBox();
@@ -106,14 +114,6 @@
             this.gboProduct = new Guna.UI2.WinForms.Guna2GroupBox();
             this.pnlProduct = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlBodyRight = new Guna.UI2.WinForms.Guna2Panel();
-            this.ProductNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDecrese = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnIncrese = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnRemove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlHeader.SuspendLayout();
             this.pnlBodyLeft.SuspendLayout();
             this.gboDetaiOrder.SuspendLayout();
@@ -307,6 +307,66 @@
             this.dgvProductSelect.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvProductSelect_RowsAdded);
             this.dgvProductSelect.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvProductSelect_RowsRemoved);
             // 
+            // ProductNameColumn
+            // 
+            this.ProductNameColumn.HeaderText = "Tên mặt hàng";
+            this.ProductNameColumn.MinimumWidth = 6;
+            this.ProductNameColumn.Name = "ProductNameColumn";
+            this.ProductNameColumn.ReadOnly = true;
+            // 
+            // UnitPriceColumn
+            // 
+            this.UnitPriceColumn.HeaderText = "Đơn giá";
+            this.UnitPriceColumn.MinimumWidth = 6;
+            this.UnitPriceColumn.Name = "UnitPriceColumn";
+            this.UnitPriceColumn.ReadOnly = true;
+            // 
+            // QuantityColumn
+            // 
+            this.QuantityColumn.HeaderText = "Số lượng";
+            this.QuantityColumn.MinimumWidth = 6;
+            this.QuantityColumn.Name = "QuantityColumn";
+            // 
+            // TotalPriceColumn
+            // 
+            this.TotalPriceColumn.HeaderText = "Tổng Tiền";
+            this.TotalPriceColumn.MinimumWidth = 6;
+            this.TotalPriceColumn.Name = "TotalPriceColumn";
+            this.TotalPriceColumn.ReadOnly = true;
+            // 
+            // ProductIDColumn
+            // 
+            this.ProductIDColumn.HeaderText = "ID";
+            this.ProductIDColumn.MinimumWidth = 6;
+            this.ProductIDColumn.Name = "ProductIDColumn";
+            this.ProductIDColumn.ReadOnly = true;
+            this.ProductIDColumn.Visible = false;
+            // 
+            // btnDecrese
+            // 
+            this.btnDecrese.HeaderText = "";
+            this.btnDecrese.MinimumWidth = 6;
+            this.btnDecrese.Name = "btnDecrese";
+            this.btnDecrese.Text = "-";
+            this.btnDecrese.UseColumnTextForButtonValue = true;
+            // 
+            // btnIncrese
+            // 
+            this.btnIncrese.HeaderText = "";
+            this.btnIncrese.MinimumWidth = 6;
+            this.btnIncrese.Name = "btnIncrese";
+            this.btnIncrese.Text = "+";
+            this.btnIncrese.UseColumnTextForButtonValue = true;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.HeaderText = "";
+            this.btnRemove.MinimumWidth = 6;
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.ReadOnly = true;
+            this.btnRemove.Text = "x";
+            this.btnRemove.UseColumnTextForButtonValue = true;
+            // 
             // gboCustomerInfo
             // 
             this.gboCustomerInfo.BorderColor = System.Drawing.Color.DimGray;
@@ -374,6 +434,7 @@
             // btnLoadProvider
             // 
             this.btnLoadProvider.Animated = true;
+            this.btnLoadProvider.BorderRadius = 5;
             this.btnLoadProvider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLoadProvider.CustomizableEdges = customizableEdges17;
             this.btnLoadProvider.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -394,6 +455,7 @@
             // btnSearchProvider
             // 
             this.btnSearchProvider.Animated = true;
+            this.btnSearchProvider.BorderRadius = 5;
             this.btnSearchProvider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearchProvider.CustomizableEdges = customizableEdges19;
             this.btnSearchProvider.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -415,8 +477,7 @@
             // txtProviderSearch
             // 
             this.txtProviderSearch.Animated = true;
-            this.txtProviderSearch.AutoRoundedCorners = true;
-            this.txtProviderSearch.BorderRadius = 16;
+            this.txtProviderSearch.BorderRadius = 5;
             this.txtProviderSearch.CustomizableEdges = customizableEdges21;
             this.txtProviderSearch.DefaultText = "";
             this.txtProviderSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -454,9 +515,8 @@
             // btnCancel
             // 
             this.btnCancel.Animated = true;
-            this.btnCancel.AutoRoundedCorners = true;
             this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnCancel.BorderRadius = 16;
+            this.btnCancel.BorderRadius = 5;
             this.btnCancel.BorderThickness = 3;
             this.btnCancel.CustomizableEdges = customizableEdges29;
             this.btnCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -480,8 +540,7 @@
             // btnAdd
             // 
             this.btnAdd.Animated = true;
-            this.btnAdd.AutoRoundedCorners = true;
-            this.btnAdd.BorderRadius = 16;
+            this.btnAdd.BorderRadius = 5;
             this.btnAdd.CustomizableEdges = customizableEdges31;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -547,6 +606,7 @@
             // btnReload
             // 
             this.btnReload.Animated = true;
+            this.btnReload.BorderRadius = 5;
             this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReload.CustomizableEdges = customizableEdges5;
             this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -567,6 +627,7 @@
             // btnSearch
             // 
             this.btnSearch.Animated = true;
+            this.btnSearch.BorderRadius = 5;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.CustomizableEdges = customizableEdges7;
             this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -588,8 +649,8 @@
             // txtSearch
             // 
             this.txtSearch.Animated = true;
-            this.txtSearch.AutoRoundedCorners = true;
-            this.txtSearch.BorderRadius = 16;
+            this.txtSearch.BackColor = System.Drawing.Color.Transparent;
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.CustomizableEdges = customizableEdges9;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -639,7 +700,7 @@
             // pnlProduct
             // 
             this.pnlProduct.AutoScroll = true;
-            this.pnlProduct.BackColor = System.Drawing.Color.White;
+            this.pnlProduct.BackColor = System.Drawing.Color.Transparent;
             this.pnlProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlProduct.Location = new System.Drawing.Point(0, 40);
             this.pnlProduct.Name = "pnlProduct";
@@ -658,66 +719,6 @@
             this.pnlBodyRight.ShadowDecoration.CustomizableEdges = customizableEdges14;
             this.pnlBodyRight.Size = new System.Drawing.Size(918, 725);
             this.pnlBodyRight.TabIndex = 3;
-            // 
-            // ProductNameColumn
-            // 
-            this.ProductNameColumn.HeaderText = "Tên mặt hàng";
-            this.ProductNameColumn.MinimumWidth = 6;
-            this.ProductNameColumn.Name = "ProductNameColumn";
-            this.ProductNameColumn.ReadOnly = true;
-            // 
-            // UnitPriceColumn
-            // 
-            this.UnitPriceColumn.HeaderText = "Đơn giá";
-            this.UnitPriceColumn.MinimumWidth = 6;
-            this.UnitPriceColumn.Name = "UnitPriceColumn";
-            this.UnitPriceColumn.ReadOnly = true;
-            // 
-            // QuantityColumn
-            // 
-            this.QuantityColumn.HeaderText = "Số lượng";
-            this.QuantityColumn.MinimumWidth = 6;
-            this.QuantityColumn.Name = "QuantityColumn";
-            // 
-            // TotalPriceColumn
-            // 
-            this.TotalPriceColumn.HeaderText = "Tổng Tiền";
-            this.TotalPriceColumn.MinimumWidth = 6;
-            this.TotalPriceColumn.Name = "TotalPriceColumn";
-            this.TotalPriceColumn.ReadOnly = true;
-            // 
-            // ProductIDColumn
-            // 
-            this.ProductIDColumn.HeaderText = "ID";
-            this.ProductIDColumn.MinimumWidth = 6;
-            this.ProductIDColumn.Name = "ProductIDColumn";
-            this.ProductIDColumn.ReadOnly = true;
-            this.ProductIDColumn.Visible = false;
-            // 
-            // btnDecrese
-            // 
-            this.btnDecrese.HeaderText = "";
-            this.btnDecrese.MinimumWidth = 6;
-            this.btnDecrese.Name = "btnDecrese";
-            this.btnDecrese.Text = "-";
-            this.btnDecrese.UseColumnTextForButtonValue = true;
-            // 
-            // btnIncrese
-            // 
-            this.btnIncrese.HeaderText = "";
-            this.btnIncrese.MinimumWidth = 6;
-            this.btnIncrese.Name = "btnIncrese";
-            this.btnIncrese.Text = "+";
-            this.btnIncrese.UseColumnTextForButtonValue = true;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.HeaderText = "";
-            this.btnRemove.MinimumWidth = 6;
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.ReadOnly = true;
-            this.btnRemove.Text = "x";
-            this.btnRemove.UseColumnTextForButtonValue = true;
             // 
             // frmAddImportOrder
             // 

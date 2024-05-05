@@ -20,8 +20,10 @@ namespace QLCHBanHoaQuaWF.Models
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;
         [Column(TypeName = "decimal(10,2)")]
+        [Required(ErrorMessage = "Giá nhập không được để trống")]
         public decimal? ImportUnitPrice { get; set; }
         [Column(TypeName = "decimal(10,2)")]
+        [Required(ErrorMessage = "Giá bán không được để trống")]
         public decimal? UnitPrice { get; set; }
         [StringLength(100)]
         public string? Description { get; set; }

@@ -397,9 +397,8 @@
             // btnCancel
             // 
             this.btnCancel.Animated = true;
-            this.btnCancel.AutoRoundedCorners = true;
             this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnCancel.BorderRadius = 16;
+            this.btnCancel.BorderRadius = 5;
             this.btnCancel.BorderThickness = 3;
             this.btnCancel.CustomizableEdges = customizableEdges15;
             this.btnCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -423,8 +422,7 @@
             // txtPurchasePrice
             // 
             this.txtPurchasePrice.Animated = true;
-            this.txtPurchasePrice.AutoRoundedCorners = true;
-            this.txtPurchasePrice.BorderRadius = 13;
+            this.txtPurchasePrice.BorderRadius = 5;
             this.txtPurchasePrice.CustomizableEdges = customizableEdges17;
             this.txtPurchasePrice.DefaultText = "";
             this.txtPurchasePrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -450,8 +448,7 @@
             // btnAdd
             // 
             this.btnAdd.Animated = true;
-            this.btnAdd.AutoRoundedCorners = true;
-            this.btnAdd.BorderRadius = 16;
+            this.btnAdd.BorderRadius = 5;
             this.btnAdd.CustomizableEdges = customizableEdges19;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -586,6 +583,7 @@
             // btnLoadCustomer
             // 
             this.btnLoadCustomer.Animated = true;
+            this.btnLoadCustomer.BorderRadius = 5;
             this.btnLoadCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLoadCustomer.CustomizableEdges = customizableEdges23;
             this.btnLoadCustomer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -607,6 +605,7 @@
             // btnSearchCustomer
             // 
             this.btnSearchCustomer.Animated = true;
+            this.btnSearchCustomer.BorderRadius = 5;
             this.btnSearchCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearchCustomer.CustomizableEdges = customizableEdges25;
             this.btnSearchCustomer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -628,8 +627,7 @@
             // txtCustomerSearch
             // 
             this.txtCustomerSearch.Animated = true;
-            this.txtCustomerSearch.AutoRoundedCorners = true;
-            this.txtCustomerSearch.BorderRadius = 16;
+            this.txtCustomerSearch.BorderRadius = 5;
             this.txtCustomerSearch.CustomizableEdges = customizableEdges27;
             this.txtCustomerSearch.DefaultText = "";
             this.txtCustomerSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -712,6 +710,7 @@
             // btnReload
             // 
             this.btnReload.Animated = true;
+            this.btnReload.BorderRadius = 5;
             this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReload.CustomizableEdges = customizableEdges3;
             this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -733,6 +732,7 @@
             // btnSearch
             // 
             this.btnSearch.Animated = true;
+            this.btnSearch.BorderRadius = 5;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.CustomizableEdges = customizableEdges5;
             this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -754,8 +754,8 @@
             // txtSearch
             // 
             this.txtSearch.Animated = true;
-            this.txtSearch.AutoRoundedCorners = true;
-            this.txtSearch.BorderRadius = 16;
+            this.txtSearch.BackColor = System.Drawing.Color.Transparent;
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.CustomizableEdges = customizableEdges7;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

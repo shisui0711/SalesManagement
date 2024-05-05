@@ -296,7 +296,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvDetailSales;
         private Guna.UI2.WinForms.Guna2ControlBox btnMinimize;
         private Guna.UI2.WinForms.Guna2ControlBox btnClose;
-        private DataGridViewTextBoxColumn detailOrderIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn orderIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;

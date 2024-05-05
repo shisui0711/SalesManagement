@@ -143,8 +143,7 @@
             // txtRoleID
             // 
             this.txtRoleID.Animated = true;
-            this.txtRoleID.AutoRoundedCorners = true;
-            this.txtRoleID.BorderRadius = 19;
+            this.txtRoleID.BorderRadius = 5;
             this.txtRoleID.CustomizableEdges = customizableEdges1;
             this.txtRoleID.DefaultText = "";
             this.txtRoleID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -177,8 +176,8 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.AutoRoundedCorners = true;
-            this.btnAdd.BorderRadius = 22;
+            this.btnAdd.Animated = true;
+            this.btnAdd.BorderRadius = 5;
             this.btnAdd.CustomizableEdges = customizableEdges3;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -196,9 +195,9 @@
             // 
             // btnExit
             // 
-            this.btnExit.AutoRoundedCorners = true;
+            this.btnExit.Animated = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnExit.BorderRadius = 22;
+            this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges5;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -257,8 +256,7 @@
             // txtDescription
             // 
             this.txtDescription.Animated = true;
-            this.txtDescription.AutoRoundedCorners = true;
-            this.txtDescription.BorderRadius = 19;
+            this.txtDescription.BorderRadius = 5;
             this.txtDescription.CustomizableEdges = customizableEdges9;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -291,8 +289,7 @@
             // txtRoleName
             // 
             this.txtRoleName.Animated = true;
-            this.txtRoleName.AutoRoundedCorners = true;
-            this.txtRoleName.BorderRadius = 19;
+            this.txtRoleName.BorderRadius = 5;
             this.txtRoleName.CustomizableEdges = customizableEdges11;
             this.txtRoleName.DefaultText = "";
             this.txtRoleName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

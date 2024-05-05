@@ -58,7 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
-            this.userRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.txtEmployeeID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,6 +72,7 @@
             this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmployeeName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.userRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlTop.SuspendLayout();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userRoleBindingSource)).BeginInit();
@@ -154,10 +154,6 @@
             this.pnlBody.Size = new System.Drawing.Size(609, 507);
             this.pnlBody.TabIndex = 1;
             // 
-            // userRoleBindingSource
-            // 
-            this.userRoleBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.UserRole);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -171,8 +167,7 @@
             // txtEmployeeID
             // 
             this.txtEmployeeID.Animated = true;
-            this.txtEmployeeID.AutoRoundedCorners = true;
-            this.txtEmployeeID.BorderRadius = 19;
+            this.txtEmployeeID.BorderRadius = 5;
             this.txtEmployeeID.CustomizableEdges = customizableEdges5;
             this.txtEmployeeID.DefaultText = "";
             this.txtEmployeeID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -206,8 +201,7 @@
             // txtSalary
             // 
             this.txtSalary.Animated = true;
-            this.txtSalary.AutoRoundedCorners = true;
-            this.txtSalary.BorderRadius = 20;
+            this.txtSalary.BorderRadius = 5;
             this.txtSalary.CustomizableEdges = customizableEdges7;
             this.txtSalary.DefaultText = "";
             this.txtSalary.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -230,8 +224,7 @@
             // txtEmail
             // 
             this.txtEmail.Animated = true;
-            this.txtEmail.AutoRoundedCorners = true;
-            this.txtEmail.BorderRadius = 21;
+            this.txtEmail.BorderRadius = 5;
             this.txtEmail.CustomizableEdges = customizableEdges9;
             this.txtEmail.DefaultText = "";
             this.txtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -254,9 +247,8 @@
             // btnExit
             // 
             this.btnExit.Animated = true;
-            this.btnExit.AutoRoundedCorners = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnExit.BorderRadius = 22;
+            this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -280,8 +272,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Animated = true;
-            this.btnUpdate.AutoRoundedCorners = true;
-            this.btnUpdate.BorderRadius = 22;
+            this.btnUpdate.BorderRadius = 5;
             this.btnUpdate.CustomizableEdges = customizableEdges1;
             this.btnUpdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnUpdate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -340,8 +331,7 @@
             // txtAddress
             // 
             this.txtAddress.Animated = true;
-            this.txtAddress.AutoRoundedCorners = true;
-            this.txtAddress.BorderRadius = 20;
+            this.txtAddress.BorderRadius = 5;
             this.txtAddress.CustomizableEdges = customizableEdges11;
             this.txtAddress.DefaultText = "";
             this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -364,8 +354,7 @@
             // txtPhone
             // 
             this.txtPhone.Animated = true;
-            this.txtPhone.AutoRoundedCorners = true;
-            this.txtPhone.BorderRadius = 20;
+            this.txtPhone.BorderRadius = 5;
             this.txtPhone.CustomizableEdges = customizableEdges13;
             this.txtPhone.DefaultText = "";
             this.txtPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -388,8 +377,7 @@
             // txtEmployeeName
             // 
             this.txtEmployeeName.Animated = true;
-            this.txtEmployeeName.AutoRoundedCorners = true;
-            this.txtEmployeeName.BorderRadius = 19;
+            this.txtEmployeeName.BorderRadius = 5;
             this.txtEmployeeName.CustomizableEdges = customizableEdges15;
             this.txtEmployeeName.DefaultText = "";
             this.txtEmployeeName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -408,6 +396,10 @@
             this.txtEmployeeName.ShadowDecoration.CustomizableEdges = customizableEdges16;
             this.txtEmployeeName.Size = new System.Drawing.Size(280, 40);
             this.txtEmployeeName.TabIndex = 0;
+            // 
+            // userRoleBindingSource
+            // 
+            this.userRoleBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.UserRole);
             // 
             // frmUpdateEmployee
             // 

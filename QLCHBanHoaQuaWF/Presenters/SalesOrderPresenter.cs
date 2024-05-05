@@ -254,8 +254,11 @@ namespace QLCHBanHoaQuaWF.Presenters
             List<SalesOrder?> salesOrders = null;
             switch (_viewSalesOrder.OptionIndex)
             {
+                case 0:
+                    salesOrders = _context.SalesOrders.ToList();
+                    break;
                 case 1:
-                    salesOrders = _context.SalesOrders.Where(x => x.OrderID.ToString().Contains(_viewSalesOrder.SearchText)).ToList();
+                    salesOrders = _context.SalesOrders.Where(x => x.OrderID.ToString() == (_viewSalesOrder.SearchText)).ToList();
                     break;
                 case 2:
                     salesOrders = _context.SalesOrders.Include(s => s.Employee)
@@ -269,8 +272,11 @@ namespace QLCHBanHoaQuaWF.Presenters
 
             if (salesOrders != null)
             {
-                salesOrders = salesOrders.FindAll(x =>
-                    x.OrderDate >= _viewSalesOrder.DateStart && x.OrderDate <= _viewSalesOrder.DateEnd);
+                if (_viewSalesOrder.DateStart != DateTime.MinValue)
+                {
+                    salesOrders = salesOrders.FindAll(x =>
+                        x.OrderDate >= _viewSalesOrder.DateStart && x.OrderDate <= _viewSalesOrder.DateEnd);
+                }
                 _viewSalesOrder.OrderBindingSource.ResetBindings(true);
                 _viewSalesOrder.OrderBindingSource.DataSource = salesOrders;
             }

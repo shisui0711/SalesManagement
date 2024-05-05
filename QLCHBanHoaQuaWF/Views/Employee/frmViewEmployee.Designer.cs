@@ -257,13 +257,13 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(215, 136);
+            this.contextMenuStrip.Size = new System.Drawing.Size(202, 108);
             // 
             // btnUpdate
             // 
             this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(214, 26);
+            this.btnUpdate.Size = new System.Drawing.Size(201, 26);
             this.btnUpdate.Text = "Sửa thông tin";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -271,7 +271,7 @@
             // 
             this.btnDelete.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(214, 26);
+            this.btnDelete.Size = new System.Drawing.Size(201, 26);
             this.btnDelete.Text = "Xóa";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -279,7 +279,7 @@
             // 
             this.btnPurchaseHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
             this.btnPurchaseHistory.Name = "btnPurchaseHistory";
-            this.btnPurchaseHistory.Size = new System.Drawing.Size(214, 26);
+            this.btnPurchaseHistory.Size = new System.Drawing.Size(201, 26);
             this.btnPurchaseHistory.Text = "Lịch sử bán hàng";
             this.btnPurchaseHistory.Click += new System.EventHandler(this.btnPurchaseHistory_Click);
             // 
@@ -287,7 +287,7 @@
             // 
             this.btnImportHistory.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
             this.btnImportHistory.Name = "btnImportHistory";
-            this.btnImportHistory.Size = new System.Drawing.Size(214, 26);
+            this.btnImportHistory.Size = new System.Drawing.Size(201, 26);
             this.btnImportHistory.Text = "Lịch sử nhập hàng";
             this.btnImportHistory.Click += new System.EventHandler(this.btnImportHistory_Click);
             // 
@@ -310,8 +310,7 @@
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Animated = true;
-            this.btnAdd.AutoRoundedCorners = true;
-            this.btnAdd.BorderRadius = 16;
+            this.btnAdd.BorderRadius = 5;
             this.btnAdd.CustomizableEdges = customizableEdges3;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -330,9 +329,8 @@
             // 
             // cboOptionSearch
             // 
-            this.cboOptionSearch.AutoRoundedCorners = true;
             this.cboOptionSearch.BackColor = System.Drawing.Color.Transparent;
-            this.cboOptionSearch.BorderRadius = 17;
+            this.cboOptionSearch.BorderRadius = 5;
             this.cboOptionSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboOptionSearch.CustomizableEdges = customizableEdges5;
             this.cboOptionSearch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -362,6 +360,7 @@
             // btnReload
             // 
             this.btnReload.Animated = true;
+            this.btnReload.BorderRadius = 5;
             this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReload.CustomizableEdges = customizableEdges7;
             this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -383,6 +382,7 @@
             // btnSearch
             // 
             this.btnSearch.Animated = true;
+            this.btnSearch.BorderRadius = 5;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.CustomizableEdges = customizableEdges9;
             this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -404,8 +404,7 @@
             // txtSearch
             // 
             this.txtSearch.Animated = true;
-            this.txtSearch.AutoRoundedCorners = true;
-            this.txtSearch.BorderRadius = 16;
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.CustomizableEdges = customizableEdges11;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -446,8 +445,7 @@
             // 
             this.btnSalary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalary.Animated = true;
-            this.btnSalary.AutoRoundedCorners = true;
-            this.btnSalary.BorderRadius = 16;
+            this.btnSalary.BorderRadius = 5;
             this.btnSalary.CustomizableEdges = customizableEdges13;
             this.btnSalary.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSalary.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;

@@ -1,4 +1,4 @@
-﻿using DevExpress.Diagram.Core.Native.Generation;
+﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using QLCHBanHoaQuaWF.Attributes;

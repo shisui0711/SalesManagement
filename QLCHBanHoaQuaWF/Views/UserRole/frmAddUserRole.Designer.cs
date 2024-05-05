@@ -120,8 +120,7 @@
             // txtDescription
             // 
             this.txtDescription.Animated = true;
-            this.txtDescription.AutoRoundedCorners = true;
-            this.txtDescription.BorderRadius = 19;
+            this.txtDescription.BorderRadius = 5;
             this.txtDescription.CustomizableEdges = customizableEdges7;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -154,8 +153,7 @@
             // txtRoleName
             // 
             this.txtRoleName.Animated = true;
-            this.txtRoleName.AutoRoundedCorners = true;
-            this.txtRoleName.BorderRadius = 19;
+            this.txtRoleName.BorderRadius = 5;
             this.txtRoleName.CustomizableEdges = customizableEdges9;
             this.txtRoleName.DefaultText = "";
             this.txtRoleName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -204,8 +202,8 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.AutoRoundedCorners = true;
-            this.btnAdd.BorderRadius = 22;
+            this.btnAdd.Animated = true;
+            this.btnAdd.BorderRadius = 5;
             this.btnAdd.CustomizableEdges = customizableEdges1;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -223,9 +221,9 @@
             // 
             // btnExit
             // 
-            this.btnExit.AutoRoundedCorners = true;
+            this.btnExit.Animated = true;
             this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnExit.BorderRadius = 22;
+            this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
