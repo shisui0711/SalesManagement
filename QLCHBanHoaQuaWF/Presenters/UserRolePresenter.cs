@@ -37,7 +37,7 @@ public class UserRolePresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateUserRole == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         Form form = (Form)_addUserRole;
@@ -51,7 +51,7 @@ public class UserRolePresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateUserRole == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         var userRoleUpdate = _viewUserRole.UserRoleBindingSource.Current as UserRole;
@@ -104,7 +104,7 @@ public class UserRolePresenter : PresenterCRUD
                 _context.Permissions.Add(permission);
                 _context.SaveChanges();
                 transaction.Commit();
-                MessageBox.Show("Thêm thành công");
+                MessageBox.Show(@"Thêm thành công");
             }
             catch (Exception e)
             {
@@ -146,7 +146,7 @@ public class UserRolePresenter : PresenterCRUD
                 }
                 _context.SaveChanges();
                 transaction.Commit();
-                MessageBox.Show("Sửa thành công");
+                MessageBox.Show(@"Sửa thành công");
             }
             catch (Exception e)
             {
@@ -159,7 +159,7 @@ public class UserRolePresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteUserRole == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         var deleted = _viewUserRole.UserRoleBindingSource.Current as UserRole;
@@ -171,7 +171,7 @@ public class UserRolePresenter : PresenterCRUD
         var userRoleExist = _context.UserRoles.Include(u => u.Users).FirstOrDefault(u => u.RoleID == deleted.RoleID);
         if (userRoleExist != null && userRoleExist.Users.Count > 0)
         {
-            MessageBox.Show("Không thể xóa vì vẫn còn nhân viên đảm nhận vai trò này");
+            MessageBox.Show(@"Không thể xóa vì vẫn còn nhân viên đảm nhận vai trò này");
             return;
         }
         var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
@@ -188,7 +188,7 @@ public class UserRolePresenter : PresenterCRUD
                 _context.SaveChanges();
                 _viewUserRole.UserRoleBindingSource.Remove(deleted);
                 transaction.Commit();
-                MessageBox.Show("Xóa thành công");
+                MessageBox.Show(@"Xóa thành công");
             }
             catch (Exception e)
             {
@@ -207,7 +207,7 @@ public class UserRolePresenter : PresenterCRUD
         }
         else
         {
-            MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ");
+            MessageBox.Show(@"Không tìm thấy bản ghi nào hợp lệ");
         }
     }
 

@@ -48,7 +48,7 @@ public class ImportOrderPresenter : PresenterCRUD
     {
         if (_viewImportOrder.OrderBindingSource.Current == null)
         {
-            MessageBox.Show("Chưa bản ghi nào được chọn");
+            MessageBox.Show(@"Chưa bản ghi nào được chọn");
             return;
         }
         ImportOrder curentOrder = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
@@ -59,64 +59,76 @@ public class ImportOrderPresenter : PresenterCRUD
     }
     void LoadReport()
     {
-        
-        AppInfo info = _context.AppInfos.FirstOrDefault();
-        if (info == null) { return; }
-        ImportOrder current = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
-        ImportOrder order = _context.ImportOrders.Find(current.OrderID);
-        var orderData = (from s in _context.ImportOrders
-                         join p in _context.Providers on s.ProviderID equals p.ProviderID
-                         where s.OrderID == order.OrderID
-                         select new
-                         {
-                             DateCreated = s.OrderDate,
-                             OrderID = s.OrderID,
-                             ProviderName = p.ProviderName,
-                             TotalPrice = s.TotalPrice
-                         }).FirstOrDefault();
-        var orderFullData = new
+        try
         {
-            DateCreated = orderData.DateCreated,
-            AppName = info.AppName,
-            AppAddress = info.Address,
-            AppPhone = info.Phone,
-            OrderID = orderData.OrderID,
-            TotalPrice = orderData.TotalPrice.ToString("C0"),
-            ProviderName = orderData.ProviderName
-        };
+            AppInfo info = _context.AppInfos.FirstOrDefault();
+            if (info == null)
+            {
+                return;
+            }
 
-        var detailData = from d in _context.DetailImportOrders
-                         join p in _context.Products
-                             on d.ProductID equals p.ProductID
-                         where d.OrderID == order.OrderID
-                         select new
-                         {
-                             ProductName = p.ProductName,
-                             Quantity = d.Quantity,
-                             UnitPrice = d.UnitPrice.ToString("C0"),
-                             TotalPrice = d.TotalPrice.ToString("C0")
-                         };
-        _report.ReportViewer.LocalReport.ReportPath = "./Reports/ReportImportOrder.rdlc";
-        ReportDataSource detailDataSource = new ReportDataSource();
-        detailDataSource.Name = "DataSetDetailImportOrder";
-        detailDataSource.Value = detailData;
-        _report.ReportViewer.LocalReport.DataSources.Add(detailDataSource);
-        foreach (var propertyInfo in orderFullData.GetType().GetProperties())
-        {
-            _report.ReportViewer.LocalReport.SetParameters(new ReportParameter(propertyInfo.Name, propertyInfo.GetValue(orderFullData).ToString()));
+            ImportOrder current = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
+            ImportOrder order = _context.ImportOrders.Find(current.OrderID);
+            var orderData = (from s in _context.ImportOrders
+                join p in _context.Providers on s.ProviderID equals p.ProviderID
+                where s.OrderID == order.OrderID
+                select new
+                {
+                    DateCreated = s.OrderDate,
+                    OrderID = s.OrderID,
+                    ProviderName = p.ProviderName,
+                    TotalPrice = s.TotalPrice
+                }).FirstOrDefault();
+            var orderFullData = new
+            {
+                DateCreated = orderData.DateCreated,
+                AppName = info.AppName,
+                AppAddress = info.Address,
+                AppPhone = info.Phone,
+                OrderID = orderData.OrderID,
+                TotalPrice = orderData.TotalPrice.ToString("C0"),
+                ProviderName = orderData.ProviderName
+            };
+
+            var detailData = from d in _context.DetailImportOrders
+                join p in _context.Products
+                    on d.ProductID equals p.ProductID
+                where d.OrderID == order.OrderID
+                select new
+                {
+                    ProductName = p.ProductName,
+                    Quantity = d.Quantity,
+                    UnitPrice = d.UnitPrice.ToString("C0"),
+                    TotalPrice = d.TotalPrice.ToString("C0")
+                };
+            _report.ReportViewer.LocalReport.ReportPath = "./Reports/ReportImportOrder.rdlc";
+            ReportDataSource detailDataSource = new ReportDataSource();
+            detailDataSource.Name = "DataSetDetailImportOrder";
+            detailDataSource.Value = detailData;
+            _report.ReportViewer.LocalReport.DataSources.Add(detailDataSource);
+            foreach (var propertyInfo in orderFullData.GetType().GetProperties())
+            {
+                _report.ReportViewer.LocalReport.SetParameters(new ReportParameter(propertyInfo.Name,
+                    propertyInfo.GetValue(orderFullData).ToString()));
+            }
+
+            _report.ReportViewer.RefreshReport();
         }
-        _report.ReportViewer.RefreshReport();
+        catch (Exception e)
+        {
+            System.Windows.Forms.MessageBox.Show($"Lỗi: {e.Message}");
+        }
     }
     void ShowReport()
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanPrintImportOrder == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         if (_viewImportOrder.OrderBindingSource.Current == null)
         {
-            MessageBox.Show("Chưa bản ghi nào được chọn");
+            MessageBox.Show(@"Chưa bản ghi nào được chọn");
             return;
         }
         Form form = (Form)_report;
@@ -129,7 +141,7 @@ public class ImportOrderPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateImportOrder == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         var form = _addImportOrder as Form;
@@ -166,79 +178,98 @@ public class ImportOrderPresenter : PresenterCRUD
 
                 _context.SaveChanges();
                 transaction.Commit();
-                MessageBox.Show("Đặt hàng thành công");
+                MessageBox.Show(@"Đặt hàng thành công");
                 _viewImportOrder.OrderBindingSource.EndEdit();
             }
             catch (SqlException e)
             {
                 transaction.Rollback();
-                MessageBox.Show("Lỗi cơ sở dữ liệu. Đặt hàng thất bại");
+                MessageBox.Show(@"Lỗi cơ sở dữ liệu. Đặt hàng thất bại");
             }
         }
     }
 
     public override void Update()
     {
-
+        throw new NotImplementedException();
     }
 
     public override void Remove()
     {
-        ImportOrder? deleted = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
-        if (deleted == null)
+        try
         {
-            return;
-        }
-        var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
-            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        if (dialogResult == DialogResult.Cancel)
-        {
-            return;
-        }
-        using (var transaction = _context.Database.BeginTransaction())
-        {
-            try
+            ImportOrder? deleted = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
+            if (deleted == null)
             {
-                _context.ImportOrders.Remove(deleted);
-                _context.SaveChanges();
-                _viewImportOrder.OrderBindingSource.Remove(deleted);
-                transaction.Commit();
+                return;
             }
-            catch (Exception e)
+
+            var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Cancel)
             {
-                transaction.Rollback();
+                return;
             }
+
+            using (var transaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    _context.ImportOrders.Remove(deleted);
+                    _context.SaveChanges();
+                    _viewImportOrder.OrderBindingSource.Remove(deleted);
+                    transaction.Commit();
+                    MessageBox.Show("Xóa thành công");
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show($"Xóa thất bại: {e.Message}");
+                }
+            }
+        }
+        catch (Exception e)
+        {
+          MessageBox.Show($"Lỗi: {e.Message}");
         }
     }
 
     public override void Search()
     {
-        List<ImportOrder?>? importOrders = null;
-        switch (_viewImportOrder.OptionIndex)
+        try
         {
-            case 1:
-                importOrders = _context.ImportOrders.Where(x => x != null && x.OrderID.ToString().Contains(_viewImportOrder.SearchText)).ToList();
-                break;
-            case 2:
-                importOrders = _context.ImportOrders.Include(s => s!.Employee)
-                    .Where(s => s.Employee.EmployeeName.Contains(_viewImportOrder.SearchText)).ToList()!;
-                break;
-            case 3:
-                importOrders = _context.ImportOrders.Include(s => s.Provider)
-                    .Where(s => s.Provider.ProviderName.Contains(_viewImportOrder.SearchText)).ToList();
-                break;
-        }
+            List<ImportOrder?>? importOrders = null;
+            switch (_viewImportOrder.OptionIndex)
+            {
+                case 1:
+                    importOrders = _context.ImportOrders
+                        .Where(x => x != null && x.OrderID.ToString().Contains(_viewImportOrder.SearchText)).ToList();
+                    break;
+                case 2:
+                    importOrders = _context.ImportOrders.Include(s => s!.Employee)
+                        .Where(s => s.Employee.EmployeeName.Contains(_viewImportOrder.SearchText)).ToList()!;
+                    break;
+                case 3:
+                    importOrders = _context.ImportOrders.Include(s => s.Provider)
+                        .Where(s => s.Provider.ProviderName.Contains(_viewImportOrder.SearchText)).ToList();
+                    break;
+            }
 
-        if (importOrders != null)
-        {
-            importOrders = importOrders.FindAll(x =>
-                x.OrderDate >= _viewImportOrder.DateStart && x.OrderDate <= _viewImportOrder.DateEnd);
-            _viewImportOrder.OrderBindingSource.ResetBindings(true);
-            _viewImportOrder.OrderBindingSource.DataSource = importOrders;
+            if (importOrders != null)
+            {
+                importOrders = importOrders.FindAll(x =>
+                    x.OrderDate >= _viewImportOrder.DateStart && x.OrderDate <= _viewImportOrder.DateEnd);
+                _viewImportOrder.OrderBindingSource.ResetBindings(true);
+                _viewImportOrder.OrderBindingSource.DataSource = importOrders;
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ", "Thông báo");
+            }
         }
-        else
+        catch (Exception e)
         {
-            MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ", "Thông báo");
+            System.Windows.Forms.MessageBox.Show($"Lỗi: {e.Message}");
         }
     }
 

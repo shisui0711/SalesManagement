@@ -51,7 +51,7 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             if (_viewSalesOrder.OrderBindingSource.Current == null)
             {
-                MessageBox.Show("Chưa bản ghi nào được chọn");
+                MessageBox.Show(@"Chưa bản ghi nào được chọn");
                 return;
             }
             SalesOrder curentOrder = _viewSalesOrder.OrderBindingSource.Current as SalesOrder;
@@ -122,12 +122,12 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanPrintSalesOrder == false)
             {
-                MessageBox.Show("Bạn không có quyền này");
+                MessageBox.Show(@"Bạn không có quyền này");
                 return;
             }
             if (_viewSalesOrder.OrderBindingSource.Current == null)
             {
-                MessageBox.Show("Chưa bản ghi nào được chọn");
+                MessageBox.Show(@"Chưa bản ghi nào được chọn");
                 return;
             }
             var form = _report as Form;
@@ -141,7 +141,7 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateSalesOrder == false)
             {
-                MessageBox.Show("Bạn không có quyền này");
+                MessageBox.Show(@"Bạn không có quyền này");
                 return;
             }
             var addSalesOrderForm = _addSalesOrder as Form;
@@ -192,7 +192,7 @@ namespace QLCHBanHoaQuaWF.Presenters
                         detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString());
                         if (detail.Quantity > product.Inventory)
                         {
-                            MessageBox.Show($"Số lượng trong kho không đủ cho sản phẩm: {product.ProductName}");
+                            MessageBox.Show($@"Số lượng trong kho không đủ cho sản phẩm: {product.ProductName}");
                             _context.Entry(salesOrder).State = EntityState.Detached;
                             transaction.Rollback();
                             return;
@@ -204,13 +204,13 @@ namespace QLCHBanHoaQuaWF.Presenters
 
                     _context.SaveChanges();
                     transaction.Commit();
-                    MessageBox.Show("Thanh toán thành công");
+                    MessageBox.Show(@"Thanh toán thành công");
                     _viewSalesOrder.OrderBindingSource.EndEdit();
                 }
                 catch (SqlException e)
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Lỗi cơ sở dữ liệu. Thanh toán thất bại");
+                    MessageBox.Show(@"Lỗi cơ sở dữ liệu. Thanh toán thất bại");
                 }
             }
         }
@@ -219,7 +219,7 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteSalesOrder == false)
             {
-                MessageBox.Show("Bạn không có quyền này");
+                MessageBox.Show(@"Bạn không có quyền này");
                 return;
             }
             SalesOrder? deleted = _viewSalesOrder.OrderBindingSource.Current as SalesOrder;

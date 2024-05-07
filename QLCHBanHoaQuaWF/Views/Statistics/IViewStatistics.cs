@@ -9,7 +9,7 @@ public interface IViewStatistics
     public BindingSource TopCustomerBindingSource { get; }
     public BindingSource TopEmployeeBindingSource { get; }
     public GunaBarDataset RevenueDataset { get; }
-    public Chart ProductChart { get; }
+    public Chart ProductChart{ get; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public int SalesOrdered { get; set; }

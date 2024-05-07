@@ -86,7 +86,7 @@ namespace QLCHBanHoaQuaWF.Presenters
 
                 if (user.Lock)
                 {
-                    MessageBox.Show("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản lý");
+                    MessageBox.Show(@"Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản lý");
                     return;
                 }
                 user.LastLogin = DateTime.Now;
@@ -154,13 +154,13 @@ namespace QLCHBanHoaQuaWF.Presenters
             {
                 if (_updatePassword.Password != _updatePassword.Repassword)
                 {
-                    MessageBox.Show("Mật khẩu không khớp");
+                    MessageBox.Show(@"Mật khẩu không khớp");
                     return;
                 }
 
                 user.Password = GetSha256Hash(_updatePassword.Password);
                 _context.SaveChanges();
-                MessageBox.Show("Đổi mật khẩu thành công");
+                MessageBox.Show(@"Đổi mật khẩu thành công");
             }
         }
 
@@ -171,19 +171,19 @@ namespace QLCHBanHoaQuaWF.Presenters
             {
                 if (user.Password != GetSha256Hash(_changePassword.OldPassword))
                 {
-                    MessageBox.Show("Mật khẩu cũ không đúng");
+                    MessageBox.Show(@"Mật khẩu cũ không đúng");
                     return;
                 }
 
                 if (_changePassword.NewPassword != _changePassword.Repassword)
                 {
-                    MessageBox.Show("Mật khẩu mới không khớp");
+                    MessageBox.Show(@"Mật khẩu mới không khớp");
                     return;
                 }
 
                 user.Password = GetSha256Hash(_changePassword.NewPassword);
                 _context.SaveChanges();
-                MessageBox.Show("Đổi mật khẩu thành công");
+                MessageBox.Show(@"Đổi mật khẩu thành công");
             }
         }
         private void LockUser()

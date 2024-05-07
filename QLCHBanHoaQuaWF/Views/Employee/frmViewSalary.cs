@@ -45,7 +45,7 @@ namespace QLCHBanHoaQuaWF.Views.Employee
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 dgvSalary.ExportToExcel(saveFileDialog.FileName);
-                MessageBox.Show("Xuất thành công!");
+                MessageBox.Show(@"Xuất thành công!");
             }
         }
     }

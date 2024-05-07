@@ -2,7 +2,6 @@
 using QLCHBanHoaQuaWF.Views.Statistics;
 using System.Globalization;
 using Guna.Charts.WinForms;
-using Timer = System.Windows.Forms.Timer;
 
 namespace QLCHBanHoaQuaWF.Presenters;
 
@@ -36,10 +35,10 @@ public class StatisticsPresenter
             s.OrderDate >= _viewStatistics.StartDate && s.OrderDate <= _viewStatistics.EndDate).ToList();
         List<ImportOrder> importOrders = _context.ImportOrders
             .Where(i => i.OrderDate >= _viewStatistics.StartDate && i.OrderDate <= _viewStatistics.EndDate).ToList();
-        _viewStatistics.SalesOrdered = salesOrders.ToList().Count();
-        _viewStatistics.ImportOrdered = importOrders.ToList().Count();
-        _viewStatistics.Revenue = salesOrders.ToList().Sum(x => x.TotalPrice);
-        _viewStatistics.Profit = _viewStatistics.Revenue - importOrders.ToList().Sum(x => x.TotalPrice);
+        _viewStatistics.SalesOrdered = salesOrders.Count();
+        _viewStatistics.ImportOrdered = importOrders.Count();
+        _viewStatistics.Revenue = salesOrders.Sum(x => x.TotalPrice);
+        _viewStatistics.Profit = _viewStatistics.Revenue - importOrders.Sum(x => x.TotalPrice);
         _viewStatistics.Profit = _viewStatistics.Profit >= 0 ? _viewStatistics.Profit : 0;
     }
     private void LoadTopEmployee()
@@ -57,10 +56,7 @@ public class StatisticsPresenter
                 EmployeeName = g.Key.EmployeeName,
                 TotalSold = g.Count()
             }).ToList();
-        if (topEmployee != null)
-        {
-            _viewStatistics.TopEmployeeBindingSource.DataSource = topEmployee;
-        }
+        _viewStatistics.TopEmployeeBindingSource.DataSource = topEmployee;
     }
 
     private void LoadTopCustomer()
@@ -78,10 +74,7 @@ public class StatisticsPresenter
                 CustomerName = g.Key.CustomerName,
                 TotalBought = g.Count()
             }).ToList();
-        if (topCustomer != null)
-        {
-            _viewStatistics.TopCustomerBindingSource.DataSource = topCustomer;
-        }
+        _viewStatistics.TopCustomerBindingSource.DataSource = topCustomer;
     }
 
     private void LoadTopProduct()
@@ -95,13 +88,9 @@ public class StatisticsPresenter
             orderby g.Sum(x => x.Quantity) descending
             select new
             {
-                ProductName = g.Key.ProductName,
+                Name = g.Key.ProductName,
                 TotalSold = g.Sum(x => x.Quantity)
             }).ToList();
-        if (topProduct == null)
-        {
-            return;
-        }
         int count = topProduct.Count;
         if (count > 0)
         {
@@ -111,7 +100,7 @@ public class StatisticsPresenter
             }
 
             _viewStatistics.ProductChart.DataSource = topProduct
-                .ConvertAll(x => new KeyValuePair<string, int>(x.ProductName, x.TotalSold));
+                .ConvertAll(x => new KeyValuePair<string, int>(x.Name, x.TotalSold));
             _viewStatistics.ProductChart.Series[0].XValueMember = "Key";
             _viewStatistics.ProductChart.Series[0].YValueMembers = "Value";
             _viewStatistics.ProductChart.DataBind();
@@ -130,11 +119,11 @@ public class StatisticsPresenter
                 Key = g.Key,
                 Value = g.Sum(x => x.TotalPrice)
             }).ToList();
-        List<RevenueByDate> DataSource = null;
+        List<RevenueByDate> dataSource;
         //Nhóm theo giờ
         if (days <= 1)
         {
-            DataSource = (from o in orderFullTime
+            dataSource = (from o in orderFullTime
                                        group o by o.Key.ToString("hh tt") into g
                                        select new RevenueByDate
                                        {
@@ -145,8 +134,8 @@ public class StatisticsPresenter
         //nhóm theo ngày
         else if (days <= 30)
         {
-            var orderFullTime_Change = orderFullTime.ConvertAll(x => new { Key = x.Key.ToString("dd MMM"), Value = x.Value });
-            DataSource = (from o in orderFullTime_Change
+            var orderFullTimeChange = orderFullTime.ConvertAll(x => new { Key = x.Key.ToString("dd MMM"), Value = x.Value });
+            dataSource = (from o in orderFullTimeChange
                                        group o by o.Key into g
                                        select new RevenueByDate
                                        {
@@ -157,7 +146,7 @@ public class StatisticsPresenter
         //nhóm theo tuần
         else if (days <= 92)
         {
-            DataSource = (from o in orderFullTime
+            dataSource = (from o in orderFullTime
                                        group o by CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
                                          o.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) into g
                                        select new RevenueByDate
@@ -169,8 +158,8 @@ public class StatisticsPresenter
         //nhóm theo tháng
         else if (days <= (365 * 2))
         {
-            bool isYear = days <= 365 ? true : false;
-            DataSource = (from o in orderFullTime
+            bool isYear = days <= 365;
+            dataSource = (from o in orderFullTime
                                        group o by o.Key.ToString("MMM yyyy") into g
                                        select new RevenueByDate
                                        {
@@ -181,7 +170,7 @@ public class StatisticsPresenter
         //nhóm theo năm
         else
         {
-            DataSource = (from o in orderFullTime
+            dataSource = (from o in orderFullTime
                                        group o by o.Key.ToString("yyyy") into g
                                        select new RevenueByDate
                                        {
@@ -190,7 +179,7 @@ public class StatisticsPresenter
                                        }).ToList();
         }
 
-        List<LPoint> lPoints = DataSource.ConvertAll(x =>
+        List<LPoint> lPoints = dataSource.ConvertAll(x =>
         {
             return new LPoint(x.Date,(double)x.TotalAmount);
         });

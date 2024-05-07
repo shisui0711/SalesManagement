@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OfficeOpenXml;
@@ -39,9 +39,20 @@ namespace QLCHBanHoaQuaWF
             {
                 _host.Services.GetRequiredService(type);
             }
-            Application.Run((Form)_host.Services.GetRequiredService<IViewLogin>());
-            _host.StopAsync().GetAwaiter().GetResult();
-            _host.Dispose();
+
+            try
+            {
+                Application.Run((Form)_host.Services.GetRequiredService<IViewLogin>());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Lỗi: {e.Message}");
+            }
+            finally
+            {
+                _host.StopAsync().GetAwaiter().GetResult();
+                _host.Dispose();
+            }
         }
 
         static IHostBuilder CreateHostBuilder(string[] args)

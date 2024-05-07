@@ -102,7 +102,7 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
             {
                 if (AuthPresenter.User.UserRole.Permission.CanExportSalesOrder == false)
                 {
-                    MessageBox.Show("Bạn không có quyền này");
+                    MessageBox.Show(@"Bạn không có quyền này");
                     return;
                 }
             }
@@ -112,7 +112,7 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 dgvSalesOrder.ExportToExcel(saveFileDialog.FileName);
-                MessageBox.Show("Xuất thành công!");
+                MessageBox.Show(@"Xuất thành công!");
             }
         }
 

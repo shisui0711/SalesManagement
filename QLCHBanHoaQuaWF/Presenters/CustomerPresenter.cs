@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Customer;
@@ -37,7 +38,7 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             if (_viewCustomer.CustomerBindingSource.Current == null)
             {
-                MessageBox.Show("Chưa bản ghi nào được chọn");
+                MessageBox.Show(@"Chưa bản ghi nào được chọn");
                 return;
             }
             Customer currentCustomer = _viewCustomer.CustomerBindingSource.Current as Customer;
@@ -45,7 +46,7 @@ namespace QLCHBanHoaQuaWF.Presenters
                 .First(c => c.CustomerID == currentCustomer.CustomerID);
             if (customer.SalesOrders.Count == 0)
             {
-                MessageBox.Show("Khách hàng này chưa mua hàng lần nào");
+                MessageBox.Show(@"Khách hàng này chưa mua hàng lần nào");
                 return;
             }
             _historySales.SalesBindingSource.DataSource = customer.SalesOrders.ToList();
@@ -56,7 +57,7 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateCustomer == false)
             {
-                MessageBox.Show("Bạn không có quyền này");
+                MessageBox.Show(@"Bạn không có quyền này");
                 return;
             }
             var form = _addCustomer as Form;
@@ -70,7 +71,7 @@ namespace QLCHBanHoaQuaWF.Presenters
         {
             if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateCustomer == false && AuthPresenter.User.UserRole.Permission.IsAdmin == false)
             {
-                MessageBox.Show("Bạn không có quyền này");
+                MessageBox.Show(@"Bạn không có quyền này");
                 return;
             }
             var updated = _viewCustomer.CustomerBindingSource.Current as Customer;
@@ -91,110 +92,155 @@ namespace QLCHBanHoaQuaWF.Presenters
         }
         public override void Add()
         {
-            var customer = new Customer();
-            customer.CustomerName = _addCustomer.CustomerName;
-            customer.Email = _addCustomer.Email;
-            customer.Phone = _addCustomer.Phone;
-            customer.Address = _addCustomer.Address;
-            if (!IsValid(customer, _addCustomer))
+            try
             {
-                return;
+                var customer = new Customer();
+                customer.CustomerName = _addCustomer.CustomerName;
+                customer.Email = _addCustomer.Email;
+                customer.Phone = _addCustomer.Phone;
+                customer.Address = _addCustomer.Address;
+                if (!IsValid(customer, _addCustomer))
+                {
+                    return;
+                }
+
+                _context.Customers.Add(customer);
+                _viewCustomer.CustomerBindingSource.EndEdit();
+                _context.SaveChanges();
+                _addCustomer.Reset();
+                MessageBox.Show(@"Thêm thành công");
             }
-            _context.Customers.Add(customer);
-            _viewCustomer.CustomerBindingSource.EndEdit();
-            _context.SaveChanges();
-            _addCustomer.Reset();
+            catch (Exception e)
+            {
+               MessageBox.Show($@"Lỗi {e.Message}");
+            }
 
         }
 
         public override void Update()
         {
-            var customer = _context.Customers.Find(_updateCustomer.CustomerID);
-            customer.CustomerName = _updateCustomer.CustomerName;
-            customer.Email = _updateCustomer.Email;
-            customer.Phone = _updateCustomer.Phone;
-            customer.Address = _updateCustomer.Address;
-            if (!IsValid(customer, _updateCustomer))
+            try
             {
-                _context.Entry(customer).Reload();
-                return;
+                var customer = _context.Customers.Find(_updateCustomer.CustomerID);
+                customer.CustomerName = _updateCustomer.CustomerName;
+                customer.Email = _updateCustomer.Email;
+                customer.Phone = _updateCustomer.Phone;
+                customer.Address = _updateCustomer.Address;
+                if (!IsValid(customer, _updateCustomer))
+                {
+                    _context.Entry(customer).Reload();
+                    return;
+                }
+
+                _viewCustomer.CustomerBindingSource.EndEdit();
+                _context.SaveChanges();
+                MessageBox.Show("Cập nhật thành công");
             }
-            _viewCustomer.CustomerBindingSource.EndEdit();
-            _context.SaveChanges();
+            catch (Exception e)
+            {
+                MessageBox.Show($@"Lỗi {e.Message}");
+            }
         }
 
         public override void Remove()
         {
-            if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteCustomer == false && AuthPresenter.User.UserRole.Permission.IsAdmin == false)
+            try
             {
-                MessageBox.Show("Bạn không có quyền này");
-                return;
-            }
-            var deleted = _viewCustomer.CustomerBindingSource.Current as Customer;
-            if (deleted == null)
-            {
-                return;
-            }
-            var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Cancel)
-            {
-                return;
-            }
-
-
-            using (var transaction = _context.Database.BeginTransaction())
-            {
-                try
+                if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteCustomer == false &&
+                    AuthPresenter.User.UserRole.Permission.IsAdmin == false)
                 {
-                    _context.Entry(deleted).State = EntityState.Deleted;
-                    _context.SaveChanges();
-                    transaction.Commit();
-                    _viewCustomer.CustomerBindingSource.Remove(deleted);
+                    MessageBox.Show(@"Bạn không có quyền này");
+                    return;
                 }
-                catch (Exception e)
+
+                var deleted = _viewCustomer.CustomerBindingSource.Current as Customer;
+                if (deleted == null)
                 {
-                    transaction.Rollback();
+                    return;
                 }
+
+                var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        _context.Entry(deleted).State = EntityState.Deleted;
+                        _context.SaveChanges();
+                        transaction.Commit();
+                        _viewCustomer.CustomerBindingSource.Remove(deleted);
+                        MessageBox.Show("Xóa thành công");
+                    }
+                    catch (SqlException e)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"Xóa thất bại:{e.Message}");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Lỗi: {e.Message}");
             }
         }
 
         public override void Search()
         {
-            List<Customer> customers = null;
-            switch (_viewCustomer.OptionIndex)
+            try
             {
-                case 1:
-                    customers = _context.Customers.Where(x => x.CustomerName.ToLower().Contains(_viewCustomer.SearchText.ToLower())).ToList();
-                    break;
-                case 2:
-                    customers = _context.Customers.Where(x => x.Email.Contains(_viewCustomer.SearchText)).ToList();
-                    break;
-                case 3:
-                    customers = _context.Customers.Where(x => x.Phone.Contains(_viewCustomer.SearchText)).ToList();
-                    break;
-                case 4:
-                    customers = _context.Customers.Where(x => x.Address.Contains(_viewCustomer.SearchText)).ToList();
-                    break;
-                default:
-                    break;
-            }
+                List<Customer> customers = null;
+                switch (_viewCustomer.OptionIndex)
+                {
+                    case 1:
+                        customers = _context.Customers.Where(x =>
+                            x.CustomerName.ToLower().Contains(_viewCustomer.SearchText.ToLower())).ToList();
+                        break;
+                    case 2:
+                        customers = _context.Customers.Where(x => x.Email.Contains(_viewCustomer.SearchText)).ToList();
+                        break;
+                    case 3:
+                        customers = _context.Customers.Where(x => x.Phone.Contains(_viewCustomer.SearchText)).ToList();
+                        break;
+                    case 4:
+                        customers = _context.Customers.Where(x => x.Address.Contains(_viewCustomer.SearchText))
+                            .ToList();
+                        break;
+                    default:
+                        break;
+                }
 
-            if (customers != null && customers.Count > 0)
-            {
-                _viewCustomer.CustomerBindingSource.ResetBindings(true);
-                _viewCustomer.CustomerBindingSource.DataSource = customers;
+                if (customers != null && customers.Count > 0)
+                {
+                    _viewCustomer.CustomerBindingSource.ResetBindings(true);
+                    _viewCustomer.CustomerBindingSource.DataSource = customers;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ", "Thông báo");
+                }
             }
-            else
+            catch (Exception e)
             {
-                MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ", "Thông báo");
+                MessageBox.Show($"Lỗi: {e.Message}");
             }
         }
 
         public override void Load()
         {
-            _viewCustomer.CustomerBindingSource.ResetBindings(true);
-            _viewCustomer.CustomerBindingSource.DataSource = _context.Customers.Local.ToBindingList();
+            try
+            {
+                _viewCustomer.CustomerBindingSource.ResetBindings(true);
+                _viewCustomer.CustomerBindingSource.DataSource = _context.Customers.Local.ToBindingList();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Lỗi: {e.Message}");
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ public class ProviderPresenter : PresenterCRUD
     {
         if (_viewProvider.ProviderBindingSource.Current == null)
         {
-            MessageBox.Show("Chưa bản ghi nào được chọn");
+            MessageBox.Show(@"Chưa bản ghi nào được chọn");
             return;
         }
         Provider currentProvider = _viewProvider.ProviderBindingSource.Current as Provider;
@@ -46,7 +46,7 @@ public class ProviderPresenter : PresenterCRUD
             .First(p => p.ProviderID == currentProvider.ProviderID);
         if (provider.ImportOrders.Count == 0)
         {
-            MessageBox.Show("Chưa nhập đơn nào từ nhà cung cấp này");
+            MessageBox.Show(@"Chưa nhập đơn nào từ nhà cung cấp này");
             return;
         }
         _historyImport.ImportBindingSource.DataSource = provider.ImportOrders.ToList();
@@ -57,7 +57,7 @@ public class ProviderPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreatedProvider == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         var form = _addProvider as Form;
@@ -71,7 +71,7 @@ public class ProviderPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateProvider == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         Provider updated = _viewProvider.ProviderBindingSource.Current as Provider;
@@ -129,7 +129,7 @@ public class ProviderPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteProvider == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         var deleted = _viewProvider.ProviderBindingSource.Current as Provider;

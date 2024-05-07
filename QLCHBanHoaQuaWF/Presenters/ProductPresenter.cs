@@ -33,7 +33,7 @@ public class ProductPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateProduct == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         if (_addProduct.GetType().IsAssignableTo(typeof(Form)))
@@ -47,7 +47,7 @@ public class ProductPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateProduct == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         var updated = _viewProduct.ProductBindingSource.Current as Product;
@@ -87,7 +87,7 @@ public class ProductPresenter : PresenterCRUD
         _context.Products.Add(product);
         _context.SaveChanges();
         _viewProduct.ProductBindingSource.EndEdit();
-        MessageBox.Show("Thêm thành công");
+        MessageBox.Show(@"Thêm thành công");
     }
 
     public override void Update()
@@ -109,14 +109,14 @@ public class ProductPresenter : PresenterCRUD
         _context.Entry(productExist).CurrentValues.SetValues(product);
         _context.SaveChanges();
         _viewProduct.ProductBindingSource.EndEdit();
-        MessageBox.Show("Cập nhật thành cộng");
+        MessageBox.Show(@"Cập nhật thành cộng");
     }
 
     public override void Remove()
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteProduct == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         var deleted = _viewProduct.ProductBindingSource.Current as Product;
@@ -138,12 +138,12 @@ public class ProductPresenter : PresenterCRUD
                 _context.SaveChanges();
                 transaction.Commit();
                 _viewProduct.ProductBindingSource.Remove(deleted);
-                MessageBox.Show("Xóa thành công");
+                MessageBox.Show(@"Xóa thành công");
             }
             catch (Exception e)
             {
                 transaction.Rollback();
-                MessageBox.Show($"Xóa thất bại: {e.Message}");
+                MessageBox.Show($@"Xóa thất bại: {e.Message}");
             }
         }
     }

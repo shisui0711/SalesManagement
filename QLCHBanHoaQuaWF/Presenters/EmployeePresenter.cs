@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using QLCHBanHoaQuaWF.Models;
 using QLCHBanHoaQuaWF.Views;
 using QLCHBanHoaQuaWF.Views.Employee;
@@ -47,46 +48,53 @@ public class EmployeePresenter : PresenterCRUD
 
     void CalculateSalary()
     {
-        List<SalaryTable> salesSalary = (from employee in _context.Employees
-            join sales in _context.SalesOrders
-                on employee.EmployeeID equals sales.EmployeeID
-            where sales.OrderDate >= _viewSalary.StartDate 
-                  && sales.OrderDate <= _viewSalary.EndDate && employee.Salary != null
-            group sales by new
-            {
-                employee.EmployeeID,
-                employee.EmployeeName,
-                employee.Salary
-            }
-            into g
-            select new SalaryTable
-            {
-                EmployeeID = g.Key.EmployeeID,
-                EmployeeName = g.Key.EmployeeName,
-                Salary = (decimal)g.Key.Salary,
-                TotalWorked = g.Count()
-            }).ToList();
-        List<SalaryTable> importSalary = (from employee in _context.Employees
-            join import in _context.ImportOrders
-                on employee.EmployeeID equals import.EmployeeID
-            where import.OrderDate >= _viewSalary.StartDate
-                  && import.OrderDate <= _viewSalary.EndDate && employee.Salary != null
-            group import by new
-            {
-                employee.EmployeeID,
-                employee.EmployeeName,
-                employee.Salary
-            }
-            into g
-            select new SalaryTable
-            {
-                EmployeeID = g.Key.EmployeeID,
-                EmployeeName = g.Key.EmployeeName,
-                Salary = (decimal)g.Key.Salary,
-                TotalWorked = g.Count()
-            }).ToList();
-        List<SalaryTable> salaryTables = salesSalary.Concat(importSalary).ToList();
-        _viewSalary.SalaryBindingSource.DataSource = salaryTables;
+        try
+        {
+            List<SalaryTable> salesSalary = (from employee in _context.Employees
+                join sales in _context.SalesOrders
+                    on employee.EmployeeID equals sales.EmployeeID
+                where sales.OrderDate >= _viewSalary.StartDate
+                      && sales.OrderDate <= _viewSalary.EndDate && employee.Salary != null
+                group sales by new
+                {
+                    employee.EmployeeID,
+                    employee.EmployeeName,
+                    employee.Salary
+                }
+                into g
+                select new SalaryTable
+                {
+                    EmployeeID = g.Key.EmployeeID,
+                    EmployeeName = g.Key.EmployeeName,
+                    Salary = (decimal)g.Key.Salary,
+                    TotalWorked = g.Count()
+                }).ToList();
+            List<SalaryTable> importSalary = (from employee in _context.Employees
+                join import in _context.ImportOrders
+                    on employee.EmployeeID equals import.EmployeeID
+                where import.OrderDate >= _viewSalary.StartDate
+                      && import.OrderDate <= _viewSalary.EndDate && employee.Salary != null
+                group import by new
+                {
+                    employee.EmployeeID,
+                    employee.EmployeeName,
+                    employee.Salary
+                }
+                into g
+                select new SalaryTable
+                {
+                    EmployeeID = g.Key.EmployeeID,
+                    EmployeeName = g.Key.EmployeeName,
+                    Salary = (decimal)g.Key.Salary,
+                    TotalWorked = g.Count()
+                }).ToList();
+            List<SalaryTable> salaryTables = salesSalary.Concat(importSalary).ToList();
+            _viewSalary.SalaryBindingSource.DataSource = salaryTables;
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show($"Lỗi: {e.Message}");
+        }
     }
     void ShowSalaryTable()
     {
@@ -97,7 +105,7 @@ public class EmployeePresenter : PresenterCRUD
     {
         if (_viewEmployee.EmployeeBindingSource.Current == null)
         {
-            MessageBox.Show("Chưa bản ghi nào được chọn");
+            MessageBox.Show(@"Chưa bản ghi nào được chọn");
             return;
         }
         Employee currentEmployee = _viewEmployee.EmployeeBindingSource.Current as Employee;
@@ -105,7 +113,7 @@ public class EmployeePresenter : PresenterCRUD
             .First(e => e.EmployeeID == currentEmployee.EmployeeID);
         if (employee.SalesOrders.Count == 0)
         {
-            MessageBox.Show("Nhân viên này chưa bán đơn hàng nào");
+            MessageBox.Show(@"Nhân viên này chưa bán đơn hàng nào");
             return;
         }
         _historySales.SalesBindingSource.DataSource = employee.SalesOrders.ToList();
@@ -118,7 +126,7 @@ public class EmployeePresenter : PresenterCRUD
     {
         if (_viewEmployee.EmployeeBindingSource.Current == null)
         {
-            MessageBox.Show("Chưa bản ghi nào được chọn");
+            MessageBox.Show(@"Chưa bản ghi nào được chọn");
             return;
         }
         Employee currentEmployee = _viewEmployee.EmployeeBindingSource.Current as Employee;
@@ -126,7 +134,7 @@ public class EmployeePresenter : PresenterCRUD
             .First(e => e.EmployeeID == currentEmployee.EmployeeID);
         if (employee.ImportOrders.Count == 0)
         {
-            MessageBox.Show("Nhân viên này chưa nhập đơn hàng nào");
+            MessageBox.Show(@"Nhân viên này chưa nhập đơn hàng nào");
             return;
         }
         _historyImport.ImportBindingSource.DataSource = employee.ImportOrders.ToList();
@@ -137,7 +145,7 @@ public class EmployeePresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateEmployee == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         if (_addEmployee.GetType().IsAssignableTo(typeof(Form)))
@@ -154,7 +162,7 @@ public class EmployeePresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateProduct == false)
         {
-            MessageBox.Show("Bạn không có quyền này");
+            MessageBox.Show(@"Bạn không có quyền này");
             return;
         }
         var updated = _viewEmployee.EmployeeBindingSource.Current as Employee;
@@ -178,108 +186,144 @@ public class EmployeePresenter : PresenterCRUD
     }
     public override void Add()
     {
-        var employee = new Employee();
-        employee.EmployeeName = _addEmployee.EmployeeName;
-        employee.Email = _addEmployee.Email;
-        employee.Phone = _addEmployee.Phone;
-        employee.Address = _addEmployee.Address;
-        employee.Salary = _addEmployee.Salary;
-        if (!IsValid(employee, _addEmployee))
+        try
         {
-            return;
-        }
+            var employee = new Employee();
+            employee.EmployeeName = _addEmployee.EmployeeName;
+            employee.Email = _addEmployee.Email;
+            employee.Phone = _addEmployee.Phone;
+            employee.Address = _addEmployee.Address;
+            employee.Salary = _addEmployee.Salary;
+            if (!IsValid(employee, _addEmployee))
+            {
+                return;
+            }
 
-        if (_context.Employees.Any(e => e.Email == _addEmployee.Email))
+            if (_context.Employees.Any(e => e.Email == _addEmployee.Email))
+            {
+                MessageBox.Show(@"Email đã tồn tại trên hệ thống");
+                return;
+            }
+
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
+            _auth.Register(employee.Email, "123456", 1);
+            _viewEmployee.EmployeeBindingSource.EndEdit();
+            MessageBox.Show("Thêm thành công");
+        }
+        catch (Exception e)
         {
-            MessageBox.Show("Email đã tồn tại trên hệ thống");
-            return;
+           MessageBox.Show($"Lỗi: {e.Message}");
         }
-
-        _context.Employees.Add(employee);
-        _context.SaveChanges();
-        _auth.Register(employee.Email, "123456", 1);
-        _viewEmployee.EmployeeBindingSource.EndEdit();
     }
 
     public override void Update()
     {
-        var employee = _context.Employees.Find(_updateEmployee.EmployeeID);
-        if (employee == null)
+        try
         {
-            return;
-        }
-        employee.EmployeeName = _updateEmployee.EmployeeName;
-        employee.Email = _updateEmployee.Email;
-        employee.Phone = _updateEmployee.Phone;
-        employee.Address = _updateEmployee.Address;
-        employee.Salary = _updateEmployee.Salary;
-        if (!IsValid(employee, _updateEmployee))
-        {
-            _context.Entry(employee).Reload();
-            return;
-        }
+            var employee = _context.Employees.Find(_updateEmployee.EmployeeID);
+            if (employee == null)
+            {
+                return;
+            }
 
-        _context.SaveChanges();
-        _viewEmployee.EmployeeBindingSource.EndEdit();
+            employee.EmployeeName = _updateEmployee.EmployeeName;
+            employee.Email = _updateEmployee.Email;
+            employee.Phone = _updateEmployee.Phone;
+            employee.Address = _updateEmployee.Address;
+            employee.Salary = _updateEmployee.Salary;
+            if (!IsValid(employee, _updateEmployee))
+            {
+                _context.Entry(employee).Reload();
+                return;
+            }
+
+            _context.SaveChanges();
+            _viewEmployee.EmployeeBindingSource.EndEdit();
+            MessageBox.Show("Cập nhật thành công");
+        }
+        catch (Exception e)
+        {
+           MessageBox.Show($"Lỗi: {e.Message}");
+        }
     }
 
     public override void Remove()
     {
-        var deleted = _viewEmployee.EmployeeBindingSource.Current as Employee;
-        if (deleted == null)
+        try
         {
-            return;
-        }
-        var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
-            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        if (dialogResult == DialogResult.Cancel)
-        {
-            return;
-        }
-        using (var transaction = _context.Database.BeginTransaction())
-        {
-            try
+            var deleted = _viewEmployee.EmployeeBindingSource.Current as Employee;
+            if (deleted == null)
             {
-                _context.Employees.Remove(deleted);
-                _context.SaveChanges();
-                transaction.Commit();
-                _viewEmployee.EmployeeBindingSource.Remove(deleted);
+                return;
             }
-            catch (Exception e)
+
+            var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Cancel)
             {
-                transaction.Rollback();
+                return;
             }
+
+            using (var transaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    _context.Employees.Remove(deleted);
+                    _context.SaveChanges();
+                    transaction.Commit();
+                    _viewEmployee.EmployeeBindingSource.Remove(deleted);
+                    MessageBox.Show("Xóa thành công");
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show($"Xóa thất bại: {e.Message}");
+                }
+            }
+        }
+        catch (Exception e)
+        {
+          MessageBox.Show($"Lỗi: {e.Message}");
         }
     }
 
     public override void Search()
     {
-        List<Employee> employees = null;
-        switch (_viewEmployee.OptionIndex)
+        try
         {
-            case 1:
-                employees = _context.Employees.Where(x => x.EmployeeName.Contains(_viewEmployee.SearchText)).ToList();
-                break;
-            case 3:
-                employees = _context.Employees.Where(x => x.Email.Contains(_viewEmployee.SearchText)).ToList();
-                break;
-            case 4:
-                employees = _context.Employees.Where(x => x.Phone.Contains(_viewEmployee.SearchText)).ToList();
-                break;
-            case 5:
-                employees = _context.Employees.Where(x => x.Address.Contains(_viewEmployee.SearchText)).ToList();
-                break;
-            default:
-                break;
-        }
+            List<Employee> employees = null;
+            switch (_viewEmployee.OptionIndex)
+            {
+                case 1:
+                    employees = _context.Employees.Where(x => x.EmployeeName.Contains(_viewEmployee.SearchText))
+                        .ToList();
+                    break;
+                case 3:
+                    employees = _context.Employees.Where(x => x.Email.Contains(_viewEmployee.SearchText)).ToList();
+                    break;
+                case 4:
+                    employees = _context.Employees.Where(x => x.Phone.Contains(_viewEmployee.SearchText)).ToList();
+                    break;
+                case 5:
+                    employees = _context.Employees.Where(x => x.Address.Contains(_viewEmployee.SearchText)).ToList();
+                    break;
+                default:
+                    break;
+            }
 
-        if (employees != null)
-        {
-            _viewEmployee.EmployeeBindingSource.DataSource = employees;
+            if (employees != null)
+            {
+                _viewEmployee.EmployeeBindingSource.DataSource = employees;
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ", "Thông báo");
+            }
         }
-        else
+        catch (Exception e)
         {
-            MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ", "Thông báo");
+           MessageBox.Show($"Lỗi: {e.Message}");
         }
     }
 
@@ -287,10 +331,5 @@ public class EmployeePresenter : PresenterCRUD
     {
         _viewEmployee.EmployeeBindingSource.ResetBindings(true);
         _viewEmployee.EmployeeBindingSource.DataSource = _context.Employees.Local.ToBindingList();
-    }
-
-    public void LoadUserRole(BindingSource source)
-    {
-        source.DataSource = _context.UserRoles.ToList();
     }
 }

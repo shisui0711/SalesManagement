@@ -96,7 +96,7 @@ namespace QLCHBanHoaQuaWF.Views.ImportOrder
             {
                 if (AuthPresenter.User.UserRole.Permission.CanExportImportOrder == false)
                 {
-                    MessageBox.Show("Bạn không có quyền này.");
+                    MessageBox.Show(@"Bạn không có quyền này.");
                     return;
                 }
             }
@@ -106,7 +106,7 @@ namespace QLCHBanHoaQuaWF.Views.ImportOrder
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 dgvImportOrder.ExportToExcel(saveFileDialog.FileName);
-                MessageBox.Show("Xuất thành công!");
+                MessageBox.Show(@"Xuất thành công!");
             }
         }
 
