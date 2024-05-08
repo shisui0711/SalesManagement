@@ -14,6 +14,7 @@ using QLCHWF.Views.SalesOrder;
 using QLCHWF.Views.User;
 using QLCHWF.Views.UserRole;
 using System.Reflection;
+using QLCHWF.Models;
 using QLCHWF.Views.Statistics;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
@@ -61,8 +62,9 @@ namespace QLCHWF
             {
                 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
                 config.AddEnvironmentVariables();
-            }).ConfigureServices((services) =>
+            }).ConfigureServices((hostContext,services) =>
             {
+                services.Configure<EmailSetting>(hostContext.Configuration.GetSection("EmailSettings"));
                 services.AddDbContext<MyAppContext>();
                 services.AddSingleton<IViewMain, frmMain>();
                 services.AddSingleton<IViewCustomer, frmViewCustomer>();

@@ -1,6 +1,10 @@
-﻿namespace QLCHWF.IServices;
+﻿using QLCHWF.Models;
+using System.Net.Mail;
+
+namespace QLCHWF.IServices;
 
 public interface IEmailService
 {
-    public Task SendMail(string to, string subject, string body);
+    public bool SendMail(EmailSetting setting, MailMessage mailMessage);
+    public Task<bool> SendMailAsync(EmailSetting setting, MailMessage mailMessage);
 }
