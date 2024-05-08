@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace QLCHBanHoaQuaWF.Views.Provider
+namespace QLCHWF.Views.Provider
 {
     public partial class frmAddProvider : Form, IAddProvider
     {

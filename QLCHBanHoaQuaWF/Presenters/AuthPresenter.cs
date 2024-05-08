@@ -1,16 +1,16 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using QLCHBanHoaQuaWF.Attributes;
-using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.User;
+using QLCHWF.Attributes;
+using QLCHWF.Models;
+using QLCHWF.Views;
+using QLCHWF.Views.User;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
+using MyAppContext = QLCHWF.Models.MyAppContext;
 
-namespace QLCHBanHoaQuaWF.Presenters
+namespace QLCHWF.Presenters
 {
     public class AuthPresenter
     {
@@ -96,24 +96,28 @@ namespace QLCHBanHoaQuaWF.Presenters
             else
             {
                 string email = _configuration.GetSection("AccountDemo").GetSection("Email").Value;
-                //string password = _configuration.GetSection("AccountDemo").GetSection("Password").Value;
+                string password = _configuration.GetSection("AccountDemo").GetSection("Password").Value;
                 string role = _configuration.GetSection("AccountDemo").GetSection("Role").Value;
-                //if (email != _viewLogin.Username)
-                //{
-                //    MessageBox.Show("Email không tồn tại");
-                //    return;
-                //}
+                if (email != _viewLogin.Username)
+                {
+                    MessageBox.Show("Email không tồn tại");
+                    return;
+                }
 
-                //if (password != _viewLogin.Password)
-                //{
-                //    MessageBox.Show("Mật khẩu không đúng");
-                //    return;
-                //}
-                UserRole userRole = new UserRole();
-                userRole.RoleName = role;
-                User user = new User();
-                user.Email = email;
-                user.UserRole = userRole;
+                if (password != _viewLogin.Password)
+                {
+                    MessageBox.Show("Mật khẩu không đúng");
+                    return;
+                }
+                UserRole userRole = new UserRole
+                {
+                    RoleName = role
+                };
+                User user = new User
+                {
+                    Email = email,
+                    UserRole = userRole
+                };
                 Permission? permission = new Permission();
                 foreach (var propertyInfo in permission.GetType().GetProperties().Where(x => x.PropertyType == typeof(bool)))
                 {
@@ -121,7 +125,6 @@ namespace QLCHBanHoaQuaWF.Presenters
                 }
                 userRole.Permission = permission;
                 User = user;
-
             }
             var loginForm = _viewLogin as Form;
             var mainForm = _viewMain as Form;

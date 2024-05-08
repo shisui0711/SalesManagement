@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.ImportOrder
+﻿namespace QLCHWF.Views.ImportOrder
 {
     public partial class frmViewDetailImport : Form,IDetailImportOrder
     {

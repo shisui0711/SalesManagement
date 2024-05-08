@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Product
+﻿namespace QLCHWF.Views.Product
 {
     partial class frmUpdateProduct
     {
@@ -135,7 +135,7 @@
             // 
             this.ptbUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
             this.ptbUpload.CustomizableEdges = customizableEdges15;
-            this.ptbUpload.Image = global::QLCHBanHoaQuaWF.Properties.Resources.upload;
+            this.ptbUpload.Image = global::QLCHWF.Properties.Resources.upload;
             this.ptbUpload.ImageRotate = 0F;
             this.ptbUpload.Location = new System.Drawing.Point(292, 277);
             this.ptbUpload.Name = "ptbUpload";

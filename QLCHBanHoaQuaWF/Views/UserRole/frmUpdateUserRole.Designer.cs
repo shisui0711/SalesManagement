@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.UserRole
+﻿namespace QLCHWF.Views.UserRole
 {
     partial class frmUpdateUserRole
     {

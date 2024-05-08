@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views
+﻿namespace QLCHWF.Views
 {
     partial class frmHistorySalesOrder
     {
@@ -295,7 +295,7 @@
             // 
             // salesOrderBindingSource
             // 
-            this.salesOrderBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.SalesOrder);
+            this.salesOrderBindingSource.DataSource = typeof(QLCHWF.Models.SalesOrder);
             // 
             // dragControl
             // 

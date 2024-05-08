@@ -1,13 +1,13 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
-using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.Product;
-using QLCHBanHoaQuaWF.Views.SalesOrder;
-using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
+using QLCHWF.Models;
+using QLCHWF.Views;
+using QLCHWF.Views.Product;
+using QLCHWF.Views.SalesOrder;
+using MyAppContext = QLCHWF.Models.MyAppContext;
 
-namespace QLCHBanHoaQuaWF.Presenters
+namespace QLCHWF.Presenters
 {
     public class SalesOrderPresenter
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLCHBanHoaQuaWF.Views.Employee
+namespace QLCHWF.Views.Employee
 {
     public partial class frmViewSalary : Form,IViewSalary
     {

@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Provider
+﻿namespace QLCHWF.Views.Provider
 {
     partial class frmAddProvider
     {

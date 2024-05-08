@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views
+﻿namespace QLCHWF.Views
 {
     public partial class frmLogin : Form, IViewLogin
     {
@@ -41,13 +41,13 @@
             if (isHiden)
             {
                 txtPassword.PasswordChar = '\0';
-                txtPassword.IconRight = global::QLCHBanHoaQuaWF.Properties.Resources.hide;
+                txtPassword.IconRight = global::QLCHWF.Properties.Resources.hide;
                 isHiden = false;
             }
             else
             {
                 txtPassword.PasswordChar = '•';
-                txtPassword.IconRight = global::QLCHBanHoaQuaWF.Properties.Resources.eye;
+                txtPassword.IconRight = global::QLCHWF.Properties.Resources.eye;
                 isHiden = true;
             }
         }

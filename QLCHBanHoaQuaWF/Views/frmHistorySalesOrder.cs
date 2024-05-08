@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLCHBanHoaQuaWF.Views
+namespace QLCHWF.Views
 {
     public partial class frmHistorySalesOrder : Form, IHistorySales
     {

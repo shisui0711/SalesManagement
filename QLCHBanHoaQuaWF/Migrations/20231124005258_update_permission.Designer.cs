@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using QLCHBanHoaQuaWF.Models;
+using QLCHWF.Models;
 
 #nullable disable
 
-namespace QLCHBanHoaQuaWF.Migrations
+namespace QLCHWF.Migrations
 {
     [DbContext(typeof(MyAppContext))]
     [Migration("20231124005258_update_permission")]
@@ -25,7 +25,7 @@ namespace QLCHBanHoaQuaWF.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.AppInfo", b =>
+            modelBuilder.Entity("QLCHWF.Models.AppInfo", b =>
                 {
                     b.Property<string>("AppName")
                         .HasColumnType("nvarchar(450)");
@@ -54,7 +54,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                         });
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Customer", b =>
+            modelBuilder.Entity("QLCHWF.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerID")
                         .ValueGeneratedOnAdd()
@@ -89,7 +89,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.DetailImportOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.DetailImportOrder", b =>
                 {
                     b.Property<int>("DetailOrderID")
                         .ValueGeneratedOnAdd()
@@ -121,7 +121,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.ToTable("DetailImportOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.DetailSalesOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.DetailSalesOrder", b =>
                 {
                     b.Property<int>("DetailOrderID")
                         .ValueGeneratedOnAdd()
@@ -153,7 +153,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.ToTable("DetailSalesOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Employee", b =>
+            modelBuilder.Entity("QLCHWF.Models.Employee", b =>
                 {
                     b.Property<int>("EmployeeID")
                         .ValueGeneratedOnAdd()
@@ -193,7 +193,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.ToTable("Employee");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.ImportOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.ImportOrder", b =>
                 {
                     b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
@@ -222,7 +222,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.ToTable("ImportOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Permission", b =>
+            modelBuilder.Entity("QLCHWF.Models.Permission", b =>
                 {
                     b.Property<int>("PermissionID")
                         .ValueGeneratedOnAdd()
@@ -361,7 +361,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                         });
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Product", b =>
+            modelBuilder.Entity("QLCHWF.Models.Product", b =>
                 {
                     b.Property<int>("ProductID")
                         .ValueGeneratedOnAdd()
@@ -404,7 +404,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Provider", b =>
+            modelBuilder.Entity("QLCHWF.Models.Provider", b =>
                 {
                     b.Property<int>("ProviderID")
                         .ValueGeneratedOnAdd()
@@ -436,7 +436,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.ToTable("Providers");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.SalesOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.SalesOrder", b =>
                 {
                     b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
@@ -471,7 +471,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.ToTable("SalesOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.User", b =>
+            modelBuilder.Entity("QLCHWF.Models.User", b =>
                 {
                     b.Property<int>("EmployeeID")
                         .HasColumnType("int");
@@ -504,7 +504,7 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.UserRole", b =>
+            modelBuilder.Entity("QLCHWF.Models.UserRole", b =>
                 {
                     b.Property<int>("RoleID")
                         .ValueGeneratedOnAdd()
@@ -545,15 +545,15 @@ namespace QLCHBanHoaQuaWF.Migrations
                         });
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.DetailImportOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.DetailImportOrder", b =>
                 {
-                    b.HasOne("QLCHBanHoaQuaWF.Models.ImportOrder", "ImportOrder")
+                    b.HasOne("QLCHWF.Models.ImportOrder", "ImportOrder")
                         .WithMany("DetailImportOrders")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("QLCHBanHoaQuaWF.Models.Product", "Product")
+                    b.HasOne("QLCHWF.Models.Product", "Product")
                         .WithMany("DetailImportOrders")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -564,15 +564,15 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.DetailSalesOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.DetailSalesOrder", b =>
                 {
-                    b.HasOne("QLCHBanHoaQuaWF.Models.SalesOrder", "SalesOrder")
+                    b.HasOne("QLCHWF.Models.SalesOrder", "SalesOrder")
                         .WithMany("DetailSalesOrders")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("QLCHBanHoaQuaWF.Models.Product", "Product")
+                    b.HasOne("QLCHWF.Models.Product", "Product")
                         .WithMany("DetailSalesOrders")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -583,13 +583,13 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.Navigation("SalesOrder");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.ImportOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.ImportOrder", b =>
                 {
-                    b.HasOne("QLCHBanHoaQuaWF.Models.Employee", "Employee")
+                    b.HasOne("QLCHWF.Models.Employee", "Employee")
                         .WithMany("ImportOrders")
                         .HasForeignKey("EmployeeID");
 
-                    b.HasOne("QLCHBanHoaQuaWF.Models.Provider", "Provider")
+                    b.HasOne("QLCHWF.Models.Provider", "Provider")
                         .WithMany("ImportOrders")
                         .HasForeignKey("ProviderID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -600,15 +600,15 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.Navigation("Provider");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.SalesOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.SalesOrder", b =>
                 {
-                    b.HasOne("QLCHBanHoaQuaWF.Models.Customer", "Customer")
+                    b.HasOne("QLCHWF.Models.Customer", "Customer")
                         .WithMany("SalesOrders")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("QLCHBanHoaQuaWF.Models.Employee", "Employee")
+                    b.HasOne("QLCHWF.Models.Employee", "Employee")
                         .WithMany("SalesOrders")
                         .HasForeignKey("EmployeeID");
 
@@ -617,15 +617,15 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.User", b =>
+            modelBuilder.Entity("QLCHWF.Models.User", b =>
                 {
-                    b.HasOne("QLCHBanHoaQuaWF.Models.Employee", "Employee")
+                    b.HasOne("QLCHWF.Models.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("QLCHBanHoaQuaWF.Models.UserRole", "UserRole")
+                    b.HasOne("QLCHWF.Models.UserRole", "UserRole")
                         .WithMany("Users")
                         .HasForeignKey("RoleID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -636,58 +636,58 @@ namespace QLCHBanHoaQuaWF.Migrations
                     b.Navigation("UserRole");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.UserRole", b =>
+            modelBuilder.Entity("QLCHWF.Models.UserRole", b =>
                 {
-                    b.HasOne("QLCHBanHoaQuaWF.Models.Permission", "Permission")
+                    b.HasOne("QLCHWF.Models.Permission", "Permission")
                         .WithOne("UserRole")
-                        .HasForeignKey("QLCHBanHoaQuaWF.Models.UserRole", "PermissionID")
+                        .HasForeignKey("QLCHWF.Models.UserRole", "PermissionID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Permission");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Customer", b =>
+            modelBuilder.Entity("QLCHWF.Models.Customer", b =>
                 {
                     b.Navigation("SalesOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Employee", b =>
+            modelBuilder.Entity("QLCHWF.Models.Employee", b =>
                 {
                     b.Navigation("ImportOrders");
 
                     b.Navigation("SalesOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.ImportOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.ImportOrder", b =>
                 {
                     b.Navigation("DetailImportOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Permission", b =>
+            modelBuilder.Entity("QLCHWF.Models.Permission", b =>
                 {
                     b.Navigation("UserRole")
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Product", b =>
+            modelBuilder.Entity("QLCHWF.Models.Product", b =>
                 {
                     b.Navigation("DetailImportOrders");
 
                     b.Navigation("DetailSalesOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.Provider", b =>
+            modelBuilder.Entity("QLCHWF.Models.Provider", b =>
                 {
                     b.Navigation("ImportOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.SalesOrder", b =>
+            modelBuilder.Entity("QLCHWF.Models.SalesOrder", b =>
                 {
                     b.Navigation("DetailSalesOrders");
                 });
 
-            modelBuilder.Entity("QLCHBanHoaQuaWF.Models.UserRole", b =>
+            modelBuilder.Entity("QLCHWF.Models.UserRole", b =>
                 {
                     b.Navigation("Users");
                 });

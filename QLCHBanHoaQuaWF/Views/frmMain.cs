@@ -2,7 +2,7 @@
 
 using System.Reflection;
 
-namespace QLCHBanHoaQuaWF.Views
+namespace QLCHWF.Views
 {
     public partial class frmMain : Form, IViewMain
     {

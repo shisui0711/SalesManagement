@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace QLCHBanHoaQuaWF.Migrations
+namespace QLCHWF.Migrations
 {
     /// <inheritdoc />
     public partial class update_permission : Migration

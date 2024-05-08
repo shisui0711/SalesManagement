@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.SalesOrder
+﻿namespace QLCHWF.Views.SalesOrder
 {
     partial class frmAddSalesOrder
     {
@@ -564,7 +564,7 @@
             // 
             // customerBindingSource
             // 
-            this.customerBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.Customer);
+            this.customerBindingSource.DataSource = typeof(QLCHWF.Models.Customer);
             // 
             // pnlSearchCustomer
             // 
@@ -593,7 +593,7 @@
             this.btnLoadCustomer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
             this.btnLoadCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLoadCustomer.ForeColor = System.Drawing.Color.White;
-            this.btnLoadCustomer.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
+            this.btnLoadCustomer.Image = global::QLCHWF.Properties.Resources.reload;
             this.btnLoadCustomer.ImageSize = new System.Drawing.Size(30, 30);
             this.btnLoadCustomer.Location = new System.Drawing.Point(285, 8);
             this.btnLoadCustomer.Name = "btnLoadCustomer";
@@ -615,7 +615,7 @@
             this.btnSearchCustomer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
             this.btnSearchCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSearchCustomer.ForeColor = System.Drawing.Color.White;
-            this.btnSearchCustomer.Image = global::QLCHBanHoaQuaWF.Properties.Resources._3d_magnifier;
+            this.btnSearchCustomer.Image = global::QLCHWF.Properties.Resources._3d_magnifier;
             this.btnSearchCustomer.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearchCustomer.Location = new System.Drawing.Point(238, 8);
             this.btnSearchCustomer.Name = "btnSearchCustomer";
@@ -720,7 +720,7 @@
             this.btnReload.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
             this.btnReload.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
+            this.btnReload.Image = global::QLCHWF.Properties.Resources.reload;
             this.btnReload.ImageSize = new System.Drawing.Size(30, 30);
             this.btnReload.Location = new System.Drawing.Point(413, 55);
             this.btnReload.Name = "btnReload";
@@ -742,7 +742,7 @@
             this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Image = global::QLCHBanHoaQuaWF.Properties.Resources._3d_magnifier;
+            this.btnSearch.Image = global::QLCHWF.Properties.Resources._3d_magnifier;
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearch.Location = new System.Drawing.Point(366, 55);
             this.btnSearch.Name = "btnSearch";

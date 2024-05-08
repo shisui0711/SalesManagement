@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace QLCHBanHoaQuaWF.Views.Employee
+namespace QLCHWF.Views.Employee
 {
     public partial class frmAddEmployee : Form, IAddEmployee
     {

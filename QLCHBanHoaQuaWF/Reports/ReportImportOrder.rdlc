@@ -36,7 +36,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsDetailOrder</rd:DataSetName>
-        <rd:SchemaPath>D:\c#\BTL_WF\QLCHBanHoaQuaWF\dsDetailOrder.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\c#\BTL_WF\QLCHWF\dsDetailOrder.xsd</rd:SchemaPath>
         <rd:TableName>DetailOrders</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

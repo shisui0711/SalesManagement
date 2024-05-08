@@ -1,6 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 
-namespace QLCHBanHoaQuaWF.Views.SalesOrder;
+namespace QLCHWF.Views.SalesOrder;
 
 public interface IReportSalesOrder
 {

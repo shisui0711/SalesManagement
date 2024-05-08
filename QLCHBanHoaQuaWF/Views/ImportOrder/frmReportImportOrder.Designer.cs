@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.ImportOrder
+﻿namespace QLCHWF.Views.ImportOrder
 {
     partial class frmReportImportOrder
     {

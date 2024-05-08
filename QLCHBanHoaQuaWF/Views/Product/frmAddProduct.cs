@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace QLCHBanHoaQuaWF.Views.Product
+namespace QLCHWF.Views.Product
 {
     public partial class frmAddProduct : Form, IAddProduct
     {

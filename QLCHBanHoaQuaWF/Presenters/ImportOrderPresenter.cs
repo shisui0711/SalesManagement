@@ -2,12 +2,12 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
-using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views.ImportOrder;
-using QLCHBanHoaQuaWF.Views.Product;
-using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
+using QLCHWF.Models;
+using QLCHWF.Views.ImportOrder;
+using QLCHWF.Views.Product;
+using MyAppContext = QLCHWF.Models.MyAppContext;
 
-namespace QLCHBanHoaQuaWF.Presenters;
+namespace QLCHWF.Presenters;
 
 public class ImportOrderPresenter : PresenterCRUD
 {

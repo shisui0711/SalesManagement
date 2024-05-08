@@ -1,9 +1,9 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using QLCHBanHoaQuaWF.Presenters;
+using QLCHWF.Presenters;
 
-namespace QLCHBanHoaQuaWF.Models
+namespace QLCHWF.Models
 {
     public sealed partial class MyAppContext : DbContext
     {

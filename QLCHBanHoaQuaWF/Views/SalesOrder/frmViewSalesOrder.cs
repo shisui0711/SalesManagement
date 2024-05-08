@@ -1,6 +1,6 @@
-﻿using QLCHBanHoaQuaWF.Presenters;
+﻿using QLCHWF.Presenters;
 
-namespace QLCHBanHoaQuaWF.Views.SalesOrder
+namespace QLCHWF.Views.SalesOrder
 {
     public partial class frmViewSalesOrder : Form, IViewSalesOrder
     {
@@ -88,6 +88,7 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
             {
                 dtpStart.Visible = false;
                 dtpEnd.Visible = false;
+                SearchSalesOrder?.Invoke(sender,e);
             }
         }
 
@@ -140,6 +141,20 @@ namespace QLCHBanHoaQuaWF.Views.SalesOrder
         private void btnDetail_Click(object sender, EventArgs e)
         {
             ShowDetail?.Invoke(sender,e);
+        }
+
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchSalesOrder?.Invoke(sender,e);
+            }
+        }
+
+        private void cboOptionSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SearchSalesOrder?.Invoke(sender,e);
         }
     }
 }

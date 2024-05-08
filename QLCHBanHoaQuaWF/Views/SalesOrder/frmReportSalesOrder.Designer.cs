@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.SalesOrder
+﻿namespace QLCHWF.Views.SalesOrder
 {
     partial class frmReportSalesOrder
     {

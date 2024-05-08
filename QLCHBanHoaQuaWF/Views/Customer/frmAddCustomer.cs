@@ -2,7 +2,7 @@
 using System.Reflection;
 using String = System.String;
 
-namespace QLCHBanHoaQuaWF.Views.Customer
+namespace QLCHWF.Views.Customer
 {
     public partial class frmAddCustomer : Form, IAddCustomer
     {

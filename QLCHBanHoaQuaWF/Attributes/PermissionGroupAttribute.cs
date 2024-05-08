@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Attributes;
+﻿namespace QLCHWF.Attributes;
 
 [AttributeUsage(AttributeTargets.Property)]
 public class PermissionGroupAttribute : Attribute

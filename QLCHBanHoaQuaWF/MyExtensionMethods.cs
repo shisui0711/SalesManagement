@@ -3,7 +3,7 @@ using System.Data;
 using System.Drawing.Drawing2D;
 using System.IO;
 
-namespace QLCHBanHoaQuaWF;
+namespace QLCHWF;
 
 public static class MyExtensionMethods
 {

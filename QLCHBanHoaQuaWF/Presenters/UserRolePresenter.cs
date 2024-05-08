@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views.UserRole;
+using QLCHWF.Models;
+using QLCHWF.Views.UserRole;
 using System.ComponentModel;
 
-namespace QLCHBanHoaQuaWF.Presenters;
+namespace QLCHWF.Presenters;
 
 public class UserRolePresenter : PresenterCRUD
 {

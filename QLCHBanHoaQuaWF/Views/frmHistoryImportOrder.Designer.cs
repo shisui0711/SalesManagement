@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views
+﻿namespace QLCHWF.Views
 {
     partial class frmHistoryImportOrder
     {
@@ -273,7 +273,7 @@
             // 
             // importOrderBindingSource
             // 
-            this.importOrderBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.ImportOrder);
+            this.importOrderBindingSource.DataSource = typeof(QLCHWF.Models.ImportOrder);
             // 
             // dragControl
             // 

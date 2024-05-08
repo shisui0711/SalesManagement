@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Options;
+﻿namespace QLCHWF.Views.Options;
 
 public interface IAppInfo
 {

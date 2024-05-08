@@ -1,9 +1,9 @@
-﻿using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views.Statistics;
+﻿using QLCHWF.Models;
+using QLCHWF.Views.Statistics;
 using System.Globalization;
 using Guna.Charts.WinForms;
 
-namespace QLCHBanHoaQuaWF.Presenters;
+namespace QLCHWF.Presenters;
 
 public class StatisticsPresenter
 {

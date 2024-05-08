@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.User;
+﻿namespace QLCHWF.Views.User;
 
 public interface IChangePassword
 {

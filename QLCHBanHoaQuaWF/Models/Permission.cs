@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using QLCHBanHoaQuaWF.Attributes;
+using QLCHWF.Attributes;
 
-namespace QLCHBanHoaQuaWF.Models
+namespace QLCHWF.Models
 {
     [Table("Permission")]
     public class Permission

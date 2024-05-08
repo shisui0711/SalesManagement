@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Customer;
+﻿namespace QLCHWF.Views.Customer;
 
 public interface IAddCustomer : IValidateControl
 {

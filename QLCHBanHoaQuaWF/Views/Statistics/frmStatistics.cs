@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
 using System.Windows.Forms.DataVisualization.Charting;
 using Guna.Charts.WinForms;
-using QLCHBanHoaQuaWF.Models;
+using QLCHWF.Models;
 
-namespace QLCHBanHoaQuaWF.Views.Statistics
+namespace QLCHWF.Views.Statistics
 {
     public partial class frmStatistics : Form, IViewStatistics
     {

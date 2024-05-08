@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace QLCHBanHoaQuaWF.Migrations
+namespace QLCHWF.Migrations
 {
     /// <inheritdoc />
     public partial class InitDb : Migration

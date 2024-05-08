@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Product
+﻿namespace QLCHWF.Views.Product
 {
     public partial class frmViewProduct : Form, IViewProduct
     {

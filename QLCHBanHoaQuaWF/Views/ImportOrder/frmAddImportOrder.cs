@@ -1,8 +1,8 @@
 ﻿using Guna.UI2.WinForms;
-using QLCHBanHoaQuaWF.Presenters;
+using QLCHWF.Presenters;
 using System.Text.RegularExpressions;
 
-namespace QLCHBanHoaQuaWF.Views.ImportOrder
+namespace QLCHWF.Views.ImportOrder
 {
     public partial class frmAddImportOrder : Form, IAddImportOrder
     {

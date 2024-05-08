@@ -1,7 +1,7 @@
-﻿using QLCHBanHoaQuaWF.Views;
+﻿using QLCHWF.Views;
 using System.ComponentModel.DataAnnotations;
 
-namespace QLCHBanHoaQuaWF.Presenters
+namespace QLCHWF.Presenters
 {
     public abstract class PresenterCRUD
     {

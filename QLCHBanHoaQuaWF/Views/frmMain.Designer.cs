@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views
+﻿namespace QLCHWF.Views
 {
     partial class frmMain
     {
@@ -298,7 +298,7 @@
             this.btnUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(126)))), ((int)(((byte)(111)))));
             this.btnUser.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(160)))), ((int)(((byte)(236)))));
             this.btnUser.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnUser.Image = global::QLCHBanHoaQuaWF.Properties.Resources.user;
+            this.btnUser.Image = global::QLCHWF.Properties.Resources.user;
             this.btnUser.ImageSize = new System.Drawing.Size(40, 40);
             this.btnUser.Location = new System.Drawing.Point(0, 404);
             this.btnUser.Name = "btnUser";
@@ -466,7 +466,7 @@
             this.btnSalesOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(126)))), ((int)(((byte)(111)))));
             this.btnSalesOrder.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(160)))), ((int)(((byte)(236)))));
             this.btnSalesOrder.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnSalesOrder.Image = global::QLCHBanHoaQuaWF.Properties.Resources.Shop;
+            this.btnSalesOrder.Image = global::QLCHWF.Properties.Resources.Shop;
             this.btnSalesOrder.ImageSize = new System.Drawing.Size(40, 40);
             this.btnSalesOrder.Location = new System.Drawing.Point(0, 56);
             this.btnSalesOrder.Name = "btnSalesOrder";

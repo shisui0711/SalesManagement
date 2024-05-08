@@ -1,6 +1,6 @@
-﻿using QLCHBanHoaQuaWF.Presenters;
+﻿using QLCHWF.Presenters;
 
-namespace QLCHBanHoaQuaWF.Views.ImportOrder
+namespace QLCHWF.Views.ImportOrder
 {
     public partial class frmViewImportOrder : Form, IViewImportOrder
     {
@@ -82,6 +82,7 @@ namespace QLCHBanHoaQuaWF.Views.ImportOrder
             {
                 dtpStart.Visible = false;
                 dtpEnd.Visible = false;
+                SearchImportOrder?.Invoke(sender,e);
             }
         }
 
@@ -138,6 +139,14 @@ namespace QLCHBanHoaQuaWF.Views.ImportOrder
         private void btnRemove_Click(object sender, EventArgs e)
         {
             RemoveImportOrder?.Invoke(sender,e);
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchImportOrder?.Invoke(sender,e);
+            }
         }
     }
 }

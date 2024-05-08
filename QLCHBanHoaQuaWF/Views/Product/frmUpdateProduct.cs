@@ -1,7 +1,7 @@
 ﻿using System.Drawing.Imaging;
 using System.IO;
 
-namespace QLCHBanHoaQuaWF.Views.Product
+namespace QLCHWF.Views.Product
 {
     public partial class frmUpdateProduct : Form, IUpdateProduct
     {

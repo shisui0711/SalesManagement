@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Product
+﻿namespace QLCHWF.Views.Product
 {
     partial class frmViewProduct
     {
@@ -120,7 +120,7 @@
             this.btnReload.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
             this.btnReload.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
+            this.btnReload.Image = global::QLCHWF.Properties.Resources.reload;
             this.btnReload.ImageSize = new System.Drawing.Size(30, 30);
             this.btnReload.Location = new System.Drawing.Point(351, 9);
             this.btnReload.Name = "btnReload";
@@ -142,7 +142,7 @@
             this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Image = global::QLCHBanHoaQuaWF.Properties.Resources._3d_magnifier;
+            this.btnSearch.Image = global::QLCHWF.Properties.Resources._3d_magnifier;
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearch.Location = new System.Drawing.Point(304, 9);
             this.btnSearch.Name = "btnSearch";
@@ -290,7 +290,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
+            this.btnUpdate.Image = global::QLCHWF.Properties.Resources.pencil;
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(275, 26);
             this.btnUpdate.Text = "Sửa và  xem thông tin chi tiểt";
@@ -298,7 +298,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
+            this.btnRemove.Image = global::QLCHWF.Properties.Resources.remove;
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(275, 26);
             this.btnRemove.Text = "Xóa";
@@ -306,7 +306,7 @@
             // 
             // productBindingSource
             // 
-            this.productBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.Product);
+            this.productBindingSource.DataSource = typeof(QLCHWF.Models.Product);
             // 
             // productIDDataGridViewTextBoxColumn
             // 

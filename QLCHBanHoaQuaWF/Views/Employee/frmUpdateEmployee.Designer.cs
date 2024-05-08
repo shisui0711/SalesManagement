@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Employee
+﻿namespace QLCHWF.Views.Employee
 {
     partial class frmUpdateEmployee
     {
@@ -399,7 +399,7 @@
             // 
             // userRoleBindingSource
             // 
-            this.userRoleBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.UserRole);
+            this.userRoleBindingSource.DataSource = typeof(QLCHWF.Models.UserRole);
             // 
             // frmUpdateEmployee
             // 

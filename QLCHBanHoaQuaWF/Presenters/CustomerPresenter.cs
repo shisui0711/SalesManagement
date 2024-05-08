@@ -1,11 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.Customer;
-using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
+using QLCHWF.Models;
+using QLCHWF.Views;
+using QLCHWF.Views.Customer;
+using MyAppContext = QLCHWF.Models.MyAppContext;
 
-namespace QLCHBanHoaQuaWF.Presenters
+namespace QLCHWF.Presenters
 {
     public class CustomerPresenter : PresenterCRUD
     {

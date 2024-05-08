@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Models;
+﻿namespace QLCHWF.Models;
 
 public class TopEmployee
 {

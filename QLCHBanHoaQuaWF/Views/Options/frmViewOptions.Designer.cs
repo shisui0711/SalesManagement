@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Options
+﻿namespace QLCHWF.Views.Options
 {
     partial class frmViewOptions
     {
@@ -61,7 +61,7 @@
             this.btnAppInfo.ForeColor = System.Drawing.Color.Black;
             this.btnAppInfo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
             this.btnAppInfo.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.btnAppInfo.Image = global::QLCHBanHoaQuaWF.Properties.Resources.Shop;
+            this.btnAppInfo.Image = global::QLCHWF.Properties.Resources.Shop;
             this.btnAppInfo.ImageSize = new System.Drawing.Size(30, 30);
             this.btnAppInfo.Location = new System.Drawing.Point(3, 3);
             this.btnAppInfo.Name = "btnAppInfo";

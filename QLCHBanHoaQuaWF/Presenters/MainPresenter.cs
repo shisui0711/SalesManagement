@@ -1,20 +1,20 @@
-﻿using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.Customer;
-using QLCHBanHoaQuaWF.Views.Employee;
-using QLCHBanHoaQuaWF.Views.ImportOrder;
-using QLCHBanHoaQuaWF.Views.Options;
-using QLCHBanHoaQuaWF.Views.Product;
-using QLCHBanHoaQuaWF.Views.Provider;
-using QLCHBanHoaQuaWF.Views.SalesOrder;
-using QLCHBanHoaQuaWF.Views.User;
-using QLCHBanHoaQuaWF.Views.UserRole;
+﻿using QLCHWF.Views;
+using QLCHWF.Views.Customer;
+using QLCHWF.Views.Employee;
+using QLCHWF.Views.ImportOrder;
+using QLCHWF.Views.Options;
+using QLCHWF.Views.Product;
+using QLCHWF.Views.Provider;
+using QLCHWF.Views.SalesOrder;
+using QLCHWF.Views.User;
+using QLCHWF.Views.UserRole;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using QLCHBanHoaQuaWF.Attributes;
-using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views.Statistics;
+using QLCHWF.Attributes;
+using QLCHWF.Models;
+using QLCHWF.Views.Statistics;
 
-namespace QLCHBanHoaQuaWF.Presenters;
+namespace QLCHWF.Presenters;
 
 public class MainPresenter
 {

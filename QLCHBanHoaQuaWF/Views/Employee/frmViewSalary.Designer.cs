@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Employee
+﻿namespace QLCHWF.Views.Employee
 {
     partial class frmViewSalary
     {
@@ -272,7 +272,7 @@
             // 
             // salaryTableBindingSource
             // 
-            this.salaryTableBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.SalaryTable);
+            this.salaryTableBindingSource.DataSource = typeof(QLCHWF.Models.SalaryTable);
             // 
             // pnlControl
             // 

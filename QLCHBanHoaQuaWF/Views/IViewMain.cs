@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views;
+﻿namespace QLCHWF.Views;
 
 public interface IViewMain : IChangeControl
 {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.Provider;
-using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
+using QLCHWF.Models;
+using QLCHWF.Views;
+using QLCHWF.Views.Provider;
+using MyAppContext = QLCHWF.Models.MyAppContext;
 
-namespace QLCHBanHoaQuaWF.Presenters;
+namespace QLCHWF.Presenters;
 
 public class ProviderPresenter : PresenterCRUD
 {

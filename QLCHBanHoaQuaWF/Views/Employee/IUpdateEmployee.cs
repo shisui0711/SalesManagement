@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Employee;
+﻿namespace QLCHWF.Views.Employee;
 
 public interface IUpdateEmployee : IValidateControl
 {

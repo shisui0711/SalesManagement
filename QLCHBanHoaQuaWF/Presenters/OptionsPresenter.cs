@@ -1,7 +1,7 @@
-﻿using QLCHBanHoaQuaWF.Models;
-using QLCHBanHoaQuaWF.Views.Options;
+﻿using QLCHWF.Models;
+using QLCHWF.Views.Options;
 
-namespace QLCHBanHoaQuaWF.Presenters;
+namespace QLCHWF.Presenters;
 
 public class OptionsPresenter
 {

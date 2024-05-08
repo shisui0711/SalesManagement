@@ -2,22 +2,22 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OfficeOpenXml;
-using QLCHBanHoaQuaWF.Presenters;
-using QLCHBanHoaQuaWF.Views;
-using QLCHBanHoaQuaWF.Views.Customer;
-using QLCHBanHoaQuaWF.Views.Employee;
-using QLCHBanHoaQuaWF.Views.ImportOrder;
-using QLCHBanHoaQuaWF.Views.Options;
-using QLCHBanHoaQuaWF.Views.Product;
-using QLCHBanHoaQuaWF.Views.Provider;
-using QLCHBanHoaQuaWF.Views.SalesOrder;
-using QLCHBanHoaQuaWF.Views.User;
-using QLCHBanHoaQuaWF.Views.UserRole;
+using QLCHWF.Presenters;
+using QLCHWF.Views;
+using QLCHWF.Views.Customer;
+using QLCHWF.Views.Employee;
+using QLCHWF.Views.ImportOrder;
+using QLCHWF.Views.Options;
+using QLCHWF.Views.Product;
+using QLCHWF.Views.Provider;
+using QLCHWF.Views.SalesOrder;
+using QLCHWF.Views.User;
+using QLCHWF.Views.UserRole;
 using System.Reflection;
-using QLCHBanHoaQuaWF.Views.Statistics;
-using MyAppContext = QLCHBanHoaQuaWF.Models.MyAppContext;
+using QLCHWF.Views.Statistics;
+using MyAppContext = QLCHWF.Models.MyAppContext;
 
-namespace QLCHBanHoaQuaWF
+namespace QLCHWF
 {
     internal static class Program
     {

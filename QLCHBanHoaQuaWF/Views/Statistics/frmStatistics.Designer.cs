@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.Statistics
+﻿namespace QLCHWF.Views.Statistics
 {
     partial class frmStatistics
     {
@@ -810,7 +810,7 @@
             // 
             // topCustomerBindingSource
             // 
-            this.topCustomerBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.TopCustomer);
+            this.topCustomerBindingSource.DataSource = typeof(QLCHWF.Models.TopCustomer);
             // 
             // dgvTopEmployee
             // 
@@ -913,7 +913,7 @@
             // 
             // topEmployeeBindingSource
             // 
-            this.topEmployeeBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.TopEmployee);
+            this.topEmployeeBindingSource.DataSource = typeof(QLCHWF.Models.TopEmployee);
             // 
             // label5
             // 

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLCHBanHoaQuaWF.Views.User
+namespace QLCHWF.Views.User
 {
     public partial class frmChangePassword : Form,IChangePassword
     {

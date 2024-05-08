@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views
+﻿namespace QLCHWF.Views
 {
     partial class frmLogin
     {
@@ -250,7 +250,7 @@
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtUsername.ForeColor = System.Drawing.Color.Black;
             this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUsername.IconLeft = global::QLCHBanHoaQuaWF.Properties.Resources.user1;
+            this.txtUsername.IconLeft = global::QLCHWF.Properties.Resources.user1;
             this.txtUsername.IconLeftOffset = new System.Drawing.Point(10, 0);
             this.txtUsername.Location = new System.Drawing.Point(77, 175);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -279,9 +279,9 @@
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.IconLeft = global::QLCHBanHoaQuaWF.Properties.Resources.padlock;
+            this.txtPassword.IconLeft = global::QLCHWF.Properties.Resources.padlock;
             this.txtPassword.IconLeftOffset = new System.Drawing.Point(10, 0);
-            this.txtPassword.IconRight = global::QLCHBanHoaQuaWF.Properties.Resources.eye;
+            this.txtPassword.IconRight = global::QLCHWF.Properties.Resources.eye;
             this.txtPassword.IconRightOffset = new System.Drawing.Point(5, 0);
             this.txtPassword.Location = new System.Drawing.Point(77, 230);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace QLCHBanHoaQuaWF.Views.Product
+namespace QLCHWF.Views.Product
 {
     public partial class frmProduct : Form
     {

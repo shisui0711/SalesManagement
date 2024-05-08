@@ -1,4 +1,4 @@
-﻿namespace QLCHBanHoaQuaWF.Views.ImportOrder
+﻿namespace QLCHWF.Views.ImportOrder
 {
     partial class frmViewImportOrder
     {
@@ -252,7 +252,7 @@
             this.btnReload.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
             this.btnReload.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Image = global::QLCHBanHoaQuaWF.Properties.Resources.reload;
+            this.btnReload.Image = global::QLCHWF.Properties.Resources.reload;
             this.btnReload.ImageSize = new System.Drawing.Size(30, 30);
             this.btnReload.Location = new System.Drawing.Point(351, 73);
             this.btnReload.Name = "btnReload";
@@ -274,7 +274,7 @@
             this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Image = global::QLCHBanHoaQuaWF.Properties.Resources._3d_magnifier;
+            this.btnSearch.Image = global::QLCHWF.Properties.Resources._3d_magnifier;
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearch.Location = new System.Drawing.Point(304, 73);
             this.btnSearch.Name = "btnSearch";
@@ -305,6 +305,7 @@
             this.txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges18;
             this.txtSearch.Size = new System.Drawing.Size(286, 35);
             this.txtSearch.TabIndex = 14;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // pnlGridView
             // 
@@ -470,14 +471,14 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Image = global::QLCHBanHoaQuaWF.Properties.Resources.pencil;
+            this.btnUpdate.Image = global::QLCHWF.Properties.Resources.pencil;
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(196, 26);
             this.btnUpdate.Text = "Sửa";
             // 
             // btnRemove
             // 
-            this.btnRemove.Image = global::QLCHBanHoaQuaWF.Properties.Resources.remove;
+            this.btnRemove.Image = global::QLCHWF.Properties.Resources.remove;
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(196, 26);
             this.btnRemove.Text = "Xóa";
@@ -485,7 +486,7 @@
             // 
             // btnDetail
             // 
-            this.btnDetail.Image = global::QLCHBanHoaQuaWF.Properties.Resources._3d_magnifier;
+            this.btnDetail.Image = global::QLCHWF.Properties.Resources._3d_magnifier;
             this.btnDetail.Name = "btnDetail";
             this.btnDetail.Size = new System.Drawing.Size(196, 26);
             this.btnDetail.Text = "Chi tiết đơn hàng";
@@ -493,7 +494,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Image = global::QLCHBanHoaQuaWF.Properties.Resources.Print;
+            this.btnPrint.Image = global::QLCHWF.Properties.Resources.Print;
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(196, 26);
             this.btnPrint.Text = "In hóa đơn";
@@ -501,7 +502,7 @@
             // 
             // importOrderBindingSource
             // 
-            this.importOrderBindingSource.DataSource = typeof(QLCHBanHoaQuaWF.Models.ImportOrder);
+            this.importOrderBindingSource.DataSource = typeof(QLCHWF.Models.ImportOrder);
             // 
             // frmViewImportOrder
             // 

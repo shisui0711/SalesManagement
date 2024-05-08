@@ -1,6 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 
-namespace QLCHBanHoaQuaWF.Views.ImportOrder
+namespace QLCHWF.Views.ImportOrder
 {
     public partial class frmReportImportOrder : Form, IReportImportOrder
     {

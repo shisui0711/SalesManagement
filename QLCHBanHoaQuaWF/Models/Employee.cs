@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace QLCHBanHoaQuaWF.Models
+namespace QLCHWF.Models
 {
     [Table("Employee")]
     public class Employee
