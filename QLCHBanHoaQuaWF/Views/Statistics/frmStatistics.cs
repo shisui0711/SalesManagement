@@ -28,6 +28,16 @@ namespace QLCHWF.Views.Statistics
                 return revenueDataSet;
             }
         }
+
+        public GunaBarDataset BudgetDataset
+        {
+            get { return budgetDataSet; }
+        }
+        public GunaBarDataset ProfitDataset
+        {
+            get { return profitDataSet; }
+        }
+
         public Chart ProductChart
         {
             get { return chartProduct; }

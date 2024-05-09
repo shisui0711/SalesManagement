@@ -9,6 +9,8 @@ public interface IViewStatistics
     public BindingSource TopCustomerBindingSource { get; }
     public BindingSource TopEmployeeBindingSource { get; }
     public GunaBarDataset RevenueDataset { get; }
+    public GunaBarDataset BudgetDataset { get; }
+    public GunaBarDataset ProfitDataset { get; }
     public Chart ProductChart{ get; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }

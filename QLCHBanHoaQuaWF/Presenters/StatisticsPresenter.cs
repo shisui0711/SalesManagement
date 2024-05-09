@@ -107,83 +107,103 @@ public class StatisticsPresenter
         }
     }
 
-    private void LoadRevenueChart()
+    private List<KeyValuePair<string, decimal>> StatisticsFilter(List<KeyValuePair<DateTime, decimal>> dateAndValues)
     {
         var days = (_viewStatistics.EndDate - _viewStatistics.StartDate).Days;
-        var orderFullTime = (from sales in _context.SalesOrders
-            where sales.OrderDate >= _viewStatistics.StartDate && sales.OrderDate <= _viewStatistics.EndDate
-            group sales by sales.OrderDate
-            into g
-            select new
-            {
-                Key = g.Key,
-                Value = g.Sum(x => x.TotalPrice)
-            }).ToList();
-        List<RevenueByDate> dataSource;
+        List<KeyValuePair<string, decimal>> data;
         //Nhóm theo giờ
         if (days <= 1)
         {
-            dataSource = (from o in orderFullTime
-                                       group o by o.Key.ToString("hh tt") into g
-                                       select new RevenueByDate
-                                       {
-                                           Date = g.Key,
-                                           TotalAmount = g.Sum(o => o.Value)
-                                       }).ToList();
+            data = (from o in dateAndValues
+                    group o by o.Key.ToString("hh tt")
+                into g
+                    select new KeyValuePair<string, decimal>(g.Key, g.Sum(o => o.Value))).ToList();
         }
         //nhóm theo ngày
         else if (days <= 30)
         {
-            var orderFullTimeChange = orderFullTime.ConvertAll(x => new { Key = x.Key.ToString("dd MMM"), Value = x.Value });
-            dataSource = (from o in orderFullTimeChange
-                                       group o by o.Key into g
-                                       select new RevenueByDate
-                                       {
-                                           Date = g.Key,
-                                           TotalAmount = g.Sum(o => o.Value)
-                                       }).ToList();
+            var orderFullTimeChange = dateAndValues.ConvertAll(x => new { Key = x.Key.ToString("dd MMM"), Value = x.Value });
+            data = (from o in orderFullTimeChange
+                    group o by o.Key into g
+                    select new KeyValuePair<string, decimal>(g.Key, g.Sum(o => o.Value))).ToList();
         }
         //nhóm theo tuần
         else if (days <= 92)
         {
-            dataSource = (from o in orderFullTime
-                                       group o by CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
-                                         o.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) into g
-                                       select new RevenueByDate
-                                       {
-                                           Date = "Week" + g.Key.ToString(),
-                                           TotalAmount = g.Sum(o => o.Value)
-                                       }).ToList();
+            data = (from o in dateAndValues
+                    group o by CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
+                      o.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) into g
+                    select new KeyValuePair<string, decimal>("Week" + g.Key.ToString(), g.Sum(o => o.Value))).ToList();
         }
         //nhóm theo tháng
         else if (days <= (365 * 2))
         {
             bool isYear = days <= 365;
-            dataSource = (from o in orderFullTime
-                                       group o by o.Key.ToString("MMM yyyy") into g
-                                       select new RevenueByDate
-                                       {
-                                           Date = isYear ? g.Key.Substring(0, g.Key.IndexOf(" ")) : g.Key,
-                                           TotalAmount = g.Sum(o => o.Value)
-                                       }).ToList();
+            data = (from o in dateAndValues
+                    group o by o.Key.ToString("MMM yyyy") into g
+                    select new KeyValuePair<string, decimal>(
+                        isYear ? g.Key.Substring(0, g.Key.IndexOf(" ")) : g.Key,
+                        g.Sum(o => o.Value)
+                        )).ToList();
         }
         //nhóm theo năm
         else
         {
-            dataSource = (from o in orderFullTime
-                                       group o by o.Key.ToString("yyyy") into g
-                                       select new RevenueByDate
-                                       {
-                                           Date = g.Key,
-                                           TotalAmount = g.Sum(o => o.Value)
-                                       }).ToList();
+            data = (from o in dateAndValues
+                    group o by o.Key.ToString("yyyy") into g
+                    select new KeyValuePair<string, decimal>(
+                        g.Key,
+                        g.Sum(o => o.Value)
+                        )).ToList();
         }
 
-        List<LPoint> lPoints = dataSource.ConvertAll(x =>
+        return data;
+    }
+    private List<KeyValuePair<string,decimal>> GetRevenueData()
+    {
+        var orderFullTime = (from sales in _context.SalesOrders
+                             where sales.OrderDate >= _viewStatistics.StartDate && sales.OrderDate <= _viewStatistics.EndDate
+                             group sales by sales.OrderDate
+            into g
+                             select new KeyValuePair<DateTime,decimal>(
+                                 g.Key,
+                                 g.Sum(x => x.TotalPrice)
+                                 )).ToList();
+        return StatisticsFilter(orderFullTime);
+    }
+
+    private List<KeyValuePair<string, decimal>> GetBudgetData()
+    {
+        var days = (_viewStatistics.EndDate - _viewStatistics.StartDate).Days;
+        var orderFullTime = (from import in _context.ImportOrders
+                             where import.OrderDate >= _viewStatistics.StartDate && import.OrderDate <= _viewStatistics.EndDate
+                             group import by import.OrderDate
+            into g
+                             select new KeyValuePair<DateTime,decimal>(
+                                 g.Key,
+                                 g.Sum(x => x.TotalPrice)
+                                 )).ToList();
+        return StatisticsFilter(orderFullTime);
+    }
+
+    private void LoadRevenueChart()
+    {
+        List<LPoint> budgetData = GetBudgetData().ConvertAll(x => new LPoint(x.Key, (double)x.Value));
+        List<LPoint> revenueData = GetRevenueData().ConvertAll(x => new LPoint(x.Key,(double)x.Value));
+        List<LPoint> profitData = new List<LPoint>();
+        for (int i = 0; i < budgetData.Count; i++)
         {
-            return new LPoint(x.Date,(double)x.TotalAmount);
-        });
+            profitData.Add(new LPoint(
+                budgetData[i].Label, 
+                revenueData[i].Y - budgetData[i].Y > 0 ? revenueData[i].Y - budgetData[i].Y : 0
+                ));
+        }
         _viewStatistics.RevenueDataset.DataPoints.Clear();
-        _viewStatistics.RevenueDataset.DataPoints.AddRange(lPoints);
+        _viewStatistics.BudgetDataset.DataPoints.Clear();
+        _viewStatistics.ProfitDataset.DataPoints.Clear();
+
+        _viewStatistics.RevenueDataset.DataPoints.AddRange(revenueData);
+        _viewStatistics.BudgetDataset.DataPoints.AddRange(budgetData);
+        _viewStatistics.ProfitDataset.DataPoints.AddRange(profitData);
     }
 }
