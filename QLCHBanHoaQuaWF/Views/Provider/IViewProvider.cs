@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.Provider;
 
-public interface IViewProvider
+public interface IViewProvider : IViewBase
 {
     public string SearchText { get; set; }
     public BindingSource ProviderBindingSource { get; }

@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.Provider
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.Provider
 {
     public partial class frmUpdateProvider : Form, IUpdateProvider
     {
@@ -53,7 +55,7 @@
 
         public void ShowMessage(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

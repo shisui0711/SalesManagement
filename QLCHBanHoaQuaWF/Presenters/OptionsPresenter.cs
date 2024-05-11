@@ -54,14 +54,12 @@ public class OptionsPresenter
         try
         {
             _context.SaveChanges();
-            MessageBox.Show(@"Cập nhật thông tin thành công");
-            Form form = (Form)_appInfo;
-            form.Close();
+            _appInfo.ShowMessage(@"Cập nhật thông tin thành công");
         }
         catch (Exception e)
         {
             _context.Entry(info).Reload();
-            MessageBox.Show(@"Dữ liệu không hợp lệ");
+            _appInfo.ShowMessage(@"Dữ liệu không hợp lệ");
         }
     }
 }

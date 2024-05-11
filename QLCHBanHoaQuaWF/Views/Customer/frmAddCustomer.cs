@@ -1,5 +1,5 @@
-﻿using System.Data;
-using System.Reflection;
+﻿using System.Reflection;
+using QLCHWF.CustomMessageBox;
 using String = System.String;
 
 namespace QLCHWF.Views.Customer
@@ -26,7 +26,6 @@ namespace QLCHWF.Views.Customer
             get { return txtAddress.Text; }
             set { txtAddress.Text = value; }
         }
-        private string _message;
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetField("txt" + name);
@@ -66,7 +65,7 @@ namespace QLCHWF.Views.Customer
 
         public void ShowMessage(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.Product
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.Product
 {
     public partial class frmViewProduct : Form, IViewProduct
     {
@@ -46,12 +48,23 @@
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            var dialogResult = MyMessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
             RemoveProduct?.Invoke(sender, e);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchProduct?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using QLCHWF.Presenters;
+﻿using QLCHWF.CustomMessageBox;
+using QLCHWF.Presenters;
 
 namespace QLCHWF.Views.ImportOrder
 {
@@ -97,7 +98,7 @@ namespace QLCHWF.Views.ImportOrder
             {
                 if (AuthPresenter.User.UserRole.Permission.CanExportImportOrder == false)
                 {
-                    MessageBox.Show(@"Bạn không có quyền này.");
+                    MyMessageBox.Show(@"Bạn không có quyền này.");
                     return;
                 }
             }
@@ -107,7 +108,7 @@ namespace QLCHWF.Views.ImportOrder
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 dgvImportOrder.ExportToExcel(saveFileDialog.FileName);
-                MessageBox.Show(@"Xuất thành công!");
+                MyMessageBox.Show(@"Xuất thành công!");
             }
         }
 
@@ -138,6 +139,12 @@ namespace QLCHWF.Views.ImportOrder
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            var dialogResult = MyMessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
             RemoveImportOrder?.Invoke(sender,e);
         }
 
@@ -147,6 +154,11 @@ namespace QLCHWF.Views.ImportOrder
             {
                 SearchImportOrder?.Invoke(sender,e);
             }
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

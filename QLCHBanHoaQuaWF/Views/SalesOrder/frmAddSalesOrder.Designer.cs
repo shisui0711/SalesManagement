@@ -646,6 +646,7 @@
             this.txtCustomerSearch.ShadowDecoration.CustomizableEdges = customizableEdges28;
             this.txtCustomerSearch.Size = new System.Drawing.Size(219, 35);
             this.txtCustomerSearch.TabIndex = 6;
+            this.txtCustomerSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomerSearch_KeyDown);
             // 
             // pnlBodyRight
             // 
@@ -774,6 +775,7 @@
             this.txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
             this.txtSearch.Size = new System.Drawing.Size(286, 35);
             this.txtSearch.TabIndex = 3;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // frmAddSalesOrder
             // 

@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.UserRole
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.UserRole
 {
     public partial class frmViewUserRole : Form, IViewUserRole
     {
@@ -34,6 +36,12 @@
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            var dialogResult = MyMessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
             RemoveUserRole?.Invoke(sender, e);
         }
 
@@ -50,6 +58,11 @@
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchUserRole?.Invoke(sender, e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

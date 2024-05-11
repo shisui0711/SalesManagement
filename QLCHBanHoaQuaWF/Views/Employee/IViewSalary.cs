@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.Employee;
 
-public interface IViewSalary
+public interface IViewSalary:IViewBase
 {
     public DateTime StartDate { get;  }
     public DateTime EndDate { get; }

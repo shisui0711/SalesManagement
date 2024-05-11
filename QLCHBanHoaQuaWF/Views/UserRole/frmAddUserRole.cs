@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.UserRole
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.UserRole
 {
     public partial class frmAddUserRole : Form, IAddUserRole
     {
@@ -44,7 +46,7 @@
             set
             {
                 _message = value;
-                MessageBox.Show(_message, "Thông báo");
+                MyMessageBox.Show(_message, "Thông báo");
             }
         }
         private string _message;
@@ -60,7 +62,7 @@
 
         public void ShowMessage(string message)
         {
-            MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

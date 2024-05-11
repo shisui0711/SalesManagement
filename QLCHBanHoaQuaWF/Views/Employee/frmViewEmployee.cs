@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.Employee
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.Employee
 {
     public partial class frmViewEmployee : Form, IViewEmployee
     {
@@ -74,7 +76,18 @@
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            var dialogResult = MyMessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
             RemoveEmployee?.Invoke(sender,e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

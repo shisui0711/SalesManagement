@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.Employee
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.Employee
 {
     public partial class frmUpdateEmployee : Form, IUpdateEmployee
     {
@@ -58,14 +60,9 @@
             UpdateEmployee?.Invoke(sender, e);
         }
 
-        private void frmUpdateEmployee_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public void ShowMessage(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

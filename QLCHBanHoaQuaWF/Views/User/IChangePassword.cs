@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.User;
 
-public interface IChangePassword
+public interface IChangePassword : IViewBase
 {
     public string Email { get; set; }
     public string OldPassword { get; set; }

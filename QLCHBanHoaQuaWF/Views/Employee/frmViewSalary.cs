@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLCHWF.CustomMessageBox;
 
 namespace QLCHWF.Views.Employee
 {
@@ -45,8 +46,13 @@ namespace QLCHWF.Views.Employee
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 dgvSalary.ExportToExcel(saveFileDialog.FileName);
-                MessageBox.Show(@"Xuất thành công!");
+                MyMessageBox.Show(@"Xuất file thành công");
             }
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

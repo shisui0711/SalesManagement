@@ -1,6 +1,8 @@
-﻿namespace QLCHWF.Views.UserRole;
+﻿
 
-public interface IViewUserRole
+namespace QLCHWF.Views.UserRole;
+
+public interface IViewUserRole:IViewBase
 {
     public string SearchText { get; set; }
     public BindingSource UserRoleBindingSource { get; }

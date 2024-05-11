@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.User
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.User
 {
     public partial class frmViewUser : Form, IViewUser
     {
@@ -44,12 +46,25 @@
 
         private void btnLock_Click(object sender, EventArgs e)
         {
+            if (MyMessageBox.Show("Bạn có chắc chắn muốn khóa tài khoản đã chọn", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                return;
+            }
             LockUser?.Invoke(sender, e);
         }
 
         private void btnUnlock_Click(object sender, EventArgs e)
         {
+            if (MyMessageBox.Show("Bạn có chắc chắn muốn mở khóa tài khoản đã chọn", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                return;
+            }
             UnlockUser?.Invoke(sender, e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

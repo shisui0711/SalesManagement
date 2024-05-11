@@ -66,12 +66,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
@@ -98,13 +96,10 @@
             this.pnlHeader = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlLogo = new Guna.UI2.WinForms.Guna2Panel();
-            this.ptbLogo = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pnlTop.SuspendLayout();
             this.pnlNavbar.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
-            this.pnlLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // dragControl
@@ -192,10 +187,10 @@
             this.pnlNavbar.Controls.Add(this.btnStatistics);
             this.pnlNavbar.CustomizableEdges = customizableEdges29;
             this.pnlNavbar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNavbar.Location = new System.Drawing.Point(0, 263);
+            this.pnlNavbar.Location = new System.Drawing.Point(0, 150);
             this.pnlNavbar.Name = "pnlNavbar";
             this.pnlNavbar.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            this.pnlNavbar.Size = new System.Drawing.Size(215, 631);
+            this.pnlNavbar.Size = new System.Drawing.Size(215, 744);
             this.pnlNavbar.TabIndex = 1;
             // 
             // btnLogout
@@ -217,7 +212,7 @@
             this.btnLogout.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnLogout.Location = new System.Drawing.Point(0, 575);
+            this.btnLogout.Location = new System.Drawing.Point(0, 688);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.ShadowDecoration.CustomizableEdges = customizableEdges8;
             this.btnLogout.Size = new System.Drawing.Size(215, 56);
@@ -514,7 +509,7 @@
             this.pnlBody.Location = new System.Drawing.Point(21, 0);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            this.pnlBody.Size = new System.Drawing.Size(1301, 631);
+            this.pnlBody.Size = new System.Drawing.Size(1301, 744);
             this.pnlBody.TabIndex = 2;
             // 
             // guna2Panel1
@@ -523,10 +518,10 @@
             this.guna2Panel1.Controls.Add(this.guna2Panel2);
             this.guna2Panel1.CustomizableEdges = customizableEdges35;
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(215, 263);
+            this.guna2Panel1.Location = new System.Drawing.Point(215, 150);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            this.guna2Panel1.Size = new System.Drawing.Size(1322, 631);
+            this.guna2Panel1.Size = new System.Drawing.Size(1322, 744);
             this.guna2Panel1.TabIndex = 3;
             // 
             // guna2Panel2
@@ -537,7 +532,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            this.guna2Panel2.Size = new System.Drawing.Size(21, 631);
+            this.guna2Panel2.Size = new System.Drawing.Size(21, 744);
             this.guna2Panel2.TabIndex = 0;
             // 
             // pnlHeader
@@ -545,12 +540,12 @@
             this.pnlHeader.Controls.Add(this.guna2Panel4);
             this.pnlHeader.Controls.Add(this.pnlLogo);
             this.pnlHeader.Controls.Add(this.pnlTop);
-            this.pnlHeader.CustomizableEdges = customizableEdges43;
+            this.pnlHeader.CustomizableEdges = customizableEdges41;
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges44;
-            this.pnlHeader.Size = new System.Drawing.Size(1537, 263);
+            this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges42;
+            this.pnlHeader.Size = new System.Drawing.Size(1537, 150);
             this.pnlHeader.TabIndex = 0;
             // 
             // guna2Panel4
@@ -561,33 +556,18 @@
             this.guna2Panel4.Location = new System.Drawing.Point(215, 48);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            this.guna2Panel4.Size = new System.Drawing.Size(1322, 215);
+            this.guna2Panel4.Size = new System.Drawing.Size(1322, 102);
             this.guna2Panel4.TabIndex = 3;
             // 
             // pnlLogo
             // 
-            this.pnlLogo.Controls.Add(this.ptbLogo);
-            this.pnlLogo.CustomizableEdges = customizableEdges41;
+            this.pnlLogo.CustomizableEdges = customizableEdges39;
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLogo.Location = new System.Drawing.Point(0, 48);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.ShadowDecoration.CustomizableEdges = customizableEdges42;
-            this.pnlLogo.Size = new System.Drawing.Size(215, 215);
+            this.pnlLogo.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            this.pnlLogo.Size = new System.Drawing.Size(215, 102);
             this.pnlLogo.TabIndex = 2;
-            // 
-            // ptbLogo
-            // 
-            this.ptbLogo.CustomizableEdges = customizableEdges39;
-            this.ptbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ptbLogo.Image = ((System.Drawing.Image)(resources.GetObject("ptbLogo.Image")));
-            this.ptbLogo.ImageRotate = 0F;
-            this.ptbLogo.Location = new System.Drawing.Point(0, 0);
-            this.ptbLogo.Name = "ptbLogo";
-            this.ptbLogo.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            this.ptbLogo.Size = new System.Drawing.Size(215, 215);
-            this.ptbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbLogo.TabIndex = 0;
-            this.ptbLogo.TabStop = false;
             // 
             // frmMain
             // 
@@ -611,8 +591,6 @@
             this.pnlNavbar.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
-            this.pnlLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -642,6 +620,5 @@
         private Guna.UI2.WinForms.Guna2Panel pnlHeader;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private Guna.UI2.WinForms.Guna2Panel pnlLogo;
-        private Guna.UI2.WinForms.Guna2PictureBox ptbLogo;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.UserRole
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.UserRole
 {
     public partial class frmUpdateUserRole : Form, IUpdateUserRole
     {
@@ -56,7 +58,7 @@
 
         public void ShowMessage(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

@@ -48,7 +48,7 @@ public class ImportOrderPresenter : PresenterCRUD
     {
         if (_viewImportOrder.OrderBindingSource.Current == null)
         {
-            MessageBox.Show(@"Chưa bản ghi nào được chọn");
+            _viewImportOrder.ShowMessage(@"Chưa bản ghi nào được chọn");
             return;
         }
         ImportOrder curentOrder = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
@@ -116,19 +116,19 @@ public class ImportOrderPresenter : PresenterCRUD
         }
         catch (Exception e)
         {
-            System.Windows.Forms.MessageBox.Show($"Lỗi: {e.Message}");
+            _viewImportOrder.ShowMessage($"Lỗi: {e.Message}");
         }
     }
     void ShowReport()
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanPrintImportOrder == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewImportOrder.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         if (_viewImportOrder.OrderBindingSource.Current == null)
         {
-            MessageBox.Show(@"Chưa bản ghi nào được chọn");
+            _viewImportOrder.ShowMessage(@"Chưa bản ghi nào được chọn");
             return;
         }
         Form form = (Form)_report;
@@ -141,7 +141,7 @@ public class ImportOrderPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateImportOrder == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewImportOrder.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         var form = _addImportOrder as Form;
@@ -178,13 +178,13 @@ public class ImportOrderPresenter : PresenterCRUD
 
                 _context.SaveChanges();
                 transaction.Commit();
-                MessageBox.Show(@"Đặt hàng thành công");
+                _addImportOrder.ShowMessage(@"Đặt hàng thành công");
                 _viewImportOrder.OrderBindingSource.EndEdit();
             }
             catch (SqlException e)
             {
                 transaction.Rollback();
-                MessageBox.Show(@"Lỗi cơ sở dữ liệu. Đặt hàng thất bại");
+                _addImportOrder.ShowMessage(@"Lỗi cơ sở dữ liệu. Đặt hàng thất bại");
             }
         }
     }
@@ -201,15 +201,10 @@ public class ImportOrderPresenter : PresenterCRUD
             ImportOrder? deleted = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
             if (deleted == null)
             {
+                _viewImportOrder.ShowMessage("Không tìm thầy bàn ghi đã chọn");
                 return;
             }
 
-            var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Cancel)
-            {
-                return;
-            }
 
             using (var transaction = _context.Database.BeginTransaction())
             {
@@ -219,18 +214,18 @@ public class ImportOrderPresenter : PresenterCRUD
                     _context.SaveChanges();
                     _viewImportOrder.OrderBindingSource.Remove(deleted);
                     transaction.Commit();
-                    MessageBox.Show("Xóa thành công");
+                    _viewImportOrder.ShowMessage("Xóa thành công");
                 }
                 catch (SqlException e)
                 {
                     transaction.Rollback();
-                    MessageBox.Show($"Xóa thất bại: {e.Message}");
+                    _viewImportOrder.ShowMessage($"Xóa thất bại: {e.Message}");
                 }
             }
         }
         catch (Exception e)
         {
-          MessageBox.Show($"Lỗi: {e.Message}");
+            _viewImportOrder.ShowMessage($"Lỗi: {e.Message}");
         }
     }
 
@@ -264,12 +259,12 @@ public class ImportOrderPresenter : PresenterCRUD
             }
             else
             {
-                MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ", "Thông báo");
+                _viewImportOrder.ShowMessage("Không tìm thấy bản ghi nào hợp lệ");
             }
         }
         catch (Exception e)
         {
-            System.Windows.Forms.MessageBox.Show($"Lỗi: {e.Message}");
+            _viewImportOrder.ShowMessage($"Lỗi: {e.Message}");
         }
     }
 
@@ -343,7 +338,7 @@ public class ImportOrderPresenter : PresenterCRUD
         }
         else
         {
-            MessageBox.Show("Không có nhà cung cấp nào được tìm thấy", "Thông báo");
+            _addImportOrder.ShowMessage("Không có nhà cung cấp nào được tìm thấy");
         }
     }
 }

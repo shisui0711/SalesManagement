@@ -1,4 +1,5 @@
-﻿using System.Drawing.Imaging;
+﻿using QLCHWF.CustomMessageBox;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
 
@@ -168,7 +169,7 @@ namespace QLCHWF.Views.Product
 
         public void ShowMessage(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

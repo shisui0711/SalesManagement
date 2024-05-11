@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.Customer
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.Customer
 {
     public partial class frmViewCustomer : Form, IViewCustomer
     {
@@ -61,7 +63,7 @@
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+            var dialogResult = MyMessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Cancel)
             {
@@ -77,7 +79,7 @@
 
         public void ShowMessage(string message)
         {
-            MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

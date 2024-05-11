@@ -415,7 +415,6 @@
             this.Name = "frmUpdateEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmUpdateEmployee";
-            this.Load += new System.EventHandler(this.frmUpdateEmployee_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.pnlBody.ResumeLayout(false);

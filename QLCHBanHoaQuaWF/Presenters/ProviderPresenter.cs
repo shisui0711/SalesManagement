@@ -38,7 +38,7 @@ public class ProviderPresenter : PresenterCRUD
     {
         if (_viewProvider.ProviderBindingSource.Current == null)
         {
-            MessageBox.Show(@"Chưa bản ghi nào được chọn");
+            _viewProvider.ShowMessage(@"Chưa bản ghi nào được chọn");
             return;
         }
         Provider currentProvider = _viewProvider.ProviderBindingSource.Current as Provider;
@@ -46,7 +46,7 @@ public class ProviderPresenter : PresenterCRUD
             .First(p => p.ProviderID == currentProvider.ProviderID);
         if (provider.ImportOrders.Count == 0)
         {
-            MessageBox.Show(@"Chưa nhập đơn nào từ nhà cung cấp này");
+            _viewProvider.ShowMessage(@"Chưa nhập đơn nào từ nhà cung cấp này");
             return;
         }
         _historyImport.ImportBindingSource.DataSource = provider.ImportOrders.ToList();
@@ -57,7 +57,7 @@ public class ProviderPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreatedProvider == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewProvider.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         var form = _addProvider as Form;
@@ -71,7 +71,7 @@ public class ProviderPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateProvider == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewProvider.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         Provider updated = _viewProvider.ProviderBindingSource.Current as Provider;
@@ -129,20 +129,16 @@ public class ProviderPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteProvider == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewProvider.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         var deleted = _viewProvider.ProviderBindingSource.Current as Provider;
         if (deleted == null)
         {
+            _viewProvider.ShowMessage(@"Không tìm thấy bản ghi đã chọn");
             return;
         }
-        var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
-            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        if (dialogResult == DialogResult.Cancel)
-        {
-            return;
-        }
+        
         using (var transaction = _context.Database.BeginTransaction())
         {
             try

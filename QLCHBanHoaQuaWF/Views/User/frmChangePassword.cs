@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLCHWF.CustomMessageBox;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,6 +48,11 @@ namespace QLCHWF.Views.User
         private void btnChange_Click(object sender, EventArgs e)
         {
             ChangePassowrd?.Invoke(sender,e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

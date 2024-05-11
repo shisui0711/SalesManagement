@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.Provider
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.Provider
 {
     public partial class frmViewProvider : Form, IViewProvider
     {
@@ -50,12 +52,23 @@
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            var dialogResult = MyMessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
             RemoveProvider?.Invoke(sender, e);
         }
 
         private void btnHistoryImport_Click(object sender, EventArgs e)
         {
             ShowOrderHistory?.Invoke(sender,e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

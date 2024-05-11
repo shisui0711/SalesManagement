@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using QLCHWF.CustomMessageBox;
 using QLCHWF.Presenters;
 using System.Text.RegularExpressions;
 
@@ -231,6 +232,27 @@ namespace QLCHWF.Views.SalesOrder
             }
 
             lblTotalPrice.Text = sum.ToString();
+        }
+
+        private void txtCustomerSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearchCustomer.PerformClick();
+            }
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch.PerformClick();
+            }
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

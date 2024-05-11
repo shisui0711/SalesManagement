@@ -93,7 +93,7 @@ public class EmployeePresenter : PresenterCRUD
         }
         catch (Exception e)
         {
-            MessageBox.Show($"Lỗi: {e.Message}");
+            _viewSalary.ShowMessage($"Lỗi: {e.Message}");
         }
     }
     void ShowSalaryTable()
@@ -105,7 +105,7 @@ public class EmployeePresenter : PresenterCRUD
     {
         if (_viewEmployee.EmployeeBindingSource.Current == null)
         {
-            MessageBox.Show(@"Chưa bản ghi nào được chọn");
+            _viewEmployee.ShowMessage("Chưa bản ghi nào được chọn");
             return;
         }
         Employee currentEmployee = _viewEmployee.EmployeeBindingSource.Current as Employee;
@@ -113,7 +113,7 @@ public class EmployeePresenter : PresenterCRUD
             .First(e => e.EmployeeID == currentEmployee.EmployeeID);
         if (employee.SalesOrders.Count == 0)
         {
-            MessageBox.Show(@"Nhân viên này chưa bán đơn hàng nào");
+            _viewEmployee.ShowMessage("Nhân viên này chưa bán đơn hàng nào");
             return;
         }
         _historySales.SalesBindingSource.DataSource = employee.SalesOrders.ToList();
@@ -126,7 +126,7 @@ public class EmployeePresenter : PresenterCRUD
     {
         if (_viewEmployee.EmployeeBindingSource.Current == null)
         {
-            MessageBox.Show(@"Chưa bản ghi nào được chọn");
+            _viewEmployee.ShowMessage(@"Chưa bản ghi nào được chọn");
             return;
         }
         Employee currentEmployee = _viewEmployee.EmployeeBindingSource.Current as Employee;
@@ -134,7 +134,7 @@ public class EmployeePresenter : PresenterCRUD
             .First(e => e.EmployeeID == currentEmployee.EmployeeID);
         if (employee.ImportOrders.Count == 0)
         {
-            MessageBox.Show(@"Nhân viên này chưa nhập đơn hàng nào");
+            _viewEmployee.ShowMessage(@"Nhân viên này chưa nhập đơn hàng nào");
             return;
         }
         _historyImport.ImportBindingSource.DataSource = employee.ImportOrders.ToList();
@@ -145,7 +145,7 @@ public class EmployeePresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateEmployee == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewEmployee.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         if (_addEmployee.GetType().IsAssignableTo(typeof(Form)))
@@ -162,7 +162,7 @@ public class EmployeePresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateProduct == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewEmployee.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         var updated = _viewEmployee.EmployeeBindingSource.Current as Employee;
@@ -201,7 +201,7 @@ public class EmployeePresenter : PresenterCRUD
 
             if (_context.Employees.Any(e => e.Email == _addEmployee.Email))
             {
-                MessageBox.Show(@"Email đã tồn tại trên hệ thống");
+                _addEmployee.ShowMessage(@"Email đã tồn tại trên hệ thống");
                 return;
             }
 
@@ -209,11 +209,11 @@ public class EmployeePresenter : PresenterCRUD
             _context.SaveChanges();
             _auth.Register(employee.Email, "123456", 1);
             _viewEmployee.EmployeeBindingSource.EndEdit();
-            MessageBox.Show("Thêm thành công");
+            _addEmployee.ShowMessage("Thêm thành công");
         }
         catch (Exception e)
         {
-           MessageBox.Show($"Lỗi: {e.Message}");
+            _addEmployee.ShowMessage($"Lỗi: {e.Message}");
         }
     }
 
@@ -240,11 +240,11 @@ public class EmployeePresenter : PresenterCRUD
 
             _context.SaveChanges();
             _viewEmployee.EmployeeBindingSource.EndEdit();
-            MessageBox.Show("Cập nhật thành công");
+            _updateEmployee.ShowMessage("Cập nhật thành công");
         }
         catch (Exception e)
         {
-           MessageBox.Show($"Lỗi: {e.Message}");
+            _updateEmployee.ShowMessage($"Lỗi: {e.Message}");
         }
     }
 
@@ -258,13 +258,6 @@ public class EmployeePresenter : PresenterCRUD
                 return;
             }
 
-            var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Cancel)
-            {
-                return;
-            }
-
             using (var transaction = _context.Database.BeginTransaction())
             {
                 try
@@ -273,18 +266,18 @@ public class EmployeePresenter : PresenterCRUD
                     _context.SaveChanges();
                     transaction.Commit();
                     _viewEmployee.EmployeeBindingSource.Remove(deleted);
-                    MessageBox.Show("Xóa thành công");
+                    _viewEmployee.ShowMessage("Xóa thành công");
                 }
                 catch (SqlException e)
                 {
                     transaction.Rollback();
-                    MessageBox.Show($"Xóa thất bại: {e.Message}");
+                    _viewEmployee.ShowMessage($"Xóa thất bại: {e.Message}");
                 }
             }
         }
         catch (Exception e)
         {
-          MessageBox.Show($"Lỗi: {e.Message}");
+            _viewEmployee.ShowMessage($"Lỗi: {e.Message}");
         }
     }
 
@@ -318,12 +311,12 @@ public class EmployeePresenter : PresenterCRUD
             }
             else
             {
-                MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ", "Thông báo");
+                _viewEmployee.ShowMessage("Không tìm thấy bản ghi nào hợp lệ");
             }
         }
         catch (Exception e)
         {
-           MessageBox.Show($"Lỗi: {e.Message}");
+            _viewEmployee.ShowMessage($"Lỗi: {e.Message}");
         }
     }
 

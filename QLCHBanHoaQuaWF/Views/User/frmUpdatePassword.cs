@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.User
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.User
 {
     public partial class frmUpdatePassword : Form, IUpdatePassword
     {
@@ -47,7 +49,7 @@
 
         public void ShowMessage(string message)
         {
-            MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

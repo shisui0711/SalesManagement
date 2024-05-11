@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.ImportOrder;
 
-public interface IViewImportOrder
+public interface IViewImportOrder:IViewBase
 {
     public string SearchText { get; set; }
     public int OptionIndex { get; set; }

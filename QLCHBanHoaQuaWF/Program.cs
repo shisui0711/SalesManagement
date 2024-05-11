@@ -14,6 +14,7 @@ using QLCHWF.Views.SalesOrder;
 using QLCHWF.Views.User;
 using QLCHWF.Views.UserRole;
 using System.Reflection;
+using QLCHWF.CustomMessageBox;
 using QLCHWF.Models;
 using QLCHWF.Views.Statistics;
 using MyAppContext = QLCHWF.Models.MyAppContext;
@@ -48,7 +49,7 @@ namespace QLCHWF
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Lỗi: {e.Message}");
+                MyMessageBox.Show($"Lỗi: {e.Message}");
             }
             finally
             {

@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.Customer
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.Customer
 {
     public partial class frmUpdateCustomer : Form, IUpdateCustomer
     {
@@ -56,7 +58,7 @@
 
         public void ShowMessage(string message)
         {
-           MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

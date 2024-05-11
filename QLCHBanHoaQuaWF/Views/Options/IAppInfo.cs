@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.Options;
 
-public interface IAppInfo
+public interface IAppInfo : IViewBase
 {
     public string AppName { get; set; }
     public string Phone { get; set; }

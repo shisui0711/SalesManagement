@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using QLCHWF.CustomMessageBox;
+using System.Reflection;
 
 namespace QLCHWF.Views.Provider
 {
@@ -65,7 +66,7 @@ namespace QLCHWF.Views.Provider
 
         public void ShowMessage(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

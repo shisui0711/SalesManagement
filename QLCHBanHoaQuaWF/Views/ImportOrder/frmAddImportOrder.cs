@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using QLCHWF.CustomMessageBox;
 using QLCHWF.Presenters;
 using System.Text.RegularExpressions;
 
@@ -178,6 +179,28 @@ namespace QLCHWF.Views.ImportOrder
         private void btnSearchProvider_Click(object sender, EventArgs e)
         {
             SearchProvider?.Invoke(sender,e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
+        }
+
+
+        private void txtProviderSearch_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearchProvider.PerformClick();
+            }
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch.PerformClick();
+            }
         }
     }
 }

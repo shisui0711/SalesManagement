@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views.Options
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views.Options
 {
     public partial class frmAppInfo : Form, IAppInfo
     {
@@ -38,6 +40,11 @@
         private void btnSave_Click(object sender, EventArgs e)
         {
             UpdateAppInfo?.Invoke(sender, e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
         }
     }
 }

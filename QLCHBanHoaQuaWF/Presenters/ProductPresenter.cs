@@ -33,7 +33,7 @@ public class ProductPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateProduct == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewProduct.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         if (_addProduct.GetType().IsAssignableTo(typeof(Form)))
@@ -47,12 +47,13 @@ public class ProductPresenter : PresenterCRUD
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateProduct == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewProduct.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         var updated = _viewProduct.ProductBindingSource.Current as Product;
         if (updated == null)
         {
+            _viewProduct.ShowMessage(@"Không tìm thấy bản ghi đã chọn");
             return;
         }
 
@@ -87,7 +88,7 @@ public class ProductPresenter : PresenterCRUD
         _context.Products.Add(product);
         _context.SaveChanges();
         _viewProduct.ProductBindingSource.EndEdit();
-        MessageBox.Show(@"Thêm thành công");
+        _addProduct.ShowMessage(@"Thêm thành công");
     }
 
     public override void Update()
@@ -109,25 +110,20 @@ public class ProductPresenter : PresenterCRUD
         _context.Entry(productExist).CurrentValues.SetValues(product);
         _context.SaveChanges();
         _viewProduct.ProductBindingSource.EndEdit();
-        MessageBox.Show(@"Cập nhật thành cộng");
+        _updateProduct.ShowMessage(@"Cập nhật thành cộng");
     }
 
     public override void Remove()
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteProduct == false)
         {
-            MessageBox.Show(@"Bạn không có quyền này");
+            _viewProduct.ShowMessage(@"Bạn không có quyền này");
             return;
         }
         var deleted = _viewProduct.ProductBindingSource.Current as Product;
         if (deleted == null)
         {
-            return;
-        }
-        var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
-            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        if (dialogResult == DialogResult.Cancel)
-        {
+            _viewProduct.ShowMessage(@"Không tìm thấy bản ghi đã chọn");
             return;
         }
         using (var transaction = _context.Database.BeginTransaction())
@@ -138,12 +134,12 @@ public class ProductPresenter : PresenterCRUD
                 _context.SaveChanges();
                 transaction.Commit();
                 _viewProduct.ProductBindingSource.Remove(deleted);
-                MessageBox.Show(@"Xóa thành công");
+                _viewProduct.ShowMessage(@"Xóa thành công");
             }
             catch (Exception e)
             {
                 transaction.Rollback();
-                MessageBox.Show($@"Xóa thất bại: {e.Message}");
+                _viewProduct.ShowMessage($@"Xóa thất bại: {e.Message}");
             }
         }
     }

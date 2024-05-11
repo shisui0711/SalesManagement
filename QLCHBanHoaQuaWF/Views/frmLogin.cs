@@ -1,4 +1,6 @@
-﻿namespace QLCHWF.Views
+﻿using QLCHWF.CustomMessageBox;
+
+namespace QLCHWF.Views
 {
     public partial class frmLogin : Form, IViewLogin
     {
@@ -57,10 +59,15 @@
             rdoNhanVien.Checked = true;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+
+        private void btnLogin_Click_1(object sender, EventArgs e)
         {
             LoginEvent?.Invoke(sender, e);
         }
 
+        public void ShowMessage(string message)
+        {
+            MyMessageBox.Show(message);
+        }
     }
 }

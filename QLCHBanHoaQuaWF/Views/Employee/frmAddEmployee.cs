@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using QLCHWF.CustomMessageBox;
 
 namespace QLCHWF.Views.Employee
 {
@@ -93,7 +94,7 @@ namespace QLCHWF.Views.Employee
 
         public void ShowMessage(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message);
+            MyMessageBox.Show(message);
         }
     }
 }

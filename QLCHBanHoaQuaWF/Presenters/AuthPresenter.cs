@@ -74,19 +74,19 @@ namespace QLCHWF.Presenters
                 var user = _context.Users.Include(u=>u.UserRole).ThenInclude(u=>u.Permission).Where(e => e.Email == _viewLogin.Username).FirstOrDefault();
                 if (user == null)
                 {
-                    MessageBox.Show("Email không tồn tại!", "Chú ý");
+                    _viewLogin.ShowMessage("Email không tồn tại!");
                     return;
                 }
 
                 if (user.Password != GetSha256Hash(_viewLogin.Password))
                 {
-                    MessageBox.Show("Mật khẩu không đúng", "Chú ý");
+                    _viewLogin.ShowMessage("Mật khẩu không đúng");
                     return;
                 }
 
                 if (user.Lock)
                 {
-                    MessageBox.Show(@"Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản lý");
+                    _viewLogin.ShowMessage(@"Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản lý");
                     return;
                 }
                 user.LastLogin = DateTime.Now;
@@ -100,13 +100,13 @@ namespace QLCHWF.Presenters
                 string role = _configuration.GetSection("AccountDemo").GetSection("Role").Value;
                 if (email != _viewLogin.Username)
                 {
-                    MessageBox.Show("Email không tồn tại");
+                    _viewLogin.ShowMessage("Email không tồn tại");
                     return;
                 }
 
                 if (password != _viewLogin.Password)
                 {
-                    MessageBox.Show("Mật khẩu không đúng");
+                    _viewLogin.ShowMessage("Mật khẩu không đúng");
                     return;
                 }
                 UserRole userRole = new UserRole
@@ -157,13 +157,13 @@ namespace QLCHWF.Presenters
             {
                 if (_updatePassword.Password != _updatePassword.Repassword)
                 {
-                    MessageBox.Show(@"Mật khẩu không khớp");
+                    _viewUser.ShowMessage("Mật khẩu không khớp");
                     return;
                 }
 
                 user.Password = GetSha256Hash(_updatePassword.Password);
                 _context.SaveChanges();
-                MessageBox.Show(@"Đổi mật khẩu thành công");
+                _viewLogin.ShowMessage(@"Đổi mật khẩu thành công");
             }
         }
 
@@ -174,19 +174,19 @@ namespace QLCHWF.Presenters
             {
                 if (user.Password != GetSha256Hash(_changePassword.OldPassword))
                 {
-                    MessageBox.Show(@"Mật khẩu cũ không đúng");
+                    _viewLogin.ShowMessage(@"Mật khẩu cũ không đúng");
                     return;
                 }
 
                 if (_changePassword.NewPassword != _changePassword.Repassword)
                 {
-                    MessageBox.Show(@"Mật khẩu mới không khớp");
+                    _viewLogin.ShowMessage(@"Mật khẩu mới không khớp");
                     return;
                 }
 
                 user.Password = GetSha256Hash(_changePassword.NewPassword);
                 _context.SaveChanges();
-                MessageBox.Show(@"Đổi mật khẩu thành công");
+                _viewLogin.ShowMessage(@"Đổi mật khẩu thành công");
             }
         }
         private void LockUser()
@@ -196,12 +196,6 @@ namespace QLCHWF.Presenters
             {
                 return;
             }
-
-            if (MessageBox.Show("Bạn có chắc chắn muốn khóa tài khoản đã chọn", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
-            {
-                return;
-            }
-
             userTarget.Lock = true;
             _context.SaveChanges();
         }
@@ -210,11 +204,6 @@ namespace QLCHWF.Presenters
         {
             Models.User userTarget = _viewUser.UserBindingSource.Current as User;
             if (userTarget == null)
-            {
-                return;
-            }
-
-            if (MessageBox.Show("Bạn có chắc chắn muốn mở khóa tài khoản đã chọn", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
             }
