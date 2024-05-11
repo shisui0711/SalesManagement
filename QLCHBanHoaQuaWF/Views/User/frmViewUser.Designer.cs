@@ -85,6 +85,7 @@
             // btnReload
             // 
             this.btnReload.Animated = true;
+            this.btnReload.BorderRadius = 5;
             this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReload.CustomizableEdges = customizableEdges1;
             this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -106,6 +107,7 @@
             // btnSearch
             // 
             this.btnSearch.Animated = true;
+            this.btnSearch.BorderRadius = 5;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.CustomizableEdges = customizableEdges3;
             this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -127,6 +129,7 @@
             // txtSearch
             // 
             this.txtSearch.Animated = true;
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.CustomizableEdges = customizableEdges5;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -170,7 +173,6 @@
             this.dgvUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUser.AutoGenerateColumns = false;
             this.dgvUser.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvUser.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -353,6 +355,7 @@
             // 
             // frmViewUser
             // 
+            this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 500);

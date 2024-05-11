@@ -43,16 +43,6 @@
                 textBox.Focus();
             }
         }
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private string _message;
         public frmUpdateEmployee()
         {
             InitializeComponent();
@@ -71,6 +61,11 @@
         private void frmUpdateEmployee_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
         }
     }
 }

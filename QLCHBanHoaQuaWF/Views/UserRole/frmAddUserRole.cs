@@ -57,5 +57,10 @@
                 textBox.Focus();
             }
         }
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
     }
 }

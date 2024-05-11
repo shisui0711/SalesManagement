@@ -215,6 +215,7 @@
             this.cboOptionSearch.Size = new System.Drawing.Size(175, 36);
             this.cboOptionSearch.StartIndex = 0;
             this.cboOptionSearch.TabIndex = 18;
+            // 
             // btnAdd
             // 
             this.btnAdd.AllowDrop = true;
@@ -303,7 +304,6 @@
             this.txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges18;
             this.txtSearch.Size = new System.Drawing.Size(286, 35);
             this.txtSearch.TabIndex = 14;
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // pnlBody
             // 
@@ -496,6 +496,7 @@
             // 
             // frmViewSalesOrder
             // 
+            this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 500);

@@ -44,16 +44,6 @@
             UpdateUserRole?.Invoke(sender, e);
         }
 
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông báo");
-            }
-        }
-        private string _message;
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetField("txt" + name);
@@ -62,6 +52,11 @@
                 var textBox = (UserControl)textBoxField.GetValue(this);
                 textBox.Focus();
             }
+        }
+
+        public void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
         }
     }
 }

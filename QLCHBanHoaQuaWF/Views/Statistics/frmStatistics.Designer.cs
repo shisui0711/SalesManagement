@@ -95,6 +95,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnThisWeek = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnYesterday = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -1111,6 +1112,10 @@
             this.chartProduct.Size = new System.Drawing.Size(399, 318);
             this.chartProduct.TabIndex = 19;
             this.chartProduct.Text = "chartProduct";
+            title1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            title1.Name = "Title1";
+            title1.Text = "Top sản phẩm bán chạy";
+            this.chartProduct.Titles.Add(title1);
             // 
             // frmStatistics
             // 

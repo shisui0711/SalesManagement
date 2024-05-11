@@ -6,17 +6,6 @@
         {
             InitializeComponent();
         }
-
-        private string _message;
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông báo");
-            }
-        }
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetField("txt" + name);
@@ -54,6 +43,11 @@
         private void btnChange_Click(object sender, EventArgs e)
         {
             UpdatePassowrd?.Invoke(sender, e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

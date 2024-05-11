@@ -27,17 +27,6 @@
             get { return txtAddress.Text; }
             set { txtAddress.Text = value; }
         }
-
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private string _message;
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetField("txt" + name);
@@ -65,5 +54,9 @@
             this.Close();
         }
 
+        public void ShowMessage(string message)
+        {
+           MessageBox.Show(message);
+        }
     }
 }

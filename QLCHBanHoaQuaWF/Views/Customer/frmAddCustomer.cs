@@ -26,16 +26,6 @@ namespace QLCHWF.Views.Customer
             get { return txtAddress.Text; }
             set { txtAddress.Text = value; }
         }
-
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
         private string _message;
         public void Focus(string name)
         {
@@ -72,6 +62,11 @@ namespace QLCHWF.Views.Customer
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
         }
     }
 }

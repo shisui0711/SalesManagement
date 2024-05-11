@@ -4,16 +4,6 @@ namespace QLCHWF.Views.Provider
 {
     public partial class frmAddProvider : Form, IAddProvider
     {
-        private string _message;
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông báo");
-            }
-        }
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetField("txt" + name);
@@ -73,5 +63,9 @@ namespace QLCHWF.Views.Provider
         }
 
 
+        public void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }
     }
 }

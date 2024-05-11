@@ -2,33 +2,34 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using QLCHWF.Presenters;
+using System.Configuration;
 
 namespace QLCHWF.Models
 {
-    public sealed partial class MyAppContext : DbContext
+    public partial class MyAppContext : DbContext
     {
         private IConfiguration _configuration;
         public MyAppContext()
         {
-
+            //Database.Migrate();
         }
         public MyAppContext(DbContextOptions<MyAppContext> optionsBuilderOptions, IConfiguration configuration) : base(optionsBuilderOptions)
         {
             _configuration = configuration;
             Database.Migrate();
         }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Provider> Providers { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<Permission> Permissions { get; set; }
-        public DbSet<ImportOrder> ImportOrders { get; set; }
-        public DbSet<SalesOrder> SalesOrders { get; set; }
-        public DbSet<DetailImportOrder> DetailImportOrders { get; set; }
-        public DbSet<DetailSalesOrder> DetailSalesOrders { get; set; }
-        public DbSet<AppInfo?> AppInfos { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Provider> Providers { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<Permission> Permissions { get; set; }
+        public virtual DbSet<ImportOrder> ImportOrders { get; set; }
+        public virtual DbSet<SalesOrder> SalesOrders { get; set; }
+        public virtual DbSet<DetailImportOrder> DetailImportOrders { get; set; }
+        public virtual DbSet<DetailSalesOrder> DetailSalesOrders { get; set; }
+        public virtual DbSet<AppInfo?> AppInfos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -18,7 +18,7 @@ namespace QLCHWF.Presenters
                 Validator.TryValidateObject(target, new ValidationContext(target), errors, true);
             if (!isValid)
             {
-                validateControl.Message = errors.First().ErrorMessage;
+                validateControl.ShowMessage(errors.First().ErrorMessage);
                 validateControl.Focus(errors.SelectMany(x => x.MemberNames).First());
             }
             return isValid;

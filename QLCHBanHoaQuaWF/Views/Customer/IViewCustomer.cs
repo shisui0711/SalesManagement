@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.Customer;
 
-public interface IViewCustomer
+public interface IViewCustomer : IViewBase
 {
     public string SearchText { get; set; }
     public int OptionIndex { get; set; }

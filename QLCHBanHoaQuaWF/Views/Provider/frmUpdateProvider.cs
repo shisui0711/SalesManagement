@@ -7,16 +7,6 @@
             InitializeComponent();
         }
 
-        private string _message;
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông Báo");
-            }
-        }
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetField("txt" + name);
@@ -59,6 +49,11 @@
         private void btnSave_Click(object sender, EventArgs e)
         {
             UpdateProvider?.Invoke(sender,e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
         }
     }
 }

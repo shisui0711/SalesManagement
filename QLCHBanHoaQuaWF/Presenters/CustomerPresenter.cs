@@ -38,7 +38,7 @@ namespace QLCHWF.Presenters
         {
             if (_viewCustomer.CustomerBindingSource.Current == null)
             {
-                MessageBox.Show(@"Chưa bản ghi nào được chọn");
+                _viewCustomer.ShowMessage("Chưa bản ghi nào được chọn");
                 return;
             }
             Customer currentCustomer = _viewCustomer.CustomerBindingSource.Current as Customer;
@@ -46,7 +46,7 @@ namespace QLCHWF.Presenters
                 .First(c => c.CustomerID == currentCustomer.CustomerID);
             if (customer.SalesOrders.Count == 0)
             {
-                MessageBox.Show(@"Khách hàng này chưa mua hàng lần nào");
+                _viewCustomer.ShowMessage(@"Khách hàng này chưa mua hàng lần nào");
                 return;
             }
             _historySales.SalesBindingSource.DataSource = customer.SalesOrders.ToList();
@@ -57,7 +57,7 @@ namespace QLCHWF.Presenters
         {
             if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanCreateCustomer == false)
             {
-                MessageBox.Show(@"Bạn không có quyền này");
+                _viewCustomer.ShowMessage(@"Bạn không có quyền này");
                 return;
             }
             var form = _addCustomer as Form;
@@ -71,7 +71,7 @@ namespace QLCHWF.Presenters
         {
             if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanUpdateCustomer == false && AuthPresenter.User.UserRole.Permission.IsAdmin == false)
             {
-                MessageBox.Show(@"Bạn không có quyền này");
+                _viewCustomer.ShowMessage(@"Bạn không có quyền này");
                 return;
             }
             var updated = _viewCustomer.CustomerBindingSource.Current as Customer;
@@ -108,11 +108,11 @@ namespace QLCHWF.Presenters
                 _viewCustomer.CustomerBindingSource.EndEdit();
                 _context.SaveChanges();
                 _addCustomer.Reset();
-                MessageBox.Show(@"Thêm thành công");
+                _addCustomer.ShowMessage("Thêm thành công");
             }
             catch (Exception e)
             {
-               MessageBox.Show($@"Lỗi {e.Message}");
+                _addCustomer.ShowMessage($@"Lỗi: {e.Message}");
             }
 
         }
@@ -121,24 +121,36 @@ namespace QLCHWF.Presenters
         {
             try
             {
-                var customer = _context.Customers.Find(_updateCustomer.CustomerID);
+                var customer = _context.Customers.Where(x=>x.CustomerID== _updateCustomer.CustomerID).FirstOrDefault();
+                if (customer == null)
+                {
+                    _updateCustomer.ShowMessage("Không tìm thấy khách hàng cần cập nhật");
+                    return;
+                }
                 customer.CustomerName = _updateCustomer.CustomerName;
                 customer.Email = _updateCustomer.Email;
                 customer.Phone = _updateCustomer.Phone;
                 customer.Address = _updateCustomer.Address;
                 if (!IsValid(customer, _updateCustomer))
                 {
-                    _context.Entry(customer).Reload();
-                    return;
+                    try
+                    {
+                        _context.Entry(customer).Reload();
+                        return;
+                    }
+                    catch (Exception e)
+                    {
+                        throw;
+                    }
                 }
 
                 _viewCustomer.CustomerBindingSource.EndEdit();
                 _context.SaveChanges();
-                MessageBox.Show("Cập nhật thành công");
+                _updateCustomer.ShowMessage("Cập nhật thành công");
             }
             catch (Exception e)
             {
-                MessageBox.Show($@"Lỗi {e.Message}");
+                _updateCustomer.ShowMessage($"Lỗi: {e.Message}");
             }
         }
 
@@ -149,19 +161,12 @@ namespace QLCHWF.Presenters
                 if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteCustomer == false &&
                     AuthPresenter.User.UserRole.Permission.IsAdmin == false)
                 {
-                    MessageBox.Show(@"Bạn không có quyền này");
+                    _viewCustomer.ShowMessage(@"Bạn không có quyền này");
                     return;
                 }
 
                 var deleted = _viewCustomer.CustomerBindingSource.Current as Customer;
                 if (deleted == null)
-                {
-                    return;
-                }
-
-                var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Cancel)
                 {
                     return;
                 }
@@ -174,18 +179,18 @@ namespace QLCHWF.Presenters
                         _context.SaveChanges();
                         transaction.Commit();
                         _viewCustomer.CustomerBindingSource.Remove(deleted);
-                        MessageBox.Show("Xóa thành công");
+                        _viewCustomer.ShowMessage("Xóa thành công");
                     }
                     catch (SqlException e)
                     {
                         transaction.Rollback();
-                        MessageBox.Show($"Xóa thất bại:{e.Message}");
+                        _viewCustomer.ShowMessage($"Xóa thất bại:{e.Message}");
                     }
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Lỗi: {e.Message}");
+                _viewCustomer.ShowMessage($"Lỗi: {e.Message}");
             }
         }
 
@@ -221,12 +226,12 @@ namespace QLCHWF.Presenters
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy bản ghi nào hợp lệ", "Thông báo");
+                    _viewCustomer.ShowMessage("Không tìm thấy bản ghi nào hợp lệ");
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Lỗi: {e.Message}");
+                _viewCustomer.ShowMessage($"Lỗi: {e.Message}");
             }
         }
 
@@ -239,7 +244,7 @@ namespace QLCHWF.Presenters
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Lỗi: {e.Message}");
+                _viewCustomer.ShowMessage($"Lỗi: {e.Message}");
             }
         }
     }

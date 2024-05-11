@@ -4,15 +4,6 @@ namespace QLCHWF.Views.Employee
 {
     public partial class frmAddEmployee : Form, IAddEmployee
     {
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
         private string _message;
         public string EmployeeName
         {
@@ -98,6 +89,11 @@ namespace QLCHWF.Views.Employee
         private void frmAddEmployee_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
         }
     }
 }

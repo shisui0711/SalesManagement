@@ -52,10 +52,6 @@
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlGridView = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvProduct = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calculationUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +60,10 @@
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailImportOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailSalesOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlControl.SuspendLayout();
             this.pnlGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
@@ -270,44 +270,6 @@
             this.dgvProduct.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvProduct.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnUpdate,
-            this.btnRemove});
-            this.contextMenuStrip.Name = "guna2ContextMenuStrip1";
-            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.ColorTable = null;
-            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
-            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(276, 56);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Image = global::QLCHWF.Properties.Resources.pencil;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(275, 26);
-            this.btnUpdate.Text = "Sửa và  xem thông tin chi tiểt";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Image = global::QLCHWF.Properties.Resources.remove;
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(275, 26);
-            this.btnRemove.Text = "Xóa";
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(QLCHWF.Models.Product);
-            // 
             // productIDDataGridViewTextBoxColumn
             // 
             this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
@@ -375,8 +337,47 @@
             this.detailSalesOrdersDataGridViewTextBoxColumn.ReadOnly = true;
             this.detailSalesOrdersDataGridViewTextBoxColumn.Visible = false;
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnUpdate,
+            this.btnRemove});
+            this.contextMenuStrip.Name = "guna2ContextMenuStrip1";
+            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.contextMenuStrip.RenderStyle.ColorTable = null;
+            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
+            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.contextMenuStrip.Size = new System.Drawing.Size(276, 56);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Image = global::QLCHWF.Properties.Resources.pencil;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(275, 26);
+            this.btnUpdate.Text = "Sửa và  xem thông tin chi tiểt";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Image = global::QLCHWF.Properties.Resources.remove;
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(275, 26);
+            this.btnRemove.Text = "Xóa";
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(QLCHWF.Models.Product);
+            // 
             // frmViewProduct
             // 
+            this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 500);

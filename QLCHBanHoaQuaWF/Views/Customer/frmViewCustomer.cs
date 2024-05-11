@@ -61,12 +61,23 @@
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            var dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi đã chọn ?", "Thông báo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
             RemoveCustomer?.Invoke(sender, e);
         }
 
         private void btnPurchaseHistory_Click(object sender, EventArgs e)
         {
             ShowSalesHistory?.Invoke(sender,e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

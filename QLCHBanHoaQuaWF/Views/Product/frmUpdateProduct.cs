@@ -85,16 +85,6 @@ namespace QLCHWF.Views.Product
             set { txtDescription.Text = value; }
         }
         public event EventHandler? UpdateProduct;
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông báo");
-            }
-        }
-        private string _message;
 
         public void Focus(string name)
         {
@@ -142,6 +132,11 @@ namespace QLCHWF.Views.Product
                     }
                 }
             }
+        }
+
+        public void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
         }
     }
 }

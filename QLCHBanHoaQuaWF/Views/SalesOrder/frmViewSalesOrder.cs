@@ -151,10 +151,5 @@ namespace QLCHWF.Views.SalesOrder
                 SearchSalesOrder?.Invoke(sender,e);
             }
         }
-
-        private void cboOptionSearch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SearchSalesOrder?.Invoke(sender,e);
-        }
     }
 }

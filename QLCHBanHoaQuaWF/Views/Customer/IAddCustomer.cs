@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.Customer;
 
-public interface IAddCustomer : IValidateControl
+public interface IAddCustomer : IValidateControl,IViewBase
 {
     public string CustomerName { get; set; }
     public string Email { get; set; }

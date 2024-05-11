@@ -26,17 +26,7 @@ namespace QLCHWF.Views.Product
             string extension = Path.GetExtension(filePath).ToLower();
             return extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif" || extension == ".bmp";
         }
-        private string _message;
 
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                MessageBox.Show(_message, "Thông báo");
-            }
-        }
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetField("txt" + name);
@@ -174,6 +164,11 @@ namespace QLCHWF.Views.Product
         private void txtUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             Program.DecimalPressed(sender,e);
+        }
+
+        public void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
         }
     }
 }

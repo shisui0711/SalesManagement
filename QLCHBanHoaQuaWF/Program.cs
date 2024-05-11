@@ -32,7 +32,8 @@ namespace QLCHWF
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            var _host = CreateHostBuilder(args).Build();
+            //var _host = CreateHostBuilder(args).Build();
+            _host = CreateHostBuilder(args).Build();
             _host.Start();
             var presenterTypes =
                 Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Name.Contains("Presenter") && t.IsClass && !t.IsAbstract);
@@ -56,6 +57,7 @@ namespace QLCHWF
             }
         }
 
+        public static IHost _host;
         static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args).ConfigureHostConfiguration(config =>
