@@ -1,32 +1,32 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using QLCHWF.Attributes;
 using QLCHWF.Models;
 using QLCHWF.Views;
 using QLCHWF.Views.User;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters
 {
-    public class AuthPresenter
+    public class AuthPresenter : ValidPresenter
     {
         public static User User { get; private set; }
         private readonly IViewLogin _viewLogin;
         private readonly IViewMain _viewMain;
         private readonly IViewUser _viewUser;
+        private readonly IAddUser _addUser;
         private readonly IUpdatePassword _updatePassword;
         private readonly IChangePassword _changePassword;
         private readonly MyAppContext _context;
         private readonly IConfiguration _configuration;
-        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IUpdatePassword updatePassword,IChangePassword changePassword, MyAppContext context, IConfiguration configuration)
+        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IAddUser addUser, IUpdatePassword updatePassword,IChangePassword changePassword, MyAppContext context, IConfiguration configuration)
         {
             _viewLogin = viewLogin;
             _viewMain = viewMain;
             _viewUser = viewUser;
+            _addUser = addUser;
             _updatePassword = updatePassword;
             _changePassword = changePassword;
             _context = context;
@@ -41,13 +41,52 @@ namespace QLCHWF.Presenters
             _viewUser.LoadUser += delegate { LoadUser(); };
             _viewUser.LockUser += delegate { LockUser(); };
             _viewUser.UnlockUser += delegate { UnlockUser(); };
+            _viewUser.ShowAddUser += delegate { ShowAddUser(); };
 
+            _addUser.AddUser += delegate {AddUser();};
             _updatePassword.UpdatePassowrd += delegate { UpdatePassword(); };
             _changePassword.ChangePassowrd += delegate { ChangePassword(); };
         }
+
+        void ShowAddUser()
+        {
+            _addUser.EmployeeBindingSource.DataSource = _context.Employees.ToList();
+            _addUser.RoleBindingSource.DataSource = _context.UserRoles.ToList();
+            var form = (Form)_addUser;
+            form?.ShowDialog();
+        }
+
+        void AddUser()
+        {
+            try
+            {
+                if (_addUser.Password != _addUser.Repassword)
+                {
+                    _addUser.ShowMessage("Mật khẩu không khớp. Vui lòng kiểm tra lại");
+                }
+                Models.User user = new User();
+                user.Email = _addUser.Email;
+                user.Password = _addUser.Password;
+                user.EmployeeID = _addUser.EmployeeID;
+                user.RoleID = _addUser.RoleID;
+                if (!IsValid(user,_addUser))
+                {
+                    return;
+                }
+
+                user.Password = GetSha256Hash(user.Password);
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                _addUser.ShowMessage("Tạo thành công");
+            }
+            catch (Exception e)
+            {
+                _addUser.ShowMessage($"Lỗi: {e.Message}");
+            }
+        }
         void CheckPermission(IChangeControl control)
         {
-            if (AuthPresenter.User == null)
+            if (User == null)
             {
                 return;
             }
@@ -237,17 +276,12 @@ namespace QLCHWF.Presenters
             Form form = (Form)_updatePassword;
             form.ShowDialog();
         }
-        /// <summary>
-        /// Generate Sha256Hash string
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         public static string GetSha256Hash(string input)
         {
-            using (SHA256 md5Hash = SHA256.Create())
+            using (SHA256 sha = SHA256.Create())
             {
 
-                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+                byte[] data = sha.ComputeHash(Encoding.UTF8.GetBytes(input));
                 StringBuilder stringBuilder = new StringBuilder();
 
                 for (int i = 0; i < data.Length; i++)

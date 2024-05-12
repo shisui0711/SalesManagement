@@ -12,15 +12,6 @@ public static class MyExtensionMethods
         using (ExcelPackage package = new ExcelPackage())
         {
             ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
-            for (int i = 0; i < dataGridView.Columns.Count; i++)
-            {
-                if (!dataGridView.Columns[i].Visible)
-                {
-                    continue;
-                }
-                worksheet.Cells[1, i + 1].Value = dataGridView.Columns[i].HeaderText;
-            }
-
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
                 for (int j = 0; j < dataGridView.Columns.Count; j++)
@@ -32,7 +23,15 @@ public static class MyExtensionMethods
                     worksheet.Cells[i + 2, j + 1].Value = dataGridView.Rows[i].Cells[j].Value.ToString();
                 }
             }
-
+            for (int i = 0; i < dataGridView.Columns.Count; i++)
+            {
+                if (!dataGridView.Columns[i].Visible)
+                {
+                    continue;
+                }
+                worksheet.Cells[1, i + 1].Value = dataGridView.Columns[i].HeaderText;
+                worksheet.Columns[i + 1].AutoFit();
+            }
             FileInfo fileInfo = new FileInfo(filePath);
             package.SaveAs(fileInfo);
         }

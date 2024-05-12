@@ -36,5 +36,10 @@ namespace QLCHWF.Models
         {
             return EmployeeName;
         }
+        [NotMapped]
+        public string NameWithId
+        {
+            get { return EmployeeID + "-" + EmployeeName; }
+        }
     }
 }

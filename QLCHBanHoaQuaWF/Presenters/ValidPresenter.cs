@@ -3,13 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QLCHWF.Presenters
 {
-    public abstract class PresenterCRUD
+    public abstract class ValidPresenter
     {
-        public abstract void Add();
-        public abstract void Update();
-        public abstract void Remove();
-        public abstract void Search();
-        public abstract void Load();
 
         public bool IsValid(object target, IValidateControl validateControl)
         {

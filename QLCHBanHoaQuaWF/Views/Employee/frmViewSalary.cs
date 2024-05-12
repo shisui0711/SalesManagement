@@ -16,6 +16,8 @@ namespace QLCHWF.Views.Employee
         public frmViewSalary()
         {
             InitializeComponent();
+            dtpStart.Value = DateTime.Today;
+            dtpEnd.Value = DateTime.Now;
         }
 
         public DateTime StartDate
@@ -45,8 +47,15 @@ namespace QLCHWF.Views.Employee
             saveFileDialog.Title = "Save an Excel File";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                dgvSalary.ExportToExcel(saveFileDialog.FileName);
-                MyMessageBox.Show(@"Xuất file thành công");
+                try
+                {
+                    dgvSalary.ExportToExcel(saveFileDialog.FileName);
+                    MyMessageBox.Show(@"Xuất file thành công");
+                }
+                catch (Exception exception)
+                {
+                    MyMessageBox.Show($"Lỗi: {exception.Message}");
+                }
             }
         }
 

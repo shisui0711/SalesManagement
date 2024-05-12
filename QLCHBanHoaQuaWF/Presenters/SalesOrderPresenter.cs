@@ -4,6 +4,7 @@ using Microsoft.Reporting.WinForms;
 using QLCHWF.CustomMessageBox;
 using QLCHWF.Models;
 using QLCHWF.Views;
+using QLCHWF.Views.ImportOrder;
 using QLCHWF.Views.Product;
 using QLCHWF.Views.SalesOrder;
 using MyAppContext = QLCHWF.Models.MyAppContext;
@@ -40,10 +41,12 @@ namespace QLCHWF.Presenters
 
             _addSalesOrder.RemoveProduct += RemoveProduct;
             _addSalesOrder.LoadCustomer += delegate { LoadCustomer(); };
-            _addSalesOrder.LoadProduct += delegate { LoadProduct(); };
+            _addSalesOrder.LoadProduct += delegate { NextPage(); };
             _addSalesOrder.SearchCustomer += delegate { SearchCustomer(); };
             _addSalesOrder.SearchProduct += delegate { LoadProduct(); };
             _addSalesOrder.AddSalesOrder += delegate { Add(); };
+            _addSalesOrder.NextPage += delegate { NextPage(); };
+            _addSalesOrder.PreviousPage += delegate { PreviousPage(); };
 
             _report.LoadReport += delegate { LoadReport(); };
         }
@@ -306,6 +309,18 @@ namespace QLCHWF.Presenters
                 form.Show();
             }
         }
+        protected void LoadProduct(List<Product> products)
+        {
+            _addSalesOrder.ClearControl();
+            foreach (var product in products)
+            {
+                frmProduct form = new frmProduct(product);
+                form.Clicked += OrderProduct;
+                form.TopLevel = false;
+                _addSalesOrder.AddControl(form);
+                form.Show();
+            }
+        }
 
         public void OrderProduct(object sender, EventArgs e)
         {
@@ -345,7 +360,42 @@ namespace QLCHWF.Presenters
                 _addSalesOrder.ShowMessage("Không có khách hàng nào được tìm thấy");
             }
         }
+        void NextPage()
+        {
+            int totalItems = _context.Products.ToList().Count;
+            int totalPages = (int)Math.Ceiling((double)totalItems / 6);
+            int currentPage = _addSalesOrder.CurrentPage;
+            List<Product> products = _context.Products.Skip((currentPage) * 6).Take(6).ToList();
+            LoadProduct(products);
+            _addSalesOrder.CurrentPage += 1;
+            if (_addSalesOrder.CurrentPage > 1)
+            {
+                _addSalesOrder.EnablePreviousPage();
+            }
 
-        
+            if (_addSalesOrder.CurrentPage >= totalPages)
+            {
+                _addSalesOrder.DisableNextPage();
+            }
+        }
+
+        void PreviousPage()
+        {
+            _addSalesOrder.CurrentPage -= 1;
+            int totalItems = _context.Products.ToList().Count;
+            int totalPages = (int)Math.Ceiling((double)totalItems / 6);
+            int currentPage = _addSalesOrder.CurrentPage;
+            List<Product> products = _context.Products.Skip((currentPage - 1) * 6).Take(6).ToList();
+            LoadProduct(products);
+            if (_addSalesOrder.CurrentPage <= 1)
+            {
+                _addSalesOrder.DisablePreviousPage();
+            }
+
+            if (_addSalesOrder.CurrentPage < totalPages)
+            {
+                _addSalesOrder.EnableNextPage();
+            }
+        }
     }
 }

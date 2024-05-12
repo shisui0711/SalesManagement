@@ -68,22 +68,23 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Controls.Add(this.guna2ControlBox2);
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.CustomizableEdges = customizableEdges5;
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            this.pnlHeader.Size = new System.Drawing.Size(799, 50);
+            this.pnlHeader.Size = new System.Drawing.Size(793, 50);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(12, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(98, 23);
@@ -99,10 +100,10 @@
             this.guna2ControlBox2.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
             this.guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.guna2ControlBox2.CustomizableEdges = customizableEdges1;
-            this.guna2ControlBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(133)))), ((int)(((byte)(205)))));
             this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(691, 8);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(685, 8);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.guna2ControlBox2.Size = new System.Drawing.Size(50, 35);
@@ -116,10 +117,10 @@
             this.btnClose.BorderRadius = 10;
             this.btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
             this.btnClose.CustomizableEdges = customizableEdges3;
-            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.btnClose.FillColor = System.Drawing.Color.Transparent;
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(747, 8);
+            this.btnClose.Location = new System.Drawing.Point(741, 8);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges4;
             this.btnClose.Size = new System.Drawing.Size(47, 35);
@@ -140,10 +141,10 @@
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.FillColor = System.Drawing.Color.Transparent;
             this.pnlBody.FillColor2 = System.Drawing.Color.Transparent;
-            this.pnlBody.Location = new System.Drawing.Point(0, 50);
+            this.pnlBody.Location = new System.Drawing.Point(3, 53);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges17;
-            this.pnlBody.Size = new System.Drawing.Size(799, 603);
+            this.pnlBody.Size = new System.Drawing.Size(793, 597);
             this.pnlBody.TabIndex = 1;
             // 
             // pnlControl
@@ -159,10 +160,10 @@
             this.pnlControl.Controls.Add(this.txtPassword);
             this.pnlControl.Controls.Add(this.btnLogin);
             this.pnlControl.CustomizableEdges = customizableEdges14;
-            this.pnlControl.Location = new System.Drawing.Point(233, 30);
+            this.pnlControl.Location = new System.Drawing.Point(230, 30);
             this.pnlControl.Name = "pnlControl";
             this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges15;
-            this.pnlControl.Size = new System.Drawing.Size(356, 482);
+            this.pnlControl.Size = new System.Drawing.Size(356, 476);
             this.pnlControl.TabIndex = 5;
             // 
             // guna2CirclePictureBox1
@@ -307,13 +308,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(799, 653);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
+            this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý cửa hàng bán hoa quả";
             this.Load += new System.EventHandler(this.frmLogin_Load);

@@ -22,6 +22,7 @@ namespace QLCHWF.Views.User
         public event EventHandler? LoadUser;
         public event EventHandler? LockUser;
         public event EventHandler? UnlockUser;
+        public event EventHandler ShowAddUser;
         public event EventHandler? ShowChangePassword;
 
         private void btnChangePassword_Click(object sender, EventArgs e)
@@ -65,6 +66,11 @@ namespace QLCHWF.Views.User
         public void ShowMessage(string message)
         {
             MyMessageBox.Show(message);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ShowAddUser?.Invoke(sender,e);
         }
     }
 }

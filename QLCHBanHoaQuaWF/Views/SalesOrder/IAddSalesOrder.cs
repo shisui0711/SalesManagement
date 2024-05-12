@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.SalesOrder;
 
-public interface IAddSalesOrder : IViewBase
+public interface IAddSalesOrder : IViewBase,IViewPagination
 {
     public string CustomerSearchText { get; set; }
     public string? ProductSearchText { get; set; }

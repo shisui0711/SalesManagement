@@ -178,6 +178,7 @@
             // 
             // btnThisWeek
             // 
+            this.btnThisWeek.Animated = true;
             this.btnThisWeek.BackColor = System.Drawing.Color.Transparent;
             this.btnThisWeek.BorderColor = System.Drawing.Color.Lime;
             this.btnThisWeek.BorderRadius = 1;
@@ -209,6 +210,7 @@
             // 
             // btnYesterday
             // 
+            this.btnYesterday.Animated = true;
             this.btnYesterday.BackColor = System.Drawing.Color.Transparent;
             this.btnYesterday.BorderColor = System.Drawing.Color.Lime;
             this.btnYesterday.BorderRadius = 1;
@@ -240,6 +242,7 @@
             // 
             // dtpEnd
             // 
+            this.dtpEnd.Animated = true;
             this.dtpEnd.BorderRadius = 1;
             this.dtpEnd.Checked = true;
             this.dtpEnd.CustomFormat = "dd-MM-yyyy";
@@ -259,6 +262,7 @@
             // 
             // dtpStart
             // 
+            this.dtpStart.Animated = true;
             this.dtpStart.BorderRadius = 1;
             this.dtpStart.Checked = true;
             this.dtpStart.CustomFormat = "dd-MM-yyyy";
@@ -278,6 +282,7 @@
             // 
             // btnThisMonth
             // 
+            this.btnThisMonth.Animated = true;
             this.btnThisMonth.BackColor = System.Drawing.Color.Transparent;
             this.btnThisMonth.BorderColor = System.Drawing.Color.Lime;
             this.btnThisMonth.BorderRadius = 1;
@@ -309,6 +314,7 @@
             // 
             // btn30day
             // 
+            this.btn30day.Animated = true;
             this.btn30day.BackColor = System.Drawing.Color.Transparent;
             this.btn30day.BorderColor = System.Drawing.Color.Lime;
             this.btn30day.BorderRadius = 1;
@@ -340,6 +346,7 @@
             // 
             // btn7day
             // 
+            this.btn7day.Animated = true;
             this.btn7day.BackColor = System.Drawing.Color.Transparent;
             this.btn7day.BorderColor = System.Drawing.Color.Lime;
             this.btn7day.BorderRadius = 1;
@@ -371,6 +378,7 @@
             // 
             // btnToday
             // 
+            this.btnToday.Animated = true;
             this.btnToday.BackColor = System.Drawing.Color.Transparent;
             this.btnToday.BorderColor = System.Drawing.Color.Lime;
             this.btnToday.BorderRadius = 1;
@@ -403,6 +411,7 @@
             // 
             // btnCustom
             // 
+            this.btnCustom.Animated = true;
             this.btnCustom.BackColor = System.Drawing.Color.Transparent;
             this.btnCustom.BorderColor = System.Drawing.Color.Lime;
             this.btnCustom.BorderRadius = 1;
@@ -444,8 +453,8 @@
             this.btnConfirm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnConfirm.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnConfirm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnConfirm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnConfirm.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnConfirm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnConfirm.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnConfirm.ForeColor = System.Drawing.Color.Black;
             this.btnConfirm.Location = new System.Drawing.Point(286, 12);

@@ -7,7 +7,7 @@ using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters
 {
-    public class CustomerPresenter : PresenterCRUD
+    public class CustomerPresenter : ValidPresenter
     {
         private readonly IViewCustomer _viewCustomer;
         private readonly IAddCustomer _addCustomer;
@@ -90,7 +90,7 @@ namespace QLCHWF.Presenters
                 form.ShowDialog();
             }
         }
-        public override void Add()
+        public void Add()
         {
             try
             {
@@ -117,7 +117,7 @@ namespace QLCHWF.Presenters
 
         }
 
-        public override void Update()
+        public void Update()
         {
             try
             {
@@ -154,7 +154,7 @@ namespace QLCHWF.Presenters
             }
         }
 
-        public override void Remove()
+        public void Remove()
         {
             try
             {
@@ -194,7 +194,7 @@ namespace QLCHWF.Presenters
             }
         }
 
-        public override void Search()
+        public void Search()
         {
             try
             {
@@ -235,7 +235,7 @@ namespace QLCHWF.Presenters
             }
         }
 
-        public override void Load()
+        public void Load()
         {
             try
             {

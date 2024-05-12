@@ -22,7 +22,6 @@ namespace QLCHWF.Views
         public event EventHandler ShowUser;
         public event EventHandler ShowUserRole;
         public event EventHandler ShowOptions;
-        public event EventHandler? ShowChangePassword;
         private bool IsLogout;
         public frmMain()
         {
@@ -31,8 +30,8 @@ namespace QLCHWF.Views
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            btnStatistics.Checked = true;
-            ShowStatistics?.Invoke(sender,e);
+            btnProduct.Checked = true;
+            ShowProduct?.Invoke(sender,e);
             IsLogout = false;
         }
 
@@ -48,11 +47,6 @@ namespace QLCHWF.Views
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnChangePassword_Click(object sender, EventArgs e)
-        {
-            ShowChangePassword?.Invoke(sender,e);
         }
 
         private void btnStatistics_Click(object sender, EventArgs e)

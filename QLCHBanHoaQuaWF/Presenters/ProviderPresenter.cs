@@ -6,7 +6,7 @@ using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
 
-public class ProviderPresenter : PresenterCRUD
+public class ProviderPresenter : ValidPresenter
 {
     private readonly IViewProvider _viewProvider;
     private readonly IAddProvider _addProvider;
@@ -92,7 +92,7 @@ public class ProviderPresenter : PresenterCRUD
         }
     }
 
-    public override void Add()
+    public void Add()
     {
         Provider provider = new Provider();
         provider.ProviderName = _addProvider.ProviderName;
@@ -109,7 +109,7 @@ public class ProviderPresenter : PresenterCRUD
         _viewProvider.ProviderBindingSource.EndEdit();
     }
 
-    public override void Update()
+    public void Update()
     {
         Provider provider = _context.Providers.Find(_updateProvider.ProviderID);
         provider.ProviderName = _updateProvider.ProviderName;
@@ -125,7 +125,7 @@ public class ProviderPresenter : PresenterCRUD
         _viewProvider.ProviderBindingSource.EndEdit();
     }
 
-    public override void Remove()
+    public void Remove()
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteProvider == false)
         {
@@ -155,7 +155,7 @@ public class ProviderPresenter : PresenterCRUD
         }
     }
 
-    public override void Search()
+    public void Search()
     {
         List<Provider> providers = null;
         providers = _context.Providers.Where(p => p.ProviderName.Contains(_viewProvider.SearchText)).ToList();
@@ -165,7 +165,7 @@ public class ProviderPresenter : PresenterCRUD
         }
     }
 
-    public override void Load()
+    public void Load()
     {
         _viewProvider.ProviderBindingSource.ResetBindings(true);
         _viewProvider.ProviderBindingSource.DataSource = _context.Providers.Local.ToBindingList();

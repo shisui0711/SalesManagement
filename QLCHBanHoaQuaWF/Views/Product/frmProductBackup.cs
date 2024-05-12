@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.IO;
 
 namespace QLCHWF.Views.Product
 {
-    public partial class frmProduct : Form
+    public partial class frmProductBackup : Form
     {
         public Models.Product Product
         {
@@ -19,7 +11,7 @@ namespace QLCHWF.Views.Product
 
         public event EventHandler? Clicked;
         private readonly Models.Product _product;
-        public frmProduct(Models.Product product)
+        public frmProductBackup(Models.Product product)
         {
             InitializeComponent();
             _product = product;

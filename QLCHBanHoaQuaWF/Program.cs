@@ -92,6 +92,7 @@ namespace QLCHWF
                 services.AddSingleton<IDetailImportOrder, frmViewDetailImport>();
                 services.AddSingleton<IReportImportOrder, frmReportImportOrder>();
                 services.AddSingleton<IViewUser, frmViewUser>();
+                services.AddSingleton<IAddUser, frmAddUser>();
                 services.AddSingleton<IUpdatePassword, frmUpdatePassword>();
                 services.AddSingleton<IChangePassword, frmChangePassword>();
                 services.AddSingleton<IViewUserRole, frmViewUserRole>();

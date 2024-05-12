@@ -17,8 +17,6 @@ public class OptionsPresenter
         _viewOptions.ShowAppInfo += delegate { ShowAppInfo(); };
 
         _appInfo.UpdateAppInfo += delegate { UpdateAppInfo(); };
-
-
     }
 
 

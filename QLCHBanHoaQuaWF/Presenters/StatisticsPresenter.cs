@@ -24,7 +24,6 @@ public class StatisticsPresenter
         LoadTopProduct();
         LoadRevenueChart();
     }
-
     private void LoadCount()
     {
         _viewStatistics.CountCustomer = _context.Customers.ToList().Count();

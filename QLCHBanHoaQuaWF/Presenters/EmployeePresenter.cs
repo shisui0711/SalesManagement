@@ -6,7 +6,7 @@ using QLCHWF.Views.Employee;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
-public class EmployeePresenter : PresenterCRUD
+public class EmployeePresenter : ValidPresenter
 {
     private readonly IViewEmployee _viewEmployee;
     private readonly IAddEmployee _addEmployee;
@@ -184,7 +184,7 @@ public class EmployeePresenter : PresenterCRUD
             }
         }
     }
-    public override void Add()
+    public void Add()
     {
         try
         {
@@ -217,7 +217,7 @@ public class EmployeePresenter : PresenterCRUD
         }
     }
 
-    public override void Update()
+    public void Update()
     {
         try
         {
@@ -248,7 +248,7 @@ public class EmployeePresenter : PresenterCRUD
         }
     }
 
-    public override void Remove()
+    public void Remove()
     {
         try
         {
@@ -281,7 +281,7 @@ public class EmployeePresenter : PresenterCRUD
         }
     }
 
-    public override void Search()
+    public void Search()
     {
         try
         {
@@ -320,7 +320,7 @@ public class EmployeePresenter : PresenterCRUD
         }
     }
 
-    public override void Load()
+    public void Load()
     {
         _viewEmployee.EmployeeBindingSource.ResetBindings(true);
         _viewEmployee.EmployeeBindingSource.DataSource = _context.Employees.Local.ToBindingList();

@@ -48,11 +48,10 @@ public class MainPresenter
         _context = context;
 
         Init();
-        _viewMain.ShowChangePassword += delegate { ShowChangePassword(); };
     }
     void Init()
     {
-        var events = _viewMain.GetType().GetEvents(BindingFlags.Public | BindingFlags.Instance).Where(x=>Regex.IsMatch(x.Name,@"Show[A-Z].*") && !x.Name.Contains("ChangePassword")).ToList();
+        var events = _viewMain.GetType().GetEvents(BindingFlags.Public | BindingFlags.Instance).Where(x=>Regex.IsMatch(x.Name,@"Show[A-Z].*")).ToList();
         foreach (var eventInfo in events)
         {
             EventHandler handler = (sender, e) =>
@@ -71,14 +70,5 @@ public class MainPresenter
         _viewMain.BodyPanel.Controls.Clear();
         _viewMain.BodyPanel.Controls.Add(form);
         form.Show();
-    }
-    void ShowChangePassword()
-    {
-        _changePassword.Email = AuthPresenter.User.Email;
-        Form form = (Form)_changePassword;
-        if (form != null)
-        {
-            form.ShowDialog();
-        }
     }
 }

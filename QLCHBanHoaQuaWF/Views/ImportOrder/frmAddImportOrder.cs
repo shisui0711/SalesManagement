@@ -26,7 +26,15 @@ namespace QLCHWF.Views.ImportOrder
 
         public decimal TotalPrice
         {
-            get { return decimal.Parse(lblTotalPrice.Text); }
+            get { try
+                {
+                    return decimal.Parse(lblTotalPrice.Text);
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+            }
             set { lblTotalPrice.Text = value.ToString(); }
         }
         public int EmployeeID
@@ -35,7 +43,15 @@ namespace QLCHWF.Views.ImportOrder
         }
         public int ProviderID
         {
-            get { return int.Parse(lsbProvider.SelectedValue!.ToString()!); }
+            get { try
+                {
+                    return int.Parse(dgvProvider.CurrentRow.Cells[0].Value.ToString());
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+            }
         }
         public void AddControl(Control control)
         {
@@ -201,6 +217,56 @@ namespace QLCHWF.Views.ImportOrder
             {
                 btnSearch.PerformClick();
             }
+        }
+
+        public int CurrentPage
+        {
+            get { try
+                {
+                    return int.Parse(btnCurrentPage.Text);
+                }
+                catch (Exception e)
+                {
+                    return 1;
+                }
+            }
+            set { btnCurrentPage.Text = value.ToString(); }
+        }
+        public event EventHandler PreviousPage;
+        public event EventHandler NextPage;
+        public void DisableNextPage()
+        {
+            btnNext.Enabled = false;
+        }
+
+        public void DisablePreviousPage()
+        {
+            btnPrevious.Enabled = false;
+        }
+
+        public void EnablePreviousPage()
+        {
+            btnPrevious.Enabled = true;
+        }
+
+        public void EnableNextPage()
+        {
+            btnNext.Enabled = true;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            NextPage?.Invoke(sender,e);
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            PreviousPage?.Invoke(sender,e);
+        }
+
+        private void frmAddImportOrder_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CurrentPage = 0;
         }
     }
 }

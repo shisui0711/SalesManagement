@@ -23,9 +23,9 @@ namespace QLCHWF.Models
         public int EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
         public Employee Employee { get; set; }
-        [Required]
-        [EmailAddress]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Email không được để trống")]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
+        [StringLength(50,ErrorMessage = "Email không dài quá 50 ký tự")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Mật khẩu không được để trống")]
         [MinLength(8, ErrorMessage = "Mật khẩu phải dài ít nhất 8 ký tự.")]

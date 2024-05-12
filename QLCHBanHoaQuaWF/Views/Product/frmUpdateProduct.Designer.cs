@@ -53,6 +53,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.pnlHeader = new Guna.UI2.WinForms.Guna2Panel();
             this.lblTitile = new System.Windows.Forms.Label();
@@ -75,6 +77,7 @@
             this.txtUnitPrice = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtImportUnitPrice = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbUpload)).BeginInit();
             this.pnlButtuon.SuspendLayout();
@@ -88,21 +91,23 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.pnlHeader.Controls.Add(this.lblTitile);
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.CustomizableEdges = customizableEdges23;
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            this.pnlHeader.Size = new System.Drawing.Size(680, 51);
+            this.pnlHeader.Size = new System.Drawing.Size(674, 51);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblTitile
             // 
             this.lblTitile.AutoSize = true;
+            this.lblTitile.BackColor = System.Drawing.Color.Transparent;
             this.lblTitile.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.lblTitile.ForeColor = System.Drawing.Color.White;
             this.lblTitile.Location = new System.Drawing.Point(12, 14);
             this.lblTitile.Name = "lblTitile";
             this.lblTitile.Size = new System.Drawing.Size(162, 23);
@@ -116,10 +121,10 @@
             this.btnClose.BorderRadius = 10;
             this.btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
             this.btnClose.CustomizableEdges = customizableEdges21;
-            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.btnClose.FillColor = System.Drawing.Color.Transparent;
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(624, 9);
+            this.btnClose.Location = new System.Drawing.Point(618, 9);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges22;
             this.btnClose.Size = new System.Drawing.Size(44, 33);
@@ -133,7 +138,7 @@
             // 
             // ptbUpload
             // 
-            this.ptbUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.ptbUpload.BackColor = System.Drawing.Color.White;
             this.ptbUpload.CustomizableEdges = customizableEdges15;
             this.ptbUpload.Image = global::QLCHWF.Properties.Resources.upload;
             this.ptbUpload.ImageRotate = 0F;
@@ -149,8 +154,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(214, 356);
+            this.label2.Location = new System.Drawing.Point(217, 359);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 28);
             this.label2.TabIndex = 24;
@@ -159,8 +165,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(150, 208);
+            this.label1.Location = new System.Drawing.Point(153, 211);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 28);
             this.label1.TabIndex = 23;
@@ -169,7 +176,9 @@
             // txtCalculationUnit
             // 
             this.txtCalculationUnit.Animated = true;
+            this.txtCalculationUnit.BackColor = System.Drawing.Color.White;
             this.txtCalculationUnit.BorderRadius = 5;
+            this.txtCalculationUnit.BorderThickness = 2;
             this.txtCalculationUnit.CustomizableEdges = customizableEdges17;
             this.txtCalculationUnit.DefaultText = "";
             this.txtCalculationUnit.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -193,8 +202,9 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.Color.White;
             this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(219, 141);
+            this.lblName.Location = new System.Drawing.Point(222, 144);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(49, 28);
             this.lblName.TabIndex = 21;
@@ -203,7 +213,9 @@
             // txtProductName
             // 
             this.txtProductName.Animated = true;
+            this.txtProductName.BackColor = System.Drawing.Color.White;
             this.txtProductName.BorderRadius = 5;
+            this.txtProductName.BorderThickness = 2;
             this.txtProductName.CustomizableEdges = customizableEdges19;
             this.txtProductName.DefaultText = "";
             this.txtProductName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -227,8 +239,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(130, 66);
+            this.label3.Location = new System.Drawing.Point(133, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(138, 28);
             this.label3.TabIndex = 27;
@@ -237,7 +250,9 @@
             // txtID
             // 
             this.txtID.Animated = true;
+            this.txtID.BackColor = System.Drawing.Color.White;
             this.txtID.BorderRadius = 5;
+            this.txtID.BorderThickness = 2;
             this.txtID.CustomizableEdges = customizableEdges13;
             this.txtID.DefaultText = "";
             this.txtID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -259,6 +274,7 @@
             // 
             // pnlButtuon
             // 
+            this.pnlButtuon.BackColor = System.Drawing.Color.White;
             this.pnlButtuon.Controls.Add(this.btnSave);
             this.pnlButtuon.Controls.Add(this.btnExit);
             this.pnlButtuon.CustomizableEdges = customizableEdges5;
@@ -277,6 +293,7 @@
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(23, 26);
@@ -290,7 +307,7 @@
             // btnExit
             // 
             this.btnExit.Animated = true;
-            this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.btnExit.BorderRadius = 5;
             this.btnExit.BorderThickness = 3;
             this.btnExit.CustomizableEdges = customizableEdges3;
@@ -300,7 +317,7 @@
             this.btnExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnExit.FillColor = System.Drawing.Color.White;
             this.btnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.btnExit.HoverState.BorderColor = System.Drawing.Color.Red;
             this.btnExit.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnExit.HoverState.ForeColor = System.Drawing.Color.White;
@@ -315,8 +332,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(178, 623);
+            this.label5.Location = new System.Drawing.Point(181, 626);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 28);
             this.label5.TabIndex = 33;
@@ -325,7 +343,9 @@
             // txtDescription
             // 
             this.txtDescription.Animated = true;
+            this.txtDescription.BackColor = System.Drawing.Color.White;
             this.txtDescription.BorderRadius = 5;
+            this.txtDescription.BorderThickness = 2;
             this.txtDescription.CustomizableEdges = customizableEdges7;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -350,8 +370,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(182, 565);
+            this.label4.Location = new System.Drawing.Point(185, 568);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 28);
             this.label4.TabIndex = 31;
@@ -360,7 +381,9 @@
             // txtUnitPrice
             // 
             this.txtUnitPrice.Animated = true;
+            this.txtUnitPrice.BackColor = System.Drawing.Color.White;
             this.txtUnitPrice.BorderRadius = 5;
+            this.txtUnitPrice.BorderThickness = 2;
             this.txtUnitPrice.CustomizableEdges = customizableEdges9;
             this.txtUnitPrice.DefaultText = "";
             this.txtUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -385,8 +408,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(167, 500);
+            this.label6.Location = new System.Drawing.Point(170, 503);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 28);
             this.label6.TabIndex = 29;
@@ -395,7 +419,9 @@
             // txtImportUnitPrice
             // 
             this.txtImportUnitPrice.Animated = true;
+            this.txtImportUnitPrice.BackColor = System.Drawing.Color.White;
             this.txtImportUnitPrice.BorderRadius = 5;
+            this.txtImportUnitPrice.BorderThickness = 2;
             this.txtImportUnitPrice.CustomizableEdges = customizableEdges11;
             this.txtImportUnitPrice.DefaultText = "";
             this.txtImportUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -417,11 +443,23 @@
             this.txtImportUnitPrice.TabIndex = 3;
             this.txtImportUnitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImportUnitPrice_KeyPress);
             // 
+            // pnlBody
+            // 
+            this.pnlBody.BackColor = System.Drawing.Color.White;
+            this.pnlBody.CustomizableEdges = customizableEdges25;
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(3, 3);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            this.pnlBody.Size = new System.Drawing.Size(674, 777);
+            this.pnlBody.TabIndex = 35;
+            // 
             // frmUpdateProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(701, 506);
             this.Controls.Add(this.pnlButtuon);
             this.Controls.Add(this.label5);
@@ -439,8 +477,10 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.pnlHeader);
+            this.Controls.Add(this.pnlBody);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmUpdateProduct";
+            this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmUpdateProduct";
             this.pnlHeader.ResumeLayout(false);
@@ -476,5 +516,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtUnitPrice;
         private Label label6;
         private Guna.UI2.WinForms.Guna2TextBox txtImportUnitPrice;
+        private Guna.UI2.WinForms.Guna2Panel pnlBody;
     }
 }

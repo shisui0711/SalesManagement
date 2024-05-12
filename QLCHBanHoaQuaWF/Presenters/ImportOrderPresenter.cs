@@ -9,7 +9,7 @@ using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
 
-public class ImportOrderPresenter : PresenterCRUD
+public class ImportOrderPresenter : ValidPresenter
 {
     private Dictionary<Product, int> productOrdered = new Dictionary<Product, int>();
     private readonly IViewImportOrder _viewImportOrder;
@@ -33,12 +33,14 @@ public class ImportOrderPresenter : PresenterCRUD
         _viewImportOrder.ShowReport += delegate { ShowReport(); };
         _viewImportOrder.ShowDetail += delegate { ShowDetail(); };
 
-        _addImportOrder.LoadProduct += delegate { LoadProduct(); };
+        _addImportOrder.LoadProduct += delegate { NextPage(); };
         _addImportOrder.LoadProvider += delegate { LoadProvider(); };
         _addImportOrder.RemoveProduct += RemoveProduct;
         _addImportOrder.SearchProvider += delegate { SearchProvider(); };
         _addImportOrder.SearchProduct += delegate { LoadProduct(_addImportOrder.ProductSearchText); };
         _addImportOrder.AddImportOrder += delegate { Add(); };
+        _addImportOrder.NextPage += delegate { NextPage(); };
+        _addImportOrder.PreviousPage += delegate { PreviousPage(); };
 
         _report.LoadReport += delegate { LoadReport(); };
 
@@ -150,7 +152,7 @@ public class ImportOrderPresenter : PresenterCRUD
             form.ShowDialog();
         }
     }
-    public override void Add()
+    public void Add()
     {
         using (var transaction = _context.Database.BeginTransaction())
         {
@@ -189,12 +191,7 @@ public class ImportOrderPresenter : PresenterCRUD
         }
     }
 
-    public override void Update()
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void Remove()
+    public void Remove()
     {
         try
         {
@@ -229,7 +226,7 @@ public class ImportOrderPresenter : PresenterCRUD
         }
     }
 
-    public override void Search()
+    public void Search()
     {
         try
         {
@@ -268,7 +265,7 @@ public class ImportOrderPresenter : PresenterCRUD
         }
     }
 
-    public override void Load()
+    public void Load()
     {
         _viewImportOrder.OrderBindingSource.ResetBindings(true);
         _viewImportOrder.OrderBindingSource.DataSource = _context.ImportOrders.Local.ToBindingList();
@@ -303,6 +300,18 @@ public class ImportOrderPresenter : PresenterCRUD
                 _addImportOrder.AddControl(form);
                 form.Show();
             }
+        }
+    }
+    public void LoadProduct(List<Product> products)
+    {
+        _addImportOrder.ClearControl();
+        foreach (var product in products)
+        {
+            frmProduct form = new frmProduct(product);
+            form.Clicked += OrderProduct!;
+            form.TopLevel = false;
+            _addImportOrder.AddControl(form);
+            form.Show();
         }
     }
     public void OrderProduct(object sender, EventArgs e)
@@ -340,5 +349,44 @@ public class ImportOrderPresenter : PresenterCRUD
         {
             _addImportOrder.ShowMessage("Không có nhà cung cấp nào được tìm thấy");
         }
+    }
+
+    void NextPage()
+    {
+        int totalItems = _context.Products.ToList().Count;
+        int totalPages = (int)Math.Ceiling((double)totalItems / 6);
+        int currentPage = _addImportOrder.CurrentPage;
+        List<Product> products = _context.Products.Skip((currentPage) * 6).Take(6).ToList();
+        LoadProduct(products);
+        _addImportOrder.CurrentPage += 1;
+        if (_addImportOrder.CurrentPage > 1)
+        {
+            _addImportOrder.EnablePreviousPage();
+        }
+
+        if (_addImportOrder.CurrentPage >= totalPages)
+        {
+            _addImportOrder.DisableNextPage();
+        }
+    }
+
+    void PreviousPage()
+    {
+        _addImportOrder.CurrentPage -= 1;
+        int totalItems = _context.Products.ToList().Count;
+        int totalPages = (int)Math.Ceiling((double)totalItems / 6);
+        int currentPage = _addImportOrder.CurrentPage;
+        List<Product> products = _context.Products.Skip((currentPage-1) * 6).Take(6).ToList();
+        LoadProduct(products);
+        if (_addImportOrder.CurrentPage <= 1)
+        {
+            _addImportOrder.DisablePreviousPage();
+        }
+
+        if (_addImportOrder.CurrentPage < totalPages)
+        {
+            _addImportOrder.EnableNextPage();
+        }
+        
     }
 }

@@ -142,7 +142,7 @@ namespace QLCHWF.Views.Statistics
 
         private void frmStatistics_Load(object sender, EventArgs e)
         {
-            LoadStatistics?.Invoke(sender,e);
+            LoadStatistics?.Invoke(sender, e);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

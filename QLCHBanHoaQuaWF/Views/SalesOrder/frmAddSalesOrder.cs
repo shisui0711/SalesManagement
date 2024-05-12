@@ -47,7 +47,15 @@ namespace QLCHWF.Views.SalesOrder
 
         public decimal TotalPrice
         {
-            get { return decimal.Parse(lblTotalPrice.Text); }
+            get { try
+                {
+                    return decimal.Parse(lblTotalPrice.Text);
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+            }
             set { lblTotalPrice.Text = value.ToString(); }
         }
 
@@ -57,7 +65,15 @@ namespace QLCHWF.Views.SalesOrder
         }
         public int CustomerID
         {
-            get { return int.Parse(lsbCustomer.SelectedValue!.ToString() ?? throw new InvalidOperationException()); }
+            get { try
+                {
+                    return int.Parse(dgvCustomer.CurrentRow.Cells[0].Value.ToString());
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+            }
         }
 
         public BindingSource CustomerBindingSource
@@ -253,6 +269,49 @@ namespace QLCHWF.Views.SalesOrder
         public void ShowMessage(string message)
         {
             MyMessageBox.Show(message);
+        }
+
+        public int CurrentPage { get{
+            try
+            {
+                return int.Parse(btnCurrentPage.Text);
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }}
+            set => btnCurrentPage.Text = value.ToString();
+        }
+        public event EventHandler PreviousPage;
+        public event EventHandler NextPage;
+        public void DisableNextPage()
+        {
+            btnNext.Enabled = false;
+        }
+
+        public void DisablePreviousPage()
+        {
+            btnPrevious.Enabled = false;
+        }
+
+        public void EnablePreviousPage()
+        {
+            btnPrevious.Enabled = true;
+        }
+
+        public void EnableNextPage()
+        {
+            btnNext.Enabled = true;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            NextPage?.Invoke(sender,e);
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            PreviousPage?.Invoke(sender,e);
         }
     }
 }

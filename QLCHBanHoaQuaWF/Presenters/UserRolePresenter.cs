@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace QLCHWF.Presenters;
 
-public class UserRolePresenter : PresenterCRUD
+public class UserRolePresenter : ValidPresenter
 {
     private readonly IViewUserRole _viewUserRole;
     private readonly IAddUserRole _addUserRole;
@@ -64,7 +64,7 @@ public class UserRolePresenter : PresenterCRUD
             form.ShowDialog();
         }
     }
-    public override void Add()
+    public void Add()
     {
         UserRole userRole = new UserRole();
         userRole.RoleName = _addUserRole.RoleName;
@@ -113,7 +113,7 @@ public class UserRolePresenter : PresenterCRUD
         }
     }
 
-    public override void Update()
+    public void Update()
     {
         UserRole userRole = _context.UserRoles.Find(_updateUserRole.RoleID);
         if (!IsValid(userRole, _updateUserRole))
@@ -155,7 +155,7 @@ public class UserRolePresenter : PresenterCRUD
         }
     }
 
-    public override void Remove()
+    public void Remove()
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteUserRole == false)
         {
@@ -192,7 +192,7 @@ public class UserRolePresenter : PresenterCRUD
         }
     }
 
-    public override void Search()
+    public void Search()
     {
         List<UserRole> userRoles = null;
         userRoles = _context.UserRoles.Where(u => u.RoleName.Contains(_viewUserRole.SearchText)).ToList();
@@ -206,7 +206,7 @@ public class UserRolePresenter : PresenterCRUD
         }
     }
 
-    public override void Load()
+    public void Load()
     {
         _viewUserRole.UserRoleBindingSource.ResetBindings(true);
         _viewUserRole.UserRoleBindingSource.DataSource = _context.UserRoles.Local.ToBindingList();

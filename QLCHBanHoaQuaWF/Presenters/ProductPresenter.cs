@@ -5,7 +5,7 @@ using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
 
-public class ProductPresenter : PresenterCRUD
+public class ProductPresenter : ValidPresenter
 {
     private IViewProduct _viewProduct;
     private IAddProduct _addProduct;
@@ -71,7 +71,7 @@ public class ProductPresenter : PresenterCRUD
             form.ShowDialog();
         }
     }
-    public override void Add()
+    public void Add()
     {
         var product = new Product();
         product.ProductName = _addProduct.ProductName;
@@ -91,7 +91,7 @@ public class ProductPresenter : PresenterCRUD
         _addProduct.ShowMessage(@"Thêm thành công");
     }
 
-    public override void Update()
+    public void Update()
     {
         Product product = new Product();
         product.ProductID = _updateProduct.ProductID;
@@ -113,7 +113,7 @@ public class ProductPresenter : PresenterCRUD
         _updateProduct.ShowMessage(@"Cập nhật thành cộng");
     }
 
-    public override void Remove()
+    public void Remove()
     {
         if (AuthPresenter.User != null && AuthPresenter.User.UserRole.Permission.CanDeleteProduct == false)
         {
@@ -144,7 +144,7 @@ public class ProductPresenter : PresenterCRUD
         }
     }
 
-    public override void Search()
+    public void Search()
     {
         List<Product> products = null;
         products = _context.Products.Where(p => p.ProductName.Contains(_viewProduct.SearchText)).ToList();
@@ -154,7 +154,7 @@ public class ProductPresenter : PresenterCRUD
         }
     }
 
-    public override void Load()
+    public void Load()
     {
         _viewProduct.ProductBindingSource.ResetBindings(true);
         _viewProduct.ProductBindingSource.DataSource = _context.Products.Local.ToBindingList();

@@ -8,5 +8,6 @@ public interface IViewUser : IViewBase
     public event EventHandler LoadUser;
     public event EventHandler LockUser;
     public event EventHandler UnlockUser;
+    public event EventHandler ShowAddUser;
     public event EventHandler ShowChangePassword;
 }

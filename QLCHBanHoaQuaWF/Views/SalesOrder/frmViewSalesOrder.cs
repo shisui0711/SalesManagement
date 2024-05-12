@@ -113,11 +113,17 @@ namespace QLCHWF.Views.SalesOrder
             saveFileDialog.Title = "Save an Excel File";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                dgvSalesOrder.ExportToExcel(saveFileDialog.FileName);
-                MyMessageBox.Show(@"Xuất thành công!");
+                try
+                {
+                    dgvSalesOrder.ExportToExcel(saveFileDialog.FileName);
+                    MyMessageBox.Show(@"Xuất thành công!");
+                }
+                catch (Exception exception)
+                {
+                    MyMessageBox.Show($"Lỗi: {exception.Message}");
+                }
             }
         }
-
 
         private void btnReload_Click(object sender, EventArgs e)
         {

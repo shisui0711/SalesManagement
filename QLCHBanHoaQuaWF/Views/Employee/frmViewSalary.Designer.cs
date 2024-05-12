@@ -91,22 +91,24 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.CustomizableEdges = customizableEdges3;
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            this.pnlHeader.Size = new System.Drawing.Size(935, 54);
+            this.pnlHeader.Size = new System.Drawing.Size(929, 54);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
-            this.lblTitle.Location = new System.Drawing.Point(12, 12);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(12, 16);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(104, 23);
             this.lblTitle.TabIndex = 15;
@@ -119,10 +121,10 @@
             this.btnClose.BorderRadius = 10;
             this.btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
             this.btnClose.CustomizableEdges = customizableEdges1;
-            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.btnClose.FillColor = System.Drawing.Color.Transparent;
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(879, 3);
+            this.btnClose.Location = new System.Drawing.Point(873, 11);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.btnClose.Size = new System.Drawing.Size(44, 33);
@@ -134,10 +136,10 @@
             this.pnlBody.Controls.Add(this.pnlControl);
             this.pnlBody.CustomizableEdges = customizableEdges25;
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 54);
+            this.pnlBody.Location = new System.Drawing.Point(3, 57);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            this.pnlBody.Size = new System.Drawing.Size(935, 479);
+            this.pnlBody.Size = new System.Drawing.Size(929, 473);
             this.pnlBody.TabIndex = 1;
             // 
             // pnlGridView
@@ -148,7 +150,7 @@
             this.pnlGridView.Location = new System.Drawing.Point(0, 91);
             this.pnlGridView.Name = "pnlGridView";
             this.pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            this.pnlGridView.Size = new System.Drawing.Size(935, 388);
+            this.pnlGridView.Size = new System.Drawing.Size(929, 382);
             this.pnlGridView.TabIndex = 1;
             // 
             // dgvSalary
@@ -206,7 +208,7 @@
             this.dgvSalary.RowHeadersVisible = false;
             this.dgvSalary.RowHeadersWidth = 51;
             this.dgvSalary.RowTemplate.Height = 30;
-            this.dgvSalary.Size = new System.Drawing.Size(935, 388);
+            this.dgvSalary.Size = new System.Drawing.Size(929, 382);
             this.dgvSalary.TabIndex = 0;
             this.dgvSalary.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSalary.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -276,6 +278,7 @@
             // 
             // pnlControl
             // 
+            this.pnlControl.BackColor = System.Drawing.Color.White;
             this.pnlControl.Controls.Add(this.guna2Button2);
             this.pnlControl.Controls.Add(this.btnCaculate);
             this.pnlControl.Controls.Add(this.guna2Button1);
@@ -289,7 +292,7 @@
             this.pnlControl.Location = new System.Drawing.Point(0, 0);
             this.pnlControl.Name = "pnlControl";
             this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            this.pnlControl.Size = new System.Drawing.Size(935, 91);
+            this.pnlControl.Size = new System.Drawing.Size(929, 91);
             this.pnlControl.TabIndex = 0;
             // 
             // guna2Button2
@@ -302,7 +305,7 @@
             this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Location = new System.Drawing.Point(307, 19);
@@ -345,7 +348,7 @@
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Location = new System.Drawing.Point(475, 19);
@@ -359,6 +362,7 @@
             // guna2DateTimePicker2
             // 
             this.guna2DateTimePicker2.Animated = true;
+            this.guna2DateTimePicker2.BackColor = System.Drawing.Color.Cyan;
             this.guna2DateTimePicker2.BorderRadius = 5;
             this.guna2DateTimePicker2.Checked = true;
             this.guna2DateTimePicker2.CustomFormat = "dd-MM-yyyy";
@@ -373,8 +377,7 @@
             this.guna2DateTimePicker2.ShadowDecoration.CustomizableEdges = customizableEdges14;
             this.guna2DateTimePicker2.Size = new System.Drawing.Size(129, 47);
             this.guna2DateTimePicker2.TabIndex = 9;
-            this.guna2DateTimePicker2.Value = new System.DateTime(2023, 11, 25, 22, 33, 5, 877);
-            this.guna2DateTimePicker2.Visible = false;
+            this.guna2DateTimePicker2.Value = new System.DateTime(2024, 5, 12, 0, 0, 0, 0);
             // 
             // btnExportFile
             // 
@@ -401,6 +404,7 @@
             // guna2DateTimePicker1
             // 
             this.guna2DateTimePicker1.Animated = true;
+            this.guna2DateTimePicker1.BackColor = System.Drawing.Color.Cyan;
             this.guna2DateTimePicker1.BorderRadius = 5;
             this.guna2DateTimePicker1.Checked = true;
             this.guna2DateTimePicker1.CustomFormat = "dd-MM-yyyy";
@@ -415,8 +419,7 @@
             this.guna2DateTimePicker1.ShadowDecoration.CustomizableEdges = customizableEdges18;
             this.guna2DateTimePicker1.Size = new System.Drawing.Size(128, 47);
             this.guna2DateTimePicker1.TabIndex = 8;
-            this.guna2DateTimePicker1.Value = new System.DateTime(2023, 11, 25, 22, 33, 5, 877);
-            this.guna2DateTimePicker1.Visible = false;
+            this.guna2DateTimePicker1.Value = new System.DateTime(2024, 5, 12, 0, 0, 0, 0);
             // 
             // dtpEnd
             // 
@@ -470,11 +473,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(935, 533);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmViewSalary";
+            this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmSalary";
             this.pnlHeader.ResumeLayout(false);
