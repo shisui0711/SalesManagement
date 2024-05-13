@@ -29,15 +29,15 @@ namespace QLCHWF.Views.SalesOrder
                 switch (cboDateCreated.SelectedIndex)
                 {
                     case 1:
-                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                        return DateTime.Today;
                     case 2:
-                        return DateTime.Now.AddDays(-1);
+                        return DateTime.Today.AddDays(-1);
                     case 3:
                         return DateTime.Now.AddDays(-14);
                     case 4:
-                        return DateTime.Now.AddDays(-7);
+                        return DateTime.Today.AddDays(-7);
                     case 5:
-                        return DateTime.Now.AddMonths(-1);
+                        return DateTime.Today.AddMonths(-1);
                     case 6:
                         return new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0);
                     case 7:
@@ -54,6 +54,8 @@ namespace QLCHWF.Views.SalesOrder
             {
                 switch (cboDateCreated.SelectedIndex)
                 {
+                    case 2:
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0).AddSeconds(-1);
                     case 7:
                         return dtpEnd.Value;
                     default:

@@ -56,7 +56,7 @@ namespace QLCHWF.Views.UserRole
             if (textBoxField != null)
             {
                 var textBox = (UserControl)textBoxField.GetValue(this);
-                textBox.Focus();
+                textBox?.Focus();
             }
         }
 

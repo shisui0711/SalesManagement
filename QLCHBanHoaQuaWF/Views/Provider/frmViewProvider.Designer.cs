@@ -29,22 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             this.pnlControl = new Guna.UI2.WinForms.Guna2Panel();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.btnReload = new Guna.UI2.WinForms.Guna2Button();
@@ -63,6 +65,7 @@
             this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.btnHistoryImport = new System.Windows.Forms.ToolStripMenuItem();
             this.providerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cboOptionSearch = new Guna.UI2.WinForms.Guna2ComboBox();
             this.pnlControl.SuspendLayout();
             this.pnlGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProvider)).BeginInit();
@@ -72,15 +75,16 @@
             // 
             // pnlControl
             // 
+            this.pnlControl.Controls.Add(this.cboOptionSearch);
             this.pnlControl.Controls.Add(this.btnAdd);
             this.pnlControl.Controls.Add(this.btnReload);
             this.pnlControl.Controls.Add(this.btnSearch);
             this.pnlControl.Controls.Add(this.txtSearch);
-            this.pnlControl.CustomizableEdges = customizableEdges9;
+            this.pnlControl.CustomizableEdges = customizableEdges11;
             this.pnlControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlControl.Location = new System.Drawing.Point(0, 0);
             this.pnlControl.Name = "pnlControl";
-            this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges12;
             this.pnlControl.Size = new System.Drawing.Size(992, 70);
             this.pnlControl.TabIndex = 0;
             // 
@@ -90,7 +94,7 @@
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Animated = true;
             this.btnAdd.BorderRadius = 5;
-            this.btnAdd.CustomizableEdges = customizableEdges1;
+            this.btnAdd.CustomizableEdges = customizableEdges3;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -100,7 +104,7 @@
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(809, 18);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            this.btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges4;
             this.btnAdd.Size = new System.Drawing.Size(171, 35);
             this.btnAdd.TabIndex = 13;
             this.btnAdd.Text = "Thêm";
@@ -111,7 +115,7 @@
             this.btnReload.Animated = true;
             this.btnReload.BorderRadius = 5;
             this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReload.CustomizableEdges = customizableEdges3;
+            this.btnReload.CustomizableEdges = customizableEdges5;
             this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnReload.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnReload.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -123,7 +127,7 @@
             this.btnReload.ImageSize = new System.Drawing.Size(30, 30);
             this.btnReload.Location = new System.Drawing.Point(351, 18);
             this.btnReload.Name = "btnReload";
-            this.btnReload.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            this.btnReload.ShadowDecoration.CustomizableEdges = customizableEdges6;
             this.btnReload.Size = new System.Drawing.Size(41, 35);
             this.btnReload.TabIndex = 12;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
@@ -133,7 +137,7 @@
             this.btnSearch.Animated = true;
             this.btnSearch.BorderRadius = 5;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.CustomizableEdges = customizableEdges5;
+            this.btnSearch.CustomizableEdges = customizableEdges7;
             this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -145,7 +149,7 @@
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearch.Location = new System.Drawing.Point(304, 18);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            this.btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
             this.btnSearch.Size = new System.Drawing.Size(41, 35);
             this.btnSearch.TabIndex = 11;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -154,7 +158,7 @@
             // 
             this.txtSearch.Animated = true;
             this.txtSearch.BorderRadius = 5;
-            this.txtSearch.CustomizableEdges = customizableEdges7;
+            this.txtSearch.CustomizableEdges = customizableEdges9;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -169,18 +173,18 @@
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "Tìm kiếm theo tên";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            this.txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
             this.txtSearch.Size = new System.Drawing.Size(286, 35);
             this.txtSearch.TabIndex = 10;
             // 
             // pnlGridView
             // 
             this.pnlGridView.Controls.Add(this.dgvProvider);
-            this.pnlGridView.CustomizableEdges = customizableEdges11;
+            this.pnlGridView.CustomizableEdges = customizableEdges13;
             this.pnlGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGridView.Location = new System.Drawing.Point(0, 70);
             this.pnlGridView.Name = "pnlGridView";
-            this.pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            this.pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges14;
             this.pnlGridView.Size = new System.Drawing.Size(992, 430);
             this.pnlGridView.TabIndex = 1;
             // 
@@ -362,6 +366,35 @@
             // 
             this.providerBindingSource.DataSource = typeof(QLCHWF.Models.Provider);
             // 
+            // cboOptionSearch
+            // 
+            this.cboOptionSearch.BackColor = System.Drawing.Color.Transparent;
+            this.cboOptionSearch.BorderRadius = 5;
+            this.cboOptionSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboOptionSearch.CustomizableEdges = customizableEdges1;
+            this.cboOptionSearch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboOptionSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOptionSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
+            this.cboOptionSearch.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboOptionSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboOptionSearch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cboOptionSearch.ForeColor = System.Drawing.Color.White;
+            this.cboOptionSearch.ItemHeight = 30;
+            this.cboOptionSearch.Items.AddRange(new object[] {
+            "Tìm kiếm theo",
+            "Tên",
+            "Giới tính",
+            "Email",
+            "Số điện thoại",
+            "Địa chỉ",
+            "Ngày Sinh"});
+            this.cboOptionSearch.Location = new System.Drawing.Point(409, 17);
+            this.cboOptionSearch.Name = "cboOptionSearch";
+            this.cboOptionSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            this.cboOptionSearch.Size = new System.Drawing.Size(175, 36);
+            this.cboOptionSearch.StartIndex = 0;
+            this.cboOptionSearch.TabIndex = 14;
+            // 
             // frmViewProvider
             // 
             this.AcceptButton = this.btnSearch;
@@ -402,5 +435,6 @@
         private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn importOrdersDataGridViewTextBoxColumn;
+        private Guna.UI2.WinForms.Guna2ComboBox cboOptionSearch;
     }
 }

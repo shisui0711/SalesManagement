@@ -86,7 +86,6 @@
             // 
             this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.pnlTop.BorderColor = System.Drawing.Color.DimGray;
-            this.pnlTop.BorderThickness = 2;
             this.pnlTop.Controls.Add(this.btnClose);
             this.pnlTop.Controls.Add(this.label1);
             this.pnlTop.CustomizableEdges = customizableEdges21;

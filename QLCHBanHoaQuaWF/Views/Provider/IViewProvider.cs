@@ -3,6 +3,7 @@
 public interface IViewProvider : IViewBase
 {
     public string SearchText { get; set; }
+    public int OptionIndex { get; set; }
     public BindingSource ProviderBindingSource { get; }
     public event EventHandler RemoveProvider;
     public event EventHandler LoadProvider;

@@ -18,12 +18,12 @@ namespace QLCHWF.Models
         [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
 
-        public int EmployeeID { get; set; }
+        public int? EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
         [InverseProperty("SalesOrders")]
         public Employee? Employee { get; set; }
 
-        public int CustomerID { get; set; }
+        public int? CustomerID { get; set; }
         [ForeignKey("CustomerID")]
         [InverseProperty("SalesOrders")]
         public Customer? Customer { get; set; }

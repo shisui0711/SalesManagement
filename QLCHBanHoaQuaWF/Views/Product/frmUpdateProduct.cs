@@ -16,7 +16,7 @@ namespace QLCHWF.Views.Product
             get { return int.Parse(txtID.Text);}
             set { txtID.Text = value.ToString(); }
         }
-        public string ProductName
+        public new string ProductName
         {
             get { return txtProductName.Text;}
             set { txtProductName.Text = value; }

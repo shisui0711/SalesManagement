@@ -46,7 +46,7 @@ namespace QLCHWF.Presenters
             _addSalesOrder.SearchProduct += delegate { LoadProduct(); };
             _addSalesOrder.AddSalesOrder += delegate { Add(); };
             _addSalesOrder.NextPage += delegate { NextPage(); };
-            _addSalesOrder.PreviousPage += delegate { PreviousPage(); };
+            _addSalesOrder.PreviousPage += delegate { PreviousPage(); };    
 
             _report.LoadReport += delegate { LoadReport(); };
         }
@@ -211,7 +211,7 @@ namespace QLCHWF.Presenters
                     _addSalesOrder.ShowMessage(@"Thanh toán thành công");
                     _viewSalesOrder.OrderBindingSource.EndEdit();
                 }
-                catch (SqlException e)
+                catch (Exception e)
                 {
                     transaction.Rollback();
                     _addSalesOrder.ShowMessage(@"Lỗi cơ sở dữ liệu. Thanh toán thất bại");

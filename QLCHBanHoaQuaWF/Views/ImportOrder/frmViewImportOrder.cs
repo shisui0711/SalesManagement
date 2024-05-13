@@ -28,18 +28,25 @@ namespace QLCHWF.Views.ImportOrder
             {
                 switch (cboDateCreated.SelectedIndex)
                 {
+                    //Hôm nay
                     case 1:
                         return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                    //Hôm qua
                     case 2:
-                        return DateTime.Now.AddDays(-1);
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0).AddDays(-1);
+                    //Tuần trước
                     case 3:
                         return DateTime.Now.AddDays(-14);
+                    //Tuần này
                     case 4:
                         return DateTime.Now.AddDays(-7);
+                    //Tháng trước
                     case 5:
-                        return DateTime.Now.AddMonths(-1);
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0).AddMonths(-1);
+                    //Tháng này
                     case 6:
                         return new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0);
+                    //Custom
                     case 7:
                         return dtpStart.Value;
                     default:
@@ -54,6 +61,9 @@ namespace QLCHWF.Views.ImportOrder
             {
                 switch (cboDateCreated.SelectedIndex)
                 {
+                    case 2:
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0)
+                            .AddSeconds(-1);
                     case 7:
                         return dtpEnd.Value;
                     default:

@@ -1,4 +1,5 @@
 ﻿
+#nullable enable
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
@@ -11,7 +12,7 @@ namespace QLCHWF.Presenters;
 
 public class ImportOrderPresenter : ValidPresenter
 {
-    private Dictionary<Product, int> productOrdered = new Dictionary<Product, int>();
+    private readonly Dictionary<Product, int> _productOrdered = new Dictionary<Product, int>();
     private readonly IViewImportOrder _viewImportOrder;
     private readonly IAddImportOrder _addImportOrder;
     private readonly IReportImportOrder _report;
@@ -35,7 +36,7 @@ public class ImportOrderPresenter : ValidPresenter
 
         _addImportOrder.LoadProduct += delegate { NextPage(); };
         _addImportOrder.LoadProvider += delegate { LoadProvider(); };
-        _addImportOrder.RemoveProduct += RemoveProduct;
+        _addImportOrder.RemoveProduct += RemoveProduct!;
         _addImportOrder.SearchProvider += delegate { SearchProvider(); };
         _addImportOrder.SearchProduct += delegate { LoadProduct(_addImportOrder.ProductSearchText); };
         _addImportOrder.AddImportOrder += delegate { Add(); };
@@ -53,7 +54,7 @@ public class ImportOrderPresenter : ValidPresenter
             _viewImportOrder.ShowMessage(@"Chưa bản ghi nào được chọn");
             return;
         }
-        ImportOrder curentOrder = _viewImportOrder.OrderBindingSource.Current as ImportOrder;
+        ImportOrder curentOrder = (_viewImportOrder.OrderBindingSource.Current as ImportOrder)!;
         ImportOrder order = _context.ImportOrders.Include(o => o.DetailImportOrders).First(o => o.OrderID == curentOrder.OrderID);
         _detailImport.DetailOrderBindingSource.DataSource = order.DetailImportOrders.ToList();
         Form form = (Form)_detailImport;
@@ -230,27 +231,33 @@ public class ImportOrderPresenter : ValidPresenter
     {
         try
         {
-            List<ImportOrder?>? importOrders = null;
+            List<ImportOrder> importOrders = null;
             switch (_viewImportOrder.OptionIndex)
             {
+                case 0:
+                    importOrders = _context.ImportOrders.ToList();
+                    break;
                 case 1:
                     importOrders = _context.ImportOrders
-                        .Where(x => x != null && x.OrderID.ToString().Contains(_viewImportOrder.SearchText)).ToList();
+                        .Where(x => x.OrderID.ToString().Equals(_viewImportOrder.SearchText)).ToList();
                     break;
                 case 2:
                     importOrders = _context.ImportOrders.Include(s => s!.Employee)
-                        .Where(s => s.Employee.EmployeeName.Contains(_viewImportOrder.SearchText)).ToList()!;
+                        .Where(s => s.Provider != null && s.Provider.ProviderName.Contains(_viewImportOrder.SearchText)).ToList()!;
                     break;
                 case 3:
                     importOrders = _context.ImportOrders.Include(s => s.Provider)
-                        .Where(s => s.Provider.ProviderName.Contains(_viewImportOrder.SearchText)).ToList();
+                        .Where(s => s.Employee != null && s.Employee.EmployeeName.Contains(_viewImportOrder.SearchText)).ToList();
                     break;
             }
 
             if (importOrders != null)
             {
-                importOrders = importOrders.FindAll(x =>
-                    x.OrderDate >= _viewImportOrder.DateStart && x.OrderDate <= _viewImportOrder.DateEnd);
+                if (_viewImportOrder.DateStart != DateTime.MinValue)
+                {
+                    importOrders = importOrders.FindAll(x =>
+                        x.OrderDate >= _viewImportOrder.DateStart && x.OrderDate <= _viewImportOrder.DateEnd);
+                }
                 _viewImportOrder.OrderBindingSource.ResetBindings(true);
                 _viewImportOrder.OrderBindingSource.DataSource = importOrders;
             }
@@ -314,41 +321,34 @@ public class ImportOrderPresenter : ValidPresenter
             form.Show();
         }
     }
-    public void OrderProduct(object sender, EventArgs e)
+    public void OrderProduct(object? sender, EventArgs e)
     {
-        var formProduct = (frmProduct)sender;
+        var formProduct = (frmProduct)sender!;
         var product = formProduct.Product;
-        if (productOrdered.ContainsKey(product))
+        if (_productOrdered.ContainsKey(product))
         {
-            var cells = _addImportOrder.OrderedGridView.Rows[productOrdered[product]].Cells;
-            cells["QuantityColumn"].Value = int.Parse(cells["QuantityColumn"].Value.ToString()) + 1;
-            cells["TotalPriceColumn"].Value = decimal.Parse(cells["UnitPriceColumn"].Value.ToString()) * int.Parse(cells["QuantityColumn"].Value.ToString());
+            var cells = _addImportOrder.OrderedGridView.Rows[_productOrdered[product]].Cells;
+            cells["QuantityColumn"].Value = int.Parse(cells["QuantityColumn"].Value.ToString()!) + 1;
+            cells["TotalPriceColumn"].Value = decimal.Parse(cells["UnitPriceColumn"].Value.ToString()!) * int.Parse(cells["QuantityColumn"].Value.ToString()!);
         }
         else
         {
             _addImportOrder.OrderedGridView.Rows.Add(product.ProductName, product.ImportUnitPrice, 1, product.ImportUnitPrice, product.ProductID);
-            productOrdered.Add(product, _addImportOrder.OrderedGridView.Rows.Count - 1);
+            _productOrdered.Add(product, _addImportOrder.OrderedGridView.Rows.Count - 1);
         }
     }
     public void RemoveProduct(object sender, DataGridViewCellEventArgs e)
     {
-        var product = productOrdered.Keys.ToList().Find(p => p.ProductID.ToString() == _addImportOrder.OrderedGridView.Rows[e.RowIndex].Cells["ProductIDColumn"].Value.ToString());
-        productOrdered.Remove(product);
+        var product = _productOrdered.Keys.ToList().Find(p => p.ProductID.ToString() == _addImportOrder.OrderedGridView.Rows[e.RowIndex].Cells["ProductIDColumn"].Value.ToString());
+        if (product != null) _productOrdered.Remove(product);
         _addImportOrder.OrderedGridView.Rows.RemoveAt(e.RowIndex);
     }
     public void SearchProvider()
     {
-        List<Provider>? providers = null;
+        List<Provider> providers;
         providers = _context.Providers.Where(p => p.ProviderName.Contains(_addImportOrder.ProviderSearchText))
             .ToList();
-        if (providers != null)
-        {
-            _addImportOrder.ProviderBindingSource.DataSource = providers;
-        }
-        else
-        {
-            _addImportOrder.ShowMessage("Không có nhà cung cấp nào được tìm thấy");
-        }
+        _addImportOrder.ProviderBindingSource.DataSource = providers;
     }
 
     void NextPage()

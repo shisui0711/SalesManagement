@@ -2,6 +2,7 @@
 using QLCHWF.Views.Statistics;
 using System.Globalization;
 using Guna.Charts.WinForms;
+using Microsoft.EntityFrameworkCore;
 
 namespace QLCHWF.Presenters;
 

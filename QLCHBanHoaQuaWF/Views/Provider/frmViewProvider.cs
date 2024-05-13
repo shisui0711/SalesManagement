@@ -9,6 +9,13 @@ namespace QLCHWF.Views.Provider
             get { return txtSearch.Text; }
             set { txtSearch.Text = value; }
         }
+
+        public int OptionIndex
+        {
+            get { return cboOptionSearch.SelectedIndex; }
+            set { cboOptionSearch.SelectedIndex = value; }
+        }
+
         public BindingSource ProviderBindingSource
         {
             get { return providerBindingSource; }

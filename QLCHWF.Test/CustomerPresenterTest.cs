@@ -167,7 +167,7 @@ public class CustomerPresenterTest
     [Test]
     public void Update_NonExistCustimer_ShouldShowErrorMessage()
     {
-        updateCustomerMock.SetupGet(x => x.CustomerID).Returns(null);
+        updateCustomerMock.SetupGet(x => x.CustomerID).Returns(0);
         updateCustomerMock.SetupGet(x => x.CustomerName).Returns(stub.FirstOrDefault().CustomerName);
         updateCustomerMock.SetupGet(x => x.Email).Returns(stub.FirstOrDefault().Email);
         updateCustomerMock.SetupGet(x => x.Phone).Returns(stub.FirstOrDefault().Phone);

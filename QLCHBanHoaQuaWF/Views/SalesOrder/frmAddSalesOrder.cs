@@ -178,25 +178,12 @@ namespace QLCHWF.Views.SalesOrder
         }
         private void txtPurchasePrice_TextChanged(object sender, EventArgs e)
         {
-            decimal totalPrice = decimal.Parse(lblTotalPrice.Text);
-            decimal purchasePrice = 0;
-            try
-            {
-                purchasePrice = decimal.Parse(txtPurchasePrice.Text);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
-            lblChangePrice.Text = (totalPrice - purchasePrice).ToString();
+            CalculateChangePrice();
         }
 
         private void txtPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            Program.DecimalPressed(sender, e);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -239,6 +226,22 @@ namespace QLCHWF.Views.SalesOrder
             RecalculateTotalPrice();
         }
 
+        private void CalculateChangePrice()
+        {
+            decimal totalPrice = decimal.Parse(lblTotalPrice.Text);
+            decimal purchasePrice = 0;
+            try
+            {
+                purchasePrice = decimal.Parse(txtPurchasePrice.Text);
+            }
+            catch (Exception exception)
+            {
+
+            }
+
+            decimal changePrice = purchasePrice - totalPrice;
+            lblChangePrice.Text = (changePrice >= 0 ? changePrice : 0).ToString();
+        }
         private void RecalculateTotalPrice()
         {
             decimal sum = 0;
@@ -248,6 +251,7 @@ namespace QLCHWF.Views.SalesOrder
             }
 
             lblTotalPrice.Text = sum.ToString();
+            CalculateChangePrice();
         }
 
         private void txtCustomerSearch_KeyDown(object sender, KeyEventArgs e)

@@ -168,9 +168,9 @@ namespace QLCHWF.Presenters
             var loginForm = _viewLogin as Form;
             var mainForm = _viewMain as Form;
             CheckPermission(_viewMain);
-            loginForm.Hide();
-            mainForm.ShowDialog();
-            loginForm.Show();
+            loginForm?.Hide();
+            mainForm?.ShowDialog();
+            loginForm?.Show();
         }
 
         public void Register(string email, string password, int roleId)
