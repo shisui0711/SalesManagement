@@ -10,6 +10,9 @@ namespace QLCHWF.Views.Statistics
         public frmStatistics()
         {
             InitializeComponent();
+            dtpStart.Value = DateTime.Today;
+            dtpEnd.Value = DateTime.Today;
+
         }
         public BindingSource TopCustomerBindingSource
         {
@@ -58,7 +61,7 @@ namespace QLCHWF.Views.Statistics
 
                 if (btnToday.Checked)
                 {
-                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                    return DateTime.Today;
                 }
 
                 if (btn7day.Checked)
@@ -73,7 +76,7 @@ namespace QLCHWF.Views.Statistics
 
                 if (btnYesterday.Checked)
                 {
-                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(-1).Day, 0, 0, 0);
+                    return DateTime.Today.AddDays(-1);
                 }
 
                 if (btnThisWeek.Checked)

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 namespace QLCHWF.Models
 {
@@ -10,7 +11,7 @@ namespace QLCHWF.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProviderID { get; set; }
         [Required(ErrorMessage = "Tên không được để trống")]
-        [StringLength(30)]
+        [StringLength(30,ErrorMessage = "Tên không được quá 30 ký tự")]
         public string ProviderName { get; set; }
         [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng email")]
         [StringLength(50)]
@@ -19,7 +20,7 @@ namespace QLCHWF.Models
         [StringLength(10)]
         public string Phone { get; set; }
 
-        [StringLength(50)]
+        [StringLength(50,ErrorMessage = "Địa chỉ không được quá 50 ký tự")]
         public string Address { get; set; }
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;

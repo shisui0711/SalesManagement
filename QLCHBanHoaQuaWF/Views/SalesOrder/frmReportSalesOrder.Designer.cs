@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             this.pnlHeader = new Guna.UI2.WinForms.Guna2Panel();
             this.lblTitile = new System.Windows.Forms.Label();
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -47,21 +47,23 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.pnlHeader.Controls.Add(this.lblTitile);
             this.pnlHeader.Controls.Add(this.btnClose);
-            this.pnlHeader.CustomizableEdges = customizableEdges9;
+            this.pnlHeader.CustomizableEdges = customizableEdges3;
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            this.pnlHeader.Size = new System.Drawing.Size(898, 49);
+            this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            this.pnlHeader.Size = new System.Drawing.Size(892, 49);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblTitile
             // 
             this.lblTitile.AutoSize = true;
+            this.lblTitile.BackColor = System.Drawing.Color.Transparent;
             this.lblTitile.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.lblTitile.ForeColor = System.Drawing.Color.White;
             this.lblTitile.Location = new System.Drawing.Point(12, 13);
             this.lblTitile.Name = "lblTitile";
             this.lblTitile.Size = new System.Drawing.Size(159, 23);
@@ -74,25 +76,25 @@
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.BorderRadius = 10;
             this.btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
-            this.btnClose.CustomizableEdges = customizableEdges7;
-            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.btnClose.CustomizableEdges = customizableEdges1;
+            this.btnClose.FillColor = System.Drawing.Color.Transparent;
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(851, 10);
+            this.btnClose.Location = new System.Drawing.Point(845, 10);
             this.btnClose.Name = "btnClose";
-            this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.btnClose.Size = new System.Drawing.Size(44, 33);
             this.btnClose.TabIndex = 17;
             // 
             // pnlReport
             // 
             this.pnlReport.Controls.Add(this.rpvSalesOrder);
-            this.pnlReport.CustomizableEdges = customizableEdges11;
+            this.pnlReport.CustomizableEdges = customizableEdges5;
             this.pnlReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlReport.Location = new System.Drawing.Point(0, 49);
+            this.pnlReport.Location = new System.Drawing.Point(3, 52);
             this.pnlReport.Name = "pnlReport";
-            this.pnlReport.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            this.pnlReport.Size = new System.Drawing.Size(898, 652);
+            this.pnlReport.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            this.pnlReport.Size = new System.Drawing.Size(892, 646);
             this.pnlReport.TabIndex = 1;
             // 
             // rpvSalesOrder
@@ -101,7 +103,7 @@
             this.rpvSalesOrder.Location = new System.Drawing.Point(0, 0);
             this.rpvSalesOrder.Name = "ReportViewer";
             this.rpvSalesOrder.ServerReport.BearerToken = null;
-            this.rpvSalesOrder.Size = new System.Drawing.Size(898, 652);
+            this.rpvSalesOrder.Size = new System.Drawing.Size(892, 646);
             this.rpvSalesOrder.TabIndex = 0;
             // 
             // dragControl
@@ -114,11 +116,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(898, 701);
             this.Controls.Add(this.pnlReport);
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmReportSalesOrder";
+            this.Padding = new System.Windows.Forms.Padding(3);
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmReportSalesOrder";
             this.Load += new System.EventHandler(this.frmReportSalesOrder_Load);

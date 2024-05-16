@@ -347,6 +347,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddCustomer";
             this.Padding = new System.Windows.Forms.Padding(3);
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();

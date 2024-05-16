@@ -61,6 +61,7 @@
             this.userRoleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.btnCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.btnChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLock = new System.Windows.Forms.ToolStripMenuItem();
             this.btnUnlock = new System.Windows.Forms.ToolStripMenuItem();
@@ -337,8 +338,10 @@
             // 
             // contextMenuStrip
             // 
+            this.contextMenuStrip.BackColor = System.Drawing.Color.White;
             this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCopy,
             this.btnChangePassword,
             this.btnLock,
             this.btnUnlock});
@@ -352,7 +355,13 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(202, 76);
+            this.contextMenuStrip.Size = new System.Drawing.Size(202, 100);
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(201, 24);
+            this.btnCopy.Text = "Copy";
             // 
             // btnChangePassword
             // 
@@ -370,6 +379,7 @@
             // 
             // btnUnlock
             // 
+            this.btnUnlock.BackColor = System.Drawing.Color.White;
             this.btnUnlock.Name = "btnUnlock";
             this.btnUnlock.Size = new System.Drawing.Size(201, 24);
             this.btnUnlock.Text = "Mở khỏa tài khoản";
@@ -421,5 +431,6 @@
         private ToolStripMenuItem btnLock;
         private ToolStripMenuItem btnUnlock;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
+        private ToolStripMenuItem btnCopy;
     }
 }

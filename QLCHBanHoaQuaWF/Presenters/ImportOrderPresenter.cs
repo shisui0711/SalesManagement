@@ -18,6 +18,7 @@ public class ImportOrderPresenter : ValidPresenter
     private readonly IReportImportOrder _report;
     private readonly IDetailImportOrder _detailImport;
     private readonly MyAppContext _context;
+    private List<Product> targetSource;
     public ImportOrderPresenter(IViewImportOrder viewImportOrder, IAddImportOrder addImportOrder, IReportImportOrder report, IDetailImportOrder detailImport, MyAppContext context)
     {
         _viewImportOrder = viewImportOrder;
@@ -34,11 +35,16 @@ public class ImportOrderPresenter : ValidPresenter
         _viewImportOrder.ShowReport += delegate { ShowReport(); };
         _viewImportOrder.ShowDetail += delegate { ShowDetail(); };
 
-        _addImportOrder.LoadProduct += delegate { NextPage(); };
+        _addImportOrder.LoadProduct += delegate
+        {
+            _addImportOrder.CurrentPage = 0;
+            targetSource = _context.Products.ToList();
+            NextPage();
+        };
         _addImportOrder.LoadProvider += delegate { LoadProvider(); };
         _addImportOrder.RemoveProduct += RemoveProduct!;
         _addImportOrder.SearchProvider += delegate { SearchProvider(); };
-        _addImportOrder.SearchProduct += delegate { LoadProduct(_addImportOrder.ProductSearchText); };
+        _addImportOrder.SearchProduct += delegate { SearchProduct(); };
         _addImportOrder.AddImportOrder += delegate { Add(); };
         _addImportOrder.NextPage += delegate { NextPage(); };
         _addImportOrder.PreviousPage += delegate { PreviousPage(); };
@@ -114,7 +120,6 @@ public class ImportOrderPresenter : ValidPresenter
                 _report.ReportViewer.LocalReport.SetParameters(new ReportParameter(propertyInfo.Name,
                     propertyInfo.GetValue(orderFullData).ToString()));
             }
-
             _report.ReportViewer.RefreshReport();
         }
         catch (Exception e)
@@ -283,31 +288,11 @@ public class ImportOrderPresenter : ValidPresenter
         _addImportOrder.ProviderBindingSource.DataSource = _context.Providers.ToList();
     }
 
-    public void LoadProduct(string? name = null)
+    public void SearchProduct(string? name = null)
     {
-        _addImportOrder.ClearControl();
-        if (name != null)
-        {
-            foreach (var product in _context.Products.Where(p => p.ProductName.Contains(name)).ToList())
-            {
-                frmProduct form = new frmProduct(product);
-                form.Clicked += OrderProduct;
-                form.TopLevel = false;
-                _addImportOrder.AddControl(form);
-                form.Show();
-            }
-        }
-        else
-        {
-            foreach (var product in _context.Products.ToList())
-            {
-                frmProduct form = new frmProduct(product);
-                form.Clicked += OrderProduct!;
-                form.TopLevel = false;
-                _addImportOrder.AddControl(form);
-                form.Show();
-            }
-        }
+        _addImportOrder.CurrentPage = 0;
+        targetSource = _context.Products.Where(x => x.ProductName == _addImportOrder.ProductSearchText).ToList();
+        NextPage();
     }
     public void LoadProduct(List<Product> products)
     {

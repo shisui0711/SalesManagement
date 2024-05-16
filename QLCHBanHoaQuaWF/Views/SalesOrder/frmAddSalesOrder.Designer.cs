@@ -795,10 +795,10 @@
             this.gboProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gboProduct.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gboProduct.ForeColor = System.Drawing.Color.White;
-            this.gboProduct.Location = new System.Drawing.Point(5, 111);
+            this.gboProduct.Location = new System.Drawing.Point(5, 90);
             this.gboProduct.Name = "gboProduct";
             this.gboProduct.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            this.gboProduct.Size = new System.Drawing.Size(836, 608);
+            this.gboProduct.Size = new System.Drawing.Size(836, 629);
             this.gboProduct.TabIndex = 2;
             this.gboProduct.Text = "Danh sách mặt hàng";
             this.gboProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -811,7 +811,7 @@
             this.pnlPagging.Controls.Add(this.btnPrevious);
             this.pnlPagging.CustomizableEdges = customizableEdges37;
             this.pnlPagging.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlPagging.Location = new System.Drawing.Point(0, 561);
+            this.pnlPagging.Location = new System.Drawing.Point(0, 582);
             this.pnlPagging.Name = "pnlPagging";
             this.pnlPagging.ShadowDecoration.CustomizableEdges = customizableEdges38;
             this.pnlPagging.Size = new System.Drawing.Size(836, 47);
@@ -884,7 +884,7 @@
             this.pnlProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlProduct.Location = new System.Drawing.Point(0, 40);
             this.pnlProduct.Name = "pnlProduct";
-            this.pnlProduct.Size = new System.Drawing.Size(836, 568);
+            this.pnlProduct.Size = new System.Drawing.Size(836, 589);
             this.pnlProduct.TabIndex = 0;
             // 
             // gboSearch
@@ -902,7 +902,7 @@
             this.gboSearch.Location = new System.Drawing.Point(5, 0);
             this.gboSearch.Name = "gboSearch";
             this.gboSearch.ShadowDecoration.CustomizableEdges = customizableEdges48;
-            this.gboSearch.Size = new System.Drawing.Size(836, 111);
+            this.gboSearch.Size = new System.Drawing.Size(836, 90);
             this.gboSearch.TabIndex = 0;
             this.gboSearch.Text = "Bộ lọc";
             this.gboSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -923,7 +923,7 @@
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = global::QLCHWF.Properties.Resources.reload;
             this.btnReload.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnReload.Location = new System.Drawing.Point(413, 55);
+            this.btnReload.Location = new System.Drawing.Point(392, 48);
             this.btnReload.Name = "btnReload";
             this.btnReload.ShadowDecoration.CustomizableEdges = customizableEdges42;
             this.btnReload.Size = new System.Drawing.Size(41, 35);
@@ -946,7 +946,7 @@
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = global::QLCHWF.Properties.Resources._3d_magnifier;
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnSearch.Location = new System.Drawing.Point(366, 55);
+            this.btnSearch.Location = new System.Drawing.Point(345, 48);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges44;
             this.btnSearch.Size = new System.Drawing.Size(41, 35);
@@ -968,7 +968,7 @@
             this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(73, 55);
+            this.txtSearch.Location = new System.Drawing.Point(52, 48);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
@@ -994,7 +994,7 @@
             this.Name = "frmAddSalesOrder";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmAddSalesOrder";
+            this.Text = "Quản lý cửa hàng bán đồ điện dân dụng";
             this.Load += new System.EventHandler(this.frmAddSalesOrder_Load);
             this.Resize += new System.EventHandler(this.frmAddSalesOrder_Resize);
             this.pnlHeader.ResumeLayout(false);

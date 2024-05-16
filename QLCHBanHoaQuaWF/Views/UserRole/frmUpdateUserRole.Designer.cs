@@ -324,6 +324,7 @@
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmUpdateUserRole";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmUpdateUserRole";
             this.Load += new System.EventHandler(this.frmUpdateUserRole_Load);

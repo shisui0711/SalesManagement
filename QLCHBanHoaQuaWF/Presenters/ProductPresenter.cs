@@ -73,44 +73,58 @@ public class ProductPresenter : ValidPresenter
     }
     public void Add()
     {
-        var product = new Product();
-        product.ProductName = _addProduct.ProductName;
-        product.CalculationUnit = _addProduct.CalculationUnit;
-        product.ImageData = _addProduct.ImageData;
-        product.ImportUnitPrice = _addProduct.ImportUnitPrice;
-        product.UnitPrice = _addProduct.UnitPrice;
-        product.Description = _addProduct.Description;
-        if (!IsValid(product, _addProduct))
+        try
         {
-            return;
-        }
+            var product = new Product();
+            product.ProductName = _addProduct.ProductName;
+            product.CalculationUnit = _addProduct.CalculationUnit;
+            product.ImageData = _addProduct.ImageData;
+            product.ImportUnitPrice = _addProduct.ImportUnitPrice;
+            product.UnitPrice = _addProduct.UnitPrice;
+            product.Description = _addProduct.Description;
+            if (!IsValid(product, _addProduct))
+            {
+                return;
+            }
 
-        _context.Products.Add(product);
-        _context.SaveChanges();
-        _viewProduct.ProductBindingSource.EndEdit();
-        _addProduct.ShowMessage(@"Thêm thành công");
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            _viewProduct.ProductBindingSource.EndEdit();
+            _addProduct.ShowMessage(@"Thêm thành công");
+        }
+        catch (Exception e)
+        {
+            _viewProduct.ShowMessage($"Thêm thất bại: {e.Message}");
+        }
     }
 
     public void Update()
     {
-        Product product = new Product();
-        product.ProductID = _updateProduct.ProductID;
-        product.ProductName = _updateProduct.ProductName;
-        product.CalculationUnit = _updateProduct.CalculationUnit;
-        product.ImageData = _updateProduct.ImageData;
-        product.ImportUnitPrice = _updateProduct.ImportUnitPrice;
-        product.UnitPrice = _updateProduct.UnitPrice;
-        product.Description = _updateProduct.Description;
-        if (!IsValid(product, _updateProduct))
+        try
         {
-            return;
+            Product product = new Product();
+            product.ProductID = _updateProduct.ProductID;
+            product.ProductName = _updateProduct.ProductName;
+            product.CalculationUnit = _updateProduct.CalculationUnit;
+            product.ImageData = _updateProduct.ImageData;
+            product.ImportUnitPrice = _updateProduct.ImportUnitPrice;
+            product.UnitPrice = _updateProduct.UnitPrice;
+            product.Description = _updateProduct.Description;
+            if (!IsValid(product, _updateProduct))
+            {
+                return;
+            }
+            Product productExist = _context.Products.Find(product.ProductID);
+            product.Inventory = productExist.Inventory;
+            _context.Entry(productExist).CurrentValues.SetValues(product);
+            _context.SaveChanges();
+            _viewProduct.ProductBindingSource.EndEdit();
+            _updateProduct.ShowMessage(@"Cập nhật thành cộng");
         }
-
-        Product productExist = _context.Products.Find(product.ProductID);
-        _context.Entry(productExist).CurrentValues.SetValues(product);
-        _context.SaveChanges();
-        _viewProduct.ProductBindingSource.EndEdit();
-        _updateProduct.ShowMessage(@"Cập nhật thành cộng");
+        catch (Exception e)
+        {
+            _updateProduct.ShowMessage($"Cập nhật thất bại: {e.Message}");
+        }
     }
 
     public void Remove()

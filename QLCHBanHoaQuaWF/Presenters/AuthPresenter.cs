@@ -1,4 +1,5 @@
 ﻿
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using QLCHWF.Models;
@@ -105,66 +106,83 @@ namespace QLCHWF.Presenters
                 }
             }
         }
-        public void Login()
+
+        private bool ProductionLogin()
         {
-            string Role = _viewLogin.Role;
-            if (Role == "Nhân Viên")
+            var user = _context.Users.Include(u => u.UserRole).ThenInclude(u => u.Permission).Where(e => e.Email == _viewLogin.Username).FirstOrDefault();
+            if (user == null)
             {
-                var user = _context.Users.Include(u=>u.UserRole).ThenInclude(u=>u.Permission).Where(e => e.Email == _viewLogin.Username).FirstOrDefault();
-                if (user == null)
-                {
-                    _viewLogin.ShowMessage("Email không tồn tại!");
-                    return;
-                }
-
-                if (user.Password != GetSha256Hash(_viewLogin.Password))
-                {
-                    _viewLogin.ShowMessage("Mật khẩu không đúng");
-                    return;
-                }
-
-                if (user.Lock)
-                {
-                    _viewLogin.ShowMessage(@"Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản lý");
-                    return;
-                }
-                user.LastLogin = DateTime.Now;
-                _context.SaveChanges();
-                User = user;
+                _viewLogin.ShowMessage("Email không tồn tại!");
+                return false;
             }
-            else
+
+            if (user.Password != GetSha256Hash(_viewLogin.Password))
+            {
+                _viewLogin.ShowMessage("Mật khẩu không đúng");
+                return false;
+            }
+
+            if (user.Lock)
+            {
+                _viewLogin.ShowMessage(@"Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản lý");
+                return false;
+            }
+            user.LastLogin = DateTime.Now;
+            _context.SaveChanges();
+            User = user;
+            return true;
+        }
+
+        private bool DevelopmentLogin()
+        {
+            try
             {
                 string email = _configuration.GetSection("AccountDemo").GetSection("Email").Value;
                 string password = _configuration.GetSection("AccountDemo").GetSection("Password").Value;
                 string role = _configuration.GetSection("AccountDemo").GetSection("Role").Value;
-                if (email != _viewLogin.Username)
+                if (email == _viewLogin.Username && password == _viewLogin.Password)
                 {
-                    _viewLogin.ShowMessage("Email không tồn tại");
-                    return;
+                    UserRole userRole = new UserRole
+                    {
+                        RoleName = role
+                    };
+                    User user = new User
+                    {
+                        Email = email,
+                        UserRole = userRole
+                    };
+                    Permission? permission = new Permission();
+                    foreach (var propertyInfo in permission.GetType().GetProperties()
+                                 .Where(x => x.PropertyType == typeof(bool)))
+                    {
+                        propertyInfo.SetValue(permission, true);
+                    }
+
+                    userRole.Permission = permission;
+                    User = user;
+                    return true;
                 }
 
-                if (password != _viewLogin.Password)
-                {
-                    _viewLogin.ShowMessage("Mật khẩu không đúng");
-                    return;
-                }
-                UserRole userRole = new UserRole
-                {
-                    RoleName = role
-                };
-                User user = new User
-                {
-                    Email = email,
-                    UserRole = userRole
-                };
-                Permission? permission = new Permission();
-                foreach (var propertyInfo in permission.GetType().GetProperties().Where(x => x.PropertyType == typeof(bool)))
-                {
-                    propertyInfo.SetValue(permission,true);
-                }
-                userRole.Permission = permission;
-                User = user;
+                return false;
             }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public void Login()
+        {
+            if (Debugger.IsAttached && DevelopmentLogin())
+            {
+                goto DangNhap;
+
+            }
+
+            if (!ProductionLogin())
+            {
+                return;
+            }
+            DangNhap:
             var loginForm = _viewLogin as Form;
             var mainForm = _viewMain as Form;
             CheckPermission(_viewMain);

@@ -364,6 +364,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSendMail";
             this.Padding = new System.Windows.Forms.Padding(3);
+            this.ShowInTaskbar = false;
             this.Text = "frmSendMail";
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();

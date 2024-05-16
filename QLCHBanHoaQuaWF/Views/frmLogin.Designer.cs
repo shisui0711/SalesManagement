@@ -55,8 +55,6 @@
             this.pnlBody = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.pnlControl = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.rdoNhanVien = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdoQuanLy = new Guna.UI2.WinForms.Guna2RadioButton();
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLogin = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -154,8 +152,6 @@
             this.pnlControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.pnlControl.BorderRadius = 177;
             this.pnlControl.Controls.Add(this.guna2CirclePictureBox1);
-            this.pnlControl.Controls.Add(this.rdoNhanVien);
-            this.pnlControl.Controls.Add(this.rdoQuanLy);
             this.pnlControl.Controls.Add(this.txtUsername);
             this.pnlControl.Controls.Add(this.txtPassword);
             this.pnlControl.Controls.Add(this.btnLogin);
@@ -180,48 +176,6 @@
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 4;
             this.guna2CirclePictureBox1.TabStop = false;
-            // 
-            // rdoNhanVien
-            // 
-            this.rdoNhanVien.Animated = true;
-            this.rdoNhanVien.AutoSize = true;
-            this.rdoNhanVien.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoNhanVien.CheckedState.BorderThickness = 0;
-            this.rdoNhanVien.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoNhanVien.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoNhanVien.CheckedState.InnerOffset = -4;
-            this.rdoNhanVien.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rdoNhanVien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.rdoNhanVien.Location = new System.Drawing.Point(196, 356);
-            this.rdoNhanVien.Name = "rdoNhanVien";
-            this.rdoNhanVien.Size = new System.Drawing.Size(110, 27);
-            this.rdoNhanVien.TabIndex = 9;
-            this.rdoNhanVien.Text = "Nhân viên";
-            this.rdoNhanVien.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoNhanVien.UncheckedState.BorderThickness = 2;
-            this.rdoNhanVien.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoNhanVien.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            // 
-            // rdoQuanLy
-            // 
-            this.rdoQuanLy.Animated = true;
-            this.rdoQuanLy.AutoSize = true;
-            this.rdoQuanLy.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoQuanLy.CheckedState.BorderThickness = 0;
-            this.rdoQuanLy.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoQuanLy.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoQuanLy.CheckedState.InnerOffset = -4;
-            this.rdoQuanLy.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rdoQuanLy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.rdoQuanLy.Location = new System.Drawing.Point(60, 356);
-            this.rdoQuanLy.Name = "rdoQuanLy";
-            this.rdoQuanLy.Size = new System.Drawing.Size(94, 27);
-            this.rdoQuanLy.TabIndex = 8;
-            this.rdoQuanLy.Text = "Quản Lý";
-            this.rdoQuanLy.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoQuanLy.UncheckedState.BorderThickness = 2;
-            this.rdoQuanLy.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoQuanLy.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             // 
             // txtUsername
             // 
@@ -296,7 +250,7 @@
             this.btnLogin.FillColor2 = System.Drawing.Color.Lime;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(19, 389);
+            this.btnLogin.Location = new System.Drawing.Point(19, 370);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.ShadowDecoration.CustomizableEdges = customizableEdges13;
             this.btnLogin.Size = new System.Drawing.Size(322, 56);
@@ -317,13 +271,12 @@
             this.Name = "frmLogin";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản lý cửa hàng bán hoa quả";
+            this.Text = "Quản lý cửa hàng bán đồ điện dân dụng";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.pnlBody.ResumeLayout(false);
             this.pnlControl.ResumeLayout(false);
-            this.pnlControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -338,8 +291,6 @@
         private Label lblTitle;
         private Guna.UI2.WinForms.Guna2Panel pnlControl;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoNhanVien;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoQuanLy;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2GradientButton btnLogin;

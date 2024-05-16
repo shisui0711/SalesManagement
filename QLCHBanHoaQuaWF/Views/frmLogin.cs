@@ -15,24 +15,6 @@ namespace QLCHWF.Views
             get { return txtPassword.Text; }
             set { txtPassword.Text = value; }
         }
-        public string Role
-        {
-            get
-            {
-                if (rdoQuanLy.Checked)
-                {
-                    return "Quản lý";
-                }
-                else if (rdoNhanVien.Checked)
-                {
-                    return "Nhân Viên";
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
         public event EventHandler LoginEvent;
         public frmLogin()
         {
@@ -56,7 +38,7 @@ namespace QLCHWF.Views
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            rdoNhanVien.Checked = true;
+
         }
 
 

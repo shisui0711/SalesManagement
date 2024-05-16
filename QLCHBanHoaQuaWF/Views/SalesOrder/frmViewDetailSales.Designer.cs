@@ -63,23 +63,25 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.pnlHeader.BorderColor = System.Drawing.Color.DimGray;
             this.pnlHeader.Controls.Add(this.label4);
             this.pnlHeader.Controls.Add(this.btnMinimize);
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.CustomizableEdges = customizableEdges5;
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            this.pnlHeader.Size = new System.Drawing.Size(1093, 55);
+            this.pnlHeader.Size = new System.Drawing.Size(1087, 55);
             this.pnlHeader.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(12, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(186, 23);
@@ -94,10 +96,10 @@
             this.btnMinimize.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
             this.btnMinimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.btnMinimize.CustomizableEdges = customizableEdges1;
-            this.btnMinimize.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.btnMinimize.FillColor = System.Drawing.Color.Transparent;
             this.btnMinimize.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(133)))), ((int)(((byte)(205)))));
             this.btnMinimize.IconColor = System.Drawing.Color.White;
-            this.btnMinimize.Location = new System.Drawing.Point(997, 11);
+            this.btnMinimize.Location = new System.Drawing.Point(991, 11);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.btnMinimize.Size = new System.Drawing.Size(43, 33);
@@ -110,10 +112,10 @@
             this.btnClose.BorderRadius = 10;
             this.btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
             this.btnClose.CustomizableEdges = customizableEdges3;
-            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.btnClose.FillColor = System.Drawing.Color.Transparent;
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(1046, 11);
+            this.btnClose.Location = new System.Drawing.Point(1040, 11);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges4;
             this.btnClose.Size = new System.Drawing.Size(44, 33);
@@ -124,10 +126,10 @@
             this.pnlBody.Controls.Add(this.dgvDetailSales);
             this.pnlBody.CustomizableEdges = customizableEdges7;
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 55);
+            this.pnlBody.Location = new System.Drawing.Point(3, 58);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            this.pnlBody.Size = new System.Drawing.Size(1093, 457);
+            this.pnlBody.Size = new System.Drawing.Size(1087, 451);
             this.pnlBody.TabIndex = 1;
             // 
             // dgvDetailSales
@@ -143,7 +145,6 @@
             this.dgvDetailSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDetailSales.AutoGenerateColumns = false;
             this.dgvDetailSales.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvDetailSales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -187,7 +188,7 @@
             this.dgvDetailSales.RowHeadersVisible = false;
             this.dgvDetailSales.RowHeadersWidth = 51;
             this.dgvDetailSales.RowTemplate.Height = 30;
-            this.dgvDetailSales.Size = new System.Drawing.Size(1093, 457);
+            this.dgvDetailSales.Size = new System.Drawing.Size(1087, 451);
             this.dgvDetailSales.TabIndex = 0;
             this.dgvDetailSales.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDetailSales.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -274,11 +275,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(1093, 512);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmViewDetailSales";
+            this.Padding = new System.Windows.Forms.Padding(3);
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmViewDetailSales";
             this.pnlHeader.ResumeLayout(false);

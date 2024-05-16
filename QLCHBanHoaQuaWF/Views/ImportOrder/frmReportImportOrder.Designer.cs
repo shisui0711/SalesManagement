@@ -47,21 +47,23 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.pnlHeader.Controls.Add(this.lblTitile);
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.CustomizableEdges = customizableEdges3;
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            this.pnlHeader.Size = new System.Drawing.Size(898, 54);
+            this.pnlHeader.Size = new System.Drawing.Size(892, 54);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblTitile
             // 
             this.lblTitile.AutoSize = true;
+            this.lblTitile.BackColor = System.Drawing.Color.Transparent;
             this.lblTitile.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.lblTitile.ForeColor = System.Drawing.Color.White;
             this.lblTitile.Location = new System.Drawing.Point(8, 14);
             this.lblTitile.Name = "lblTitile";
             this.lblTitile.Size = new System.Drawing.Size(169, 23);
@@ -75,10 +77,10 @@
             this.btnClose.BorderRadius = 10;
             this.btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
             this.btnClose.CustomizableEdges = customizableEdges1;
-            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
+            this.btnClose.FillColor = System.Drawing.Color.Transparent;
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(847, 11);
+            this.btnClose.Location = new System.Drawing.Point(841, 11);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.btnClose.Size = new System.Drawing.Size(44, 33);
@@ -89,10 +91,10 @@
             this.pnlReport.Controls.Add(this.rpvImportOrder);
             this.pnlReport.CustomizableEdges = customizableEdges5;
             this.pnlReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlReport.Location = new System.Drawing.Point(0, 54);
+            this.pnlReport.Location = new System.Drawing.Point(3, 57);
             this.pnlReport.Name = "pnlReport";
             this.pnlReport.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            this.pnlReport.Size = new System.Drawing.Size(898, 647);
+            this.pnlReport.Size = new System.Drawing.Size(892, 641);
             this.pnlReport.TabIndex = 1;
             // 
             // rpvImportOrder
@@ -101,7 +103,7 @@
             this.rpvImportOrder.Location = new System.Drawing.Point(0, 0);
             this.rpvImportOrder.Name = "ReportViewer";
             this.rpvImportOrder.ServerReport.BearerToken = null;
-            this.rpvImportOrder.Size = new System.Drawing.Size(898, 647);
+            this.rpvImportOrder.Size = new System.Drawing.Size(892, 641);
             this.rpvImportOrder.TabIndex = 0;
             // 
             // dragControl
@@ -114,11 +116,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(898, 701);
             this.Controls.Add(this.pnlReport);
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmReportImportOrder";
+            this.Padding = new System.Windows.Forms.Padding(3);
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmReportImportOrder";
             this.Load += new System.EventHandler(this.frmReportImportOrder_Load);

@@ -1,4 +1,7 @@
-﻿using QLCHWF.CustomMessageBox;
+﻿using System.ComponentModel;
+using System.Reflection;
+using Guna.UI2.WinForms;
+using QLCHWF.CustomMessageBox;
 
 namespace QLCHWF.Views.User
 {
@@ -7,6 +10,7 @@ namespace QLCHWF.Views.User
         public frmViewUser()
         {
             InitializeComponent();
+            LoadCopy();
         }
 
         public string SearchText
@@ -25,6 +29,46 @@ namespace QLCHWF.Views.User
         public event EventHandler ShowAddUser;
         public event EventHandler? ShowChangePassword;
 
+        private void LoadCopy()
+        {
+            var properties = typeof(Models.User).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(p => p.GetCustomAttribute(typeof(DisplayNameAttribute),true) != null);
+            foreach (var propertyInfo in properties)
+            {
+                string propertyName = (propertyInfo.GetCustomAttribute(typeof(DisplayNameAttribute) )as DisplayNameAttribute)?.DisplayName;
+                btnCopy.DropDownItems.Add(new ToolStripMenuItem(propertyName));
+            }
+            foreach (var toolStripMenuItem in btnCopy.DropDownItems.OfType<ToolStripMenuItem>())
+            {
+                toolStripMenuItem.Click += delegate
+                {
+                    var selected = userBindingSource.Current as Models.User;
+                    var property = selected?.GetType().GetProperties().Where(x =>
+                    {
+                        var displayNameAtribute = x.GetCustomAttribute(typeof(DisplayNameAttribute)) as DisplayNameAttribute;
+                        return displayNameAtribute?.DisplayName == toolStripMenuItem.Text;
+                    }).FirstOrDefault();
+                    Clipboard.SetText(property.GetValue(selected).ToString());
+                };
+            }
+        }
+
+        //public void Copy()
+        //{
+        //    foreach (var toolStripMenuItem in btnCopy.DropDownItems.OfType<ToolStripMenuItem>())
+        //    {
+        //        toolStripMenuItem.Click += delegate
+        //        {
+        //            var selected = userBindingSource.Current as Models.User;
+        //            var property = selected.GetType().GetProperties().Where(x =>
+        //            {
+        //                var displayNameAtribute = x.GetCustomAttribute(typeof(DisplayNameAttribute)) as DisplayNameAttribute;
+        //                return displayNameAtribute?.DisplayName == toolStripMenuItem.Text;
+        //            }).FirstOrDefault();
+        //            Clipboard.SetText(property.GetValue(selected).ToString());
+        //        };
+        //    }
+        //}
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             ShowChangePassword?.Invoke(sender, e);

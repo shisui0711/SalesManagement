@@ -70,5 +70,15 @@ namespace QLCHWF.Views.User
                 textBox?.Focus();
             }
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddUser?.Invoke(sender,e);
+        }
     }
 }

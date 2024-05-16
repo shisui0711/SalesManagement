@@ -20,6 +20,7 @@ namespace QLCHWF.Presenters
         private readonly IViewMain _viewMain;
         private readonly MyAppContext _context;
         private Dictionary<Product, int> productOrdered;
+        private List<Product> targetSource;
 
         public SalesOrderPresenter(IViewSalesOrder viewSalesOrder, IAddSalesOrder addSalesOrder, IReportSalesOrder report, IDetailSalesOrder detailSales, IViewMain viewMain, MyAppContext context)
         {
@@ -41,9 +42,14 @@ namespace QLCHWF.Presenters
 
             _addSalesOrder.RemoveProduct += RemoveProduct;
             _addSalesOrder.LoadCustomer += delegate { LoadCustomer(); };
-            _addSalesOrder.LoadProduct += delegate { NextPage(); };
+            _addSalesOrder.LoadProduct += delegate
+            {
+                _addSalesOrder.CurrentPage = 0;
+                targetSource = _context.Products.ToList();
+                NextPage();
+            };
             _addSalesOrder.SearchCustomer += delegate { SearchCustomer(); };
-            _addSalesOrder.SearchProduct += delegate { LoadProduct(); };
+            _addSalesOrder.SearchProduct += delegate { SearchProduct(); };
             _addSalesOrder.AddSalesOrder += delegate { Add(); };
             _addSalesOrder.NextPage += delegate { NextPage(); };
             _addSalesOrder.PreviousPage += delegate { PreviousPage(); };    
@@ -295,19 +301,12 @@ namespace QLCHWF.Presenters
         {
             _addSalesOrder.CustomerBindingSource.DataSource = _context.Customers.ToList();
         }
-        protected void LoadProduct()
+        protected void SearchProduct()
         {
-            _addSalesOrder.ClearControl();
-            var products = _context.Products.Where(p => p.ProductName.Contains(_addSalesOrder.ProductSearchText))
+            _addSalesOrder.CurrentPage = 0;
+            targetSource = _context.Products.Where(x => x.ProductName.Contains(_addSalesOrder.ProductSearchText))
                 .ToList();
-            foreach (var product in products)
-            {
-                frmProduct form = new frmProduct(product);
-                form.Clicked += OrderProduct;
-                form.TopLevel = false;
-                _addSalesOrder.AddControl(form);
-                form.Show();
-            }
+            NextPage();
         }
         protected void LoadProduct(List<Product> products)
         {
@@ -362,10 +361,10 @@ namespace QLCHWF.Presenters
         }
         void NextPage()
         {
-            int totalItems = _context.Products.ToList().Count;
+            int totalItems = targetSource.Count;
             int totalPages = (int)Math.Ceiling((double)totalItems / 6);
             int currentPage = _addSalesOrder.CurrentPage;
-            List<Product> products = _context.Products.Skip((currentPage) * 6).Take(6).ToList();
+            List<Product> products = targetSource.Skip((currentPage) * 6).Take(6).ToList();
             LoadProduct(products);
             _addSalesOrder.CurrentPage += 1;
             if (_addSalesOrder.CurrentPage > 1)
@@ -382,10 +381,10 @@ namespace QLCHWF.Presenters
         void PreviousPage()
         {
             _addSalesOrder.CurrentPage -= 1;
-            int totalItems = _context.Products.ToList().Count;
+            int totalItems = targetSource.Count;
             int totalPages = (int)Math.Ceiling((double)totalItems / 6);
             int currentPage = _addSalesOrder.CurrentPage;
-            List<Product> products = _context.Products.Skip((currentPage - 1) * 6).Take(6).ToList();
+            List<Product> products = targetSource.Skip((currentPage - 1) * 6).Take(6).ToList();
             LoadProduct(products);
             if (_addSalesOrder.CurrentPage <= 1)
             {

@@ -27,29 +27,14 @@ public static class DateTimeHelper
         }
         return lastDayOfWeek;
     }
-    //public static DateTime GetStartLastWeek()
-    //{
-    //    //DateTime today = DateTime.Today;
-
-    //    //DateTime firstDayOfWeek = today.AddDays(-(int)today.DayOfWeek);
-    //    //if (today.DayOfWeek == DayOfWeek.Sunday)
-    //    //{
-    //    //    firstDayOfWeek = firstDayOfWeek.AddDays(-7);
-    //    //}
-
-    //    //return firstDayOfWeek;
-    //}
+    public static DateTime GetStartLastWeek()
+    {
+        return GetStartThisWeek().AddDays(-7);
+    }
 
     public static DateTime GetEndLastWeek()
     {
-        DateTime today = DateTime.Today;
-
-        DateTime firstDayOfWeek = today.AddDays(-(int)today.DayOfWeek);
-        if (today.DayOfWeek == DayOfWeek.Sunday)
-        {
-            firstDayOfWeek = firstDayOfWeek.AddDays(-7);
-        }
-
-        return firstDayOfWeek;
+        return GetEndThisWeek().AddDays(-7);
     }
+
 }

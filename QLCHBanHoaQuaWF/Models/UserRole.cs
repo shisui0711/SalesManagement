@@ -21,12 +21,12 @@ public class UserRole
 
     [Key]
     public int RoleID { get; set; }
-    [Required]
-    [StringLength(30)]
+    [Required(ErrorMessage = "Tên vai trò không được để trống")]
+    [StringLength(30,ErrorMessage = "Tên vai trò không dài quá 30 ký tự")]
     public string RoleName { get; set; }
     [Column(TypeName = "date")]
     public DateTime DateCreated { get; set; } = DateTime.Now;
-    [StringLength(100)]
+    [StringLength(100,ErrorMessage = "Ghi chú không dài quá 100 ký tự")]
     public string? Description { get; set; }
     public int PermissionID { get; set; }
     [ForeignKey("PermissionID")]

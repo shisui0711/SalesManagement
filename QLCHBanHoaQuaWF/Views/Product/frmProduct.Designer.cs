@@ -167,6 +167,7 @@
             this.Controls.Add(this.pnlProduct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmProduct";
+            this.ShowInTaskbar = false;
             this.Text = "frmTest";
             this.pnlProduct.ResumeLayout(false);
             this.pnlProduct.PerformLayout();

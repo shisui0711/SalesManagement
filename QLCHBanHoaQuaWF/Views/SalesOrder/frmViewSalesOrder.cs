@@ -8,6 +8,8 @@ namespace QLCHWF.Views.SalesOrder
         public frmViewSalesOrder()
         {
             InitializeComponent();
+            dtpStart.Value = DateTime.Today;
+            dtpEnd.Value = DateTime.Today;
         }
 
         public string SearchText
@@ -28,18 +30,25 @@ namespace QLCHWF.Views.SalesOrder
             {
                 switch (cboDateCreated.SelectedIndex)
                 {
+                    //Hôm nay
                     case 1:
-                        return DateTime.Today;
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                    //Hôm qua
                     case 2:
-                        return DateTime.Today.AddDays(-1);
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0).AddDays(-1);
+                    //Tuần trước
                     case 3:
-                        return DateTime.Now.AddDays(-14);
+                        return DateTimeHelper.GetStartLastWeek();
+                    //Tuần này
                     case 4:
-                        return DateTime.Today.AddDays(-7);
+                        return DateTimeHelper.GetStartThisWeek();
+                    //Tháng trước
                     case 5:
-                        return DateTime.Today.AddMonths(-1);
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0).AddMonths(-1);
+                    //Tháng này
                     case 6:
                         return new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0);
+                    //Custom
                     case 7:
                         return dtpStart.Value;
                     default:
@@ -55,7 +64,17 @@ namespace QLCHWF.Views.SalesOrder
                 switch (cboDateCreated.SelectedIndex)
                 {
                     case 2:
-                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0).AddSeconds(-1);
+                        return DateTime.Today.AddSeconds(-1);
+                    case 3:
+                        return DateTimeHelper.GetEndLastWeek();
+                    case 4:
+                        return DateTimeHelper.GetEndThisWeek();
+                    case 5:
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+                            DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month), 0, 0, 0).AddMonths(-1);
+                    case 6:
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+                            DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month), 0, 0, 0);
                     case 7:
                         return dtpEnd.Value;
                     default:

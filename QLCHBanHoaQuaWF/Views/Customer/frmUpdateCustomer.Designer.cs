@@ -378,6 +378,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUpdateCustomer";
             this.Padding = new System.Windows.Forms.Padding(2);
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmUpdateCustomer";
             this.pnlTop.ResumeLayout(false);
