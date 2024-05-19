@@ -383,6 +383,7 @@
             this.ptbUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbUpload.TabIndex = 44;
             this.ptbUpload.TabStop = false;
+            this.ptbUpload.Click += new System.EventHandler(this.ptbUpload_Click);
             // 
             // label2
             // 

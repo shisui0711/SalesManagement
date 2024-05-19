@@ -1,11 +1,12 @@
 ﻿using System.Windows.Forms;
 using Bogus;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using QLCHWF.Models;
 using QLCHWF.Presenters;
 using QLCHWF.Views;
 using QLCHWF.Views.Customer;
+using DatabaseFacade = Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade;
 
 namespace QLCHWF.Test;
 
@@ -22,6 +23,7 @@ public class CustomerPresenterTest
     private Mock<MyAppContext> dbContextMock;
     private CustomerPresenter customerPresenter;
     private BindingSource bindingSource;
+    private Mock<IDbContextTransaction> transactionMock;
     [SetUp]
     public void Init()
     {
@@ -31,6 +33,7 @@ public class CustomerPresenterTest
        addCustomerMock = new Mock<IAddCustomer>();
        updateCustomerMock = new Mock<IUpdateCustomer>();
        historySalesMock = new Mock<IHistorySales>();
+       transactionMock = new Mock<IDbContextTransaction>();
        dbContextMock = new Mock<MyAppContext>();
        bindingSource = new BindingSource();
         var mockCustomerDbSet = new Mock<DbSet<Customer>>();
@@ -42,7 +45,9 @@ public class CustomerPresenterTest
        mockCustomerDbSet.As<IQueryable<Customer>>().Setup(x => x.Expression).Returns(data.Expression);
        mockCustomerDbSet.As<IQueryable<Customer>>().Setup(x => x.GetEnumerator()).Returns(() => data.GetEnumerator());
        dbContextMock.Setup(x => x.Customers).Returns(mockCustomerDbSet.Object);
-       dbContextMock.Setup(x => x.Database).Returns(new DatabaseFacade(dbContextMock.Object));
+        dbContextMock.Setup(x => x.Database).Returns(new DatabaseFacade(dbContextMock.Object));
+        //dbContextMock.Setup(x => x.Database.BeginTransaction()).Returns(transactionMock.Object);
+
        customerPresenter = new CustomerPresenter(viewCustomerMock.Object, addCustomerMock.Object, updateCustomerMock.Object,
            historySalesMock.Object, dbContextMock.Object);
     }

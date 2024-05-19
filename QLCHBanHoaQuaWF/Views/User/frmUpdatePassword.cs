@@ -1,4 +1,5 @@
 ﻿using QLCHWF.CustomMessageBox;
+using System.Reflection;
 
 namespace QLCHWF.Views.User
 {
@@ -10,8 +11,8 @@ namespace QLCHWF.Views.User
         }
         public void Focus(string name)
         {
-            var textBoxField = this.GetType().GetField("txt" + name);
-            if (textBoxField != null && textBoxField.GetType().IsAssignableTo(typeof(UserControl)))
+            var textBoxField = this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(x => x.Name == "txt" + name).FirstOrDefault();
+            if (textBoxField != null)
             {
                 var textBox = (UserControl)textBoxField.GetValue(this);
                 textBox.Focus();

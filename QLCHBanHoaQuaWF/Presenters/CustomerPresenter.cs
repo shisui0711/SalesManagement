@@ -140,7 +140,7 @@ namespace QLCHWF.Presenters
                     }
                     catch (Exception e)
                     {
-                        throw;
+
                     }
                 }
 
