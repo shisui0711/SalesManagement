@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.Product;
 
-public interface IViewProduct : IViewBase
+public interface IViewProduct : IViewBase,IViewPagination
 {
     public string SearchText { get; set; }
     public BindingSource ProductBindingSource { get; }

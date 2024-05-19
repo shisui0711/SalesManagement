@@ -227,7 +227,7 @@ namespace QLCHWF.Views.ImportOrder
                 }
                 catch (Exception e)
                 {
-                    return 1;
+                    return 0;
                 }
             }
             set { btnCurrentPage.Text = value.ToString(); }

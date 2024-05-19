@@ -38,7 +38,7 @@ namespace QLCHWF.Views.Product
             }
         }
 
-        public string ProductName
+        public new string ProductName
         {
             get { return txtProductName.Text; }
             set { txtProductName.Text = value; }

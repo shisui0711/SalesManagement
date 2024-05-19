@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.User;
 
-public interface IViewUser : IViewBase
+public interface IViewUser : IViewBase,IViewPagination
 {
     public string SearchText { get; set; }
     public BindingSource UserBindingSource { get; }

@@ -10,7 +10,7 @@ using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
 
-public class ImportOrderPresenter : ValidPresenter
+public class ImportOrderPresenter : PaginationPresenter<Product>
 {
     private readonly Dictionary<Product, int> _productOrdered = new Dictionary<Product, int>();
     private readonly IViewImportOrder _viewImportOrder;
@@ -18,8 +18,7 @@ public class ImportOrderPresenter : ValidPresenter
     private readonly IReportImportOrder _report;
     private readonly IDetailImportOrder _detailImport;
     private readonly MyAppContext _context;
-    private List<Product> targetSource;
-    public ImportOrderPresenter(IViewImportOrder viewImportOrder, IAddImportOrder addImportOrder, IReportImportOrder report, IDetailImportOrder detailImport, MyAppContext context)
+    public ImportOrderPresenter(IViewImportOrder viewImportOrder, IAddImportOrder addImportOrder, IReportImportOrder report, IDetailImportOrder detailImport, MyAppContext context):base(addImportOrder,context,6)
     {
         _viewImportOrder = viewImportOrder;
         _addImportOrder = addImportOrder;
@@ -37,8 +36,9 @@ public class ImportOrderPresenter : ValidPresenter
 
         _addImportOrder.LoadProduct += delegate
         {
+            ResetPage();
             _addImportOrder.CurrentPage = 0;
-            targetSource = _context.Products.ToList();
+            TargetSource = _context.Products.ToList();
             NextPage();
         };
         _addImportOrder.LoadProvider += delegate { LoadProvider(); };
@@ -290,22 +290,23 @@ public class ImportOrderPresenter : ValidPresenter
 
     public void SearchProduct(string? name = null)
     {
+        ResetPage();
         _addImportOrder.CurrentPage = 0;
-        targetSource = _context.Products.Where(x => x.ProductName == _addImportOrder.ProductSearchText).ToList();
+        TargetSource = _context.Products.Where(x => x.ProductName == _addImportOrder.ProductSearchText).ToList();
         NextPage();
     }
-    public void LoadProduct(List<Product> products)
-    {
-        _addImportOrder.ClearControl();
-        foreach (var product in products)
-        {
-            frmProduct form = new frmProduct(product);
-            form.Clicked += OrderProduct!;
-            form.TopLevel = false;
-            _addImportOrder.AddControl(form);
-            form.Show();
-        }
-    }
+    //public void LoadProduct(List<Product> products)
+    //{
+    //    _addImportOrder.ClearControl();
+    //    foreach (var product in products)
+    //    {
+    //        frmProduct form = new frmProduct(product);
+    //        form.Clicked += OrderProduct!;
+    //        form.TopLevel = false;
+    //        _addImportOrder.AddControl(form);
+    //        form.Show();
+    //    }
+    //}
     public void OrderProduct(object? sender, EventArgs e)
     {
         var formProduct = (frmProduct)sender!;
@@ -336,42 +337,55 @@ public class ImportOrderPresenter : ValidPresenter
         _addImportOrder.ProviderBindingSource.DataSource = providers;
     }
 
-    void NextPage()
+    protected override void Load(List<Product> items)
     {
-        int totalItems = _context.Products.ToList().Count;
-        int totalPages = (int)Math.Ceiling((double)totalItems / 6);
-        int currentPage = _addImportOrder.CurrentPage;
-        List<Product> products = _context.Products.Skip((currentPage) * 6).Take(6).ToList();
-        LoadProduct(products);
-        _addImportOrder.CurrentPage += 1;
-        if (_addImportOrder.CurrentPage > 1)
+        _addImportOrder.ClearControl();
+        foreach (var product in items)
         {
-            _addImportOrder.EnablePreviousPage();
-        }
-
-        if (_addImportOrder.CurrentPage >= totalPages)
-        {
-            _addImportOrder.DisableNextPage();
+            frmProduct form = new frmProduct(product);
+            form.Clicked += OrderProduct!;
+            form.TopLevel = false;
+            _addImportOrder.AddControl(form);
+            form.Show();
         }
     }
 
-    void PreviousPage()
-    {
-        _addImportOrder.CurrentPage -= 1;
-        int totalItems = _context.Products.ToList().Count;
-        int totalPages = (int)Math.Ceiling((double)totalItems / 6);
-        int currentPage = _addImportOrder.CurrentPage;
-        List<Product> products = _context.Products.Skip((currentPage-1) * 6).Take(6).ToList();
-        LoadProduct(products);
-        if (_addImportOrder.CurrentPage <= 1)
-        {
-            _addImportOrder.DisablePreviousPage();
-        }
+    //void NextPage()
+    //{
+    //    int totalItems = targetSource.Count;
+    //    int totalPages = (int)Math.Ceiling((double)totalItems / 6);
+    //    int currentPage = _addImportOrder.CurrentPage;
+    //    List<Product> products = targetSource.Skip((currentPage) * 6).Take(6).ToList();
+    //    LoadProduct(products);
+    //    _addImportOrder.CurrentPage += 1;
+    //    if (_addImportOrder.CurrentPage > 1)
+    //    {
+    //        _addImportOrder.EnablePreviousPage();
+    //    }
 
-        if (_addImportOrder.CurrentPage < totalPages)
-        {
-            _addImportOrder.EnableNextPage();
-        }
+    //    if (_addImportOrder.CurrentPage >= totalPages)
+    //    {
+    //        _addImportOrder.DisableNextPage();
+    //    }
+    //}
+
+    //void PreviousPage()
+    //{
+    //    _addImportOrder.CurrentPage -= 1;
+    //    int totalItems = targetSource.Count;
+    //    int totalPages = (int)Math.Ceiling((double)totalItems / 6);
+    //    int currentPage = _addImportOrder.CurrentPage;
+    //    List<Product> products =targetSource.Skip((currentPage-1) * 6).Take(6).ToList();
+    //    LoadProduct(products);
+    //    if (_addImportOrder.CurrentPage <= 1)
+    //    {
+    //        _addImportOrder.DisablePreviousPage();
+    //    }
+
+    //    if (_addImportOrder.CurrentPage < totalPages)
+    //    {
+    //        _addImportOrder.EnableNextPage();
+    //    }
         
-    }
+    //}
 }

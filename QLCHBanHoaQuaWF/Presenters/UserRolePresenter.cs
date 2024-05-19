@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using QLCHWF.Helpers;
 using QLCHWF.Models;
 using QLCHWF.Views.UserRole;
 using System.ComponentModel;
 
 namespace QLCHWF.Presenters;
 
-public class UserRolePresenter : ValidPresenter
+public class UserRolePresenter
 {
     private readonly IViewUserRole _viewUserRole;
     private readonly IAddUserRole _addUserRole;
@@ -69,7 +70,7 @@ public class UserRolePresenter : ValidPresenter
         UserRole userRole = new UserRole();
         userRole.RoleName = _addUserRole.RoleName;
         userRole.Description = _addUserRole.Description;
-        if (!IsValid(userRole, _addUserRole))
+        if (!ValidationHelper.IsValid(userRole, _addUserRole))
         {
             return;
         }
@@ -116,7 +117,7 @@ public class UserRolePresenter : ValidPresenter
     public void Update()
     {
         UserRole userRole = _context.UserRoles.Find(_updateUserRole.RoleID);
-        if (!IsValid(userRole, _updateUserRole))
+        if (!ValidationHelper.IsValid(userRole, _updateUserRole))
         {
             return;
         }

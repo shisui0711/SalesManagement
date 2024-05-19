@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.Provider;
 
-public interface IViewProvider : IViewBase
+public interface IViewProvider : IViewBase,IViewPagination
 {
     public string SearchText { get; set; }
     public int OptionIndex { get; set; }

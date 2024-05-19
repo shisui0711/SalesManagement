@@ -1,17 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using QLCHWF.Helpers;
 using QLCHWF.Models;
+using QLCHWF.Views.ImportOrder;
 using QLCHWF.Views.Product;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
 
-public class ProductPresenter : ValidPresenter
+public class ProductPresenter : PaginationPresenter<Product>
 {
     private IViewProduct _viewProduct;
     private IAddProduct _addProduct;
     private IUpdateProduct _updateProduct;
     private MyAppContext _context;
-    public ProductPresenter(IViewProduct viewProduct, IAddProduct addProduct, IUpdateProduct updateProduct, MyAppContext context)
+    public ProductPresenter(IViewProduct viewProduct, IAddProduct addProduct, IUpdateProduct updateProduct, MyAppContext context):base(viewProduct,context,6)
     {
         _viewProduct = viewProduct;
         _addProduct = addProduct;
@@ -21,7 +23,13 @@ public class ProductPresenter : ValidPresenter
         _context.Products.Load();
         _viewProduct.ShowAddProduct += delegate { ShowAddForm(); };
         _viewProduct.ShowUpdateProduct += delegate { ShowUpdateForm(); };
-        _viewProduct.LoadProduct += delegate { Load(); };
+        _viewProduct.LoadProduct += delegate
+        {
+            ResetPage();
+            _viewProduct.CurrentPage = 0;
+            TargetSource = _context.Products.ToList();
+            NextPage();
+        };
         _viewProduct.RemoveProduct += delegate { Remove(); };
         _viewProduct.SearchProduct += delegate { Search(); };
 
@@ -82,7 +90,7 @@ public class ProductPresenter : ValidPresenter
             product.ImportUnitPrice = _addProduct.ImportUnitPrice;
             product.UnitPrice = _addProduct.UnitPrice;
             product.Description = _addProduct.Description;
-            if (!IsValid(product, _addProduct))
+            if (!ValidationHelper.IsValid(product, _addProduct))
             {
                 return;
             }
@@ -110,7 +118,7 @@ public class ProductPresenter : ValidPresenter
             product.ImportUnitPrice = _updateProduct.ImportUnitPrice;
             product.UnitPrice = _updateProduct.UnitPrice;
             product.Description = _updateProduct.Description;
-            if (!IsValid(product, _updateProduct))
+            if (!ValidationHelper.IsValid(product, _updateProduct))
             {
                 return;
             }
@@ -160,18 +168,16 @@ public class ProductPresenter : ValidPresenter
 
     public void Search()
     {
-        List<Product> products = null;
-        products = _context.Products.Where(p => p.ProductName.Contains(_viewProduct.SearchText)).ToList();
-        if (products != null)
-        {
-            _viewProduct.ProductBindingSource.DataSource = products;
-        }
+        ResetPage();
+        _viewProduct.CurrentPage = 0;
+        TargetSource = _context.Products.Where(p => p.ProductName.Contains(_viewProduct.SearchText)).ToList();
+        NextPage();
     }
 
-    public void Load()
+
+    protected override void Load(List<Product> products)
     {
         _viewProduct.ProductBindingSource.ResetBindings(true);
-        _viewProduct.ProductBindingSource.DataSource = _context.Products.Local.ToBindingList();
-
+        _viewProduct.ProductBindingSource.DataSource = products;
     }
 }

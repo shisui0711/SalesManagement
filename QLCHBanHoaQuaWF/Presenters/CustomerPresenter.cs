@@ -3,31 +3,39 @@ using Microsoft.EntityFrameworkCore;
 using QLCHWF.Models;
 using QLCHWF.Views;
 using QLCHWF.Views.Customer;
+using QLCHWF.Views.Product;
+using System.ComponentModel.DataAnnotations;
+using QLCHWF.Helpers;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters
 {
-    public class CustomerPresenter : ValidPresenter
+    public class CustomerPresenter : PaginationPresenter<Customer>
     {
         private readonly IViewCustomer _viewCustomer;
         private readonly IAddCustomer _addCustomer;
         private readonly IUpdateCustomer _updateCustomer;
         private readonly IHistorySales _historySales;
         private MyAppContext _context;
-
-        public CustomerPresenter(IViewCustomer viewCustomer, IAddCustomer addCustomer, IUpdateCustomer updateCustomer, IHistorySales historySales, MyAppContext context)
+        public CustomerPresenter(IViewCustomer viewCustomer, IAddCustomer addCustomer, IUpdateCustomer updateCustomer, IHistorySales historySales, MyAppContext context):base(viewCustomer,context,20)
         {
             _viewCustomer = viewCustomer;
             _addCustomer = addCustomer;
             _updateCustomer = updateCustomer;
             _historySales = historySales;
             _context = context;
-            _viewCustomer.LoadCustomer += delegate { Load(); };
+            _viewCustomer.LoadCustomer += delegate
+            {
+                ResetPage();
+                TargetSource = _context.Customers.ToList();
+                NextPage();
+            };
             _viewCustomer.RemoveCustomer += delegate { Remove(); };
             _viewCustomer.SearchCustomer += delegate { Search(); };
             _viewCustomer.ShowAddCustomer += delegate { ShowAddForm(); };
             _viewCustomer.ShowUpdateCustomer += delegate { ShowUpdateForm(); };
             _viewCustomer.ShowSalesHistory += delegate { SalesHistory(); };
+
             _addCustomer.AddCustomer += delegate { Add(); };
             _updateCustomer.UpdateCustomer += delegate { Update(); };
 
@@ -99,7 +107,7 @@ namespace QLCHWF.Presenters
                 customer.Email = _addCustomer.Email;
                 customer.Phone = _addCustomer.Phone;
                 customer.Address = _addCustomer.Address;
-                if (!IsValid(customer, _addCustomer))
+                if (!ValidationHelper.IsValid(customer, _addCustomer))
                 {
                     return;
                 }
@@ -131,7 +139,7 @@ namespace QLCHWF.Presenters
                 customer.Email = _updateCustomer.Email;
                 customer.Phone = _updateCustomer.Phone;
                 customer.Address = _updateCustomer.Address;
-                if (!IsValid(customer, _updateCustomer))
+                if (!ValidationHelper.IsValid(customer, _updateCustomer))
                 {
                     try
                     {
@@ -218,11 +226,12 @@ namespace QLCHWF.Presenters
                     default:
                         break;
                 }
-
                 if (customers != null && customers.Count > 0)
                 {
                     _viewCustomer.CustomerBindingSource.ResetBindings(true);
-                    _viewCustomer.CustomerBindingSource.DataSource = customers;
+                    ResetPage();
+                    TargetSource = customers;
+                    NextPage();
                 }
                 else
                 {
@@ -235,17 +244,10 @@ namespace QLCHWF.Presenters
             }
         }
 
-        public void Load()
+        protected override void Load(List<Customer> customers)
         {
-            try
-            {
-                _viewCustomer.CustomerBindingSource.ResetBindings(true);
-                _viewCustomer.CustomerBindingSource.DataSource = _context.Customers.Local.ToBindingList();
-            }
-            catch (Exception e)
-            {
-                _viewCustomer.ShowMessage($"Lỗi: {e.Message}");
-            }
+            _viewCustomer.CustomerBindingSource.ResetBindings(true);
+            _viewCustomer.CustomerBindingSource.DataSource = customers;
         }
     }
 }

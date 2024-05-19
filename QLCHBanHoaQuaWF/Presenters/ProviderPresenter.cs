@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using QLCHWF.Helpers;
 using QLCHWF.Models;
 using QLCHWF.Views;
 using QLCHWF.Views.Employee;
@@ -7,14 +8,14 @@ using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
 
-public class ProviderPresenter : ValidPresenter
+public class ProviderPresenter: PaginationPresenter<Provider>
 {
     private readonly IViewProvider _viewProvider;
     private readonly IAddProvider _addProvider;
     private readonly IUpdateProvider _updateProvider;
     private readonly IHistoryImport _historyImport;
     private MyAppContext _context;
-    public ProviderPresenter(IViewProvider viewProvider, IAddProvider addProvider, IUpdateProvider updateProvider, IHistoryImport historyImport, MyAppContext context)
+    public ProviderPresenter(IViewProvider viewProvider, IAddProvider addProvider, IUpdateProvider updateProvider, IHistoryImport historyImport, MyAppContext context):base(viewProvider,context,20)
     {
         _viewProvider = viewProvider;
         _addProvider = addProvider;
@@ -23,7 +24,12 @@ public class ProviderPresenter : ValidPresenter
         _context = context;
         _context.Providers.Load();
 
-        _viewProvider.LoadProvider += delegate { Load(); };
+        _viewProvider.LoadProvider += delegate
+        {
+            ResetPage();
+            TargetSource = _context.Providers.ToList();
+            NextPage();
+        };
         _viewProvider.RemoveProvider += delegate { Remove(); };
         _viewProvider.SearchProvider += delegate { Search(); };
         _viewProvider.ShowAddProvider += delegate { ShowAddForm(); };
@@ -102,7 +108,7 @@ public class ProviderPresenter : ValidPresenter
             provider.Email = _addProvider.Email;
             provider.Phone = _addProvider.Phone;
             provider.Address = _addProvider.Address;
-            if (!IsValid(provider, _addProvider))
+            if (!ValidationHelper.IsValid(provider, _addProvider))
             {
                 return;
             }
@@ -127,7 +133,7 @@ public class ProviderPresenter : ValidPresenter
             provider.Email = _updateProvider.Email;
             provider.Phone = _updateProvider.Phone;
             provider.Address = _updateProvider.Address;
-            if (!IsValid(provider, _updateProvider))
+            if (!ValidationHelper.IsValid(provider, _updateProvider))
             {
                 _context.Entry(provider).Reload();
                 return;
@@ -197,9 +203,11 @@ public class ProviderPresenter : ValidPresenter
                     break;
             }
 
-            if (providers != null)
+            if (providers != null && providers.Count >0)
             {
-                _viewProvider.ProviderBindingSource.DataSource = providers;
+                ResetPage();
+                TargetSource = providers;
+                NextPage();
             }
             else
             {
@@ -212,9 +220,10 @@ public class ProviderPresenter : ValidPresenter
         }
     }
 
-    public void Load()
+
+    protected override void Load(List<Provider> items)
     {
         _viewProvider.ProviderBindingSource.ResetBindings(true);
-        _viewProvider.ProviderBindingSource.DataSource = _context.Providers.Local.ToBindingList();
+        _viewProvider.ProviderBindingSource.DataSource = items;
     }
 }

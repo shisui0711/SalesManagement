@@ -1,12 +1,13 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using QLCHWF.Helpers;
 using QLCHWF.Models;
 using QLCHWF.Views;
 using QLCHWF.Views.Employee;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
-public class EmployeePresenter : ValidPresenter
+public class EmployeePresenter : PaginationPresenter<Employee>
 {
     private readonly IViewEmployee _viewEmployee;
     private readonly IAddEmployee _addEmployee;
@@ -18,7 +19,7 @@ public class EmployeePresenter : ValidPresenter
     private readonly AuthPresenter _auth;
 
 
-    public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee, IHistoryImport historyImport, IHistorySales historySales, IViewSalary viewSalary, MyAppContext context, AuthPresenter auth)
+    public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee, IHistoryImport historyImport, IHistorySales historySales, IViewSalary viewSalary, MyAppContext context, AuthPresenter auth):base(viewEmployee,context,20)
     {
         _viewEmployee = viewEmployee;
         _addEmployee = addEmployee;
@@ -31,7 +32,12 @@ public class EmployeePresenter : ValidPresenter
 
         _context.Employees.Load();
 
-        _viewEmployee.LoadEmployee += delegate { Load(); };
+        _viewEmployee.LoadEmployee += delegate
+        {
+            ResetPage();
+            TargetSource = _context.Employees.ToList();
+            NextPage();
+        };
         _viewEmployee.SearchEmployee += delegate { Search(); };
         _viewEmployee.RemoveEmployee += delegate { Remove(); };
         _viewEmployee.ShowAddEmployee += delegate { ShowAddForm(); };
@@ -194,7 +200,7 @@ public class EmployeePresenter : ValidPresenter
             employee.Phone = _addEmployee.Phone;
             employee.Address = _addEmployee.Address;
             employee.Salary = _addEmployee.Salary;
-            if (!IsValid(employee, _addEmployee))
+            if (!ValidationHelper.IsValid(employee, _addEmployee))
             {
                 return;
             }
@@ -232,7 +238,7 @@ public class EmployeePresenter : ValidPresenter
             employee.Phone = _updateEmployee.Phone;
             employee.Address = _updateEmployee.Address;
             employee.Salary = _updateEmployee.Salary;
-            if (!IsValid(employee, _updateEmployee))
+            if (!ValidationHelper.IsValid(employee, _updateEmployee))
             {
                 _context.Entry(employee).Reload();
                 return;
@@ -307,7 +313,9 @@ public class EmployeePresenter : ValidPresenter
 
             if (employees != null)
             {
-                _viewEmployee.EmployeeBindingSource.DataSource = employees;
+                ResetPage();
+                TargetSource = employees;
+                NextPage();
             }
             else
             {
@@ -320,9 +328,10 @@ public class EmployeePresenter : ValidPresenter
         }
     }
 
-    public void Load()
+
+    protected override void Load(List<Employee> items)
     {
         _viewEmployee.EmployeeBindingSource.ResetBindings(true);
-        _viewEmployee.EmployeeBindingSource.DataSource = _context.Employees.Local.ToBindingList();
+        _viewEmployee.EmployeeBindingSource.DataSource = items;
     }
 }

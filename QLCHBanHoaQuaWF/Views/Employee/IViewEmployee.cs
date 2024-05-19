@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.Employee;
 
-public interface IViewEmployee :IViewBase
+public interface IViewEmployee :IViewBase,IViewPagination
 {
     public string SearchText { get; set; }
     public int OptionIndex { get; set; }

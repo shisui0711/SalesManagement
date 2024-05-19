@@ -7,11 +7,12 @@ using QLCHWF.Views;
 using QLCHWF.Views.User;
 using System.Security.Cryptography;
 using System.Text;
+using QLCHWF.Helpers;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters
 {
-    public class AuthPresenter : ValidPresenter
+    public class AuthPresenter:PaginationPresenter<User>
     {
         public static User User { get; private set; }
         private readonly IViewLogin _viewLogin;
@@ -22,7 +23,7 @@ namespace QLCHWF.Presenters
         private readonly IChangePassword _changePassword;
         private readonly MyAppContext _context;
         private readonly IConfiguration _configuration;
-        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IAddUser addUser, IUpdatePassword updatePassword,IChangePassword changePassword, MyAppContext context, IConfiguration configuration)
+        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IAddUser addUser, IUpdatePassword updatePassword,IChangePassword changePassword, MyAppContext context, IConfiguration configuration):base(viewUser,context,20)
         {
             _viewLogin = viewLogin;
             _viewMain = viewMain;
@@ -33,13 +34,16 @@ namespace QLCHWF.Presenters
             _context = context;
             _configuration = configuration;
 
-            _context.Users.Load();
-
             _viewLogin.LoginEvent += delegate { Login(); };
 
             _viewUser.ShowChangePassword += delegate { ShowChangPassword(); };
             _viewUser.SearchUser += delegate { SearchUser(); };
-            _viewUser.LoadUser += delegate { LoadUser(); };
+            _viewUser.LoadUser += delegate
+            {
+                ResetPage();
+                TargetSource = _context.Users.ToList();
+                NextPage();
+            };
             _viewUser.LockUser += delegate { LockUser(); };
             _viewUser.UnlockUser += delegate { UnlockUser(); };
             _viewUser.ShowAddUser += delegate { ShowAddUser(); };
@@ -70,7 +74,7 @@ namespace QLCHWF.Presenters
                 user.Password = _addUser.Password;
                 user.EmployeeID = _addUser.EmployeeID;
                 user.RoleID = _addUser.RoleID;
-                if (!IsValid(user,_addUser))
+                if (!ValidationHelper.IsValid(user,_addUser))
                 {
                     return;
                 }
@@ -268,11 +272,6 @@ namespace QLCHWF.Presenters
             userTarget.Lock = false;
             _context.SaveChanges();
         }
-        private void LoadUser()
-        {
-            _viewUser.UserBindingSource.ResetBindings(true);
-            _viewUser.UserBindingSource.DataSource = _context.Users.Local.ToBindingList();
-        }
         private void SearchUser()
         {
             List<User> users = null;
@@ -280,7 +279,9 @@ namespace QLCHWF.Presenters
                 .Where(u => u.Employee.EmployeeName.Contains(_viewUser.SearchText)).ToList();
             if (users != null && users.Count > 0)
             {
-                _viewUser.UserBindingSource.DataSource = users;
+                TargetSource = users;
+                ResetPage();
+                NextPage();
             }
         }
         private void ShowChangPassword()
@@ -311,5 +312,10 @@ namespace QLCHWF.Presenters
             }
         }
 
+        protected override void Load(List<User> items)
+        {
+            _viewUser.UserBindingSource.ResetBindings(true);
+            _viewUser.UserBindingSource.DataSource = items;
+        }
     }
 }
