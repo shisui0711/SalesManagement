@@ -129,9 +129,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(145)))), ((int)(((byte)(250)))));
             this.label1.Location = new System.Drawing.Point(38, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(253, 23);
+            this.label1.Size = new System.Drawing.Size(332, 23);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Quản lý cửa hàng bán hoa quả";
+            this.label1.Text = "Quản lý cửa hàng bán đồ điện dân dụng";
             // 
             // btnMinimize
             // 

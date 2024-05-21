@@ -1,4 +1,4 @@
-﻿namespace QLCHWF;
+﻿namespace QLCHWF.Helpers;
 
 public static class DateTimeHelper
 {

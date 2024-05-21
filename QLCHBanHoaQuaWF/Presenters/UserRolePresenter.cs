@@ -3,6 +3,7 @@ using QLCHWF.Helpers;
 using QLCHWF.Models;
 using QLCHWF.Views.UserRole;
 using System.ComponentModel;
+using QLCHWF.IRepository;
 
 namespace QLCHWF.Presenters;
 
@@ -11,12 +12,14 @@ public class UserRolePresenter
     private readonly IViewUserRole _viewUserRole;
     private readonly IAddUserRole _addUserRole;
     private readonly IUpdateUserRole _updateUserRole;
+    private readonly IUserRoleRepository _userRoleRepository;
     private readonly MyAppContext _context;
-    public UserRolePresenter(IViewUserRole viewUserRole, IAddUserRole addUserRole, IUpdateUserRole updateUserRole, MyAppContext context)
+    public UserRolePresenter(IViewUserRole viewUserRole, IAddUserRole addUserRole, IUpdateUserRole updateUserRole, MyAppContext context,IUserRoleRepository userRoleRepository)
     {
         _viewUserRole = viewUserRole;
         _addUserRole = addUserRole;
         _updateUserRole = updateUserRole;
+        _userRoleRepository = userRoleRepository;
         _context = context;
 
         _context.UserRoles.Load();
@@ -74,86 +77,58 @@ public class UserRolePresenter
         {
             return;
         }
-
-        using (var transaction = _context.Database.BeginTransaction())
+        Permission permission = new Permission();
+        foreach (var item in _addUserRole.PermissionSelected.CheckedItems)
         {
-            try
+            var property = typeof(Permission).GetProperties().Where(x =>
             {
-                _context.UserRoles.Add(userRole);
-                Permission permission = new Permission();
-                permission.UserRole = userRole;
-                foreach (var item in _addUserRole.PermissionSelected.CheckedItems)
+                var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
+                if (displayNamAttribute != null)
                 {
-                    var property = typeof(Permission).GetProperties().Where(x =>
-                    {
-                        var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
-                        if (displayNamAttribute != null)
-                        {
-                            return displayNamAttribute.DisplayName == item.ToString();
-                        }
-
-                        return false;
-                    }).FirstOrDefault();
-                    if (property != null)
-                    {
-
-                        property.SetValue(permission, true);
-
-                    }
+                    return displayNamAttribute.DisplayName == item.ToString();
                 }
 
-                _context.Permissions.Add(permission);
-                _context.SaveChanges();
-                transaction.Commit();
-                _addUserRole.ShowMessage(@"Thêm thành công");
-            }
-            catch (Exception e)
+                return false;
+            }).FirstOrDefault();
+            if (property != null)
             {
-                transaction.Rollback();
+
+                property.SetValue(permission, true);
+
             }
         }
+        _userRoleRepository.AddUserRoleWithPermission(userRole,permission);
+        _addUserRole.ShowMessage(@"Thêm thành công");
     }
 
     public void Update()
     {
-        UserRole userRole = _context.UserRoles.Find(_updateUserRole.RoleID);
+        UserRole userRole = _userRoleRepository.GetById(_updateUserRole.RoleID);
         if (!ValidationHelper.IsValid(userRole, _updateUserRole))
         {
             return;
         }
-
-        using (var transaction = _context.Database.BeginTransaction())
+        Permission permission = _userRoleRepository.GetPermission(userRole.Permission.PermissionID);
+        for (int i = 0; i < _updateUserRole.PermissionSelected.Items.Count; i++)
         {
-            try
+            var property = typeof(Permission).GetProperties().Where(x =>
             {
-                Permission permission = _context.Permissions.Find(userRole.Permission.PermissionID);
-                for(int i =0; i < _updateUserRole.PermissionSelected.Items.Count; i++)
+                var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
+                if (displayNamAttribute != null)
                 {
-                    var property = typeof(Permission).GetProperties().Where(x =>
-                    {
-                        var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
-                        if (displayNamAttribute != null)
-                        {
-                            return displayNamAttribute.DisplayName == _updateUserRole.PermissionSelected.Items[i].ToString();
-                        }
-
-                        return false;
-                    }).FirstOrDefault();
-                    if (property != null)
-                    {
-                        bool value = _updateUserRole.PermissionSelected.GetItemChecked(i);
-                        property.SetValue(permission, value);
-                    }
+                    return displayNamAttribute.DisplayName == _updateUserRole.PermissionSelected.Items[i].ToString();
                 }
-                _context.SaveChanges();
-                transaction.Commit();
-                _updateUserRole.ShowMessage(@"Sửa thành công");
-            }
-            catch (Exception e)
+
+                return false;
+            }).FirstOrDefault();
+            if (property != null)
             {
-                transaction.Rollback();
+                bool value = _updateUserRole.PermissionSelected.GetItemChecked(i);
+                property.SetValue(permission, value);
             }
         }
+        _userRoleRepository.UpdatePermission(permission);
+        _updateUserRole.ShowMessage(@"Sửa thành công");
     }
 
     public void Remove()

@@ -1,11 +1,9 @@
 ﻿using OfficeOpenXml;
 using System.Data;
-using System.Drawing.Drawing2D;
-using System.IO;
 
-namespace QLCHWF;
+namespace QLCHWF.Extensions;
 
-public static class MyExtensionMethods
+public static class ExcelExtension
 {
     public static void ExportToExcel(this DataGridView dataGridView, string filePath)
     {
@@ -20,7 +18,16 @@ public static class MyExtensionMethods
                     {
                         continue;
                     }
-                    worksheet.Cells[i + 2, j + 1].Value = dataGridView.Rows[i].Cells[j].Value.ToString();
+
+                    if (dataGridView.Rows[i].Cells[j].Value == null)
+                    {
+                        worksheet.Cells[i + 2, j + 1].Value = string.Empty;
+                    }
+                    else
+                    {
+                        worksheet.Cells[i + 2, j + 1].Value = dataGridView.Rows[i].Cells[j].Value.ToString();
+                    }
+                   
                 }
             }
             for (int i = 0; i < dataGridView.Columns.Count; i++)
@@ -71,15 +78,5 @@ public static class MyExtensionMethods
 
             dataGridView.DataSource = dataTable;
         }
-    }
-    public static void SetBorderRadius(this Control control, int borderRadius)
-    {
-        GraphicsPath path = new GraphicsPath();
-        path.AddArc(0, 0, borderRadius, borderRadius, 180, 90);
-        path.AddArc(control.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
-        path.AddArc(control.Width - borderRadius, control.Height - borderRadius, borderRadius, borderRadius, 0, 90);
-        path.AddArc(0, control.Height - borderRadius, borderRadius, borderRadius, 90, 90);
-
-        control.Region = new Region(path);
     }
 }

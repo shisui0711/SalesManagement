@@ -14,7 +14,7 @@ namespace QLCHWF.Models
         [Column(TypeName = "nvarchar")]
         [StringLength(30)]
         public string EmployeeName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Email không được để trống")]
         [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng email")]
         [StringLength(50)]
         public string Email { get; set; }

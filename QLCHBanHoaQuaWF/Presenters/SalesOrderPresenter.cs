@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
 using QLCHWF.CustomMessageBox;
+using QLCHWF.IRepository;
 using QLCHWF.Models;
 using QLCHWF.Views;
 using QLCHWF.Views.ImportOrder;
@@ -20,9 +21,15 @@ namespace QLCHWF.Presenters
         private readonly IViewMain _viewMain;
         private readonly MyAppContext _context;
         private Dictionary<Product, int> productOrdered;
+        private readonly ISalesOrderRepository _salesOrderRepository;
+        //private readonly IEmployeeRepository _employeeRepository;
+        //private readonly ICustomerRepository _customerRepository;
+        private IAppInfoRepository _appInfoRepository;
         private List<Product> targetSource;
 
-        public SalesOrderPresenter(IViewSalesOrder viewSalesOrder, IAddSalesOrder addSalesOrder, IReportSalesOrder report, IDetailSalesOrder detailSales, IViewMain viewMain, MyAppContext context)
+        public SalesOrderPresenter(IViewSalesOrder viewSalesOrder, IAddSalesOrder addSalesOrder,
+            IReportSalesOrder report, IDetailSalesOrder detailSales, IViewMain viewMain,
+            ISalesOrderRepository salesOrderRepository,IAppInfoRepository appInfoRepository, MyAppContext context)
         {
             productOrdered = new Dictionary<Product, int>();
             _viewMain = viewMain;
@@ -30,15 +37,22 @@ namespace QLCHWF.Presenters
             _addSalesOrder = addSalesOrder;
             _report = report;
             _detailSales = detailSales;
+            _salesOrderRepository = salesOrderRepository;
+            _appInfoRepository = appInfoRepository;
             _context = context;
             _context.SalesOrders.Load();
 
+            #region Handler Event for ViewSalesOrder
             _viewSalesOrder.ShowAdd += delegate { ShowAddFrom(); };
             _viewSalesOrder.RemoveSalesOrder += delegate { Remove(); };
             _viewSalesOrder.LoadSalesOrder += delegate { Load(); };
             _viewSalesOrder.SearchSalesOrder += delegate { Search(); };
             _viewSalesOrder.ShowReport += delegate { ShowReport(); };
             _viewSalesOrder.ShowDetail += delegate { ShowDetail(); };
+            #endregion
+
+
+            #region Handler Event for AddSalesOrder
 
             _addSalesOrder.RemoveProduct += RemoveProduct;
             _addSalesOrder.LoadCustomer += delegate { LoadCustomer(); };
@@ -52,9 +66,15 @@ namespace QLCHWF.Presenters
             _addSalesOrder.SearchProduct += delegate { SearchProduct(); };
             _addSalesOrder.AddSalesOrder += delegate { Add(); };
             _addSalesOrder.NextPage += delegate { NextPage(); };
-            _addSalesOrder.PreviousPage += delegate { PreviousPage(); };    
+            _addSalesOrder.PreviousPage += delegate { PreviousPage(); };  
+
+            #endregion
+
+            #region Handler Event for Report
 
             _report.LoadReport += delegate { LoadReport(); };
+
+            #endregion
         }
 
         void ShowDetail()
@@ -65,31 +85,18 @@ namespace QLCHWF.Presenters
                 return;
             }
             SalesOrder curentOrder = _viewSalesOrder.OrderBindingSource.Current as SalesOrder;
-            SalesOrder order = _context.SalesOrders.Include(o => o.DetailSalesOrders).First(o => o.OrderID == curentOrder.OrderID);
+            SalesOrder order = _salesOrderRepository.GetOrderWithDetail(curentOrder.OrderID);
             _detailSales.DetailOrderBindingSource.DataSource = order.DetailSalesOrders.ToList();
             Form form = (Form)_detailSales;
             form.ShowDialog();
         }
         void LoadReport()
         {
-            AppInfo info = _context.AppInfos.FirstOrDefault();
+            AppInfo info = _appInfoRepository.GetAll().FirstOrDefault();
             if (info == null) { return; }
             SalesOrder current = _viewSalesOrder.OrderBindingSource.Current as SalesOrder;
-            SalesOrder order = _context.SalesOrders.Find(current.OrderID);
-            var orderData = (from s in _context.SalesOrders
-                             join c in _context.Customers on s.CustomerID equals c.CustomerID
-                             where s.OrderID == order.OrderID
-                             select new
-                             {
-                                 DateCreated = s.OrderDate,
-                                 OrderID = s.OrderID,
-                                 CustomerName = c.CustomerName,
-                                 CustomerPhone = c.Phone,
-                                 CustomerAddress = c.Address,
-                                 TotalPrice = s.TotalPrice,
-                                 PurchasePrice = s.PurchasePrice,
-                                 ChangePrice = s.ChangePrice
-                             }).FirstOrDefault();
+            //SalesOrder order = _salesOrderRepository.GetById(current.OrderID);
+            OrderData orderData = _salesOrderRepository.GetOrderData(current.OrderID);
             var orderFullData = new
             {
                 DateCreated = orderData.DateCreated,
@@ -105,17 +112,7 @@ namespace QLCHWF.Presenters
                 ChangePrice = orderData.ChangePrice.ToString("C0")
             };
 
-            var detailData = from d in _context.DetailSalesOrders
-                             join p in _context.Products
-                                 on d.ProductID equals p.ProductID
-                             where d.OrderID == order.OrderID
-                             select new
-                             {
-                                 ProductName = p.ProductName,
-                                 Quantity = d.Quantity,
-                                 UnitPrice = d.UnitPrice.ToString("C0"),
-                                 TotalPrice = d.TotalPrice.ToString("C0")
-                             };
+            OrderDetailData detailData = _salesOrderRepository.GetOrderDetailData(current.OrderID);
             _report.ReportViewer.LocalReport.ReportPath = "./Reports/ReportSalesOrder.rdlc";
             ReportDataSource detailDataSource = new ReportDataSource();
             detailDataSource.Name = "DataSetDetailSalesOrder";

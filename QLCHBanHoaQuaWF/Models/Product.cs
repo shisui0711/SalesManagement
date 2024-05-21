@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using QLCHWF.Properties;
 
 namespace QLCHWF.Models
 {
@@ -16,7 +17,7 @@ namespace QLCHWF.Models
         public string? CalculationUnit { get; set; }
 
         public int Inventory { get; set; } = 0;
-        public byte[]? ImageData { get; set; }
+        public byte[]? ImageData { get; set; } = DefaultImage();
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;
         [Column(TypeName = "decimal(10,2)")]
@@ -36,6 +37,15 @@ namespace QLCHWF.Models
         public override string ToString()
         {
             return ProductName;
+        }
+
+        private static byte[] DefaultImage()
+        {
+            using (MemoryStream ms =new MemoryStream())
+            {
+                Resources.upload.Save(ms, Resources.upload.RawFormat);
+                return ms.ToArray();
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using QLCHWF.Helpers;
+using QLCHWF.IRepository;
 using QLCHWF.Models;
 using QLCHWF.Views.ImportOrder;
 using QLCHWF.Views.Product;
@@ -9,26 +11,24 @@ namespace QLCHWF.Presenters;
 
 public class ProductPresenter : PaginationPresenter<Product>
 {
-    private IViewProduct _viewProduct;
-    private IAddProduct _addProduct;
-    private IUpdateProduct _updateProduct;
-    private MyAppContext _context;
-    public ProductPresenter(IViewProduct viewProduct, IAddProduct addProduct, IUpdateProduct updateProduct, MyAppContext context):base(viewProduct,context,6)
+    private readonly IViewProduct _viewProduct;
+    private readonly IAddProduct _addProduct;
+    private readonly IUpdateProduct _updateProduct;
+    private readonly IMapper _mapper;
+    private readonly IProductRepository _productRepository;
+    public ProductPresenter(IViewProduct viewProduct, IAddProduct addProduct, IUpdateProduct updateProduct, IMapper mapper,IProductRepository productRepository):base(viewProduct,productRepository,6)
     {
         _viewProduct = viewProduct;
         _addProduct = addProduct;
         _updateProduct = updateProduct;
-        _context = context;
+        _mapper = mapper;
+        _productRepository = productRepository;
 
-        _context.Products.Load();
         _viewProduct.ShowAddProduct += delegate { ShowAddForm(); };
         _viewProduct.ShowUpdateProduct += delegate { ShowUpdateForm(); };
         _viewProduct.LoadProduct += delegate
         {
-            ResetPage();
-            _viewProduct.CurrentPage = 0;
-            TargetSource = _context.Products.ToList();
-            NextPage();
+            RenewItems();
         };
         _viewProduct.RemoveProduct += delegate { Remove(); };
         _viewProduct.SearchProduct += delegate { Search(); };
@@ -44,6 +44,7 @@ public class ProductPresenter : PaginationPresenter<Product>
             _viewProduct.ShowMessage(@"Bạn không có quyền này");
             return;
         }
+        _addProduct.Reset();
         if (_addProduct.GetType().IsAssignableTo(typeof(Form)))
         {
             var form = _addProduct as Form;
@@ -83,20 +84,17 @@ public class ProductPresenter : PaginationPresenter<Product>
     {
         try
         {
-            var product = new Product();
-            product.ProductName = _addProduct.ProductName;
-            product.CalculationUnit = _addProduct.CalculationUnit;
-            product.ImageData = _addProduct.ImageData;
-            product.ImportUnitPrice = _addProduct.ImportUnitPrice;
-            product.UnitPrice = _addProduct.UnitPrice;
-            product.Description = _addProduct.Description;
+            Product product = _mapper.Map<Product>(_addProduct);
+            if (product.ImageData.Length == 0)
+            {
+                product.ImageData = ConverterHelper.BitmapToBytes(Properties.Resources.upload);
+            }
             if (!ValidationHelper.IsValid(product, _addProduct))
             {
                 return;
             }
 
-            _context.Products.Add(product);
-            _context.SaveChanges();
+            _productRepository.Add(product);
             _viewProduct.ProductBindingSource.EndEdit();
             _addProduct.ShowMessage(@"Thêm thành công");
         }
@@ -110,22 +108,24 @@ public class ProductPresenter : PaginationPresenter<Product>
     {
         try
         {
-            Product product = new Product();
-            product.ProductID = _updateProduct.ProductID;
-            product.ProductName = _updateProduct.ProductName;
-            product.CalculationUnit = _updateProduct.CalculationUnit;
-            product.ImageData = _updateProduct.ImageData;
-            product.ImportUnitPrice = _updateProduct.ImportUnitPrice;
-            product.UnitPrice = _updateProduct.UnitPrice;
-            product.Description = _updateProduct.Description;
+            Product productExist = _productRepository.GetById(_updateProduct.ProductID);
+            if (productExist == null)
+            {
+                _viewProduct.ShowMessage("Không tìm thấy mặt hàng cần cập nhật");
+                return;
+            }
+
+            Product product = _mapper.Map<Product>(_updateProduct);
+            if (product.ImageData.Length == 0)
+            {
+                product.ImageData = ConverterHelper.BitmapToBytes(Properties.Resources.upload);
+            }
             if (!ValidationHelper.IsValid(product, _updateProduct))
             {
                 return;
             }
-            Product productExist = _context.Products.Find(product.ProductID);
             product.Inventory = productExist.Inventory;
-            _context.Entry(productExist).CurrentValues.SetValues(product);
-            _context.SaveChanges();
+            _productRepository.Update(productExist, productExist.ProductID);
             _viewProduct.ProductBindingSource.EndEdit();
             _updateProduct.ShowMessage(@"Cập nhật thành cộng");
         }
@@ -148,21 +148,15 @@ public class ProductPresenter : PaginationPresenter<Product>
             _viewProduct.ShowMessage(@"Không tìm thấy bản ghi đã chọn");
             return;
         }
-        using (var transaction = _context.Database.BeginTransaction())
+
+        if (_productRepository.Remove(deleted))
         {
-            try
-            {
-                _context.Products.Remove(deleted);
-                _context.SaveChanges();
-                transaction.Commit();
-                _viewProduct.ProductBindingSource.Remove(deleted);
-                _viewProduct.ShowMessage(@"Xóa thành công");
-            }
-            catch (Exception e)
-            {
-                transaction.Rollback();
-                _viewProduct.ShowMessage($@"Xóa thất bại: {e.Message}");
-            }
+            _viewProduct.ProductBindingSource.Remove(deleted);
+            _viewProduct.ShowMessage(@"Xóa thành công");
+        }
+        else
+        {
+            _viewProduct.ShowMessage("Xóa thất bại");
         }
     }
 
@@ -170,7 +164,7 @@ public class ProductPresenter : PaginationPresenter<Product>
     {
         ResetPage();
         _viewProduct.CurrentPage = 0;
-        TargetSource = _context.Products.Where(p => p.ProductName.Contains(_viewProduct.SearchText)).ToList();
+        TargetSource = _productRepository.GetSome(p => p.ProductName.Contains(_viewProduct.SearchText)).ToList();
         NextPage();
     }
 

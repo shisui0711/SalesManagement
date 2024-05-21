@@ -5,8 +5,6 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QLCHWF", "QLCHBanHoaQuaWF\QLCHWF.csproj", "{6ED3EB0E-49B7-4765-BE93-0DAA73D9C703}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QLCHWF.Test", "QLCHWF.Test\QLCHWF.Test.csproj", "{8D738D77-9861-4EF5-9A05-81A2890B0783}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{6ED3EB0E-49B7-4765-BE93-0DAA73D9C703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ED3EB0E-49B7-4765-BE93-0DAA73D9C703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ED3EB0E-49B7-4765-BE93-0DAA73D9C703}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D738D77-9861-4EF5-9A05-81A2890B0783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D738D77-9861-4EF5-9A05-81A2890B0783}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D738D77-9861-4EF5-9A05-81A2890B0783}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D738D77-9861-4EF5-9A05-81A2890B0783}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

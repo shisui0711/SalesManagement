@@ -29,7 +29,7 @@ namespace QLCHWF.Models
         public virtual DbSet<SalesOrder> SalesOrders { get; set; }
         public virtual DbSet<DetailImportOrder> DetailImportOrders { get; set; }
         public virtual DbSet<DetailSalesOrder> DetailSalesOrders { get; set; }
-        public virtual DbSet<AppInfo?> AppInfos { get; set; }
+        public virtual DbSet<AppInfo> AppInfos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

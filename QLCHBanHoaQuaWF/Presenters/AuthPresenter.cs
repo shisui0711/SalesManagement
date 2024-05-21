@@ -8,6 +8,7 @@ using QLCHWF.Views.User;
 using System.Security.Cryptography;
 using System.Text;
 using QLCHWF.Helpers;
+using QLCHWF.IRepository;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters
@@ -23,7 +24,7 @@ namespace QLCHWF.Presenters
         private readonly IChangePassword _changePassword;
         private readonly MyAppContext _context;
         private readonly IConfiguration _configuration;
-        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IAddUser addUser, IUpdatePassword updatePassword,IChangePassword changePassword, MyAppContext context, IConfiguration configuration):base(viewUser,context,20)
+        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IAddUser addUser, IUpdatePassword updatePassword,IChangePassword changePassword, MyAppContext context,IUserRepository userRepository,IConfiguration configuration):base(viewUser, userRepository, 20)
         {
             _viewLogin = viewLogin;
             _viewMain = viewMain;

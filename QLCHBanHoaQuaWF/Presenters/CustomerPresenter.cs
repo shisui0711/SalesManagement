@@ -5,7 +5,9 @@ using QLCHWF.Views;
 using QLCHWF.Views.Customer;
 using QLCHWF.Views.Product;
 using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using QLCHWF.Helpers;
+using QLCHWF.IRepository;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters
@@ -16,19 +18,19 @@ namespace QLCHWF.Presenters
         private readonly IAddCustomer _addCustomer;
         private readonly IUpdateCustomer _updateCustomer;
         private readonly IHistorySales _historySales;
-        private MyAppContext _context;
-        public CustomerPresenter(IViewCustomer viewCustomer, IAddCustomer addCustomer, IUpdateCustomer updateCustomer, IHistorySales historySales, MyAppContext context):base(viewCustomer,context,20)
+        private readonly IMapper _mapper;
+        private readonly ICustomerRepository _customerRepository;
+        public CustomerPresenter(IViewCustomer viewCustomer, IAddCustomer addCustomer, IUpdateCustomer updateCustomer, IHistorySales historySales, ICustomerRepository customerRepository, IMapper mapper):base(viewCustomer,customerRepository,20)
         {
             _viewCustomer = viewCustomer;
             _addCustomer = addCustomer;
             _updateCustomer = updateCustomer;
             _historySales = historySales;
-            _context = context;
+            _mapper = mapper;
+            _customerRepository = customerRepository;
             _viewCustomer.LoadCustomer += delegate
             {
-                ResetPage();
-                TargetSource = _context.Customers.ToList();
-                NextPage();
+                RenewItems();
             };
             _viewCustomer.RemoveCustomer += delegate { Remove(); };
             _viewCustomer.SearchCustomer += delegate { Search(); };
@@ -39,7 +41,6 @@ namespace QLCHWF.Presenters
             _addCustomer.AddCustomer += delegate { Add(); };
             _updateCustomer.UpdateCustomer += delegate { Update(); };
 
-            _context.Customers.Load();
         }
 
         void SalesHistory()
@@ -50,8 +51,7 @@ namespace QLCHWF.Presenters
                 return;
             }
             Customer currentCustomer = _viewCustomer.CustomerBindingSource.Current as Customer;
-            Customer customer = _context.Customers.Include(c => c.SalesOrders)
-                .First(c => c.CustomerID == currentCustomer.CustomerID);
+            Customer customer = _customerRepository.GetCustomerWithSalesOrder(currentCustomer.CustomerID);
             if (customer.SalesOrders.Count == 0)
             {
                 _viewCustomer.ShowMessage(@"Khách hàng này chưa mua hàng lần nào");
@@ -68,6 +68,7 @@ namespace QLCHWF.Presenters
                 _viewCustomer.ShowMessage(@"Bạn không có quyền này");
                 return;
             }
+            _addCustomer.Reset();
             var form = _addCustomer as Form;
             if (form != null)
             {
@@ -102,21 +103,17 @@ namespace QLCHWF.Presenters
         {
             try
             {
-                var customer = new Customer();
-                customer.CustomerName = _addCustomer.CustomerName;
-                customer.Email = _addCustomer.Email;
-                customer.Phone = _addCustomer.Phone;
-                customer.Address = _addCustomer.Address;
+                Customer customer = _mapper.Map<Customer>(_addCustomer);
                 if (!ValidationHelper.IsValid(customer, _addCustomer))
                 {
                     return;
                 }
 
-                _context.Customers.Add(customer);
-                _viewCustomer.CustomerBindingSource.EndEdit();
-                _context.SaveChanges();
+                _customerRepository.Add(customer);
                 _addCustomer.Reset();
+                _viewCustomer.CustomerBindingSource.EndEdit();
                 _addCustomer.ShowMessage("Thêm thành công");
+                RenewItems();
             }
             catch (Exception e)
             {
@@ -129,32 +126,22 @@ namespace QLCHWF.Presenters
         {
             try
             {
-                var customer = _context.Customers.Where(x=>x.CustomerID== _updateCustomer.CustomerID).FirstOrDefault();
-                if (customer == null)
+                Customer customerExist = _customerRepository.GetById(_updateCustomer.CustomerID);
+                if (customerExist == null)
                 {
                     _updateCustomer.ShowMessage("Không tìm thấy khách hàng cần cập nhật");
                     return;
                 }
-                customer.CustomerName = _updateCustomer.CustomerName;
-                customer.Email = _updateCustomer.Email;
-                customer.Phone = _updateCustomer.Phone;
-                customer.Address = _updateCustomer.Address;
-                if (!ValidationHelper.IsValid(customer, _updateCustomer))
+
+                customerExist = _mapper.Map<Customer>(_updateCustomer);
+                if (!ValidationHelper.IsValid(customerExist, _updateCustomer))
                 {
-                    try
-                    {
-                        _context.Entry(customer).Reload();
-                        return;
-                    }
-                    catch (Exception e)
-                    {
-
-                    }
+                   return;
                 }
-
+                _customerRepository.Update(customerExist,customerExist.CustomerID);
                 _viewCustomer.CustomerBindingSource.EndEdit();
-                _context.SaveChanges();
                 _updateCustomer.ShowMessage("Cập nhật thành công");
+                RenewItems();
             }
             catch (Exception e)
             {
@@ -179,21 +166,14 @@ namespace QLCHWF.Presenters
                     return;
                 }
 
-                using (var transaction = _context.Database.BeginTransaction())
+                if (_customerRepository.Remove(deleted))
                 {
-                    try
-                    {
-                        _context.Entry(deleted).State = EntityState.Deleted;
-                        _context.SaveChanges();
-                        transaction.Commit();
-                        _viewCustomer.CustomerBindingSource.Remove(deleted);
-                        _viewCustomer.ShowMessage("Xóa thành công");
-                    }
-                    catch (SqlException e)
-                    {
-                        transaction.Rollback();
-                        _viewCustomer.ShowMessage($"Xóa thất bại:{e.Message}");
-                    }
+                    _viewCustomer.ShowMessage("Xóa thành công");
+                    RenewItems();
+                }
+                else
+                {
+                    _viewCustomer.ShowMessage($"Xóa thất bại");
                 }
             }
             catch (Exception e)
@@ -210,17 +190,17 @@ namespace QLCHWF.Presenters
                 switch (_viewCustomer.OptionIndex)
                 {
                     case 1:
-                        customers = _context.Customers.Where(x =>
+                        customers = _customerRepository.GetSome(x =>
                             x.CustomerName.ToLower().Contains(_viewCustomer.SearchText.ToLower())).ToList();
                         break;
                     case 2:
-                        customers = _context.Customers.Where(x => x.Email.Contains(_viewCustomer.SearchText)).ToList();
+                        customers = _customerRepository.GetSome(x => x.Email.Contains(_viewCustomer.SearchText)).ToList();
                         break;
                     case 3:
-                        customers = _context.Customers.Where(x => x.Phone.Contains(_viewCustomer.SearchText)).ToList();
+                        customers = _customerRepository.GetSome(x => x.Phone.Contains(_viewCustomer.SearchText)).ToList();
                         break;
                     case 4:
-                        customers = _context.Customers.Where(x => x.Address.Contains(_viewCustomer.SearchText))
+                        customers = _customerRepository.GetSome(x => x.Address.Contains(_viewCustomer.SearchText))
                             .ToList();
                         break;
                     default:
@@ -243,11 +223,11 @@ namespace QLCHWF.Presenters
                 _viewCustomer.ShowMessage($"Lỗi: {e.Message}");
             }
         }
-
         protected override void Load(List<Customer> customers)
         {
             _viewCustomer.CustomerBindingSource.ResetBindings(true);
             _viewCustomer.CustomerBindingSource.DataSource = customers;
         }
+
     }
 }

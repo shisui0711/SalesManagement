@@ -51,8 +51,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewProduct));
             this.pnlControl = new Guna.UI2.WinForms.Guna2Panel();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.btnReload = new Guna.UI2.WinForms.Guna2Button();
@@ -64,6 +66,10 @@
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.btnPrevious = new Guna.UI2.WinForms.Guna2Button();
             this.dgvProduct = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calculationUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,10 +78,6 @@
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailImportOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailSalesOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlControl.SuspendLayout();
             this.pnlGridView.SuspendLayout();
             this.pnlPagination.SuspendLayout();
@@ -307,14 +309,14 @@
             this.detailSalesOrdersDataGridViewTextBoxColumn});
             this.dgvProduct.ContextMenuStrip = this.contextMenuStrip;
             this.dgvProduct.DataSource = this.productBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProduct.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProduct.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProduct.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvProduct.Location = new System.Drawing.Point(0, 0);
@@ -322,14 +324,14 @@
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.ReadOnly = true;
             this.dgvProduct.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProduct.RowHeadersVisible = false;
             this.dgvProduct.RowHeadersWidth = 55;
             this.dgvProduct.RowTemplate.Height = 100;
@@ -357,73 +359,6 @@
             this.dgvProduct.ThemeStyle.RowsStyle.Height = 100;
             this.dgvProduct.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvProduct.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // productIDDataGridViewTextBoxColumn
-            // 
-            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
-            this.productIDDataGridViewTextBoxColumn.HeaderText = "Mã mặt hàng";
-            this.productIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
-            this.productIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // productNameDataGridViewTextBoxColumn
-            // 
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "Tên mặt hàng";
-            this.productNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-            this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // calculationUnitDataGridViewTextBoxColumn
-            // 
-            this.calculationUnitDataGridViewTextBoxColumn.DataPropertyName = "CalculationUnit";
-            this.calculationUnitDataGridViewTextBoxColumn.HeaderText = "Đơn vị tính";
-            this.calculationUnitDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.calculationUnitDataGridViewTextBoxColumn.Name = "calculationUnitDataGridViewTextBoxColumn";
-            this.calculationUnitDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // inventoryDataGridViewTextBoxColumn
-            // 
-            this.inventoryDataGridViewTextBoxColumn.DataPropertyName = "Inventory";
-            this.inventoryDataGridViewTextBoxColumn.HeaderText = "Tồn kho";
-            this.inventoryDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.inventoryDataGridViewTextBoxColumn.Name = "inventoryDataGridViewTextBoxColumn";
-            this.inventoryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // imageDataDataGridViewImageColumn
-            // 
-            this.imageDataDataGridViewImageColumn.DataPropertyName = "ImageData";
-            this.imageDataDataGridViewImageColumn.HeaderText = "Ảnh";
-            this.imageDataDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.imageDataDataGridViewImageColumn.MinimumWidth = 6;
-            this.imageDataDataGridViewImageColumn.Name = "imageDataDataGridViewImageColumn";
-            this.imageDataDataGridViewImageColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Ghi chú";
-            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // detailImportOrdersDataGridViewTextBoxColumn
-            // 
-            this.detailImportOrdersDataGridViewTextBoxColumn.DataPropertyName = "DetailImportOrders";
-            this.detailImportOrdersDataGridViewTextBoxColumn.HeaderText = "DetailImportOrders";
-            this.detailImportOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.detailImportOrdersDataGridViewTextBoxColumn.Name = "detailImportOrdersDataGridViewTextBoxColumn";
-            this.detailImportOrdersDataGridViewTextBoxColumn.ReadOnly = true;
-            this.detailImportOrdersDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // detailSalesOrdersDataGridViewTextBoxColumn
-            // 
-            this.detailSalesOrdersDataGridViewTextBoxColumn.DataPropertyName = "DetailSalesOrders";
-            this.detailSalesOrdersDataGridViewTextBoxColumn.HeaderText = "DetailSalesOrders";
-            this.detailSalesOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.detailSalesOrdersDataGridViewTextBoxColumn.Name = "detailSalesOrdersDataGridViewTextBoxColumn";
-            this.detailSalesOrdersDataGridViewTextBoxColumn.ReadOnly = true;
-            this.detailSalesOrdersDataGridViewTextBoxColumn.Visible = false;
             // 
             // contextMenuStrip
             // 
@@ -463,6 +398,80 @@
             // 
             this.productBindingSource.DataSource = typeof(QLCHWF.Models.Product);
             // 
+            // productIDDataGridViewTextBoxColumn
+            // 
+            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.HeaderText = "Mã mặt hàng";
+            this.productIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
+            this.productIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // productNameDataGridViewTextBoxColumn
+            // 
+            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "Tên mặt hàng";
+            this.productNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // calculationUnitDataGridViewTextBoxColumn
+            // 
+            this.calculationUnitDataGridViewTextBoxColumn.DataPropertyName = "CalculationUnit";
+            this.calculationUnitDataGridViewTextBoxColumn.HeaderText = "Đơn vị tính";
+            this.calculationUnitDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.calculationUnitDataGridViewTextBoxColumn.Name = "calculationUnitDataGridViewTextBoxColumn";
+            this.calculationUnitDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // inventoryDataGridViewTextBoxColumn
+            // 
+            this.inventoryDataGridViewTextBoxColumn.DataPropertyName = "Inventory";
+            this.inventoryDataGridViewTextBoxColumn.HeaderText = "Tồn kho";
+            this.inventoryDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.inventoryDataGridViewTextBoxColumn.Name = "inventoryDataGridViewTextBoxColumn";
+            this.inventoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // imageDataDataGridViewImageColumn
+            // 
+            this.imageDataDataGridViewImageColumn.DataPropertyName = "ImageData";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle3.NullValue")));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.imageDataDataGridViewImageColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.imageDataDataGridViewImageColumn.HeaderText = "Ảnh";
+            this.imageDataDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.imageDataDataGridViewImageColumn.MinimumWidth = 6;
+            this.imageDataDataGridViewImageColumn.Name = "imageDataDataGridViewImageColumn";
+            this.imageDataDataGridViewImageColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Ghi chú";
+            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // detailImportOrdersDataGridViewTextBoxColumn
+            // 
+            this.detailImportOrdersDataGridViewTextBoxColumn.DataPropertyName = "DetailImportOrders";
+            this.detailImportOrdersDataGridViewTextBoxColumn.HeaderText = "DetailImportOrders";
+            this.detailImportOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.detailImportOrdersDataGridViewTextBoxColumn.Name = "detailImportOrdersDataGridViewTextBoxColumn";
+            this.detailImportOrdersDataGridViewTextBoxColumn.ReadOnly = true;
+            this.detailImportOrdersDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // detailSalesOrdersDataGridViewTextBoxColumn
+            // 
+            this.detailSalesOrdersDataGridViewTextBoxColumn.DataPropertyName = "DetailSalesOrders";
+            this.detailSalesOrdersDataGridViewTextBoxColumn.HeaderText = "DetailSalesOrders";
+            this.detailSalesOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.detailSalesOrdersDataGridViewTextBoxColumn.Name = "detailSalesOrdersDataGridViewTextBoxColumn";
+            this.detailSalesOrdersDataGridViewTextBoxColumn.ReadOnly = true;
+            this.detailSalesOrdersDataGridViewTextBoxColumn.Visible = false;
+            // 
             // frmViewProduct
             // 
             this.AcceptButton = this.btnSearch;
@@ -471,6 +480,7 @@
             this.ClientSize = new System.Drawing.Size(1301, 744);
             this.Controls.Add(this.pnlGridView);
             this.Controls.Add(this.pnlControl);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmViewProduct";
             this.Text = "frmViewProduct";
@@ -497,6 +507,10 @@
         private Guna.UI2.WinForms.Guna2ContextMenuStrip contextMenuStrip;
         private ToolStripMenuItem btnUpdate;
         private ToolStripMenuItem btnRemove;
+        private Guna.UI2.WinForms.Guna2Panel pnlPagination;
+        private Guna.UI2.WinForms.Guna2Button btnCurrentPage;
+        private Guna.UI2.WinForms.Guna2Button btnNext;
+        private Guna.UI2.WinForms.Guna2Button btnPrevious;
         private DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn calculationUnitDataGridViewTextBoxColumn;
@@ -505,9 +519,5 @@
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn detailImportOrdersDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn detailSalesOrdersDataGridViewTextBoxColumn;
-        private Guna.UI2.WinForms.Guna2Panel pnlPagination;
-        private Guna.UI2.WinForms.Guna2Button btnCurrentPage;
-        private Guna.UI2.WinForms.Guna2Button btnNext;
-        private Guna.UI2.WinForms.Guna2Button btnPrevious;
     }
 }

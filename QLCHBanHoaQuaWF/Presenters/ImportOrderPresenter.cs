@@ -3,9 +3,11 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
+using QLCHWF.IRepository;
 using QLCHWF.Models;
 using QLCHWF.Views.ImportOrder;
 using QLCHWF.Views.Product;
+using QLCHWF.Views.SalesOrder;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
@@ -18,7 +20,7 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
     private readonly IReportImportOrder _report;
     private readonly IDetailImportOrder _detailImport;
     private readonly MyAppContext _context;
-    public ImportOrderPresenter(IViewImportOrder viewImportOrder, IAddImportOrder addImportOrder, IReportImportOrder report, IDetailImportOrder detailImport, MyAppContext context):base(addImportOrder,context,6)
+    public ImportOrderPresenter(IViewImportOrder viewImportOrder, IAddImportOrder addImportOrder, IReportImportOrder report, IDetailImportOrder detailImport, MyAppContext context,IImportOrderRepository importOrderRepository,IProductRepository productRepository):base(addImportOrder, productRepository, 6)
     {
         _viewImportOrder = viewImportOrder;
         _addImportOrder = addImportOrder;
@@ -164,6 +166,12 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
         {
             try
             {
+                if (_addImportOrder.OrderedGridView.RowCount == 0)
+                {
+                    _addImportOrder.ShowMessage("Đơn hàng chưa có sản phẩm nào");
+                    transaction.Rollback();
+                    return;
+                }
                 ImportOrder importOrder = new ImportOrder();
                 importOrder.Employee = _context.Employees.Where(e => e.Email == AuthPresenter.User.Email).FirstOrDefault();
                 importOrder.Provider = _context.Providers.Find(_addImportOrder.ProviderID);

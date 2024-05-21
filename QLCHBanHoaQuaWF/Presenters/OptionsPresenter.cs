@@ -1,4 +1,6 @@
-﻿using QLCHWF.Models;
+﻿using AutoMapper;
+using QLCHWF.IRepository;
+using QLCHWF.Models;
 using QLCHWF.Views.Options;
 
 namespace QLCHWF.Presenters;
@@ -7,12 +9,14 @@ public class OptionsPresenter
 {
     private readonly IViewOptions _viewOptions;
     private readonly IAppInfo _appInfo;
-    private readonly MyAppContext _context;
-    public OptionsPresenter(IViewOptions viewOptions, MyAppContext context, IAppInfo appInfo)
+    private readonly IAppInfoRepository _appInfoRepository;
+    private readonly IMapper _mapper;
+    public OptionsPresenter(IViewOptions viewOptions,IMapper mapper,IAppInfoRepository appInfoRepository, IAppInfo appInfo)
     {
         _viewOptions = viewOptions;
         _appInfo = appInfo;
-        _context = context;
+        _mapper = mapper;
+        _appInfoRepository = appInfoRepository;
 
         _viewOptions.ShowAppInfo += delegate { ShowAppInfo(); };
 
@@ -23,7 +27,7 @@ public class OptionsPresenter
 
     void ShowAppInfo()
     {
-        AppInfo info = _context.AppInfos.FirstOrDefault();
+        AppInfo info = _appInfoRepository.GetAll().FirstOrDefault();
         if (info == null)
         {
             return;
@@ -39,24 +43,20 @@ public class OptionsPresenter
 
     void UpdateAppInfo()
     {
-        AppInfo info = _context.AppInfos.Find(_appInfo.AppName);
+        AppInfo info = _appInfoRepository.GetOne(x => x.AppName == _appInfo.AppName);
         if (info == null)
         {
             return;
         }
 
-        info.AppName = _appInfo.AppName;
-        info.Address = _appInfo.Address;
-        info.Phone = _appInfo.Phone;
-        info.Email = _appInfo.Email;
+        info = _mapper.Map<AppInfo>(_appInfo);
         try
         {
-            _context.SaveChanges();
+            _appInfoRepository.Update(info, info.AppName);    
             _appInfo.ShowMessage(@"Cập nhật thông tin thành công");
         }
         catch (Exception e)
         {
-            _context.Entry(info).Reload();
             _appInfo.ShowMessage(@"Dữ liệu không hợp lệ");
         }
     }

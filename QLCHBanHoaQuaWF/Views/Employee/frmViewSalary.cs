@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QLCHWF.CustomMessageBox;
+using QLCHWF.Extensions;
 
 namespace QLCHWF.Views.Employee
 {

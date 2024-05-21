@@ -121,7 +121,7 @@ namespace QLCHWF.Views.ImportOrder
             if (!Regex.IsMatch(cellValue ?? string.Empty, @"\d+") || int.Parse(cellValue) < 1)
             {
                 dgvProductSelect.Rows[e.RowIndex].Cells["QuantityColumn"].Value = _quantityBackup;
-                MessageBox.Show("Số lượng không hợp lệ", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MyMessageBox.Show("Số lượng không hợp lệ", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             var rowSeleted = dgvProductSelect.Rows[e.RowIndex];

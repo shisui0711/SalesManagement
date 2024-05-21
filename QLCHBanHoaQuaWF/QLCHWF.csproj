@@ -23,6 +23,7 @@
     <Content Include="K.ico" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="EPPlus" Version="7.0.1" />
     <PackageReference Include="Guna.Charts.WinForms" Version="1.0.9" />
@@ -88,6 +89,8 @@
   <ItemGroup>
     <Folder Include="Attributes\" />
     <Folder Include="IServices\" />
-    <Folder Include="Helpers\" />
+    <Folder Include="IRepository\" />
+    <Folder Include="Mapper\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
 </Project>

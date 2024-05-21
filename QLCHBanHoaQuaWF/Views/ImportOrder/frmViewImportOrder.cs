@@ -1,4 +1,6 @@
 ﻿using QLCHWF.CustomMessageBox;
+using QLCHWF.Extensions;
+using QLCHWF.Helpers;
 using QLCHWF.Presenters;
 
 namespace QLCHWF.Views.ImportOrder
