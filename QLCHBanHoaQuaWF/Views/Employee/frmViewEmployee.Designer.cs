@@ -432,11 +432,10 @@
             this.cboOptionSearch.Items.AddRange(new object[] {
             "Tìm kiếm theo",
             "Tên",
-            "Giới tính",
+            "Lương",
             "Email",
             "Số điện thoại",
-            "Địa chỉ",
-            "Ngày Sinh"});
+            "Địa chỉ"});
             this.cboOptionSearch.Location = new System.Drawing.Point(398, 13);
             this.cboOptionSearch.Name = "cboOptionSearch";
             this.cboOptionSearch.ShadowDecoration.CustomizableEdges = customizableEdges14;

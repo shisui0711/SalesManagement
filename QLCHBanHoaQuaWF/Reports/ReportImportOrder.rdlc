@@ -52,10 +52,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.51895cm</Width>
+                  <Width>4.70651cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.81738cm</Width>
+                  <Width>2.73825cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3.84937cm</Width>
@@ -245,7 +245,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Quantity</rd:DefaultName>
@@ -275,7 +277,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>UnitPrice</rd:DefaultName>
@@ -305,7 +309,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>TotalPrice</rd:DefaultName>
@@ -348,7 +354,7 @@
             <Top>0.60537cm</Top>
             <Left>1.0287cm</Left>
             <Height>1.2cm</Height>
-            <Width>12.95041cm</Width>
+            <Width>15.05884cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

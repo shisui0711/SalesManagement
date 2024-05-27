@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 using QLCHWF.Helpers;
 using QLCHWF.IRepository;
 using QLCHWF.Models;
 using QLCHWF.Views;
 using QLCHWF.Views.Employee;
-using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
 public class EmployeePresenter : PaginationPresenter<Employee>
@@ -22,7 +19,9 @@ public class EmployeePresenter : PaginationPresenter<Employee>
     private readonly AuthPresenter _auth;
 
 
-    public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee, IHistoryImport historyImport, IHistorySales historySales, IViewSalary viewSalary,IMapper mapper,IEmployeeRepository employeeRepository,AuthPresenter auth):base(viewEmployee,employeeRepository,20)
+    public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee,
+        IHistoryImport historyImport, IHistorySales historySales, IViewSalary viewSalary, IMapper mapper,
+        IEmployeeRepository employeeRepository, AuthPresenter auth) : base(viewEmployee, employeeRepository, 20)
     {
         _viewEmployee = viewEmployee;
         _addEmployee = addEmployee;
@@ -80,7 +79,12 @@ public class EmployeePresenter : PaginationPresenter<Employee>
             _viewEmployee.ShowMessage("Chưa bản ghi nào được chọn");
             return;
         }
-        Employee currentEmployee = _viewEmployee.EmployeeBindingSource.Current as Employee;
+        Employee? currentEmployee = (_viewEmployee.EmployeeBindingSource.Current as Employee);
+        if (currentEmployee == null)
+        {
+            _viewEmployee.ShowMessage("Chưa nhân viên nào được chọn");
+            return;
+        }
         Employee employee = _employeeRepository.GetEmployeeWithSalesOrder(currentEmployee.EmployeeID);
         if (employee.SalesOrders.Count == 0)
         {
@@ -89,7 +93,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
         }
         _historySales.SalesBindingSource.DataSource = employee.SalesOrders.ToList();
         Form form = (Form)_historySales;
-        form?.ShowDialog();
+        form.ShowDialog();
 
     }
 
@@ -100,7 +104,12 @@ public class EmployeePresenter : PaginationPresenter<Employee>
             _viewEmployee.ShowMessage(@"Chưa bản ghi nào được chọn");
             return;
         }
-        Employee currentEmployee = _viewEmployee.EmployeeBindingSource.Current as Employee;
+        Employee? currentEmployee = _viewEmployee.EmployeeBindingSource.Current as Employee;
+        if (currentEmployee == null)
+        {
+            _viewEmployee.ShowMessage("Chưa nhân viên nào được chọn");
+            return;
+        }
         Employee employee = _employeeRepository.GetEmployeeWithImportOrder(currentEmployee.EmployeeID);
         if (employee.ImportOrders.Count == 0)
         {
@@ -242,11 +251,15 @@ public class EmployeePresenter : PaginationPresenter<Employee>
     {
         try
         {
-            List<Employee> employees = null;
+            List<Employee>? employees = null;
             switch (_viewEmployee.OptionIndex)
             {
                 case 1:
                     employees = _employeeRepository.GetSome(x => x.EmployeeName.Contains(_viewEmployee.SearchText))
+                        .ToList();
+                    break;
+                case 2:
+                    employees = _employeeRepository.GetSome(x => x.Salary.ToString().Contains(_viewEmployee.SearchText))
                         .ToList();
                     break;
                 case 3:
@@ -256,10 +269,9 @@ public class EmployeePresenter : PaginationPresenter<Employee>
                     employees = _employeeRepository.GetSome(x => x.Phone.Contains(_viewEmployee.SearchText)).ToList();
                     break;
                 case 5:
-                    employees = _employeeRepository.GetSome(x => x.Address.Contains(_viewEmployee.SearchText)).ToList();
+                    employees = _employeeRepository.GetSome(x =>x.Address !=null && x.Address.Contains(_viewEmployee.SearchText)).ToList();
                     break;
-                default:
-                    break;
+                
             }
 
             if (employees != null)

@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using QLCHWF.Helpers;
 using QLCHWF.IRepository;
 using QLCHWF.Models;
-using QLCHWF.Views.ImportOrder;
 using QLCHWF.Views.Product;
-using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
 
@@ -48,7 +45,7 @@ public class ProductPresenter : PaginationPresenter<Product>
         if (_addProduct.GetType().IsAssignableTo(typeof(Form)))
         {
             var form = _addProduct as Form;
-            form.ShowDialog();
+            form?.ShowDialog();
         }
     }
 
@@ -77,7 +74,7 @@ public class ProductPresenter : PaginationPresenter<Product>
         if (_updateProduct.GetType().IsAssignableTo(typeof(Form)))
         {
             var form = _updateProduct as Form;
-            form.ShowDialog();
+            form?.ShowDialog();
         }
     }
     public void Add()
@@ -85,7 +82,7 @@ public class ProductPresenter : PaginationPresenter<Product>
         try
         {
             Product product = _mapper.Map<Product>(_addProduct);
-            if (product.ImageData.Length == 0)
+            if (product.ImageData == null || product.ImageData.Length == 0)
             {
                 product.ImageData = ConverterHelper.BitmapToBytes(Properties.Resources.upload);
             }
@@ -95,7 +92,7 @@ public class ProductPresenter : PaginationPresenter<Product>
             }
 
             _productRepository.Add(product);
-            _viewProduct.ProductBindingSource.EndEdit();
+            RenewItems();
             _addProduct.ShowMessage(@"Thêm thành công");
         }
         catch (Exception e)
@@ -116,7 +113,7 @@ public class ProductPresenter : PaginationPresenter<Product>
             }
 
             Product product = _mapper.Map<Product>(_updateProduct);
-            if (product.ImageData.Length == 0)
+            if (product.ImageData == null || product.ImageData.Length == 0)
             {
                 product.ImageData = ConverterHelper.BitmapToBytes(Properties.Resources.upload);
             }
@@ -125,8 +122,8 @@ public class ProductPresenter : PaginationPresenter<Product>
                 return;
             }
             product.Inventory = productExist.Inventory;
-            _productRepository.Update(productExist, productExist.ProductID);
-            _viewProduct.ProductBindingSource.EndEdit();
+            _productRepository.Update(product, product.ProductID);
+            RenewItems();
             _updateProduct.ShowMessage(@"Cập nhật thành cộng");
         }
         catch (Exception e)

@@ -1,6 +1,5 @@
 ﻿
 using System.Diagnostics;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using QLCHWF.Models;
 using QLCHWF.Views;
@@ -9,22 +8,24 @@ using System.Security.Cryptography;
 using System.Text;
 using QLCHWF.Helpers;
 using QLCHWF.IRepository;
-using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters
 {
     public class AuthPresenter:PaginationPresenter<User>
     {
-        public static User User { get; private set; }
+        public static User? User { get; private set; }
         private readonly IViewLogin _viewLogin;
         private readonly IViewMain _viewMain;
         private readonly IViewUser _viewUser;
         private readonly IAddUser _addUser;
         private readonly IUpdatePassword _updatePassword;
         private readonly IChangePassword _changePassword;
-        private readonly MyAppContext _context;
+        private readonly IChangeUserRole _changeUserRole;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
-        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IAddUser addUser, IUpdatePassword updatePassword,IChangePassword changePassword, MyAppContext context,IUserRepository userRepository,IConfiguration configuration):base(viewUser, userRepository, 20)
+        public AuthPresenter(IViewLogin viewLogin, IViewMain viewMain, IViewUser viewUser, IAddUser addUser,
+            IUpdatePassword updatePassword, IChangePassword changePassword, IChangeUserRole changeUserRole,
+            IUnitOfWork unitOfWork, IConfiguration configuration) : base(viewUser, unitOfWork.Users, 20)
         {
             _viewLogin = viewLogin;
             _viewMain = viewMain;
@@ -32,34 +33,60 @@ namespace QLCHWF.Presenters
             _addUser = addUser;
             _updatePassword = updatePassword;
             _changePassword = changePassword;
-            _context = context;
+            _changeUserRole = changeUserRole;
+            _unitOfWork = unitOfWork;
             _configuration = configuration;
 
             _viewLogin.LoginEvent += delegate { Login(); };
 
             _viewUser.ShowChangePassword += delegate { ShowChangPassword(); };
             _viewUser.SearchUser += delegate { SearchUser(); };
-            _viewUser.LoadUser += delegate
-            {
-                ResetPage();
-                TargetSource = _context.Users.ToList();
-                NextPage();
-            };
+            _viewUser.LoadUser += delegate{RenewItems();};
             _viewUser.LockUser += delegate { LockUser(); };
             _viewUser.UnlockUser += delegate { UnlockUser(); };
             _viewUser.ShowAddUser += delegate { ShowAddUser(); };
+            _viewUser.ShowChangeUserRole += delegate { ShowChangeUserRole(); };
 
             _addUser.AddUser += delegate {AddUser();};
             _updatePassword.UpdatePassowrd += delegate { UpdatePassword(); };
             _changePassword.ChangePassowrd += delegate { ChangePassword(); };
+            _changeUserRole.ChangeUserRole += delegate { ChangeUserRole(); };
         }
 
+        void ChangeUserRole()
+        {
+            User? user = _unitOfWork.Users.GetOne(x=>x.Email == _changeUserRole.Email);
+            if (user == null)
+            {
+                _changeUserRole.ShowMessage("Thất bại: Không tìm thấy email");
+                return;
+            }
+
+            user.RoleID = _changeUserRole.RoleID;
+            _unitOfWork.SaveChanges();
+            _changeUserRole.ShowMessage("Đổi vai trò thành công");
+
+        }
+        void ShowChangeUserRole()
+        {
+            User? current  = _viewUser.UserBindingSource.Current as User;
+            if (current == null)
+            {
+                _viewUser.ShowMessage("Không tìm thấy tài khoản được chọn");
+                return;
+            }
+
+            _changeUserRole.Email = current.Email;
+            _changeUserRole.UserRoleBindingSource.DataSource = _unitOfWork.UserRoles.GetAll();
+            var form = (Form)_changeUserRole;
+            form.ShowDialog();
+        }
         void ShowAddUser()
         {
-            _addUser.EmployeeBindingSource.DataSource = _context.Employees.ToList();
-            _addUser.RoleBindingSource.DataSource = _context.UserRoles.ToList();
+            _addUser.EmployeeBindingSource.DataSource = _unitOfWork.Employees.GetAll();
+            _addUser.RoleBindingSource.DataSource = _unitOfWork.UserRoles.GetAll();
             var form = (Form)_addUser;
-            form?.ShowDialog();
+            form.ShowDialog();
         }
 
         void AddUser()
@@ -70,7 +97,7 @@ namespace QLCHWF.Presenters
                 {
                     _addUser.ShowMessage("Mật khẩu không khớp. Vui lòng kiểm tra lại");
                 }
-                Models.User user = new User();
+                var user = new User();
                 user.Email = _addUser.Email;
                 user.Password = _addUser.Password;
                 user.EmployeeID = _addUser.EmployeeID;
@@ -81,8 +108,8 @@ namespace QLCHWF.Presenters
                 }
 
                 user.Password = GetSha256Hash(user.Password);
-                _context.Users.Add(user);
-                _context.SaveChanges();
+                _unitOfWork.Users.Add(user);
+                _unitOfWork.SaveChanges();
                 _addUser.ShowMessage("Tạo thành công");
             }
             catch (Exception e)
@@ -101,7 +128,11 @@ namespace QLCHWF.Presenters
             foreach (var permission in permissionTypes)
             {
                 string permissionName = permission.Name.Substring(7);
-                if (!(bool)permission.GetValue(AuthPresenter.User.UserRole.Permission))
+                if (permission.GetValue(AuthPresenter.User.UserRole.Permission) == null)
+                {
+                    continue;
+                }
+                if (!(bool)permission.GetValue(AuthPresenter.User.UserRole.Permission)!)
                 {
                     control.ChangeVisible("btn" + permissionName,false);
                 }
@@ -114,7 +145,7 @@ namespace QLCHWF.Presenters
 
         private bool ProductionLogin()
         {
-            var user = _context.Users.Include(u => u.UserRole).ThenInclude(u => u.Permission).Where(e => e.Email == _viewLogin.Username).FirstOrDefault();
+            var user = _unitOfWork.Users.GetUserWithPermission(_viewLogin.Username);
             if (user == null)
             {
                 _viewLogin.ShowMessage("Email không tồn tại!");
@@ -133,7 +164,7 @@ namespace QLCHWF.Presenters
                 return false;
             }
             user.LastLogin = DateTime.Now;
-            _context.SaveChanges();
+            _unitOfWork.SaveChanges();
             User = user;
             return true;
         }
@@ -142,9 +173,13 @@ namespace QLCHWF.Presenters
         {
             try
             {
-                string email = _configuration.GetSection("AccountDemo").GetSection("Email").Value;
-                string password = _configuration.GetSection("AccountDemo").GetSection("Password").Value;
-                string role = _configuration.GetSection("AccountDemo").GetSection("Role").Value;
+                string? email = _configuration.GetSection("AccountDemo").GetSection("Email").Value;
+                string? password = _configuration.GetSection("AccountDemo").GetSection("Password").Value;
+                string? role = _configuration.GetSection("AccountDemo").GetSection("Role").Value;
+                if (email == null || password == null || role == null)
+                {
+                    return false;
+                }
                 if (email == _viewLogin.Username && password == _viewLogin.Password)
                 {
                     UserRole userRole = new UserRole
@@ -156,7 +191,7 @@ namespace QLCHWF.Presenters
                         Email = email,
                         UserRole = userRole
                     };
-                    Permission? permission = new Permission();
+                    Permission permission = new Permission();
                     foreach (var propertyInfo in permission.GetType().GetProperties()
                                  .Where(x => x.PropertyType == typeof(bool)))
                     {
@@ -170,7 +205,7 @@ namespace QLCHWF.Presenters
 
                 return false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -198,8 +233,8 @@ namespace QLCHWF.Presenters
 
         public void Register(string email, string password, int roleId)
         {
-            UserRole userRole = _context.UserRoles.Find(roleId);
-            Employee employee = _context.Employees.Where(e => e.Email == email).FirstOrDefault();
+            UserRole? userRole = _unitOfWork.UserRoles.GetById(roleId);
+            Employee? employee = _unitOfWork.Employees.GetSome(e => e.Email == email).FirstOrDefault();
             if (employee != null && userRole != null)
             {
                 User user = new User();
@@ -207,14 +242,15 @@ namespace QLCHWF.Presenters
                 user.EmployeeID = employee.EmployeeID;
                 user.RoleID = userRole.RoleID;
                 user.Password = GetSha256Hash(password);
-                _context.Users.Add(user);
-                _context.SaveChanges();
+                _unitOfWork.Users.Add(user);
+                _unitOfWork.SaveChanges();
             }
         }
 
         public void UpdatePassword()
         {
-            Models.User user = _context.Users.Where(u => u.Email == _updatePassword.Email).FirstOrDefault();
+            
+            var user = _unitOfWork.Users.GetOne(u => u.Email == _updatePassword.Email);
             if (user != null)
             {
                 if (_updatePassword.Password != _updatePassword.Repassword)
@@ -224,14 +260,14 @@ namespace QLCHWF.Presenters
                 }
 
                 user.Password = GetSha256Hash(_updatePassword.Password);
-                _context.SaveChanges();
+                _unitOfWork.SaveChanges();
                 _viewLogin.ShowMessage(@"Đổi mật khẩu thành công");
             }
         }
 
         void ChangePassword()
         {
-            Models.User user = _context.Users.Where(u => u.Email == _changePassword.Email).FirstOrDefault();
+            var user = _unitOfWork.Users.GetOne(u => u.Email == _changePassword.Email);
             if (user != null)
             {
                 if (user.Password != GetSha256Hash(_changePassword.OldPassword))
@@ -247,38 +283,44 @@ namespace QLCHWF.Presenters
                 }
 
                 user.Password = GetSha256Hash(_changePassword.NewPassword);
-                _context.SaveChanges();
+                _unitOfWork.SaveChanges();
                 _viewLogin.ShowMessage(@"Đổi mật khẩu thành công");
             }
         }
         private void LockUser()
         {
-            Models.User userTarget = _viewUser.UserBindingSource.Current as User;
+            var userTarget = _viewUser.UserBindingSource.Current as User;
             if (userTarget == null)
             {
                 return;
             }
-            userTarget.Lock = true;
-            _context.SaveChanges();
+            
+            var user = _unitOfWork.Users.GetOne(x=>x.Email== userTarget.Email);
+            if (user != null)
+            {
+                user.Lock = true;
+                _unitOfWork.SaveChanges();
+            }
         }
 
         private void UnlockUser()
         {
-            Models.User userTarget = _viewUser.UserBindingSource.Current as User;
+            var userTarget = _viewUser.UserBindingSource.Current as User;
             if (userTarget == null)
             {
                 return;
             }
-
-            userTarget.Lock = false;
-            _context.SaveChanges();
+            var user = _unitOfWork.Users.GetOne(x => x.Email == userTarget.Email);
+            if (user != null) {
+                user.Lock = false;
+                _unitOfWork.SaveChanges();
+            }
         }
         private void SearchUser()
         {
-            List<User> users = null;
-            users = _context.Users.Include(u => u.Employee)
-                .Where(u => u.Employee.EmployeeName.Contains(_viewUser.SearchText)).ToList();
-            if (users != null && users.Count > 0)
+            var users = _unitOfWork.Users.GetUserInclue(u => u.Employee,
+                u => u.Employee.EmployeeName.Contains(_viewUser.SearchText)).ToList();
+            if (users.Count > 0)
             {
                 TargetSource = users;
                 ResetPage();

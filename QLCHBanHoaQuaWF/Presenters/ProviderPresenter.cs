@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using QLCHWF.Helpers;
 using QLCHWF.IRepository;
 using QLCHWF.Models;
 using QLCHWF.Views;
 using QLCHWF.Views.Provider;
-using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters;
 
@@ -16,15 +14,15 @@ public class ProviderPresenter: PaginationPresenter<Provider>
     private readonly IUpdateProvider _updateProvider;
     private readonly IHistoryImport _historyImport;
     private readonly IMapper _mapper;
-    private readonly IProviderRepository _providerRepository;
-    public ProviderPresenter(IViewProvider viewProvider, IAddProvider addProvider, IUpdateProvider updateProvider, IHistoryImport historyImport,IMapper mapper, IProviderRepository providerRepository):base(viewProvider,providerRepository,20)
+    private readonly IUnitOfWork _unitOfWork;
+    public ProviderPresenter(IViewProvider viewProvider, IAddProvider addProvider, IUpdateProvider updateProvider, IHistoryImport historyImport,IMapper mapper, IUnitOfWork unitOfWork):base(viewProvider,unitOfWork.Providers,20)
     {
         _viewProvider = viewProvider;
         _addProvider = addProvider;
         _updateProvider = updateProvider;
         _historyImport = historyImport;
         _mapper = mapper;
-        _providerRepository = providerRepository;
+        _unitOfWork = unitOfWork;
 
         _viewProvider.LoadProvider += delegate
         {
@@ -48,8 +46,13 @@ public class ProviderPresenter: PaginationPresenter<Provider>
             _viewProvider.ShowMessage(@"Chưa bản ghi nào được chọn");
             return;
         }
-        Provider currentProvider = _viewProvider.ProviderBindingSource.Current as Provider;
-        Provider provider = _providerRepository.GetProviderWithImportOrder(currentProvider.ProviderID);
+        Provider? currentProvider = _viewProvider.ProviderBindingSource.Current as Provider;
+        if (currentProvider == null)
+        {
+            _viewProvider.ShowMessage("Không tìm thấy nhà cung cấp được chọn");
+            return;
+        }
+        Provider provider = _unitOfWork.Providers.GetProviderWithImportOrder(currentProvider.ProviderID);
         if (provider.ImportOrders.Count == 0)
         {
             _viewProvider.ShowMessage(@"Chưa nhập đơn nào từ nhà cung cấp này");
@@ -57,7 +60,7 @@ public class ProviderPresenter: PaginationPresenter<Provider>
         }
         _historyImport.ImportBindingSource.DataSource = provider.ImportOrders.ToList();
         Form form = (Form)_historyImport;
-        form?.ShowDialog();
+        form.ShowDialog();
     }
     public void ShowAddForm()
     {
@@ -81,7 +84,7 @@ public class ProviderPresenter: PaginationPresenter<Provider>
             _viewProvider.ShowMessage(@"Bạn không có quyền này");
             return;
         }
-        Provider updated = _viewProvider.ProviderBindingSource.Current as Provider;
+        Provider? updated = _viewProvider.ProviderBindingSource.Current as Provider;
         if (updated == null)
         {
             return;
@@ -109,7 +112,8 @@ public class ProviderPresenter: PaginationPresenter<Provider>
                 return;
             }
 
-            _providerRepository.Add(provider);
+            _unitOfWork.Providers.Add(provider);
+            _unitOfWork.SaveChanges();
             _viewProvider.ProviderBindingSource.EndEdit();
             _viewProvider.ShowMessage("Thêm thành công");
             RenewItems();
@@ -124,7 +128,7 @@ public class ProviderPresenter: PaginationPresenter<Provider>
     {
         try
         {
-            Provider providerExist = _providerRepository.GetById(_updateProvider.ProviderID);
+            Provider? providerExist = _unitOfWork.Providers.GetById(_updateProvider.ProviderID);
             if (providerExist == null)
             {
                 _viewProvider.ShowMessage("Không tìm thấy nhà cung cấp cần cập nhật");
@@ -136,7 +140,8 @@ public class ProviderPresenter: PaginationPresenter<Provider>
                 return;
             }
 
-            _providerRepository.Update(providerExist, providerExist.ProviderID);
+            _unitOfWork.Providers.Update(providerExist, providerExist.ProviderID);
+            _unitOfWork.SaveChanges();
             _viewProvider.ProviderBindingSource.EndEdit();
             _viewProvider.ShowMessage("Cập nhật thành công");
             RenewItems();
@@ -161,7 +166,7 @@ public class ProviderPresenter: PaginationPresenter<Provider>
             return;
         }
 
-        if (_providerRepository.Remove(deleted))
+        if (_unitOfWork.Providers.Remove(deleted) && _unitOfWork.SaveChanges() != 0)
         {
             _viewProvider.ProviderBindingSource.Remove(deleted);
             _viewProvider.ShowMessage("Xóa thành công");
@@ -177,23 +182,21 @@ public class ProviderPresenter: PaginationPresenter<Provider>
     {
         try
         {
-            List<Provider> providers = null;
+            List<Provider>? providers = null;
             switch (_viewProvider.OptionIndex)
             {
                 case 1:
-                    providers = _providerRepository.GetSome(x => x.ProviderName.Contains(_viewProvider.SearchText))
+                    providers = _unitOfWork.Providers.GetSome(x => x.ProviderName.Contains(_viewProvider.SearchText))
                         .ToList();
                     break;
                 case 3:
-                    providers =_providerRepository.GetSome(x => x.Email.Contains(_viewProvider.SearchText)).ToList();
+                    providers =_unitOfWork.Providers.GetSome(x => x.Email.Contains(_viewProvider.SearchText)).ToList();
                     break;
                 case 4:
-                    providers = _providerRepository.GetSome(x => x.Phone.Contains(_viewProvider.SearchText)).ToList();
+                    providers = _unitOfWork.Providers.GetSome(x => x.Phone.Contains(_viewProvider.SearchText)).ToList();
                     break;
                 case 5:
-                    providers = _providerRepository.GetSome(x => x.Address.Contains(_viewProvider.SearchText)).ToList();
-                    break;
-                default:
+                    providers = _unitOfWork.Providers.GetSome(x => x.Address.Contains(_viewProvider.SearchText)).ToList();
                     break;
             }
 

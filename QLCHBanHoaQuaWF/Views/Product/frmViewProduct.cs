@@ -74,7 +74,7 @@ namespace QLCHWF.Views.Product
                 {
                     return int.Parse(btnCurrentPage.Text);
                 }
-                catch (Exception e)
+                catch
                 {
                     return 0;
                 }

@@ -18,7 +18,7 @@ namespace QLCHWF.Views.ImportOrder
             get { return txtProviderSearch.Text; }
             set { txtProviderSearch.Text = value; }
         }
-        public string? ProductSearchText
+        public string ProductSearchText
         {
             get { return txtSearch.Text; }
             set { txtSearch.Text = value; }
@@ -30,7 +30,7 @@ namespace QLCHWF.Views.ImportOrder
                 {
                     return decimal.Parse(lblTotalPrice.Text);
                 }
-                catch (Exception e)
+                catch
                 {
                     return 0;
                 }
@@ -47,7 +47,7 @@ namespace QLCHWF.Views.ImportOrder
                 {
                     return int.Parse(dgvProvider.CurrentRow.Cells[0].Value.ToString());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return 0;
                 }
@@ -102,7 +102,7 @@ namespace QLCHWF.Views.ImportOrder
                 if (e.ColumnIndex == dgvProductSelect.ColumnCount - 2)
                 {
                     var cells = dgvProductSelect.Rows[e.RowIndex].Cells;
-                    cells["QuantityColumn"].Value = int.Parse(cells["QuantityColumn"].Value.ToString()) + 1;
+                    cells["QuantityColumn"].Value = int.Parse(cells["QuantityColumn"].Value.ToString()!) + 1;
                     cells["TotalPriceColumn"].Value = decimal.Parse(cells["UnitPriceColumn"].Value.ToString()!) * int.Parse(cells["QuantityColumn"].Value.ToString());
                 }
 
@@ -225,7 +225,7 @@ namespace QLCHWF.Views.ImportOrder
                 {
                     return int.Parse(btnCurrentPage.Text);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return 0;
                 }

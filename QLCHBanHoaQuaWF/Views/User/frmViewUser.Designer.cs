@@ -77,6 +77,7 @@
             this.btnChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLock = new System.Windows.Forms.ToolStripMenuItem();
             this.btnUnlock = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnChangeUserRole = new System.Windows.Forms.ToolStripMenuItem();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlControl.SuspendLayout();
             this.pnlGridView.SuspendLayout();
@@ -432,7 +433,8 @@
             this.btnCopy,
             this.btnChangePassword,
             this.btnLock,
-            this.btnUnlock});
+            this.btnUnlock,
+            this.btnChangeUserRole});
             this.contextMenuStrip.Name = "guna2ContextMenuStrip1";
             this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
@@ -443,35 +445,47 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(202, 100);
+            this.contextMenuStrip.Size = new System.Drawing.Size(206, 134);
             // 
             // btnCopy
             // 
+            this.btnCopy.Image = global::QLCHWF.Properties.Resources.copy;
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(201, 24);
+            this.btnCopy.Size = new System.Drawing.Size(205, 26);
             this.btnCopy.Text = "Copy";
             // 
             // btnChangePassword
             // 
+            this.btnChangePassword.Image = global::QLCHWF.Properties.Resources.reload;
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(201, 24);
+            this.btnChangePassword.Size = new System.Drawing.Size(205, 26);
             this.btnChangePassword.Text = "Đổi mật khẩu";
             this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // btnLock
             // 
+            this.btnLock.Image = global::QLCHWF.Properties.Resources._lock;
             this.btnLock.Name = "btnLock";
-            this.btnLock.Size = new System.Drawing.Size(201, 24);
+            this.btnLock.Size = new System.Drawing.Size(205, 26);
             this.btnLock.Text = "Khóa tài khoản";
             this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
             // 
             // btnUnlock
             // 
             this.btnUnlock.BackColor = System.Drawing.Color.White;
+            this.btnUnlock.Image = global::QLCHWF.Properties.Resources.unlocked;
             this.btnUnlock.Name = "btnUnlock";
-            this.btnUnlock.Size = new System.Drawing.Size(201, 24);
+            this.btnUnlock.Size = new System.Drawing.Size(205, 26);
             this.btnUnlock.Text = "Mở khỏa tài khoản";
             this.btnUnlock.Click += new System.EventHandler(this.btnUnlock_Click);
+            // 
+            // btnChangeUserRole
+            // 
+            this.btnChangeUserRole.Image = global::QLCHWF.Properties.Resources.reload;
+            this.btnChangeUserRole.Name = "btnChangeUserRole";
+            this.btnChangeUserRole.Size = new System.Drawing.Size(205, 26);
+            this.btnChangeUserRole.Text = "Đổi vai trò";
+            this.btnChangeUserRole.Click += new System.EventHandler(this.btnChangeUserRole_Click);
             // 
             // userBindingSource
             // 
@@ -525,5 +539,6 @@
         private Guna.UI2.WinForms.Guna2Button btnCurrentPage;
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private Guna.UI2.WinForms.Guna2Button btnPrevious;
+        private ToolStripMenuItem btnChangeUserRole;
     }
 }

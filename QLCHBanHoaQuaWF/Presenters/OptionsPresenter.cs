@@ -27,7 +27,7 @@ public class OptionsPresenter
 
     void ShowAppInfo()
     {
-        AppInfo info = _appInfoRepository.GetAll().FirstOrDefault();
+        AppInfo? info = _appInfoRepository.GetAll().FirstOrDefault();
         if (info == null)
         {
             return;
@@ -55,7 +55,7 @@ public class OptionsPresenter
             _appInfoRepository.Update(info, info.AppName);    
             _appInfo.ShowMessage(@"Cập nhật thông tin thành công");
         }
-        catch (Exception e)
+        catch
         {
             _appInfo.ShowMessage(@"Dữ liệu không hợp lệ");
         }

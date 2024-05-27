@@ -1,15 +1,11 @@
 ﻿using QLCHWF.IRepository;
-using QLCHWF.Models;
-using QLCHWF.Repository;
 using QLCHWF.Views;
-using QLCHWF.Views.ImportOrder;
 
 namespace QLCHWF.Presenters;
 
 public abstract class PaginationPresenter<T> where T : class
 {
     private readonly IViewPagination _viewPagination;
-    private readonly MyAppContext _context;
     private readonly IGenericRepository<T> _repository;
     protected List<T> TargetSource;
     private readonly int _itemsPerPage;
@@ -17,7 +13,6 @@ public abstract class PaginationPresenter<T> where T : class
     public PaginationPresenter(IViewPagination viewPagination,IGenericRepository<T> repository,int itemsPerPage)
     {
         _viewPagination = viewPagination;
-        //_context = context;
         _repository = repository;
         TargetSource = _repository.GetAll().ToList();
         _itemsPerPage = itemsPerPage;

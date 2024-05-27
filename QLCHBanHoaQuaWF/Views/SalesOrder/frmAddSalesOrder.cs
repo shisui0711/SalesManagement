@@ -51,7 +51,7 @@ namespace QLCHWF.Views.SalesOrder
                 {
                     return decimal.Parse(lblTotalPrice.Text);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return 0;
                 }
@@ -69,7 +69,7 @@ namespace QLCHWF.Views.SalesOrder
                 {
                     return int.Parse(dgvCustomer.CurrentRow.Cells[0].Value.ToString());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return 0;
                 }
@@ -234,7 +234,7 @@ namespace QLCHWF.Views.SalesOrder
             {
                 purchasePrice = decimal.Parse(txtPurchasePrice.Text);
             }
-            catch (Exception exception)
+            catch
             {
 
             }
@@ -280,7 +280,7 @@ namespace QLCHWF.Views.SalesOrder
             {
                 return int.Parse(btnCurrentPage.Text);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return 0;
             }}

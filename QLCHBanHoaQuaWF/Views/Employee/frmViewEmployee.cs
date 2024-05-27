@@ -15,13 +15,20 @@ namespace QLCHWF.Views.Employee
             set { cboOptionSearch.SelectedIndex = value; }
         }
         public BindingSource EmployeeBindingSource { get { return employeeBindingSource; } }
+#nullable enable
         public event EventHandler? LoadEmployee;
+#nullable enable
         public event EventHandler? RemoveEmployee;
+#nullable enable
         public event EventHandler? SearchEmployee;
+#nullable enable
         public event EventHandler? ShowSalesHistory;
+#nullable enable
         public event EventHandler? ShowImportHistory;
-        public event EventHandler ShowSalary;
+        public event EventHandler? ShowSalary;
+#nullable enable
         public event EventHandler? ShowAddEmployee;
+#nullable enable
         public event EventHandler? ShowUpdateEmployee;
         public frmViewEmployee()
         {
@@ -97,15 +104,15 @@ namespace QLCHWF.Views.Employee
                 {
                     return int.Parse(btnCurrentPage.Text);
                 }
-                catch (Exception e)
+                catch
                 {
                     return 0;
                 }
             }
             set { btnCurrentPage.Text = value.ToString(); }
         }
-        public event EventHandler PreviousPage;
-        public event EventHandler NextPage;
+        public event EventHandler? PreviousPage;
+        public event EventHandler? NextPage;
         public void DisableNextPage()
         {
             btnNext.Enabled = false;

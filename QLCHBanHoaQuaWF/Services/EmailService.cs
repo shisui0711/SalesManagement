@@ -24,7 +24,7 @@ namespace QLCHWF.Services
                 smtpClient.Send(mailMessage);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
@@ -42,7 +42,7 @@ namespace QLCHWF.Services
                await smtpClient.SendMailAsync(mailMessage);
                return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }

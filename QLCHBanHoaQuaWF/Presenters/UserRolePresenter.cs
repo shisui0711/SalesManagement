@@ -97,8 +97,16 @@ public class UserRolePresenter
 
             }
         }
-        _userRoleRepository.AddUserRoleWithPermission(userRole,permission);
-        _addUserRole.ShowMessage(@"Thêm thành công");
+
+        if (_userRoleRepository.AddUserRoleWithPermission(userRole, permission))
+        {
+            _addUserRole.ShowMessage(@"Thêm thành công");
+        }
+        else
+        {
+            _addUserRole.ShowMessage(@"Thêm thất bại");
+        }
+        
     }
 
     public void Update()
@@ -127,8 +135,16 @@ public class UserRolePresenter
                 property.SetValue(permission, value);
             }
         }
-        _userRoleRepository.UpdatePermission(permission);
-        _updateUserRole.ShowMessage(@"Sửa thành công");
+
+        if (_userRoleRepository.UpdatePermission(permission))
+        {
+            _updateUserRole.ShowMessage(@"Sửa thành công");
+        }
+        else
+        {
+            _updateUserRole.ShowMessage(@"Sửa thất bại");
+        }
+        
     }
 
     public void Remove()
@@ -151,28 +167,21 @@ public class UserRolePresenter
             _viewUserRole.ShowMessage(@"Không thể xóa vì vẫn còn nhân viên đảm nhận vai trò này");
             return;
         }
-        using (var transaction = _context.Database.BeginTransaction())
+
+        if (_userRoleRepository.Remove(userRoleExist))
         {
-            try
-            {
-                _context.UserRoles.Remove(deleted);
-                _context.SaveChanges();
-                _viewUserRole.UserRoleBindingSource.Remove(deleted);
-                transaction.Commit();
-                _viewUserRole.ShowMessage(@"Xóa thành công");
-            }
-            catch (Exception e)
-            {
-                transaction.Rollback();
-            }
+            _viewUserRole.ShowMessage(@"Xóa thành công");
+        }
+        else
+        {
+            _viewUserRole.ShowMessage(@"Xóa thất bại");
         }
     }
 
     public void Search()
     {
-        List<UserRole> userRoles = null;
-        userRoles = _context.UserRoles.Where(u => u.RoleName.Contains(_viewUserRole.SearchText)).ToList();
-        if (userRoles != null && userRoles.Count > 0)
+        List<UserRole> userRoles = _userRoleRepository.GetSome(u => u.RoleName.Contains(_viewUserRole.SearchText)).ToList();
+        if (userRoles.Count > 0)
         {
             _viewUserRole.UserRoleBindingSource.DataSource = userRoles;
         }
@@ -185,7 +194,7 @@ public class UserRolePresenter
     public void Load()
     {
         _viewUserRole.UserRoleBindingSource.ResetBindings(true);
-        _viewUserRole.UserRoleBindingSource.DataSource = _context.UserRoles.Local.ToBindingList();
+        _viewUserRole.UserRoleBindingSource.DataSource = _userRoleRepository.GetAll().ToList();
     }
 
     private void LoadPermission()
@@ -204,16 +213,16 @@ public class UserRolePresenter
     private void LoadUpdatePermission()
     {
         _updateUserRole.PermissionSelected.Items.Clear();
-        Permission permission = _context.UserRoles.Include(u => u.Permission)
-            .Where(u => u.RoleID == _updateUserRole.RoleID).FirstOrDefault().Permission;
+        Permission permission = _context.UserRoles
+            .Include(u => u.Permission).FirstOrDefault(u => u.RoleID == _updateUserRole.RoleID)!.Permission;
         {
             var properties = typeof(Permission).GetProperties();
             foreach (var propertyInfo in properties)
             {
-                var displayNamAttribute = (DisplayNameAttribute)propertyInfo.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
-                if (displayNamAttribute != null)
+                DisplayNameAttribute? displayNamAttribute = (DisplayNameAttribute)propertyInfo.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
+                if (displayNamAttribute != null && propertyInfo.GetValue(permission) != null)
                 {
-                    bool value = (bool)propertyInfo.GetValue(permission);
+                    bool value = (bool)propertyInfo.GetValue(permission)!;
                     _updateUserRole.PermissionSelected.Items.Add(displayNamAttribute.DisplayName);
                     int index = _updateUserRole.PermissionSelected.Items.Count - 1;
                     _updateUserRole.PermissionSelected.SetItemChecked(index, value);

@@ -52,5 +52,6 @@ public static class ViewConfigure
         services.AddSingleton<IViewLogin, frmLogin>();
         services.AddSingleton<IHistoryImport, frmHistoryImportOrder>();
         services.AddSingleton<IHistorySales, frmHistorySalesOrder>();
+        services.AddSingleton<IChangeUserRole, frmChangeUserRole>();
     }
 }

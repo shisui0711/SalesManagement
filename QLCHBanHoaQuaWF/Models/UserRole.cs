@@ -20,6 +20,7 @@ public class UserRole
     }
 
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int RoleID { get; set; }
     [Required(ErrorMessage = "Tên vai trò không được để trống")]
     [StringLength(30,ErrorMessage = "Tên vai trò không dài quá 30 ký tự")]

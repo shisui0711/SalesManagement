@@ -26,8 +26,9 @@ namespace QLCHWF.Views.User
         public event EventHandler? LoadUser;
         public event EventHandler? LockUser;
         public event EventHandler? UnlockUser;
-        public event EventHandler ShowAddUser;
+        public event EventHandler? ShowAddUser;
         public event EventHandler? ShowChangePassword;
+        public event EventHandler? ShowChangeUserRole;
 
         private void LoadCopy()
         {
@@ -35,20 +36,32 @@ namespace QLCHWF.Views.User
                 .Where(p => p.GetCustomAttribute(typeof(DisplayNameAttribute),true) != null);
             foreach (var propertyInfo in properties)
             {
-                string propertyName = (propertyInfo.GetCustomAttribute(typeof(DisplayNameAttribute) )as DisplayNameAttribute)?.DisplayName;
+                string? propertyName = (propertyInfo.GetCustomAttribute(typeof(DisplayNameAttribute) )as DisplayNameAttribute)?.DisplayName;
+                if (propertyName == null)
+                {
+                    continue;
+                }
                 btnCopy.DropDownItems.Add(new ToolStripMenuItem(propertyName));
             }
             foreach (var toolStripMenuItem in btnCopy.DropDownItems.OfType<ToolStripMenuItem>())
             {
                 toolStripMenuItem.Click += delegate
                 {
-                    var selected = userBindingSource.Current as Models.User;
-                    var property = selected?.GetType().GetProperties().Where(x =>
+                    Models.User? selected = userBindingSource.Current as Models.User;
+                    if (selected == null)
+                    {
+                        return;
+                    }
+                    var property = selected.GetType().GetProperties().Where(x =>
                     {
                         var displayNameAtribute = x.GetCustomAttribute(typeof(DisplayNameAttribute)) as DisplayNameAttribute;
                         return displayNameAtribute?.DisplayName == toolStripMenuItem.Text;
                     }).FirstOrDefault();
-                    Clipboard.SetText(property.GetValue(selected).ToString());
+                    if (property != null )
+                    {
+                        Clipboard.SetText(property.GetValue(selected)!.ToString()!);
+                    }
+                    
                 };
             }
         }
@@ -124,15 +137,15 @@ namespace QLCHWF.Views.User
                 {
                     return int.Parse(btnCurrentPage.Text);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return 0;
                 }
             }
             set { btnCurrentPage.Text = value.ToString(); }
         }
-        public event EventHandler PreviousPage;
-        public event EventHandler NextPage;
+        public event EventHandler PreviousPage = null!;
+        public event EventHandler NextPage = null!;
         public void DisableNextPage()
         {
             btnNext.Enabled = false;
@@ -161,6 +174,11 @@ namespace QLCHWF.Views.User
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             PreviousPage?.Invoke(sender, e);
+        }
+
+        private void btnChangeUserRole_Click(object sender, EventArgs e)
+        {
+            ShowChangeUserRole?.Invoke(sender,e);
         }
     }
 }

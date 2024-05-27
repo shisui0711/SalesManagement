@@ -993,6 +993,7 @@
             this.MaximizeBox = false;
             this.Name = "frmAddSalesOrder";
             this.Padding = new System.Windows.Forms.Padding(3);
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Quản lý cửa hàng bán đồ điện dân dụng";
             this.Load += new System.EventHandler(this.frmAddSalesOrder_Load);

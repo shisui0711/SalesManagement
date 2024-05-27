@@ -61,7 +61,7 @@ namespace QLCHWF.Views.Product
                 {
                     return decimal.Parse(txtImportUnitPrice.Text);
                 }
-                catch (Exception e)
+                catch
                 {
                     return null;
                 }
@@ -74,7 +74,7 @@ namespace QLCHWF.Views.Product
                 {
                     return decimal.Parse(txtUnitPrice.Text);
                 }
-                catch (Exception e)
+                catch
                 {
                     return null;
                 }
@@ -93,7 +93,7 @@ namespace QLCHWF.Views.Product
             var textBoxField = this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(x => x.Name == "txt" + name).FirstOrDefault();
             if (textBoxField != null)
             {
-                var textBox = (UserControl)textBoxField.GetValue(this);
+                var textBox = (UserControl)textBoxField.GetValue(this)!;
                 textBox.Focus();
             }
         }

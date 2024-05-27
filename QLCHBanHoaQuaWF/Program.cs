@@ -6,8 +6,10 @@ using QLCHWF.Views;
 using System.Reflection;
 using QLCHWF.CustomMessageBox;
 using QLCHWF.Extensions;
+using QLCHWF.IRepository;
 using QLCHWF.Mapper;
 using QLCHWF.Models;
+using QLCHWF.Repository;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF
@@ -64,6 +66,7 @@ namespace QLCHWF
                 services.AddView();
                 services.AddPresenter();
                 services.AddRepository();
+                services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             });
         }

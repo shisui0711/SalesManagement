@@ -7,7 +7,7 @@ namespace QLCHWF.Views.Product
 {
     public partial class frmAddProduct : Form, IAddProduct
     {
-        private OpenFileDialog openFileDialog;
+        private OpenFileDialog _openFileDialog = null!;
         public frmAddProduct()
         {
             InitializeComponent();
@@ -16,11 +16,11 @@ namespace QLCHWF.Views.Product
 
         private void InitOpenFileDialog()
         {
-            openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = "C:\\";
-            openFileDialog.Filter = "File png|*.png|File jpg|*.jpg|All files|*.*";
-            openFileDialog.FilterIndex = 1;
-            openFileDialog.RestoreDirectory = true;
+            _openFileDialog = new OpenFileDialog();
+            _openFileDialog.InitialDirectory = "C:\\";
+            _openFileDialog.Filter = "File png|*.png|File jpg|*.jpg|All files|*.*";
+            _openFileDialog.FilterIndex = 1;
+            _openFileDialog.RestoreDirectory = true;
         }
         private static bool IsImageFile(string filePath)
         {
@@ -33,7 +33,7 @@ namespace QLCHWF.Views.Product
             var textBoxField = this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(x => x.Name == "txt" + name).FirstOrDefault();
             if (textBoxField != null)
             {
-                var textBox = (UserControl)textBoxField.GetValue(this);
+                var textBox = (UserControl)textBoxField.GetValue(this)!;
                 textBox.Focus();
             }
         }
@@ -48,14 +48,15 @@ namespace QLCHWF.Views.Product
             get { return txtCalculationUnit.Text; }
             set { txtCalculationUnit.Text = value; }
         }
-        public byte[] ImageData { get; private set; }
+        public byte[] ImageData { get; private set; } = null!;
+
         public decimal? ImportUnitPrice
         {
             get { try
                 {
                     return decimal.Parse(txtImportUnitPrice.Text);
                 }
-                catch (Exception e)
+                catch
                 {
                     return null;
                 }
@@ -68,7 +69,7 @@ namespace QLCHWF.Views.Product
                 {
                     return decimal.Parse(txtUnitPrice.Text);
                 }
-                catch (Exception e)
+                catch
                 {
                     return null;
                 }
@@ -87,22 +88,22 @@ namespace QLCHWF.Views.Product
                 .Where(f => f.Name.StartsWith("txt"));
             foreach (var fieldType in fieldTypes)
             {
-                UserControl control = (UserControl)fieldType.GetValue(this);
+                UserControl control = (UserControl)fieldType.GetValue(this)!;
                 control.Text = String.Empty;
             }
         }
 
-        public event EventHandler? AddProduct;
+        public event EventHandler AddProduct = null!;
 
         private void ptbUpload_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (_openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                using (var fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                using (var fs = new FileStream(_openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                 {
                     using (var br = new BinaryReader(fs))
                     {
-                        long numBytes = new FileInfo(openFileDialog.FileName).Length;
+                        long numBytes = new FileInfo(_openFileDialog.FileName).Length;
                         ImageData = br.ReadBytes((int)numBytes);
                         ptbUpload.Image = Image.FromStream(fs);
                     }
@@ -112,7 +113,7 @@ namespace QLCHWF.Views.Product
 
         private void ptbUpload_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 e.Effect = DragDropEffects.Copy;
             }
@@ -120,8 +121,8 @@ namespace QLCHWF.Views.Product
 
         private void ptbUpload_DragDrop(object sender, DragEventArgs e)
         {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (files.Length > 0)
+            string[]? files = (string[]?)e.Data?.GetData(DataFormats.FileDrop);
+            if (files != null && files.Length > 0)
             {
                 string imagePath = files[0];
 

@@ -55,7 +55,7 @@
                   <Width>5.0226cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.6049cm</Width>
+                  <Width>3.0019cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.85373cm</Width>
@@ -244,7 +244,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Quantity</rd:DefaultName>
@@ -274,7 +276,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>UnitPrice</rd:DefaultName>
@@ -289,6 +293,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -304,7 +309,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>TotalPrice</rd:DefaultName>
@@ -347,7 +354,7 @@
             <Top>0.17639cm</Top>
             <Left>0.92287cm</Left>
             <Height>1.85616cm</Height>
-            <Width>13.60496cm</Width>
+            <Width>15.00196cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

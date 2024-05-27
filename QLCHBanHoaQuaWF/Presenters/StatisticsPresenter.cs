@@ -3,16 +3,19 @@ using QLCHWF.Views.Statistics;
 using System.Globalization;
 using Guna.Charts.WinForms;
 using Microsoft.EntityFrameworkCore;
+using QLCHWF.IRepository;
 
 namespace QLCHWF.Presenters;
 
 public class StatisticsPresenter
 {
     private readonly IViewStatistics _viewStatistics;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly MyAppContext _context;
-    public StatisticsPresenter(IViewStatistics viewStatistics,MyAppContext context)
+    public StatisticsPresenter(IViewStatistics viewStatistics,IUnitOfWork unitOfWork,MyAppContext context)
     {
         _viewStatistics = viewStatistics;
+        _unitOfWork = unitOfWork;
         _context = context;
 
         _viewStatistics.LoadStatistics += delegate { Load(); };
@@ -27,14 +30,14 @@ public class StatisticsPresenter
     }
     private void LoadCount()
     {
-        _viewStatistics.CountCustomer = _context.Customers.ToList().Count();
-        _viewStatistics.CountEmployee = _context.Employees.ToList().Count();
-        _viewStatistics.CountProvider = _context.Providers.ToList().Count();
-        _viewStatistics.CountProduct = _context.Products.ToList().Count();
-        List<SalesOrder> salesOrders = _context.SalesOrders.Where(s =>
+        _viewStatistics.CountCustomer = _unitOfWork.Customers.GetAll().Count();
+        _viewStatistics.CountEmployee = _unitOfWork.Employees.GetAll().Count();
+        _viewStatistics.CountProvider = _unitOfWork.Providers.GetAll().Count();
+        _viewStatistics.CountProduct = _unitOfWork.Products.GetAll().Count();
+        List<SalesOrder> salesOrders = _unitOfWork.SalesOrders.GetSome(s =>
             s.OrderDate >= _viewStatistics.StartDate && s.OrderDate <= _viewStatistics.EndDate).ToList();
-        List<ImportOrder> importOrders = _context.ImportOrders
-            .Where(i => i.OrderDate >= _viewStatistics.StartDate && i.OrderDate <= _viewStatistics.EndDate).ToList();
+        List<ImportOrder> importOrders = _unitOfWork.ImportOrders
+            .GetSome(i => i.OrderDate >= _viewStatistics.StartDate && i.OrderDate <= _viewStatistics.EndDate).ToList();
         _viewStatistics.SalesOrdered = salesOrders.Count();
         _viewStatistics.ImportOrdered = importOrders.Count();
         _viewStatistics.Revenue = salesOrders.Sum(x => x.TotalPrice);
@@ -43,8 +46,8 @@ public class StatisticsPresenter
     }
     private void LoadTopEmployee()
     {
-        var topEmployee = (from e in _context.Employees
-            join import in _context.ImportOrders
+        var topEmployee = (from e in _unitOfWork.Employees.GetAll()
+            join import in _unitOfWork.ImportOrders.GetAll()
                 on e.EmployeeID equals import.Employee.EmployeeID
             where import.OrderDate >= _viewStatistics.StartDate && import.OrderDate <= _viewStatistics.EndDate
             group import by new { e.EmployeeID, e.EmployeeName }
@@ -61,8 +64,8 @@ public class StatisticsPresenter
 
     private void LoadTopCustomer()
     {
-        var topCustomer = (from c in _context.Customers
-            join sales in _context.SalesOrders
+        var topCustomer = (from c in _unitOfWork.Customers.GetAll()
+            join sales in _unitOfWork.SalesOrders.GetAll()
                 on c.CustomerID equals sales.CustomerID
             where sales.OrderDate >= _viewStatistics.StartDate && sales.OrderDate <= _viewStatistics.EndDate
             group sales by new { c.CustomerID, c.CustomerName }
@@ -79,7 +82,7 @@ public class StatisticsPresenter
 
     private void LoadTopProduct()
     {
-        var topProduct = (from p in _context.Products
+        var topProduct = (from p in _unitOfWork.Products.GetAll()
             join detail in _context.DetailSalesOrders on p.ProductID equals detail.ProductID
             join sales in _context.SalesOrders on detail.OrderID equals sales.OrderID
             where sales.OrderDate >= _viewStatistics.StartDate && sales.OrderDate <= _viewStatistics.EndDate

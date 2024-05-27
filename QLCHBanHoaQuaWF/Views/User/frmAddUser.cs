@@ -27,18 +27,18 @@ namespace QLCHWF.Views.User
         public int EmployeeID { get{
             try
             {
-                return int.Parse(cboEmployee.Tag.ToString());
+                return int.Parse(cboEmployee.Tag?.ToString()!);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return 0;
             }}}
         public int RoleID { get{
             try
             {
-                return int.Parse(cboRole.Tag.ToString());
+                return int.Parse(cboRole.Tag?.ToString()!);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return 0;
             }} }
@@ -56,7 +56,7 @@ namespace QLCHWF.Views.User
 
         public BindingSource EmployeeBindingSource => employeeBindingSource;
         public BindingSource RoleBindingSource => userRoleBindingSource;
-        public event EventHandler AddUser;
+        public event EventHandler? AddUser;
         public void ShowMessage(string message)
         {
             MyMessageBox.Show(message);
@@ -67,7 +67,7 @@ namespace QLCHWF.Views.User
             var textBoxField = this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(x => x.Name == "txt" + name).FirstOrDefault();
             if (textBoxField != null)
             {
-                var textBox = (UserControl)textBoxField.GetValue(this);
+                var textBox = (UserControl)textBoxField.GetValue(this)!;
                 textBox.Focus();
             }
         }

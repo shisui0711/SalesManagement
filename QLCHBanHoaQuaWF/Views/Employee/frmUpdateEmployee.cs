@@ -35,14 +35,14 @@ namespace QLCHWF.Views.Employee
             get { return decimal.Parse(txtSalary.Text); }
             set { txtSalary.Text = value.ToString(); }
         }
-        public event EventHandler UpdateEmployee;
+        public event EventHandler? UpdateEmployee;
 
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(x => x.Name == "txt" + name).FirstOrDefault();
             if (textBoxField != null)
             {
-                var textBox = (UserControl)textBoxField.GetValue(this);
+                var textBox = (UserControl)textBoxField.GetValue(this)!;
                 textBox.Focus();
             }
         }

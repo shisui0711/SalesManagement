@@ -9,6 +9,7 @@ namespace QLCHWF.Models
     public class Permission
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PermissionID { get; set; }
         public virtual UserRole UserRole { get; set; }
         [DisplayName("Cho phép xem sản phẩm")]

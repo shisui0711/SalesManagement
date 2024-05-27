@@ -5,7 +5,6 @@ namespace QLCHWF.Views.Employee
 {
     public partial class frmAddEmployee : Form, IAddEmployee
     {
-        private string _message;
         public string EmployeeName
         {
             get { return txtEmployeeName.Text; }
@@ -48,19 +47,19 @@ namespace QLCHWF.Views.Employee
                 .Where(f => f.Name.StartsWith("txt"));
             foreach (var fieldType in fieldTypes)
             {
-                UserControl control = (UserControl)fieldType.GetValue(this);
+                UserControl control = (UserControl)fieldType.GetValue(this)!;
                 control.Text = String.Empty;
             }
         }
 
-        public event EventHandler AddEmployee;
+        public event EventHandler? AddEmployee;
 
         public void Focus(string name)
         {
             var textBoxField = this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(x => x.Name == "txt" + name).FirstOrDefault();
             if (textBoxField != null)
             {
-                var textBox = (UserControl)textBoxField.GetValue(this);
+                var textBox = (UserControl)textBoxField.GetValue(this)!;
                 textBox.Focus();
             }
         }

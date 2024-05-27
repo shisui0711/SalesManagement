@@ -66,10 +66,6 @@
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.btnPrevious = new Guna.UI2.WinForms.Guna2Button();
             this.dgvProduct = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calculationUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +74,10 @@
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailImportOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailSalesOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlControl.SuspendLayout();
             this.pnlGridView.SuspendLayout();
             this.pnlPagination.SuspendLayout();
@@ -209,10 +209,10 @@
             this.pnlPagination.Controls.Add(this.btnPrevious);
             this.pnlPagination.CustomizableEdges = customizableEdges17;
             this.pnlPagination.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlPagination.Location = new System.Drawing.Point(0, 649);
+            this.pnlPagination.Location = new System.Drawing.Point(0, 639);
             this.pnlPagination.Name = "pnlPagination";
             this.pnlPagination.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            this.pnlPagination.Size = new System.Drawing.Size(1301, 42);
+            this.pnlPagination.Size = new System.Drawing.Size(1301, 52);
             this.pnlPagination.TabIndex = 1;
             // 
             // btnCurrentPage
@@ -227,7 +227,7 @@
             this.btnCurrentPage.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.btnCurrentPage.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCurrentPage.ForeColor = System.Drawing.Color.White;
-            this.btnCurrentPage.Location = new System.Drawing.Point(633, 3);
+            this.btnCurrentPage.Location = new System.Drawing.Point(633, 11);
             this.btnCurrentPage.Name = "btnCurrentPage";
             this.btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges12;
             this.btnCurrentPage.Size = new System.Drawing.Size(44, 30);
@@ -246,7 +246,7 @@
             this.btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.btnNext.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(700, 3);
+            this.btnNext.Location = new System.Drawing.Point(700, 11);
             this.btnNext.Name = "btnNext";
             this.btnNext.ShadowDecoration.CustomizableEdges = customizableEdges14;
             this.btnNext.Size = new System.Drawing.Size(44, 30);
@@ -267,7 +267,7 @@
             this.btnPrevious.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
             this.btnPrevious.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
-            this.btnPrevious.Location = new System.Drawing.Point(557, 3);
+            this.btnPrevious.Location = new System.Drawing.Point(557, 11);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.ShadowDecoration.CustomizableEdges = customizableEdges16;
             this.btnPrevious.Size = new System.Drawing.Size(44, 30);
@@ -360,44 +360,6 @@
             this.dgvProduct.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvProduct.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnUpdate,
-            this.btnRemove});
-            this.contextMenuStrip.Name = "guna2ContextMenuStrip1";
-            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.ColorTable = null;
-            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
-            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(276, 56);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Image = global::QLCHWF.Properties.Resources.pencil;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(275, 26);
-            this.btnUpdate.Text = "Sửa và  xem thông tin chi tiểt";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Image = global::QLCHWF.Properties.Resources.remove;
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(275, 26);
-            this.btnRemove.Text = "Xóa";
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(QLCHWF.Models.Product);
-            // 
             // productIDDataGridViewTextBoxColumn
             // 
             this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
@@ -471,6 +433,44 @@
             this.detailSalesOrdersDataGridViewTextBoxColumn.Name = "detailSalesOrdersDataGridViewTextBoxColumn";
             this.detailSalesOrdersDataGridViewTextBoxColumn.ReadOnly = true;
             this.detailSalesOrdersDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnUpdate,
+            this.btnRemove});
+            this.contextMenuStrip.Name = "guna2ContextMenuStrip1";
+            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.contextMenuStrip.RenderStyle.ColorTable = null;
+            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
+            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.contextMenuStrip.Size = new System.Drawing.Size(276, 56);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Image = global::QLCHWF.Properties.Resources.pencil;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(275, 26);
+            this.btnUpdate.Text = "Sửa và  xem thông tin chi tiểt";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Image = global::QLCHWF.Properties.Resources.remove;
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(275, 26);
+            this.btnRemove.Text = "Xóa";
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(QLCHWF.Models.Product);
             // 
             // frmViewProduct
             // 

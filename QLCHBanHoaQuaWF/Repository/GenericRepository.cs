@@ -17,6 +17,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         return _context.Set<T>().Find(key)!;
     }
 
+    #nullable enable
     public async Task<T?> GetByIdAsync(object key)
     {
         return await _context.Set<T>().FindAsync(key);
@@ -42,12 +43,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         return await _context.Set<T>().Where(match).AsNoTracking().ToArrayAsync();
     }
 
-    public T GetOne(Expression<Func<T, bool>> match)
+    public T? GetOne(Expression<Func<T, bool>> match)
     {
         return _context.Set<T>().Where(match).FirstOrDefault();
     }
 
-    public async Task<T> GetOneAsync(Expression<Func<T, bool>> match)
+    public async Task<T?> GetOneAsync(Expression<Func<T, bool>> match)
     {
         return await _context.Set<T>().Where(match).FirstOrDefaultAsync();
     }
@@ -62,7 +63,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             transaction.Commit();
             return true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             transaction.Rollback();
             return false;
@@ -79,7 +80,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             await transaction.CommitAsync();
             return true;
         }
-        catch (Exception e)
+        catch
         {
             await transaction.RollbackAsync();
             return false;
@@ -96,7 +97,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             transaction.Commit();
             return true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             transaction.Rollback();
             return false;
@@ -113,7 +114,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             await transaction.CommitAsync();
             return false;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transaction.RollbackAsync();
             return false;
@@ -121,12 +122,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     }
 
 
-    public bool Update(T entity,object key)
+    public bool Update(T entity,object? key)
     {
         using var transaction = _context.Database.BeginTransaction();
         try
         {
-            T entityExist = _context.Set<T>().Find(key);
+            T? entityExist = _context.Set<T>().Find(key);
             if (entityExist == null)
             {
                 return false;
@@ -140,19 +141,19 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             return true;
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
             transaction.Rollback();
             return false;
         }
     }
 
-    public async Task<bool> UpdateAsync(T entity,object key)
+    public async Task<bool> UpdateAsync(T entity,object? key)
     {
         await using var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
-            T entityExist = await _context.Set<T>().FindAsync(key);
+            T? entityExist = await _context.Set<T>().FindAsync(key);
             if (entityExist == null)
             {
                 return false;
@@ -166,7 +167,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             return true;
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transaction.RollbackAsync();
             return false;
@@ -184,7 +185,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             return true;
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
             transaction.Rollback();
             return false;
@@ -202,7 +203,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             return true;
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transaction.RollbackAsync();
             return false;
@@ -225,7 +226,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             transaction.Commit();
             return true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             transaction.Rollback();
             return false;
@@ -247,7 +248,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             await transaction.CommitAsync();
             return true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transaction.RollbackAsync();
             return false;
@@ -264,7 +265,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             transaction.Commit();
             return true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             transaction.Rollback();
             return false;
@@ -281,7 +282,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             await transaction.CommitAsync();
             return true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transaction.RollbackAsync();
             return false;
@@ -298,7 +299,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             transaction.Commit();
             return true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             transaction.Rollback();
             return false;
@@ -315,7 +316,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             await transaction.CommitAsync();
             return true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transaction.RollbackAsync();
             return false;

@@ -389,7 +389,7 @@ namespace QLCHWF {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DetailOrdersRow AddDetailOrdersRow(string ProductName, int Quantity, decimal UnitPrice, decimal TotalPrice) {
+            public DetailOrdersRow AddDetailOrdersRow(string ProductName, string Quantity, decimal UnitPrice, decimal TotalPrice) {
                 DetailOrdersRow rowDetailOrdersRow = ((DetailOrdersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProductName,
@@ -429,7 +429,7 @@ namespace QLCHWF {
             private void InitClass() {
                 this.columnProductName = new global::System.Data.DataColumn("ProductName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProductName);
-                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
                 this.columnUnitPrice = new global::System.Data.DataColumn("UnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitPrice);
@@ -593,10 +593,10 @@ namespace QLCHWF {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Quantity {
+            public string Quantity {
                 get {
                     try {
-                        return ((int)(this[this.tableDetailOrders.QuantityColumn]));
+                        return ((string)(this[this.tableDetailOrders.QuantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'DetailOrders\' is DBNull.", e);

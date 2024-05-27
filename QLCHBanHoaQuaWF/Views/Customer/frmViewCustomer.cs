@@ -18,12 +18,15 @@ namespace QLCHWF.Views.Customer
         {
             get { return bindingSourceCustomer; }
         }
+        #nullable enable 
         public event EventHandler? LoadCustomer;
+        #nullable enable
         public event EventHandler? RemoveCustomer;
+#nullable enable
         public event EventHandler? SearchCustomer;
-        public event EventHandler ShowAddCustomer;
-        public event EventHandler ShowUpdateCustomer;
-        public event EventHandler ShowSalesHistory;
+        public event EventHandler? ShowAddCustomer;
+        public event EventHandler? ShowUpdateCustomer;
+        public event EventHandler? ShowSalesHistory;
 
         public frmViewCustomer()
         {
@@ -89,15 +92,15 @@ namespace QLCHWF.Views.Customer
                 {
                     return int.Parse(btnCurrentPage.Text);
                 }
-                catch (Exception e)
+                catch
                 {
                     return 0;
                 }
             }
             set { btnCurrentPage.Text = value.ToString(); }
         }
-        public event EventHandler PreviousPage;
-        public event EventHandler NextPage;
+        public event EventHandler? PreviousPage;
+        public event EventHandler? NextPage;
         public void DisableNextPage()
         {
             btnNext.Enabled = false;

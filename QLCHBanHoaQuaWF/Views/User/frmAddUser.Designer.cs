@@ -140,6 +140,7 @@
             // cboEmployee
             // 
             this.cboEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.cboEmployee.BorderRadius = 5;
             this.cboEmployee.CustomizableEdges = customizableEdges5;
             this.cboEmployee.DataBindings.Add(new System.Windows.Forms.Binding("DataContext", this.employeeBindingSource, "NameWithId", true));
             this.cboEmployee.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.employeeBindingSource, "NameWithId", true));
@@ -166,6 +167,7 @@
             // cboRole
             // 
             this.cboRole.BackColor = System.Drawing.Color.Transparent;
+            this.cboRole.BorderRadius = 5;
             this.cboRole.CustomizableEdges = customizableEdges7;
             this.cboRole.DataBindings.Add(new System.Windows.Forms.Binding("DataContext", this.userRoleBindingSource, "RoleName", true));
             this.cboRole.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.userRoleBindingSource, "RoleName", true));

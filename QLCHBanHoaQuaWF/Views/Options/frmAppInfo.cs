@@ -9,7 +9,7 @@ namespace QLCHWF.Views.Options
             InitializeComponent();
         }
 
-        public string AppName
+        public string? AppName
         {
             get { return txtAppName.Text; }
             set { txtAppName.Text = value; }

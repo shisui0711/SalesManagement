@@ -47,14 +47,14 @@
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvDetailSales = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.detailSalesOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.orderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salesOrderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailSalesOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlHeader.SuspendLayout();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailSales)).BeginInit();
@@ -212,6 +212,16 @@
             this.dgvDetailSales.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDetailSales.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // detailSalesOrderBindingSource
+            // 
+            this.detailSalesOrderBindingSource.DataSource = typeof(QLCHWF.Models.DetailSalesOrder);
+            // 
+            // dragControl
+            // 
+            this.dragControl.DockIndicatorTransparencyValue = 0.6D;
+            this.dragControl.TargetControl = this.pnlHeader;
+            this.dragControl.UseTransparentDrag = true;
+            // 
             // orderIDDataGridViewTextBoxColumn
             // 
             this.orderIDDataGridViewTextBoxColumn.DataPropertyName = "OrderID";
@@ -247,7 +257,7 @@
             // productDataGridViewTextBoxColumn
             // 
             this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Tên hoa quả";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
             this.productDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
             this.productDataGridViewTextBoxColumn.ReadOnly = true;
@@ -260,16 +270,6 @@
             this.salesOrderDataGridViewTextBoxColumn.Name = "salesOrderDataGridViewTextBoxColumn";
             this.salesOrderDataGridViewTextBoxColumn.ReadOnly = true;
             this.salesOrderDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // detailSalesOrderBindingSource
-            // 
-            this.detailSalesOrderBindingSource.DataSource = typeof(QLCHWF.Models.DetailSalesOrder);
-            // 
-            // dragControl
-            // 
-            this.dragControl.DockIndicatorTransparencyValue = 0.6D;
-            this.dragControl.TargetControl = this.pnlHeader;
-            this.dragControl.UseTransparentDrag = true;
             // 
             // frmViewDetailSales
             // 
@@ -300,14 +300,14 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvDetailSales;
         private Guna.UI2.WinForms.Guna2ControlBox btnMinimize;
         private Guna.UI2.WinForms.Guna2ControlBox btnClose;
+        private BindingSource detailSalesOrderBindingSource;
+        private Label label4;
+        private Guna.UI2.WinForms.Guna2DragControl dragControl;
         private DataGridViewTextBoxColumn orderIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salesOrderDataGridViewTextBoxColumn;
-        private BindingSource detailSalesOrderBindingSource;
-        private Label label4;
-        private Guna.UI2.WinForms.Guna2DragControl dragControl;
     }
 }

@@ -1,14 +1,9 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using QLCHWF.Models;
+﻿using QLCHWF.Models;
 using QLCHWF.Views;
 using QLCHWF.Views.Customer;
-using QLCHWF.Views.Product;
-using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using QLCHWF.Helpers;
 using QLCHWF.IRepository;
-using MyAppContext = QLCHWF.Models.MyAppContext;
 
 namespace QLCHWF.Presenters
 {
@@ -19,19 +14,18 @@ namespace QLCHWF.Presenters
         private readonly IUpdateCustomer _updateCustomer;
         private readonly IHistorySales _historySales;
         private readonly IMapper _mapper;
-        private readonly ICustomerRepository _customerRepository;
-        public CustomerPresenter(IViewCustomer viewCustomer, IAddCustomer addCustomer, IUpdateCustomer updateCustomer, IHistorySales historySales, ICustomerRepository customerRepository, IMapper mapper):base(viewCustomer,customerRepository,20)
+        private readonly IUnitOfWork _unitOfWork;
+        public CustomerPresenter(IViewCustomer viewCustomer, IAddCustomer addCustomer, IUpdateCustomer updateCustomer,
+            IHistorySales historySales, IUnitOfWork unitOfWork, IMapper mapper) : base(viewCustomer,
+            unitOfWork.Customers, 20)
         {
             _viewCustomer = viewCustomer;
             _addCustomer = addCustomer;
             _updateCustomer = updateCustomer;
             _historySales = historySales;
             _mapper = mapper;
-            _customerRepository = customerRepository;
-            _viewCustomer.LoadCustomer += delegate
-            {
-                RenewItems();
-            };
+            _unitOfWork = unitOfWork;
+            _viewCustomer.LoadCustomer += delegate{RenewItems();};
             _viewCustomer.RemoveCustomer += delegate { Remove(); };
             _viewCustomer.SearchCustomer += delegate { Search(); };
             _viewCustomer.ShowAddCustomer += delegate { ShowAddForm(); };
@@ -50,8 +44,13 @@ namespace QLCHWF.Presenters
                 _viewCustomer.ShowMessage("Chưa bản ghi nào được chọn");
                 return;
             }
-            Customer currentCustomer = _viewCustomer.CustomerBindingSource.Current as Customer;
-            Customer customer = _customerRepository.GetCustomerWithSalesOrder(currentCustomer.CustomerID);
+            Customer? currentCustomer = _viewCustomer.CustomerBindingSource.Current as Customer;
+            if (currentCustomer == null)
+            {
+                _viewCustomer.ShowMessage("Không tìm thấy khách hàng được chọn");
+                return;
+            }
+            Customer customer = _unitOfWork.Customers.GetCustomerWithSalesOrder(currentCustomer.CustomerID);
             if (customer.SalesOrders.Count == 0)
             {
                 _viewCustomer.ShowMessage(@"Khách hàng này chưa mua hàng lần nào");
@@ -59,7 +58,7 @@ namespace QLCHWF.Presenters
             }
             _historySales.SalesBindingSource.DataSource = customer.SalesOrders.ToList();
             Form form = (Form)_historySales;
-            form?.ShowDialog();
+            form.ShowDialog();
         }
         public void ShowAddForm()
         {
@@ -109,7 +108,8 @@ namespace QLCHWF.Presenters
                     return;
                 }
 
-                _customerRepository.Add(customer);
+                _unitOfWork.Customers.Add(customer);
+                _unitOfWork.SaveChanges();
                 _addCustomer.Reset();
                 _viewCustomer.CustomerBindingSource.EndEdit();
                 _addCustomer.ShowMessage("Thêm thành công");
@@ -126,7 +126,7 @@ namespace QLCHWF.Presenters
         {
             try
             {
-                Customer customerExist = _customerRepository.GetById(_updateCustomer.CustomerID);
+                Customer? customerExist = _unitOfWork.Customers.GetById(_updateCustomer.CustomerID);
                 if (customerExist == null)
                 {
                     _updateCustomer.ShowMessage("Không tìm thấy khách hàng cần cập nhật");
@@ -138,7 +138,7 @@ namespace QLCHWF.Presenters
                 {
                    return;
                 }
-                _customerRepository.Update(customerExist,customerExist.CustomerID);
+                _unitOfWork.Customers.Update(customerExist,customerExist.CustomerID);
                 _viewCustomer.CustomerBindingSource.EndEdit();
                 _updateCustomer.ShowMessage("Cập nhật thành công");
                 RenewItems();
@@ -166,7 +166,7 @@ namespace QLCHWF.Presenters
                     return;
                 }
 
-                if (_customerRepository.Remove(deleted))
+                if (_unitOfWork.Customers.Remove(deleted))
                 {
                     _viewCustomer.ShowMessage("Xóa thành công");
                     RenewItems();
@@ -186,24 +186,22 @@ namespace QLCHWF.Presenters
         {
             try
             {
-                List<Customer> customers = null;
+                List<Customer>? customers = null;
                 switch (_viewCustomer.OptionIndex)
                 {
                     case 1:
-                        customers = _customerRepository.GetSome(x =>
+                        customers = _unitOfWork.Customers.GetSome(x =>
                             x.CustomerName.ToLower().Contains(_viewCustomer.SearchText.ToLower())).ToList();
                         break;
                     case 2:
-                        customers = _customerRepository.GetSome(x => x.Email.Contains(_viewCustomer.SearchText)).ToList();
+                        customers = _unitOfWork.Customers.GetSome(x => x.Email.Contains(_viewCustomer.SearchText)).ToList();
                         break;
                     case 3:
-                        customers = _customerRepository.GetSome(x => x.Phone.Contains(_viewCustomer.SearchText)).ToList();
+                        customers = _unitOfWork.Customers.GetSome(x => x.Phone.Contains(_viewCustomer.SearchText)).ToList();
                         break;
                     case 4:
-                        customers = _customerRepository.GetSome(x => x.Address.Contains(_viewCustomer.SearchText))
+                        customers = _unitOfWork.Customers.GetSome(x => x.Address.Contains(_viewCustomer.SearchText))
                             .ToList();
-                        break;
-                    default:
                         break;
                 }
                 if (customers != null && customers.Count > 0)

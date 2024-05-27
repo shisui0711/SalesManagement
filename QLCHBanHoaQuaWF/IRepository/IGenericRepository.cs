@@ -17,8 +17,8 @@ public interface IGenericRepository<T> where T : class
     Task<bool> AddAsync(T entity);
     bool AddRange(IEnumerable<T> entities);
     Task<bool> AddRangeAsync(IEnumerable<T> entities);
-    bool Update(T entity,object key);
-    Task<bool> UpdateAsync(T entity,object key);
+    bool Update(T entity,object? key);
+    Task<bool> UpdateAsync(T entity,object? key);
     bool UpdateRange(IEnumerable<T> entities);
     Task<bool> UpdateRangeAsync(IEnumerable<T> entities);
     bool RemoveById(Guid id);

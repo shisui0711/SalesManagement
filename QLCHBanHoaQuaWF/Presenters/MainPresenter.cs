@@ -10,7 +10,6 @@ using QLCHWF.Views.User;
 using QLCHWF.Views.UserRole;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using QLCHWF.Attributes;
 using QLCHWF.Models;
 using QLCHWF.Views.Statistics;
 
@@ -64,11 +63,14 @@ public class MainPresenter
     void ShowForm(string formName)
     {
         var fieldForm = GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(f => f.FieldType.Name.StartsWith("IView")).FirstOrDefault(x=>x.Name.Substring(5) == formName);
-        Form form = (Form)fieldForm.GetValue(this);
-        form.TopLevel = false;
-        form.Dock = DockStyle.Fill;
-        _viewMain.BodyPanel.Controls.Clear();
-        _viewMain.BodyPanel.Controls.Add(form);
-        form.Show();
+        if (fieldForm != null)
+        {
+            Form form = (Form)fieldForm.GetValue(this)!;
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            _viewMain.BodyPanel.Controls.Clear();
+            _viewMain.BodyPanel.Controls.Add(form);
+            form.Show();
+        }
     }
 }

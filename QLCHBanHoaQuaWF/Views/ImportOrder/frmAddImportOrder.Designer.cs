@@ -909,6 +909,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddImportOrder";
             this.Padding = new System.Windows.Forms.Padding(3);
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Quản lý cửa hàng bán đồ điện dân dụng";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddImportOrder_FormClosed);

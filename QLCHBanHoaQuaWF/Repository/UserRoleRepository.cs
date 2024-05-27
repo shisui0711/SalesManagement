@@ -11,30 +11,43 @@ public class UserRoleRepository : GenericRepository<UserRole>,IUserRoleRepositor
         _context = context;
     }
 
-    public void AddUserRoleWithPermission(UserRole userRole, Permission permission)
+    public bool AddUserRoleWithPermission(UserRole userRole, Permission permission)
     {
         using (var transaction = _context.Database.BeginTransaction())
         {
             try
             {
-                _context.Add(userRole);
-                permission.UserRole = userRole;
+                
                 _context.Add(permission);
+                _context.SaveChanges();
+                userRole.Permission = permission;
+                _context.Add(userRole);
+                _context.SaveChanges();
                 transaction.Commit();
+                return true;
             }
-            catch (Exception e)
+            catch
             {
                 transaction.Rollback();
+                return false;
             }
         }
     }
 
-    public void UpdatePermission(Permission permission)
+    public bool UpdatePermission(Permission permission)
     {
-        _context.Update(permission);
+        try
+        {
+            _context.Update(permission);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
     }
 
-    public Permission GetPermission(object key)
+    public Permission? GetPermission(object? key)
     {
         return _context.Find<Permission>(key);
     }
