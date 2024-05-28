@@ -7,11 +7,11 @@ namespace QLCHWF.Models;
 public class AppInfo
 {
     [Key]
-    [Required]
+    [Required(ErrorMessage = "Tên cửa hàng không được để trống")]
     public string? AppName { get; set; }
-    [Required]
-    public string Phone { get; set; }
+    [Required(ErrorMessage = "Số điện thoại không được để trống")]
+    public required string Phone { get; set; }
     public string? Email { get; set; }
-    [Required]
-    public string Address { get; set; }
+    [Required(ErrorMessage = "Địa chỉ không được để trống")]
+    public required string Address { get; set; }
 }

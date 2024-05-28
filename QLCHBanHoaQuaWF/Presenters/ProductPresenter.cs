@@ -12,14 +12,14 @@ public class ProductPresenter : PaginationPresenter<Product>
     private readonly IAddProduct _addProduct;
     private readonly IUpdateProduct _updateProduct;
     private readonly IMapper _mapper;
-    private readonly IProductRepository _productRepository;
-    public ProductPresenter(IViewProduct viewProduct, IAddProduct addProduct, IUpdateProduct updateProduct, IMapper mapper,IProductRepository productRepository):base(viewProduct,productRepository,6)
+    private readonly IUnitOfWork _unitOfWork;
+    public ProductPresenter(IViewProduct viewProduct, IAddProduct addProduct, IUpdateProduct updateProduct, IMapper mapper,IUnitOfWork unitOfWork):base(viewProduct,unitOfWork.Products,6)
     {
         _viewProduct = viewProduct;
         _addProduct = addProduct;
         _updateProduct = updateProduct;
         _mapper = mapper;
-        _productRepository = productRepository;
+        _unitOfWork = unitOfWork;
 
         _viewProduct.ShowAddProduct += delegate { ShowAddForm(); };
         _viewProduct.ShowUpdateProduct += delegate { ShowUpdateForm(); };
@@ -65,11 +65,11 @@ public class ProductPresenter : PaginationPresenter<Product>
 
         _updateProduct.ProductID = updated.ProductID;
         _updateProduct.ProductName = updated.ProductName;
-        _updateProduct.CalculationUnit = updated.CalculationUnit;
+        _updateProduct.CalculationUnit = updated.CalculationUnit ?? "";
         _updateProduct.ImportUnitPrice = updated.ImportUnitPrice;
         _updateProduct.UnitPrice = updated.UnitPrice;
-        _updateProduct.ImageData = updated.ImageData;
-        _updateProduct.Description = updated.Description;
+        _updateProduct.ImageData = updated.ImageData ?? Array.Empty<byte>();
+        _updateProduct.Description = updated.Description ?? "";
 
         if (_updateProduct.GetType().IsAssignableTo(typeof(Form)))
         {
@@ -91,7 +91,7 @@ public class ProductPresenter : PaginationPresenter<Product>
                 return;
             }
 
-            _productRepository.Add(product);
+            _unitOfWork.Products.Add(product);
             RenewItems();
             _addProduct.ShowMessage(@"Thêm thành công");
         }
@@ -105,7 +105,7 @@ public class ProductPresenter : PaginationPresenter<Product>
     {
         try
         {
-            Product productExist = _productRepository.GetById(_updateProduct.ProductID);
+            Product? productExist = _unitOfWork.Products.GetById(_updateProduct.ProductID);
             if (productExist == null)
             {
                 _viewProduct.ShowMessage("Không tìm thấy mặt hàng cần cập nhật");
@@ -122,7 +122,7 @@ public class ProductPresenter : PaginationPresenter<Product>
                 return;
             }
             product.Inventory = productExist.Inventory;
-            _productRepository.Update(product, product.ProductID);
+            _unitOfWork.Products.Update(product, product.ProductID);
             RenewItems();
             _updateProduct.ShowMessage(@"Cập nhật thành cộng");
         }
@@ -146,7 +146,7 @@ public class ProductPresenter : PaginationPresenter<Product>
             return;
         }
 
-        if (_productRepository.Remove(deleted))
+        if (_unitOfWork.Products.Remove(deleted))
         {
             _viewProduct.ProductBindingSource.Remove(deleted);
             _viewProduct.ShowMessage(@"Xóa thành công");
@@ -161,7 +161,7 @@ public class ProductPresenter : PaginationPresenter<Product>
     {
         ResetPage();
         _viewProduct.CurrentPage = 0;
-        TargetSource = _productRepository.GetSome(p => p.ProductName.Contains(_viewProduct.SearchText)).ToList();
+        TargetSource = _unitOfWork.Products.GetSome(p => p.ProductName.Contains(_viewProduct.SearchText)).ToList();
         NextPage();
     }
 

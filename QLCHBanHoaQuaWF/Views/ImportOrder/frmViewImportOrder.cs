@@ -93,7 +93,7 @@ namespace QLCHWF.Views.ImportOrder
         public event EventHandler? SearchImportOrder;
         public event EventHandler? ShowAdd;
         public event EventHandler? ShowReport;
-        public event EventHandler ShowDetail;
+        public event EventHandler? ShowDetail;
 
         private void cboDateCreated_SelectedIndexChanged(object sender, EventArgs e)
         {

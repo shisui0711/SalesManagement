@@ -4,15 +4,17 @@ namespace QLCHWF.IRepository;
 
 public interface IGenericRepository<T> where T : class
 {
-    T GetById(object key);
+    T? GetById(object key);
     Task<T?> GetByIdAsync(object key);
     IEnumerable<T> GetAll();
     Task<IEnumerable<T>> GetAllAsync();
 
     IEnumerable<T> GetSome(Expression<Func<T, bool>> match);
     Task<IEnumerable<T>> GetSomeAsync(Expression<Func<T, bool>> match);
-    T GetOne(Expression<Func<T, bool>> match);
-    Task<T> GetOneAsync(Expression<Func<T, bool>> match);
+    T? GetOne(Expression<Func<T, bool>> match);
+    Task<T?> GetOneAsync(Expression<Func<T, bool>> match);
+    T? GetOneInluce<TProperty>(Expression<Func<T, TProperty>> selector, Expression<Func<T, bool>> match);
+    IEnumerable<T> GetSomeInclude<TProperty>(Expression<Func<T, TProperty>> selector, Expression<Func<T, bool>> match);
     bool Add(T entity);
     Task<bool> AddAsync(T entity);
     bool AddRange(IEnumerable<T> entities);

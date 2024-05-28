@@ -18,6 +18,7 @@ public interface IViewStatistics
     public int ImportOrdered { get; set; }
     public decimal Revenue { get; set; }
     public decimal Profit { get; set; }
+    public decimal Budget { get; set; }
     public int CountEmployee { get; set; }
     public int CountCustomer { get; set; }
     public int CountProvider { get; set; }

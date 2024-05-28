@@ -94,7 +94,7 @@ namespace QLCHWF.Views.SalesOrder
         public event EventHandler? SearchSalesOrder;
         public event EventHandler? ShowAdd;
         public event EventHandler? ShowReport;
-        public event EventHandler ShowDetail;
+        public event EventHandler? ShowDetail;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {

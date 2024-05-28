@@ -83,7 +83,6 @@ namespace QLCHWF.Presenters
         }
         void ShowAddUser()
         {
-            _addUser.EmployeeBindingSource.DataSource = _unitOfWork.Employees.GetAll();
             _addUser.RoleBindingSource.DataSource = _unitOfWork.UserRoles.GetAll();
             var form = (Form)_addUser;
             form.ShowDialog();
@@ -96,11 +95,19 @@ namespace QLCHWF.Presenters
                 if (_addUser.Password != _addUser.Repassword)
                 {
                     _addUser.ShowMessage("Mật khẩu không khớp. Vui lòng kiểm tra lại");
+                    return;
+                }
+
+                var employee = _unitOfWork.Employees.GetOne(x => x.Email == _addUser.Email);
+                if (employee == null)
+                {
+                    _addUser.ShowMessage($"Không tìm thấy nhân viên có email: {_addUser.Email}");
+                 return;   
                 }
                 var user = new User();
                 user.Email = _addUser.Email;
                 user.Password = _addUser.Password;
-                user.EmployeeID = _addUser.EmployeeID;
+                user.EmployeeID = employee.EmployeeID;
                 user.RoleID = _addUser.RoleID;
                 if (!ValidationHelper.IsValid(user,_addUser))
                 {
@@ -109,7 +116,6 @@ namespace QLCHWF.Presenters
 
                 user.Password = GetSha256Hash(user.Password);
                 _unitOfWork.Users.Add(user);
-                _unitOfWork.SaveChanges();
                 _addUser.ShowMessage("Tạo thành công");
             }
             catch (Exception e)
@@ -243,7 +249,6 @@ namespace QLCHWF.Presenters
                 user.RoleID = userRole.RoleID;
                 user.Password = GetSha256Hash(password);
                 _unitOfWork.Users.Add(user);
-                _unitOfWork.SaveChanges();
             }
         }
 

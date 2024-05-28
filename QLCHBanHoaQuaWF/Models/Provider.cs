@@ -12,16 +12,19 @@ namespace QLCHWF.Models
         public int ProviderID { get; set; }
         [Required(ErrorMessage = "Tên không được để trống")]
         [StringLength(30,ErrorMessage = "Tên không được quá 30 ký tự")]
-        public string ProviderName { get; set; }
+        public required string ProviderName { get; set; }
+
         [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng email")]
         [StringLength(50)]
-        public string Email { get; set; }
+        public required string Email { get; set; }
         [RegularExpression(@"0\d{9}", ErrorMessage = "Vui lòng nhập đúng định dạng số điện thoại")]
         [StringLength(10)]
-        public string Phone { get; set; }
+        [Required(ErrorMessage = "Số điện thoại không được để trống")]
+        public required string Phone { get; set; }
 
         [StringLength(50,ErrorMessage = "Địa chỉ không được quá 50 ký tự")]
-        public string Address { get; set; }
+        [Required(ErrorMessage = "Địa chỉ không được để trống")]
+        public required string Address { get; set; }
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;
         [InverseProperty("Provider")]

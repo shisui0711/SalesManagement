@@ -6,19 +6,6 @@ namespace QLCHWF.Models;
 [Table("UserRole")]
 public class UserRole
 {
-    public UserRole(int roleId, string roleName, string description, Permission permission)
-    {
-        RoleID = roleId;
-        RoleName = roleName ?? throw new ArgumentNullException(nameof(roleName));
-        Description = description ?? throw new ArgumentNullException(nameof(description));
-        Permission = permission ?? throw new ArgumentNullException(nameof(permission));
-    }
-
-    public UserRole()
-    {
-
-    }
-
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int RoleID { get; set; }
@@ -31,7 +18,8 @@ public class UserRole
     public string? Description { get; set; }
     public int PermissionID { get; set; }
     [ForeignKey("PermissionID")]
-    public Permission Permission { get; set; }
+    public Permission Permission { get; set; } = null!;
+
     [InverseProperty("UserRole")]
     public virtual ICollection<User> Users { get; set; }
 

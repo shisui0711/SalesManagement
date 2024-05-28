@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Reflection;
 using QLCHWF.CustomMessageBox;
 
 namespace QLCHWF.Views.User
@@ -24,15 +15,6 @@ namespace QLCHWF.Views.User
             get { return txtEmail.Text;}
             set { txtEmail.Text = value; }
         }
-        public int EmployeeID { get{
-            try
-            {
-                return int.Parse(cboEmployee.Tag?.ToString()!);
-            }
-            catch (Exception)
-            {
-                return 0;
-            }}}
         public int RoleID { get{
             try
             {
@@ -54,8 +36,10 @@ namespace QLCHWF.Views.User
             set { txtRepassword.Text = value; }
         }
 
-        public BindingSource EmployeeBindingSource => employeeBindingSource;
-        public BindingSource RoleBindingSource => userRoleBindingSource;
+        public BindingSource RoleBindingSource
+        {
+            get { return userRoleBindingSource; }
+        }
         public event EventHandler? AddUser;
         public void ShowMessage(string message)
         {

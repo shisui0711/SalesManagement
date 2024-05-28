@@ -26,19 +26,19 @@ namespace QLCHWF
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            //var _host = CreateHostBuilder(args).Build();
-            Host = CreateHostBuilder(args).Build();
-            Host.Start();
+            var _host = CreateHostBuilder(args).Build();
+            _host = CreateHostBuilder(args).Build();
+            _host.Start();
             var presenterTypes =
                 Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Name.Contains("Presenter") && t.IsClass && !t.IsAbstract);
             foreach (var type in presenterTypes)
             {
-                Host.Services.GetRequiredService(type);
+                _host.Services.GetRequiredService(type);
             }
 
             try
             {
-                Application.Run((Form)Host.Services.GetRequiredService<IViewLogin>());
+                Application.Run((Form)_host.Services.GetRequiredService<IViewLogin>());
             }
             catch (Exception e)
             {
@@ -46,15 +46,15 @@ namespace QLCHWF
             }
             finally
             {
-                Host.StopAsync().GetAwaiter().GetResult();
-                Host.Dispose();
+                _host.StopAsync().GetAwaiter().GetResult();
+                _host.Dispose();
             }
         }
 
-        public static IHost Host;
+        //public static IHost Host = null!;
         static IHostBuilder CreateHostBuilder(string[] args)
         {
-            return Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args).ConfigureHostConfiguration(config =>
+            return Host.CreateDefaultBuilder(args).ConfigureHostConfiguration(config =>
             {
                 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
                 config.AddEnvironmentVariables();

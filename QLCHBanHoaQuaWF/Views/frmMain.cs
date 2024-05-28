@@ -12,16 +12,16 @@ namespace QLCHWF.Views
         {
             get { return pnlBody; }
         }
-        public event EventHandler ShowStatistics;
-        public event EventHandler ShowSalesOrder;
-        public event EventHandler ShowImportOrder;
-        public event EventHandler ShowCustomer;
-        public event EventHandler ShowProduct;
-        public event EventHandler ShowProvider;
-        public event EventHandler ShowEmployee;
-        public event EventHandler ShowUser;
-        public event EventHandler ShowUserRole;
-        public event EventHandler ShowOptions;
+        public event EventHandler? ShowStatistics;
+        public event EventHandler? ShowSalesOrder;
+        public event EventHandler? ShowImportOrder;
+        public event EventHandler? ShowCustomer;
+        public event EventHandler? ShowProduct;
+        public event EventHandler? ShowProvider;
+        public event EventHandler? ShowEmployee;
+        public event EventHandler? ShowUser;
+        public event EventHandler? ShowUserRole;
+        public event EventHandler? ShowOptions;
         private bool IsLogout;
         public frmMain()
         {
@@ -113,11 +113,8 @@ namespace QLCHWF.Views
                 return;
             }
 
-            var control = (Control)type.GetValue(this);
-            if (control != null)
-            {
-                control.Visible = value;
-            }
+            var control = (Control)type.GetValue(this)!;
+            control.Visible = value;
         }
     }
 }

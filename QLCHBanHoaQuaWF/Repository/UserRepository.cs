@@ -17,4 +17,10 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     {
         return _context.Users.Include(selector).Where(match);
     }
+
+    public User? GetUserWithPermission(string username)
+    {
+        return _context.Users.Include(u => u.UserRole).ThenInclude(u => u.Permission)
+            .FirstOrDefault(x => x.Email == username);
+    }
 }

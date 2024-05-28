@@ -46,7 +46,7 @@ namespace QLCHWF.Views.Product
             ptbProduct.Click += pnlProduct_Click;
         }
 
-        private void pnlProduct_Click(object sender, EventArgs e)
+        private void pnlProduct_Click(object? sender, EventArgs e)
         {
             Clicked?.Invoke(this, EventArgs.Empty);
         }

@@ -8,11 +8,11 @@ namespace QLCHWF.Models
 {
     public partial class MyAppContext : DbContext
     {
-        private IConfiguration _configuration;
-        public MyAppContext()
-        {
-            //Database.Migrate();
-        }
+        private readonly IConfiguration _configuration;
+        //public MyAppContext()
+        //{
+        //    //Database.Migrate();
+        //}
         public MyAppContext(DbContextOptions<MyAppContext> optionsBuilderOptions, IConfiguration configuration) : base(optionsBuilderOptions)
         {
             _configuration = configuration;

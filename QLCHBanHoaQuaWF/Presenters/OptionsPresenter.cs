@@ -9,14 +9,14 @@ public class OptionsPresenter
 {
     private readonly IViewOptions _viewOptions;
     private readonly IAppInfo _appInfo;
-    private readonly IAppInfoRepository _appInfoRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
-    public OptionsPresenter(IViewOptions viewOptions,IMapper mapper,IAppInfoRepository appInfoRepository, IAppInfo appInfo)
+    public OptionsPresenter(IViewOptions viewOptions,IMapper mapper,IUnitOfWork unitOfWork, IAppInfo appInfo)
     {
         _viewOptions = viewOptions;
         _appInfo = appInfo;
         _mapper = mapper;
-        _appInfoRepository = appInfoRepository;
+        _unitOfWork = unitOfWork;
 
         _viewOptions.ShowAppInfo += delegate { ShowAppInfo(); };
 
@@ -27,7 +27,7 @@ public class OptionsPresenter
 
     void ShowAppInfo()
     {
-        AppInfo? info = _appInfoRepository.GetAll().FirstOrDefault();
+        AppInfo? info = _unitOfWork.AppInfos.GetAll().FirstOrDefault();
         if (info == null)
         {
             return;
@@ -43,7 +43,7 @@ public class OptionsPresenter
 
     void UpdateAppInfo()
     {
-        AppInfo info = _appInfoRepository.GetOne(x => x.AppName == _appInfo.AppName);
+        AppInfo? info = _unitOfWork.AppInfos.GetOne(x => x.AppName == _appInfo.AppName);
         if (info == null)
         {
             return;
@@ -52,7 +52,7 @@ public class OptionsPresenter
         info = _mapper.Map<AppInfo>(_appInfo);
         try
         {
-            _appInfoRepository.Update(info, info.AppName);    
+            _unitOfWork.AppInfos.Update(info, info.AppName);    
             _appInfo.ShowMessage(@"Cập nhật thông tin thành công");
         }
         catch

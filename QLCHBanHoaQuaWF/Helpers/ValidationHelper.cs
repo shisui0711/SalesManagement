@@ -12,8 +12,12 @@ public class ValidationHelper
             Validator.TryValidateObject(target, new ValidationContext(target), errors, true);
         if (!isValid)
         {
-            validateControl.ShowMessage(errors.First().ErrorMessage);
-            validateControl.Focus(errors.SelectMany(x => x.MemberNames).First());
+            var errorMessage = errors.First().ErrorMessage;
+            if (errorMessage != null)
+            {
+                validateControl.ShowMessage(errorMessage);
+                validateControl.Focus(errors.SelectMany(x => x.MemberNames).First());
+            }
         }
         return isValid;
     }

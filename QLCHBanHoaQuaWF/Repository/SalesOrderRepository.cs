@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using Bogus.DataSets;
 using Microsoft.EntityFrameworkCore;
 using QLCHWF.IRepository;
 using QLCHWF.Models;
@@ -40,7 +41,7 @@ public class SalesOrderRepository:GenericRepository<SalesOrder>,ISalesOrderRepos
         }
     }
 
-    public OrderData GetOrderData(int orderId)
+    public OrderData? GetOrderData(int orderId)
     {
         return (from s in _context.SalesOrders
             join c in _context.Customers on s.CustomerID equals c.CustomerID
@@ -57,7 +58,7 @@ public class SalesOrderRepository:GenericRepository<SalesOrder>,ISalesOrderRepos
             }).ToList().FirstOrDefault();
     }
 
-    public async Task<OrderData> GetOrderDataAsync(int orderId)
+    public async Task<OrderData?> GetOrderDataAsync(int orderId)
     {
         return await (from s in _context.SalesOrders
             join c in _context.Customers on s.CustomerID equals c.CustomerID
@@ -87,7 +88,7 @@ public class SalesOrderRepository:GenericRepository<SalesOrder>,ISalesOrderRepos
                 TotalPrice = d.TotalPrice.ToString("C0")
             }).ToListAsync();
     }
-    public List<OrderDetailData> GetOrderDetailData(int orderId)
+    public List<OrderDetailData?> GetOrderDetailData(int orderId)
     {
         return (from d in _context.DetailSalesOrders
             join p in _context.Products
@@ -102,7 +103,7 @@ public class SalesOrderRepository:GenericRepository<SalesOrder>,ISalesOrderRepos
             }).ToList();
     }
 
-    public SalesOrder GetOrderWithDetail(int orderId)
+    public SalesOrder? GetOrderWithDetail(int orderId)
     {
         return _context.SalesOrders.Include(o => o.DetailSalesOrders).ToList().FirstOrDefault(x=>x.OrderID== orderId);
     }
@@ -110,5 +111,51 @@ public class SalesOrderRepository:GenericRepository<SalesOrder>,ISalesOrderRepos
     public IEnumerable<SalesOrder> GetOrdersInclue<TProperty>(Expression<Func<SalesOrder, TProperty>> selector, Expression<Func<SalesOrder, bool>> match)
     {
         return _context.SalesOrders.Include(selector).Where(match);
+    }
+
+    public decimal GetRevenue(DateTime start, DateTime end)
+    {
+        return (from sales in _context.SalesOrders
+            join detail in _context.DetailSalesOrders on sales.OrderID equals detail.OrderID
+            join product in _context.Products on detail.ProductID equals product.ProductID
+            where sales.OrderDate >= start && sales.OrderDate <= end
+                select detail.Quantity * product.UnitPrice).Sum();
+    }
+
+    public decimal GetBudget(DateTime start, DateTime end)
+    {
+        return (from sales in _context.SalesOrders
+            join detail in _context.DetailSalesOrders on sales.OrderID equals detail.OrderID
+            join product in _context.Products on detail.ProductID equals product.ProductID
+            where sales.OrderDate >= start && sales.OrderDate <= end
+            select detail.Quantity * product.ImportUnitPrice).Sum();
+    }
+
+    public List<KeyValuePair<DateTime, decimal>> GetRevenueData(DateTime start, DateTime end)
+    {
+        return (from sales in _context.SalesOrders
+            join detail in _context.DetailSalesOrders on sales.OrderID equals detail.OrderID
+            join product in _context.Products on detail.ProductID equals product.ProductID
+            where sales.OrderDate >= start && sales.OrderDate <= end
+            group new { sales.OrderDate, product.UnitPrice, detail.Quantity } by sales.OrderDate
+            into g
+            select new KeyValuePair<DateTime, decimal>(
+                g.Key,
+                g.Sum(x => x.Quantity * x.UnitPrice)
+            )).ToList();
+    }
+
+    public List<KeyValuePair<DateTime, decimal>> GetBudgetData(DateTime start, DateTime end)
+    {
+       return  (from sales in _context.SalesOrders
+            join detail in _context.DetailSalesOrders on sales.OrderID equals detail.OrderID
+            join product in _context.Products on detail.ProductID equals product.ProductID
+            where sales.OrderDate >= start && sales.OrderDate <= end
+            group new { sales.OrderDate, product.ImportUnitPrice, detail.Quantity } by sales.OrderDate
+            into g
+            select new KeyValuePair<DateTime, decimal>(
+                g.Key,
+                g.Sum(x => x.Quantity * x.ImportUnitPrice)
+            )).ToList();
     }
 }

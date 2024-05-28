@@ -3,7 +3,7 @@
 public interface IAddImportOrder : IViewBase,IViewPagination
 {
     public string ProviderSearchText { get; set; }
-    public string? ProductSearchText { get; set; }
+    public string ProductSearchText { get; set; }
     public decimal TotalPrice { get; set; }
     public int EmployeeID { get; }
     public int ProviderID { get; }

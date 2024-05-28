@@ -41,7 +41,7 @@ public class ImportOrderRepository:GenericRepository<ImportOrder>,IImportOrderRe
         }
     }
 
-    public OrderImportData GetOrderData(int orderId)
+    public OrderImportData? GetOrderData(int orderId)
     {
         return (from s in _context.ImportOrders
             join p in _context.Providers on s.ProviderID equals p.ProviderID
@@ -70,7 +70,7 @@ public class ImportOrderRepository:GenericRepository<ImportOrder>,IImportOrderRe
             }).ToList();
     }
 
-    public async Task<OrderImportData> GetOrderDataAsync(int orderId)
+    public async Task<OrderImportData?> GetOrderDataAsync(int orderId)
     {
         return await (from s in _context.ImportOrders
             join p in _context.Providers on s.ProviderID equals p.ProviderID
@@ -99,7 +99,7 @@ public class ImportOrderRepository:GenericRepository<ImportOrder>,IImportOrderRe
             }).ToListAsync();
     }
 
-    public ImportOrder GetOrderWithDetail(int orderId)
+    public ImportOrder? GetOrderWithDetail(int orderId)
     {
         return _context.ImportOrders.Include(o => o.DetailImportOrders).ToList().FirstOrDefault(x=>x.OrderID == orderId);
     }

@@ -51,8 +51,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -61,12 +61,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -75,8 +77,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.Charts.WinForms.ChartFont chartFont1 = new Guna.Charts.WinForms.ChartFont();
             Guna.Charts.WinForms.ChartFont chartFont2 = new Guna.Charts.WinForms.ChartFont();
             Guna.Charts.WinForms.ChartFont chartFont3 = new Guna.Charts.WinForms.ChartFont();
@@ -108,6 +110,9 @@
             this.btnCustom = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.pnlOverview = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblBudget = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.guna2TileButton9 = new Guna.UI2.WinForms.Guna2TileButton();
             this.lblProfit = new System.Windows.Forms.Label();
             this.lblRevenue = new System.Windows.Forms.Label();
             this.lblSalesOrdered = new System.Windows.Forms.Label();
@@ -468,6 +473,9 @@
             // 
             // pnlOverview
             // 
+            this.pnlOverview.Controls.Add(this.lblBudget);
+            this.pnlOverview.Controls.Add(this.label10);
+            this.pnlOverview.Controls.Add(this.guna2TileButton9);
             this.pnlOverview.Controls.Add(this.lblProfit);
             this.pnlOverview.Controls.Add(this.lblRevenue);
             this.pnlOverview.Controls.Add(this.lblSalesOrdered);
@@ -480,13 +488,56 @@
             this.pnlOverview.Controls.Add(this.guna2TileButton3);
             this.pnlOverview.Controls.Add(this.guna2TileButton2);
             this.pnlOverview.Controls.Add(this.guna2TileButton1);
-            this.pnlOverview.CustomizableEdges = customizableEdges31;
+            this.pnlOverview.CustomizableEdges = customizableEdges33;
             this.pnlOverview.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlOverview.Location = new System.Drawing.Point(0, 61);
             this.pnlOverview.Name = "pnlOverview";
-            this.pnlOverview.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            this.pnlOverview.ShadowDecoration.CustomizableEdges = customizableEdges34;
             this.pnlOverview.Size = new System.Drawing.Size(1306, 165);
             this.pnlOverview.TabIndex = 1;
+            // 
+            // lblBudget
+            // 
+            this.lblBudget.AutoSize = true;
+            this.lblBudget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
+            this.lblBudget.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblBudget.ForeColor = System.Drawing.Color.White;
+            this.lblBudget.Location = new System.Drawing.Point(1064, 82);
+            this.lblBudget.Name = "lblBudget";
+            this.lblBudget.Size = new System.Drawing.Size(25, 27);
+            this.lblBudget.TabIndex = 14;
+            this.lblBudget.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(1064, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(145, 27);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Tổng chi phí";
+            // 
+            // guna2TileButton9
+            // 
+            this.guna2TileButton9.BorderRadius = 20;
+            this.guna2TileButton9.CustomizableEdges = customizableEdges23;
+            this.guna2TileButton9.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2TileButton9.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2TileButton9.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2TileButton9.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2TileButton9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
+            this.guna2TileButton9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.guna2TileButton9.ForeColor = System.Drawing.Color.White;
+            this.guna2TileButton9.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(133)))), ((int)(((byte)(45)))));
+            this.guna2TileButton9.Location = new System.Drawing.Point(1054, 17);
+            this.guna2TileButton9.Name = "guna2TileButton9";
+            this.guna2TileButton9.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
+            this.guna2TileButton9.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            this.guna2TileButton9.Size = new System.Drawing.Size(240, 134);
+            this.guna2TileButton9.TabIndex = 12;
             // 
             // lblProfit
             // 
@@ -494,7 +545,7 @@
             this.lblProfit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(133)))), ((int)(((byte)(45)))));
             this.lblProfit.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblProfit.ForeColor = System.Drawing.Color.White;
-            this.lblProfit.Location = new System.Drawing.Point(947, 82);
+            this.lblProfit.Location = new System.Drawing.Point(818, 82);
             this.lblProfit.Name = "lblProfit";
             this.lblProfit.Size = new System.Drawing.Size(25, 27);
             this.lblProfit.TabIndex = 11;
@@ -506,7 +557,7 @@
             this.lblRevenue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(172)))), ((int)(((byte)(84)))));
             this.lblRevenue.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblRevenue.ForeColor = System.Drawing.Color.White;
-            this.lblRevenue.Location = new System.Drawing.Point(641, 82);
+            this.lblRevenue.Location = new System.Drawing.Point(547, 82);
             this.lblRevenue.Name = "lblRevenue";
             this.lblRevenue.Size = new System.Drawing.Size(25, 27);
             this.lblRevenue.TabIndex = 10;
@@ -518,7 +569,7 @@
             this.lblSalesOrdered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(42)))), ((int)(((byte)(202)))));
             this.lblSalesOrdered.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblSalesOrdered.ForeColor = System.Drawing.Color.White;
-            this.lblSalesOrdered.Location = new System.Drawing.Point(331, 82);
+            this.lblSalesOrdered.Location = new System.Drawing.Point(286, 82);
             this.lblSalesOrdered.Name = "lblSalesOrdered";
             this.lblSalesOrdered.Size = new System.Drawing.Size(25, 27);
             this.lblSalesOrdered.TabIndex = 9;
@@ -542,7 +593,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(133)))), ((int)(((byte)(45)))));
             this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(947, 33);
+            this.label4.Location = new System.Drawing.Point(818, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(167, 27);
             this.label4.TabIndex = 7;
@@ -554,7 +605,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(172)))), ((int)(((byte)(84)))));
             this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(641, 33);
+            this.label3.Location = new System.Drawing.Point(547, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(183, 27);
             this.label3.TabIndex = 6;
@@ -566,7 +617,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(42)))), ((int)(((byte)(202)))));
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(331, 33);
+            this.label2.Location = new System.Drawing.Point(286, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(169, 27);
             this.label2.TabIndex = 5;
@@ -587,7 +638,7 @@
             // guna2TileButton4
             // 
             this.guna2TileButton4.BorderRadius = 20;
-            this.guna2TileButton4.CustomizableEdges = customizableEdges23;
+            this.guna2TileButton4.CustomizableEdges = customizableEdges25;
             this.guna2TileButton4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -596,17 +647,17 @@
             this.guna2TileButton4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.guna2TileButton4.ForeColor = System.Drawing.Color.White;
             this.guna2TileButton4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(133)))), ((int)(((byte)(45)))));
-            this.guna2TileButton4.Location = new System.Drawing.Point(926, 17);
+            this.guna2TileButton4.Location = new System.Drawing.Point(797, 17);
             this.guna2TileButton4.Name = "guna2TileButton4";
             this.guna2TileButton4.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(133)))), ((int)(((byte)(45)))));
-            this.guna2TileButton4.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            this.guna2TileButton4.ShadowDecoration.CustomizableEdges = customizableEdges26;
             this.guna2TileButton4.Size = new System.Drawing.Size(240, 134);
             this.guna2TileButton4.TabIndex = 3;
             // 
             // guna2TileButton3
             // 
             this.guna2TileButton3.BorderRadius = 20;
-            this.guna2TileButton3.CustomizableEdges = customizableEdges25;
+            this.guna2TileButton3.CustomizableEdges = customizableEdges27;
             this.guna2TileButton3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -615,17 +666,17 @@
             this.guna2TileButton3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.guna2TileButton3.ForeColor = System.Drawing.Color.White;
             this.guna2TileButton3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(172)))), ((int)(((byte)(84)))));
-            this.guna2TileButton3.Location = new System.Drawing.Point(624, 17);
+            this.guna2TileButton3.Location = new System.Drawing.Point(530, 17);
             this.guna2TileButton3.Name = "guna2TileButton3";
             this.guna2TileButton3.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(172)))), ((int)(((byte)(84)))));
-            this.guna2TileButton3.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            this.guna2TileButton3.ShadowDecoration.CustomizableEdges = customizableEdges28;
             this.guna2TileButton3.Size = new System.Drawing.Size(240, 134);
             this.guna2TileButton3.TabIndex = 2;
             // 
             // guna2TileButton2
             // 
             this.guna2TileButton2.BorderRadius = 20;
-            this.guna2TileButton2.CustomizableEdges = customizableEdges27;
+            this.guna2TileButton2.CustomizableEdges = customizableEdges29;
             this.guna2TileButton2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -634,10 +685,10 @@
             this.guna2TileButton2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.guna2TileButton2.ForeColor = System.Drawing.Color.White;
             this.guna2TileButton2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(42)))), ((int)(((byte)(202)))));
-            this.guna2TileButton2.Location = new System.Drawing.Point(319, 17);
+            this.guna2TileButton2.Location = new System.Drawing.Point(274, 17);
             this.guna2TileButton2.Name = "guna2TileButton2";
             this.guna2TileButton2.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(42)))), ((int)(((byte)(202)))));
-            this.guna2TileButton2.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            this.guna2TileButton2.ShadowDecoration.CustomizableEdges = customizableEdges30;
             this.guna2TileButton2.Size = new System.Drawing.Size(240, 134);
             this.guna2TileButton2.TabIndex = 1;
             // 
@@ -645,7 +696,7 @@
             // 
             this.guna2TileButton1.BorderRadius = 20;
             this.guna2TileButton1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(132)))), ((int)(((byte)(232)))));
-            this.guna2TileButton1.CustomizableEdges = customizableEdges29;
+            this.guna2TileButton1.CustomizableEdges = customizableEdges31;
             this.guna2TileButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -654,10 +705,10 @@
             this.guna2TileButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.guna2TileButton1.ForeColor = System.Drawing.Color.White;
             this.guna2TileButton1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(132)))), ((int)(((byte)(232)))));
-            this.guna2TileButton1.Location = new System.Drawing.Point(25, 17);
+            this.guna2TileButton1.Location = new System.Drawing.Point(12, 17);
             this.guna2TileButton1.Name = "guna2TileButton1";
             this.guna2TileButton1.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(132)))), ((int)(((byte)(232)))));
-            this.guna2TileButton1.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            this.guna2TileButton1.ShadowDecoration.CustomizableEdges = customizableEdges32;
             this.guna2TileButton1.Size = new System.Drawing.Size(240, 134);
             this.guna2TileButton1.TabIndex = 0;
             // 
@@ -665,7 +716,7 @@
             // 
             this.guna2TileButton5.BorderRadius = 20;
             this.guna2TileButton5.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(132)))), ((int)(((byte)(232)))));
-            this.guna2TileButton5.CustomizableEdges = customizableEdges33;
+            this.guna2TileButton5.CustomizableEdges = customizableEdges35;
             this.guna2TileButton5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -677,7 +728,7 @@
             this.guna2TileButton5.Location = new System.Drawing.Point(26, 556);
             this.guna2TileButton5.Name = "guna2TileButton5";
             this.guna2TileButton5.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(224)))), ((int)(((byte)(197)))));
-            this.guna2TileButton5.ShadowDecoration.CustomizableEdges = customizableEdges34;
+            this.guna2TileButton5.ShadowDecoration.CustomizableEdges = customizableEdges36;
             this.guna2TileButton5.Size = new System.Drawing.Size(212, 78);
             this.guna2TileButton5.TabIndex = 4;
             // 
@@ -685,7 +736,7 @@
             // 
             this.guna2TileButton7.BorderRadius = 20;
             this.guna2TileButton7.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(132)))), ((int)(((byte)(232)))));
-            this.guna2TileButton7.CustomizableEdges = customizableEdges35;
+            this.guna2TileButton7.CustomizableEdges = customizableEdges37;
             this.guna2TileButton7.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton7.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -697,7 +748,7 @@
             this.guna2TileButton7.Location = new System.Drawing.Point(26, 640);
             this.guna2TileButton7.Name = "guna2TileButton7";
             this.guna2TileButton7.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(129)))), ((int)(((byte)(116)))));
-            this.guna2TileButton7.ShadowDecoration.CustomizableEdges = customizableEdges36;
+            this.guna2TileButton7.ShadowDecoration.CustomizableEdges = customizableEdges38;
             this.guna2TileButton7.Size = new System.Drawing.Size(212, 78);
             this.guna2TileButton7.TabIndex = 6;
             // 
@@ -705,7 +756,7 @@
             // 
             this.guna2TileButton6.BorderRadius = 20;
             this.guna2TileButton6.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(132)))), ((int)(((byte)(232)))));
-            this.guna2TileButton6.CustomizableEdges = customizableEdges37;
+            this.guna2TileButton6.CustomizableEdges = customizableEdges39;
             this.guna2TileButton6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -717,7 +768,7 @@
             this.guna2TileButton6.Location = new System.Drawing.Point(244, 556);
             this.guna2TileButton6.Name = "guna2TileButton6";
             this.guna2TileButton6.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(91)))), ((int)(((byte)(228)))));
-            this.guna2TileButton6.ShadowDecoration.CustomizableEdges = customizableEdges38;
+            this.guna2TileButton6.ShadowDecoration.CustomizableEdges = customizableEdges40;
             this.guna2TileButton6.Size = new System.Drawing.Size(212, 72);
             this.guna2TileButton6.TabIndex = 7;
             // 
@@ -943,7 +994,7 @@
             // 
             this.guna2TileButton8.BorderRadius = 20;
             this.guna2TileButton8.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(132)))), ((int)(((byte)(232)))));
-            this.guna2TileButton8.CustomizableEdges = customizableEdges39;
+            this.guna2TileButton8.CustomizableEdges = customizableEdges41;
             this.guna2TileButton8.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton8.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2TileButton8.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -955,7 +1006,7 @@
             this.guna2TileButton8.Location = new System.Drawing.Point(243, 646);
             this.guna2TileButton8.Name = "guna2TileButton8";
             this.guna2TileButton8.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(110)))));
-            this.guna2TileButton8.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            this.guna2TileButton8.ShadowDecoration.CustomizableEdges = customizableEdges42;
             this.guna2TileButton8.Size = new System.Drawing.Size(212, 72);
             this.guna2TileButton8.TabIndex = 11;
             // 
@@ -1094,7 +1145,7 @@
             this.budgetDataSet.FillColors.AddRange(new System.Drawing.Color[] {
             System.Drawing.Color.Cyan});
             this.budgetDataSet.IndexLabelForeColor = System.Drawing.Color.Cyan;
-            this.budgetDataSet.Label = "Vốn";
+            this.budgetDataSet.Label = "Chi phí";
             this.budgetDataSet.TargetChart = this.gunaChart1;
             // 
             // profitDataSet
@@ -1220,5 +1271,8 @@
         private Guna.Charts.WinForms.GunaChart gunaChart1;
         private Guna.Charts.WinForms.GunaBarDataset budgetDataSet;
         private Guna.Charts.WinForms.GunaBarDataset profitDataSet;
+        private Label lblBudget;
+        private Label label10;
+        private Guna.UI2.WinForms.Guna2TileButton guna2TileButton9;
     }
 }

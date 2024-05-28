@@ -39,13 +39,17 @@ namespace QLCHWF.Views.ImportOrder
         }
         public int EmployeeID
         {
-            get { return AuthPresenter.User.EmployeeID; }
+            get
+            {
+                if (AuthPresenter.User != null) return AuthPresenter.User.EmployeeID;
+                throw new Exception("Bạn chưa đăng nhập");
+            }
         }
         public int ProviderID
         {
             get { try
                 {
-                    return int.Parse(dgvProvider.CurrentRow.Cells[0].Value.ToString());
+                    return int.Parse(dgvProvider.CurrentRow!.Cells[0].Value.ToString()!);
                 }
                 catch (Exception)
                 {
@@ -92,7 +96,7 @@ namespace QLCHWF.Views.ImportOrder
                 if (e.ColumnIndex == dgvProductSelect.ColumnCount - 3)
                 {
                     var cells = dgvProductSelect.Rows[e.RowIndex].Cells;
-                    var quantity = int.Parse(cells["QuantityColumn"].Value.ToString());
+                    var quantity = int.Parse(cells["QuantityColumn"].Value.ToString()!);
                     if (quantity > 1)
                     {
                         cells["QuantityColumn"].Value = quantity - 1;
@@ -103,7 +107,7 @@ namespace QLCHWF.Views.ImportOrder
                 {
                     var cells = dgvProductSelect.Rows[e.RowIndex].Cells;
                     cells["QuantityColumn"].Value = int.Parse(cells["QuantityColumn"].Value.ToString()!) + 1;
-                    cells["TotalPriceColumn"].Value = decimal.Parse(cells["UnitPriceColumn"].Value.ToString()!) * int.Parse(cells["QuantityColumn"].Value.ToString());
+                    cells["TotalPriceColumn"].Value = decimal.Parse(cells["UnitPriceColumn"].Value.ToString()!) * int.Parse(cells["QuantityColumn"].Value.ToString()!);
                 }
 
 
@@ -118,7 +122,11 @@ namespace QLCHWF.Views.ImportOrder
         private void dgvProductSelect_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             string? cellValue = dgvProductSelect.Rows[e.RowIndex].Cells["QuantityColumn"].Value.ToString();
-            if (!Regex.IsMatch(cellValue ?? string.Empty, @"\d+") || int.Parse(cellValue) < 1)
+            if (cellValue == null)
+            {
+                return;
+            }
+            if (!Regex.IsMatch(cellValue ?? string.Empty, @"\d+") || int.Parse(cellValue!) < 1)
             {
                 dgvProductSelect.Rows[e.RowIndex].Cells["QuantityColumn"].Value = _quantityBackup;
                 MyMessageBox.Show("Số lượng không hợp lệ", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -126,7 +134,7 @@ namespace QLCHWF.Views.ImportOrder
             }
             var rowSeleted = dgvProductSelect.Rows[e.RowIndex];
             var unitPrice = decimal.Parse(rowSeleted.Cells["UnitPriceColumn"].Value.ToString()!);
-            var quantity = decimal.Parse(rowSeleted.Cells["QuantityColumn"].Value.ToString());
+            var quantity = decimal.Parse(rowSeleted.Cells["QuantityColumn"].Value.ToString()!);
             rowSeleted.Cells["TotalPriceColumn"].Value = unitPrice * quantity;
         }
 
@@ -181,7 +189,13 @@ namespace QLCHWF.Views.ImportOrder
             decimal sum = 0;
             foreach (DataGridViewRow row in dgvProductSelect.Rows)
             {
-                sum += decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString());
+                try
+                {
+                    sum += decimal.Parse(row.Cells["TotalPriceColumn"].Value.ToString()!);
+                }
+                catch (Exception)
+                {
+                }
             }
 
             lblTotalPrice.Text = sum.ToString();
@@ -232,8 +246,8 @@ namespace QLCHWF.Views.ImportOrder
             }
             set { btnCurrentPage.Text = value.ToString(); }
         }
-        public event EventHandler PreviousPage;
-        public event EventHandler NextPage;
+        public event EventHandler? PreviousPage;
+        public event EventHandler? NextPage;
         public void DisableNextPage()
         {
             btnNext.Enabled = false;

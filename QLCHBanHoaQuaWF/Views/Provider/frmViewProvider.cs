@@ -25,7 +25,7 @@ namespace QLCHWF.Views.Provider
         public event EventHandler? SearchProvider;
         public event EventHandler? ShowAddProvider;
         public event EventHandler? ShowUpdateProvider;
-        public event EventHandler ShowOrderHistory;
+        public event EventHandler? ShowOrderHistory;
 
         public frmViewProvider()
         {
@@ -92,8 +92,8 @@ namespace QLCHWF.Views.Provider
             }
             set { btnCurrentPage.Text = value.ToString(); }
         }
-        public event EventHandler PreviousPage;
-        public event EventHandler NextPage;
+        public event EventHandler? PreviousPage;
+        public event EventHandler? NextPage;
         public void DisableNextPage()
         {
             btnNext.Enabled = false;

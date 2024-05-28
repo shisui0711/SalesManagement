@@ -72,7 +72,12 @@ namespace QLCHWF.Presenters
                 _viewSalesOrder.ShowMessage("Không tìm thấy đơn hàng được chọn");
                 return;
             }
-            SalesOrder order = _unitOfWork.SalesOrders.GetOrderWithDetail(curentOrder.OrderID);
+            SalesOrder? order = _unitOfWork.SalesOrders.GetOrderWithDetail(curentOrder.OrderID);
+            if (order == null)
+            {
+                _viewSalesOrder.ShowMessage("Đơn hàng đã chọn không tồn tại");
+                return;
+            }
             _detailSales.DetailOrderBindingSource.DataSource = order.DetailSalesOrders.ToList();
             Form form = (Form)_detailSales;
             form.ShowDialog();
@@ -87,11 +92,16 @@ namespace QLCHWF.Presenters
                 _viewSalesOrder.ShowMessage("Không tìm thấy đơn hàng được chọn");
                 return;
             }
-            Task<OrderData> orderDataTask = _unitOfWork.SalesOrders.GetOrderDataAsync(current.OrderID);
+            Task<OrderData?> orderDataTask = _unitOfWork.SalesOrders.GetOrderDataAsync(current.OrderID);
             Task<List<OrderDetailData>> orderDetailTask = _unitOfWork.SalesOrders.GetOrderDetailDataAsync(current.OrderID);
             await Task.WhenAll(orderDataTask, orderDetailTask);
-            OrderData orderData = await orderDataTask;
+            OrderData? orderData = await orderDataTask;
             List<OrderDetailData> detailData = await orderDetailTask;
+            if (orderData == null)
+            {
+                _viewSalesOrder.ShowMessage("Đơn hàng đã chọn không tồn tại");
+                return;
+            }
 
             var orderFullData = new
             {
@@ -212,67 +222,6 @@ namespace QLCHWF.Presenters
             }
 
         }
-        //public void Add()
-        //{
-        //    using (var transaction = _context.Database.BeginTransaction())
-        //    {
-        //        try
-        //        {
-        //            if (_addSalesOrder.OrderedGridView.RowCount == 0)
-        //            {
-        //                _addSalesOrder.ShowMessage("Đơn hàng chưa có sản phẩm nào");
-        //                transaction.Rollback();
-        //                return;
-        //            }
-        //            SalesOrder? salesOrder = new SalesOrder();
-        //            salesOrder.Employee = _context.Employees.Find(_addSalesOrder.EmployeeID);
-        //            salesOrder.Customer = _context.Customers.Find(_addSalesOrder.CustomerID);
-        //            salesOrder.PurchasePrice = _addSalesOrder.PurchasePrice;
-        //            salesOrder.ChangePrice = _addSalesOrder.ChangePrice;
-        //            salesOrder.TotalPrice = _addSalesOrder.TotalPrice;
-        //            if (salesOrder.PurchasePrice < salesOrder.TotalPrice)
-        //            {
-        //                var result = MyMessageBox.Show("Khách chưa trả đủ tiển có muốn tiếp tục ?","Thông báo", MessageBoxButtons.YesNo);
-        //                if (result == DialogResult.No)
-        //                {
-        //                    transaction.Rollback();
-        //                    return;
-        //                }
-        //            }
-        //            _context.SalesOrders.Add(salesOrder);
-
-        //            foreach (DataGridViewRow row in _addSalesOrder.OrderedGridView.Rows)
-        //            {
-        //                Product product = _context.Products.Find(row.Cells["ProductIDColumn"].Value)!;
-        //                DetailSalesOrder detail = new DetailSalesOrder();
-        //                detail.Product = product;
-        //                detail.UnitPrice = decimal.Parse(row.Cells["UnitPriceColumn"].Value.ToString());
-        //                detail.SalesOrder = salesOrder;
-        //                detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString());
-        //                if (detail.Quantity > product.Inventory)
-        //                {
-        //                    _addSalesOrder.ShowMessage($@"Số lượng trong kho không đủ cho sản phẩm: {product.ProductName}");
-        //                    _context.Entry(salesOrder).State = EntityState.Detached;
-        //                    transaction.Rollback();
-        //                    return;
-        //                }
-        //                detail.OrderID = salesOrder.OrderID;
-        //                _context.DetailSalesOrders.Add(detail);
-        //                product.Inventory -= detail.Quantity;
-        //            }
-
-        //            _context.SaveChanges();
-        //            transaction.Commit();
-        //            _addSalesOrder.ShowMessage(@"Thanh toán thành công");
-        //            _viewSalesOrder.OrderBindingSource.EndEdit();
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            transaction.Rollback();
-        //            _addSalesOrder.ShowMessage(@"Lỗi cơ sở dữ liệu. Thanh toán thất bại");
-        //        }
-        //    }
-        //}
 
         public void Remove()
         {
@@ -288,7 +237,7 @@ namespace QLCHWF.Presenters
                 return;
             }
 
-            if (_unitOfWork.SalesOrders.Remove(deleted) && _unitOfWork.SaveChanges() != 0)
+            if (_unitOfWork.SalesOrders.Remove(deleted))
             {
                 _viewSalesOrder.ShowMessage("Xóa thành công");
             }

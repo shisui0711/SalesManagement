@@ -15,7 +15,7 @@ namespace QLCHWF.Views
             get { return txtPassword.Text; }
             set { txtPassword.Text = value; }
         }
-        public event EventHandler LoginEvent;
+        public event EventHandler? LoginEvent;
         public frmLogin()
         {
             InitializeComponent();

@@ -81,8 +81,8 @@ namespace QLCHWF.Views.Product
             }
             set { btnCurrentPage.Text = value.ToString(); }
         }
-        public event EventHandler PreviousPage;
-        public event EventHandler NextPage;
+        public event EventHandler? PreviousPage;
+        public event EventHandler? NextPage;
         public void DisableNextPage()
         {
             btnNext.Enabled = false;

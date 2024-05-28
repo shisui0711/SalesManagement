@@ -113,7 +113,6 @@ public class ProviderPresenter: PaginationPresenter<Provider>
             }
 
             _unitOfWork.Providers.Add(provider);
-            _unitOfWork.SaveChanges();
             _viewProvider.ProviderBindingSource.EndEdit();
             _viewProvider.ShowMessage("Thêm thành công");
             RenewItems();
@@ -141,7 +140,6 @@ public class ProviderPresenter: PaginationPresenter<Provider>
             }
 
             _unitOfWork.Providers.Update(providerExist, providerExist.ProviderID);
-            _unitOfWork.SaveChanges();
             _viewProvider.ProviderBindingSource.EndEdit();
             _viewProvider.ShowMessage("Cập nhật thành công");
             RenewItems();
@@ -166,7 +164,7 @@ public class ProviderPresenter: PaginationPresenter<Provider>
             return;
         }
 
-        if (_unitOfWork.Providers.Remove(deleted) && _unitOfWork.SaveChanges() != 0)
+        if (_unitOfWork.Providers.Remove(deleted))
         {
             _viewProvider.ProviderBindingSource.Remove(deleted);
             _viewProvider.ShowMessage("Xóa thành công");

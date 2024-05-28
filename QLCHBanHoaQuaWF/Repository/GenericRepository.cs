@@ -12,7 +12,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         _context = context;
     }
-    public T GetById(object key)
+    public T? GetById(object key)
     {
         return _context.Set<T>().Find(key)!;
     }
@@ -51,6 +51,16 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     public async Task<T?> GetOneAsync(Expression<Func<T, bool>> match)
     {
         return await _context.Set<T>().Where(match).FirstOrDefaultAsync();
+    }
+
+    public T? GetOneInluce<TProperty>(Expression<Func<T, TProperty>> selector, Expression<Func<T, bool>> match)
+    {
+        return _context.Set<T>().Include(selector).FirstOrDefault(match);
+    }
+
+    public IEnumerable<T> GetSomeInclude<TProperty>(Expression<Func<T, TProperty>> selector, Expression<Func<T, bool>> match)
+    {
+        return _context.Set<T>().Include(selector).Where(match);
     }
 
     public bool Add(T entity)

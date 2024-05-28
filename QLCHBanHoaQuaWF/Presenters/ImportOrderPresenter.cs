@@ -1,6 +1,4 @@
-﻿
-#nullable enable
-using Microsoft.Reporting.WinForms;
+﻿using Microsoft.Reporting.WinForms;
 using QLCHWF.IRepository;
 using QLCHWF.Models;
 using QLCHWF.Views.ImportOrder;
@@ -15,22 +13,15 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
     private readonly IAddImportOrder _addImportOrder;
     private readonly IReportImportOrder _report;
     private readonly IDetailImportOrder _detailImport;
-    private readonly IImportOrderRepository _importOrderRepository;
-    private readonly IProviderRepository _providerRepository;
-    private readonly IProductRepository _productRepository;
-    private IAppInfoRepository _appInfoRepository;
+    private readonly IUnitOfWork _unitOfWork;
     public ImportOrderPresenter(IViewImportOrder viewImportOrder, IAddImportOrder addImportOrder, IReportImportOrder report, 
-        IDetailImportOrder detailImport,IImportOrderRepository importOrderRepository, IAppInfoRepository appInfoRepository,
-        IProviderRepository providerRepository,IProductRepository productRepository):base(addImportOrder, productRepository, 6)
+        IDetailImportOrder detailImport,IUnitOfWork unitOfWork):base(addImportOrder, unitOfWork.Products, 6)
     {
         _viewImportOrder = viewImportOrder;
         _addImportOrder = addImportOrder;
         _report = report;
         _detailImport = detailImport;
-        _importOrderRepository = importOrderRepository;
-        _productRepository = productRepository;
-        _providerRepository = providerRepository;
-        _appInfoRepository = appInfoRepository;
+        _unitOfWork = unitOfWork;
 
         _viewImportOrder.ShowAdd += delegate { ShowAddForm(); };
         _viewImportOrder.LoadImportOrder += delegate { Load(); };
@@ -58,7 +49,12 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
             return;
         }
         ImportOrder curentOrder = (_viewImportOrder.OrderBindingSource.Current as ImportOrder)!;
-        ImportOrder order = _importOrderRepository.GetOrderWithDetail(curentOrder.OrderID);
+        ImportOrder? order = _unitOfWork.ImportOrders.GetOrderWithDetail(curentOrder.OrderID);
+        if (order == null)
+        {
+            _viewImportOrder.ShowMessage("Đơn hàng đã chọn không tồn tại");
+            return;
+        }
         _detailImport.DetailOrderBindingSource.DataSource = order.DetailImportOrders.ToList();
         Form form = (Form)_detailImport;
         form.ShowDialog();
@@ -67,7 +63,7 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
     {
         try
         {
-            AppInfo? info = _appInfoRepository.GetAll().FirstOrDefault();
+            AppInfo? info = _unitOfWork.AppInfos.GetAll().FirstOrDefault();
             if (info == null)
             {
                 return;
@@ -79,8 +75,13 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
                 _viewImportOrder.ShowMessage("Không tìm thấy đơn hàng nhập được chọn");
                 return;
             }
-            OrderImportData orderData = _importOrderRepository.GetOrderData(current.OrderID);
-            List<OrderDetailData> detailData = _importOrderRepository.GetOrderDetailData(current.OrderID);
+            OrderImportData? orderData = _unitOfWork.ImportOrders.GetOrderData(current.OrderID);
+            List<OrderDetailData?> detailData = _unitOfWork.ImportOrders.GetOrderDetailData(current.OrderID);
+            if (orderData == null)
+            {
+                _viewImportOrder.ShowMessage("Đơn hàng đã chọn không còn tồn tại");
+                return;
+            }
             var orderFullData = new
             {
                 orderData.DateCreated,
@@ -152,7 +153,7 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
             List<DetailImportOrder> detailImportOrders = new List<DetailImportOrder>();
             foreach (DataGridViewRow row in _addImportOrder.OrderedGridView.Rows)
             {
-                Product product = _productRepository.GetById(row.Cells["ProductIDColumn"].Value)!;
+                Product product = _unitOfWork.Products.GetById(row.Cells["ProductIDColumn"].Value)!;
                 DetailImportOrder detail = new DetailImportOrder();
                 detail.Product = product;
                 detail.ImportOrder = importOrder;
@@ -162,7 +163,7 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
                 detailImportOrders.Add(detail);
             }
 
-            if (_importOrderRepository.AddOrder(importOrder, detailImportOrders))
+            if (_unitOfWork.ImportOrders.AddOrder(importOrder, detailImportOrders))
             {
                 _addImportOrder.ShowMessage(@"Đặt hàng thành công");
                 _viewImportOrder.OrderBindingSource.EndEdit();
@@ -178,50 +179,6 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
             _addImportOrder.ShowMessage(@"Lỗi không xác địnhh: Đặt hàng thất bại");
         }
     }
-    //public void Add()
-    //{
-    //    using (var transaction = _context.Database.BeginTransaction())
-    //    {
-    //        try
-    //        {
-    //            if (_addImportOrder.OrderedGridView.RowCount == 0)
-    //            {
-    //                _addImportOrder.ShowMessage("Đơn hàng chưa có sản phẩm nào");
-    //                transaction.Rollback();
-    //                return;
-    //            }
-    //            ImportOrder importOrder = new ImportOrder();
-    //            importOrder.Employee = _context.Employees.Where(e => e.Email == AuthPresenter.User.Email).FirstOrDefault();
-    //            importOrder.Provider = _context.Providers.Find(_addImportOrder.ProviderID);
-    //            importOrder.TotalPrice = _addImportOrder.TotalPrice;
-    //            _context.ImportOrders.Add(importOrder);
-    //            _context.SaveChanges();
-
-    //            foreach (DataGridViewRow row in _addImportOrder.OrderedGridView.Rows)
-    //            {
-    //                Product product = _context.Products.Find(row.Cells["ProductIDColumn"].Value)!;
-    //                DetailImportOrder detail = new DetailImportOrder();
-    //                detail.Product = product;
-    //                detail.ImportOrder = importOrder;
-    //                detail.UnitPrice = decimal.Parse(row.Cells["UnitPriceColumn"].Value.ToString());
-    //                detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString()!);
-    //                detail.OrderID = importOrder.OrderID;
-    //                _context.DetailImportOrders.Add(detail);
-    //                product.Inventory += detail.Quantity;
-    //            }
-
-    //            _context.SaveChanges();
-    //            transaction.Commit();
-    //            _addImportOrder.ShowMessage(@"Đặt hàng thành công");
-    //            _viewImportOrder.OrderBindingSource.EndEdit();
-    //        }
-    //        catch (SqlException e)
-    //        {
-    //            transaction.Rollback();
-    //            _addImportOrder.ShowMessage(@"Lỗi cơ sở dữ liệu. Đặt hàng thất bại");
-    //        }
-    //    }
-    //}
 
     public void Remove()
     {
@@ -234,7 +191,7 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
                 return;
             }
 
-            if (_importOrderRepository.Remove(deleted))
+            if (_unitOfWork.ImportOrders.Remove(deleted))
             {
                 _viewImportOrder.OrderBindingSource.Remove(deleted);
                 _viewImportOrder.ShowMessage("Xóa thành công");
@@ -258,19 +215,19 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
             switch (_viewImportOrder.OptionIndex)
             {
                 case 0:
-                    importOrders = _importOrderRepository.GetAll().ToList();
+                    importOrders = _unitOfWork.ImportOrders.GetAll().ToList();
                     break;
                 case 1:
-                    importOrders = _importOrderRepository
+                    importOrders = _unitOfWork.ImportOrders
                         .GetSome(x => x.OrderID.ToString().Equals(_viewImportOrder.SearchText)).ToList();
                     break;
                 case 2:
-                    importOrders = _importOrderRepository.GetOrdersInclue(o => o.Provider,
+                    importOrders = _unitOfWork.ImportOrders.GetOrdersInclue(o => o.Provider,
                             x => x.Provider != null && x.Provider.ProviderName.Contains(_viewImportOrder.SearchText))
                         .ToList();
                     break;
                 case 3:
-                    importOrders = _importOrderRepository.GetOrdersInclue(o => o.Employee,
+                    importOrders = _unitOfWork.ImportOrders.GetOrdersInclue(o => o.Employee,
                             x => x.Employee != null && x.Employee.EmployeeName.Contains(_viewImportOrder.SearchText))
                         .ToList();
                     break;
@@ -300,19 +257,19 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
     public void Load()
     {
         _viewImportOrder.OrderBindingSource.ResetBindings(true);
-        _viewImportOrder.OrderBindingSource.DataSource = _importOrderRepository.GetAll().ToList();
+        _viewImportOrder.OrderBindingSource.DataSource = _unitOfWork.ImportOrders.GetAll().ToList();
     }
 
     public void LoadProvider()
     {
-        _addImportOrder.ProviderBindingSource.DataSource = _providerRepository.GetAll().ToList();
+        _addImportOrder.ProviderBindingSource.DataSource = _unitOfWork.Providers.GetAll().ToList();
     }
 
     public void SearchProduct(string? name = null)
     {
         ResetPage();
         _addImportOrder.CurrentPage = 0;
-        TargetSource = _productRepository.GetSome(x => x.ProductName == _addImportOrder.ProductSearchText).ToList();
+        TargetSource = _unitOfWork.Products.GetSome(x => x.ProductName == _addImportOrder.ProductSearchText).ToList();
         NextPage();
     }
     //public void LoadProduct(List<Product> products)
@@ -352,7 +309,7 @@ public class ImportOrderPresenter : PaginationPresenter<Product>
     public void SearchProvider()
     {
         List<Provider> providers;
-        providers = _providerRepository.GetSome(p => p.ProviderName.Contains(_addImportOrder.ProviderSearchText))
+        providers = _unitOfWork.Providers.GetSome(p => p.ProviderName.Contains(_addImportOrder.ProviderSearchText))
             .ToList();
         _addImportOrder.ProviderBindingSource.DataSource = providers;
     }

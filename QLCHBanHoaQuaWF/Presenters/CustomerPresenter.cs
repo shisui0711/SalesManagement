@@ -89,11 +89,10 @@ namespace QLCHWF.Presenters
             }
             _updateCustomer.CustomerID = updated.CustomerID;
             _updateCustomer.CustomerName = updated.CustomerName;
-            _updateCustomer.Email = updated.Email;
+            _updateCustomer.Email = updated.Email ?? "";
             _updateCustomer.Phone = updated.Phone;
-            _updateCustomer.Address = updated.Address;
-            var form = _updateCustomer as Form;
-            if (form != null)
+            _updateCustomer.Address = updated.Address ?? "";
+            if (_updateCustomer is Form form)
             {
                 form.ShowDialog();
             }
@@ -109,7 +108,7 @@ namespace QLCHWF.Presenters
                 }
 
                 _unitOfWork.Customers.Add(customer);
-                _unitOfWork.SaveChanges();
+                
                 _addCustomer.Reset();
                 _viewCustomer.CustomerBindingSource.EndEdit();
                 _addCustomer.ShowMessage("Thêm thành công");
@@ -194,13 +193,13 @@ namespace QLCHWF.Presenters
                             x.CustomerName.ToLower().Contains(_viewCustomer.SearchText.ToLower())).ToList();
                         break;
                     case 2:
-                        customers = _unitOfWork.Customers.GetSome(x => x.Email.Contains(_viewCustomer.SearchText)).ToList();
+                        customers = _unitOfWork.Customers.GetSome(x =>x.Email != null &&  x.Email.Contains(_viewCustomer.SearchText)).ToList();
                         break;
                     case 3:
                         customers = _unitOfWork.Customers.GetSome(x => x.Phone.Contains(_viewCustomer.SearchText)).ToList();
                         break;
                     case 4:
-                        customers = _unitOfWork.Customers.GetSome(x => x.Address.Contains(_viewCustomer.SearchText))
+                        customers = _unitOfWork.Customers.GetSome(x =>x.Address != null &&  x.Address.Contains(_viewCustomer.SearchText))
                             .ToList();
                         break;
                 }

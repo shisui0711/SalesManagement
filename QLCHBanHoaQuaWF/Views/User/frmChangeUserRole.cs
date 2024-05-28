@@ -33,7 +33,7 @@ namespace QLCHWF.Views.User
         {
             get { try
                 {
-                    return int.Parse(cboVaiTro.Tag.ToString());
+                    return int.Parse(cboVaiTro.Tag!.ToString()!);
                 }
                 catch (Exception)
                 {

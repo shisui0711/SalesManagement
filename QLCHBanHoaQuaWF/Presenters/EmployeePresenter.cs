@@ -15,13 +15,13 @@ public class EmployeePresenter : PaginationPresenter<Employee>
     private readonly IHistorySales _historySales;
     private readonly IViewSalary _viewSalary;
     private readonly IMapper _mapper;
-    private readonly IEmployeeRepository _employeeRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly AuthPresenter _auth;
 
 
     public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee,
         IHistoryImport historyImport, IHistorySales historySales, IViewSalary viewSalary, IMapper mapper,
-        IEmployeeRepository employeeRepository, AuthPresenter auth) : base(viewEmployee, employeeRepository, 20)
+        IUnitOfWork unitOfWork, AuthPresenter auth) : base(viewEmployee, unitOfWork.Employees, 20)
     {
         _viewEmployee = viewEmployee;
         _addEmployee = addEmployee;
@@ -30,7 +30,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
         _historySales = historySales;
         _viewSalary = viewSalary;
         _mapper = mapper;
-        _employeeRepository = employeeRepository;
+        _unitOfWork = unitOfWork;
         _auth = auth;
 
         _viewEmployee.LoadEmployee += delegate
@@ -56,9 +56,9 @@ public class EmployeePresenter : PaginationPresenter<Employee>
         try
         {
             List<SalaryTable> salesSalary =
-                _employeeRepository.GetSalesSalary(_viewSalary.StartDate, _viewSalary.EndDate);
+                _unitOfWork.Employees.GetSalesSalary(_viewSalary.StartDate, _viewSalary.EndDate);
             List<SalaryTable> importSalary =
-                _employeeRepository.GetImportSalary(_viewSalary.StartDate, _viewSalary.EndDate);
+                _unitOfWork.Employees.GetImportSalary(_viewSalary.StartDate, _viewSalary.EndDate);
             List<SalaryTable> salaryTables = salesSalary.Concat(importSalary).ToList();
             _viewSalary.SalaryBindingSource.DataSource = salaryTables;
         }
@@ -70,7 +70,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
     void ShowSalaryTable()
     {
         Form form = (Form)_viewSalary;
-        form?.ShowDialog();
+        form.ShowDialog();
     }
     void SalesHistory()
     {
@@ -85,7 +85,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
             _viewEmployee.ShowMessage("Chưa nhân viên nào được chọn");
             return;
         }
-        Employee employee = _employeeRepository.GetEmployeeWithSalesOrder(currentEmployee.EmployeeID);
+        Employee employee = _unitOfWork.Employees.GetEmployeeWithSalesOrder(currentEmployee.EmployeeID);
         if (employee.SalesOrders.Count == 0)
         {
             _viewEmployee.ShowMessage("Nhân viên này chưa bán đơn hàng nào");
@@ -110,7 +110,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
             _viewEmployee.ShowMessage("Chưa nhân viên nào được chọn");
             return;
         }
-        Employee employee = _employeeRepository.GetEmployeeWithImportOrder(currentEmployee.EmployeeID);
+        Employee employee = _unitOfWork.Employees.GetEmployeeWithImportOrder(currentEmployee.EmployeeID);
         if (employee.ImportOrders.Count == 0)
         {
             _viewEmployee.ShowMessage(@"Nhân viên này chưa nhập đơn hàng nào");
@@ -118,7 +118,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
         }
         _historyImport.ImportBindingSource.DataSource = employee.ImportOrders.ToList();
         Form form = (Form)_historyImport;
-        form?.ShowDialog();
+        form.ShowDialog();
     }
     public void ShowAddForm()
     {
@@ -175,13 +175,13 @@ public class EmployeePresenter : PaginationPresenter<Employee>
                 return;
             }
 
-            if (_employeeRepository.GetOne(x=>x.Email == _addEmployee.Email) != null)
+            if (_unitOfWork.Employees.GetOne(x=>x.Email == _addEmployee.Email) != null)
             {
                 _addEmployee.ShowMessage(@"Email đã tồn tại trên hệ thống");
                 return;
             }
 
-            _employeeRepository.Add(employee);
+            _unitOfWork.Employees.Add(employee);
             _auth.Register(employee.Email, "123456", 1);
             _viewEmployee.EmployeeBindingSource.EndEdit();
             _addEmployee.ShowMessage("Thêm thành công");
@@ -196,7 +196,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
     {
         try
         {
-            Employee employeeExist = _employeeRepository.GetById(_updateEmployee.EmployeeID);
+            Employee? employeeExist = _unitOfWork.Employees.GetById(_updateEmployee.EmployeeID);
             if (employeeExist == null)
             {
                 _viewEmployee.ShowMessage("Không tìm thấy nhân viên cần cập nhật");
@@ -209,7 +209,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
                 return;
             }
 
-            _employeeRepository.Update(employeeExist, employeeExist.EmployeeID);
+            _unitOfWork.Employees.Update(employeeExist, employeeExist.EmployeeID);
             _viewEmployee.EmployeeBindingSource.EndEdit();
             _updateEmployee.ShowMessage("Cập nhật thành công");
             RenewItems();
@@ -230,7 +230,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
                 return;
             }
 
-            if (_employeeRepository.Remove(deleted))
+            if (_unitOfWork.Employees.Remove(deleted))
             {
                 _viewEmployee.EmployeeBindingSource.Remove(deleted);
                 _viewEmployee.ShowMessage("Xóa thành công");
@@ -255,21 +255,21 @@ public class EmployeePresenter : PaginationPresenter<Employee>
             switch (_viewEmployee.OptionIndex)
             {
                 case 1:
-                    employees = _employeeRepository.GetSome(x => x.EmployeeName.Contains(_viewEmployee.SearchText))
+                    employees = _unitOfWork.Employees.GetSome(x => x.EmployeeName.Contains(_viewEmployee.SearchText))
                         .ToList();
                     break;
                 case 2:
-                    employees = _employeeRepository.GetSome(x => x.Salary.ToString().Contains(_viewEmployee.SearchText))
+                    employees = _unitOfWork.Employees.GetSome(x => x.Salary != null && x.Salary.ToString()!.Contains(_viewEmployee.SearchText))
                         .ToList();
                     break;
                 case 3:
-                    employees = _employeeRepository.GetSome(x => x.Email.Contains(_viewEmployee.SearchText)).ToList();
+                    employees = _unitOfWork.Employees.GetSome(x => x.Email.Contains(_viewEmployee.SearchText)).ToList();
                     break;
                 case 4:
-                    employees = _employeeRepository.GetSome(x => x.Phone.Contains(_viewEmployee.SearchText)).ToList();
+                    employees = _unitOfWork.Employees.GetSome(x => x.Phone.Contains(_viewEmployee.SearchText)).ToList();
                     break;
                 case 5:
-                    employees = _employeeRepository.GetSome(x =>x.Address !=null && x.Address.Contains(_viewEmployee.SearchText)).ToList();
+                    employees = _unitOfWork.Employees.GetSome(x =>x.Address !=null && x.Address.Contains(_viewEmployee.SearchText)).ToList();
                     break;
                 
             }

@@ -10,7 +10,6 @@ using QLCHWF.Views.User;
 using QLCHWF.Views.UserRole;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using QLCHWF.Models;
 using QLCHWF.Views.Statistics;
 
 namespace QLCHWF.Presenters;
@@ -29,8 +28,7 @@ public class MainPresenter
     private readonly IViewOptions _viewOptions;
     private readonly IViewStatistics _viewStatistics;
     private readonly IChangePassword _changePassword;
-    private readonly MyAppContext _context;
-    public MainPresenter(IViewMain viewMain, IViewCustomer viewCustomer, IViewEmployee viewEmployee, IViewProduct viewProduct, IViewProvider viewProvider, IViewSalesOrder viewSalesOrder, IViewImportOrder viewImportOrder, IViewUser viewUser, IViewUserRole viewUserRole, IViewOptions viewOptions,IChangePassword changePassword,IViewStatistics viewStatistics,MyAppContext context)
+    public MainPresenter(IViewMain viewMain, IViewCustomer viewCustomer, IViewEmployee viewEmployee, IViewProduct viewProduct, IViewProvider viewProvider, IViewSalesOrder viewSalesOrder, IViewImportOrder viewImportOrder, IViewUser viewUser, IViewUserRole viewUserRole, IViewOptions viewOptions,IChangePassword changePassword,IViewStatistics viewStatistics)
     {
         _viewMain = viewMain;
         _viewCustomer = viewCustomer;
@@ -44,7 +42,6 @@ public class MainPresenter
         _viewOptions = viewOptions;
         _viewStatistics = viewStatistics;
         _changePassword = changePassword;
-        _context = context;
 
         Init();
     }
@@ -53,7 +50,7 @@ public class MainPresenter
         var events = _viewMain.GetType().GetEvents(BindingFlags.Public | BindingFlags.Instance).Where(x=>Regex.IsMatch(x.Name,@"Show[A-Z].*")).ToList();
         foreach (var eventInfo in events)
         {
-            EventHandler handler = (sender, e) =>
+            EventHandler handler = (_, e) =>
             {
                 ShowForm(eventInfo.Name.Substring(4));
             };

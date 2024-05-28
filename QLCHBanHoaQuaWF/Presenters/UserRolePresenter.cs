@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using QLCHWF.Helpers;
+﻿using QLCHWF.Helpers;
 using QLCHWF.Models;
 using QLCHWF.Views.UserRole;
 using System.ComponentModel;
@@ -12,17 +11,13 @@ public class UserRolePresenter
     private readonly IViewUserRole _viewUserRole;
     private readonly IAddUserRole _addUserRole;
     private readonly IUpdateUserRole _updateUserRole;
-    private readonly IUserRoleRepository _userRoleRepository;
-    private readonly MyAppContext _context;
-    public UserRolePresenter(IViewUserRole viewUserRole, IAddUserRole addUserRole, IUpdateUserRole updateUserRole, MyAppContext context,IUserRoleRepository userRoleRepository)
+    private readonly IUnitOfWork _unitOfWork;
+    public UserRolePresenter(IViewUserRole viewUserRole, IAddUserRole addUserRole, IUpdateUserRole updateUserRole,IUnitOfWork unitOfWork)
     {
         _viewUserRole = viewUserRole;
         _addUserRole = addUserRole;
         _updateUserRole = updateUserRole;
-        _userRoleRepository = userRoleRepository;
-        _context = context;
-
-        _context.UserRoles.Load();
+        _unitOfWork = unitOfWork;
 
         _viewUserRole.LoadUserRole += delegate { Load(); };
         _viewUserRole.RemoveUserRole += delegate { Remove(); };
@@ -45,10 +40,7 @@ public class UserRolePresenter
             return;
         }
         Form form = (Form)_addUserRole;
-        if (form != null)
-        {
-            form.ShowDialog();
-        }
+        form.ShowDialog();
     }
 
     private void ShowUpdateForm()
@@ -59,14 +51,16 @@ public class UserRolePresenter
             return;
         }
         var userRoleUpdate = _viewUserRole.UserRoleBindingSource.Current as UserRole;
+        if (userRoleUpdate == null)
+        {
+            _viewUserRole.ShowMessage("Không tìm thấy vai trò được chọn");
+            return;
+        }
         _updateUserRole.RoleID = userRoleUpdate.RoleID;
         _updateUserRole.RoleName = userRoleUpdate.RoleName;
-        _updateUserRole.Description = userRoleUpdate.Description;
+        _updateUserRole.Description = userRoleUpdate.Description ?? "";
         Form form = (Form)_updateUserRole;
-        if (form != null)
-        {
-            form.ShowDialog();
-        }
+        form.ShowDialog();
     }
     public void Add()
     {
@@ -82,13 +76,8 @@ public class UserRolePresenter
         {
             var property = typeof(Permission).GetProperties().Where(x =>
             {
-                var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
-                if (displayNamAttribute != null)
-                {
-                    return displayNamAttribute.DisplayName == item.ToString();
-                }
-
-                return false;
+                var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault()!;
+                return displayNamAttribute.DisplayName == item.ToString();
             }).FirstOrDefault();
             if (property != null)
             {
@@ -98,7 +87,7 @@ public class UserRolePresenter
             }
         }
 
-        if (_userRoleRepository.AddUserRoleWithPermission(userRole, permission))
+        if (_unitOfWork.UserRoles.AddUserRoleWithPermission(userRole, permission))
         {
             _addUserRole.ShowMessage(@"Thêm thành công");
         }
@@ -111,23 +100,24 @@ public class UserRolePresenter
 
     public void Update()
     {
-        UserRole userRole = _userRoleRepository.GetById(_updateUserRole.RoleID);
+        UserRole? userRole = _unitOfWork.UserRoles.GetById(_updateUserRole.RoleID);
+        if (userRole == null)
+        {
+            _updateUserRole.ShowMessage("Không tìm thấy vai trò");
+            return;
+        }
         if (!ValidationHelper.IsValid(userRole, _updateUserRole))
         {
             return;
         }
-        Permission permission = _userRoleRepository.GetPermission(userRole.Permission.PermissionID);
+        Permission permission = _unitOfWork.UserRoles.GetPermission(userRole.Permission.PermissionID);
         for (int i = 0; i < _updateUserRole.PermissionSelected.Items.Count; i++)
         {
             var property = typeof(Permission).GetProperties().Where(x =>
             {
-                var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
-                if (displayNamAttribute != null)
-                {
-                    return displayNamAttribute.DisplayName == _updateUserRole.PermissionSelected.Items[i].ToString();
-                }
+                var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault()!;
+                return displayNamAttribute.DisplayName == _updateUserRole.PermissionSelected.Items[i].ToString();
 
-                return false;
             }).FirstOrDefault();
             if (property != null)
             {
@@ -136,7 +126,7 @@ public class UserRolePresenter
             }
         }
 
-        if (_userRoleRepository.UpdatePermission(permission))
+        if (_unitOfWork.UserRoles.UpdatePermission(permission))
         {
             _updateUserRole.ShowMessage(@"Sửa thành công");
         }
@@ -161,14 +151,19 @@ public class UserRolePresenter
             return;
         }
 
-        var userRoleExist = _context.UserRoles.Include(u => u.Users).FirstOrDefault(u => u.RoleID == deleted.RoleID);
+        UserRole? userRoleExist = _unitOfWork.UserRoles.GetOneInluce(u => u.Users, u => u.RoleID == deleted.RoleID);
         if (userRoleExist != null && userRoleExist.Users.Count > 0)
         {
             _viewUserRole.ShowMessage(@"Không thể xóa vì vẫn còn nhân viên đảm nhận vai trò này");
             return;
         }
+        else if(userRoleExist == null)
+        {
+            _viewUserRole.ShowMessage("Vai trò đã chọn không còn tồn tại");
+            return;
+        }
 
-        if (_userRoleRepository.Remove(userRoleExist))
+        if (_unitOfWork.UserRoles.Remove(userRoleExist))
         {
             _viewUserRole.ShowMessage(@"Xóa thành công");
         }
@@ -180,7 +175,7 @@ public class UserRolePresenter
 
     public void Search()
     {
-        List<UserRole> userRoles = _userRoleRepository.GetSome(u => u.RoleName.Contains(_viewUserRole.SearchText)).ToList();
+        List<UserRole> userRoles = _unitOfWork.UserRoles.GetSome(u => u.RoleName.Contains(_viewUserRole.SearchText)).ToList();
         if (userRoles.Count > 0)
         {
             _viewUserRole.UserRoleBindingSource.DataSource = userRoles;
@@ -194,33 +189,30 @@ public class UserRolePresenter
     public void Load()
     {
         _viewUserRole.UserRoleBindingSource.ResetBindings(true);
-        _viewUserRole.UserRoleBindingSource.DataSource = _userRoleRepository.GetAll().ToList();
+        _viewUserRole.UserRoleBindingSource.DataSource = _unitOfWork.UserRoles.GetAll().ToList();
     }
 
     private void LoadPermission()
     {
-        var properties = typeof(Permission).GetProperties();
+        var properties = typeof(Permission).GetProperties().Where(x=>x.PropertyType == typeof(bool));
         foreach (var propertyInfo in properties)
         {
-            var displayNamAttribute = (DisplayNameAttribute)propertyInfo.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
-            if (displayNamAttribute != null)
-            {
-                _addUserRole.PermissionSelected.Items.Add(displayNamAttribute.DisplayName);
-            }
+            DisplayNameAttribute? displayNamAttribute = (DisplayNameAttribute)propertyInfo.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
+            if (displayNamAttribute != null) _addUserRole.PermissionSelected.Items.Add(displayNamAttribute.DisplayName);
         }
     }
 
     private void LoadUpdatePermission()
     {
         _updateUserRole.PermissionSelected.Items.Clear();
-        Permission permission = _context.UserRoles
-            .Include(u => u.Permission).FirstOrDefault(u => u.RoleID == _updateUserRole.RoleID)!.Permission;
+        Permission permission = _unitOfWork.UserRoles
+            .GetOneInluce(u => u.Permission, u => u.RoleID == _updateUserRole.RoleID)!.Permission;
         {
-            var properties = typeof(Permission).GetProperties();
+            var properties = typeof(Permission).GetProperties().Where(x=>x.PropertyType == typeof(bool));
             foreach (var propertyInfo in properties)
             {
                 DisplayNameAttribute? displayNamAttribute = (DisplayNameAttribute)propertyInfo.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
-                if (displayNamAttribute != null && propertyInfo.GetValue(permission) != null)
+                if (propertyInfo.GetValue(permission) != null && displayNamAttribute != null)
                 {
                     bool value = (bool)propertyInfo.GetValue(permission)!;
                     _updateUserRole.PermissionSelected.Items.Add(displayNamAttribute.DisplayName);

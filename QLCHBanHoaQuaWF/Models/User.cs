@@ -7,20 +7,6 @@ namespace QLCHWF.Models
     [Table("User")]
     public class User
     {
-        public User(int employeeId, Employee employee, string email, string password, int roleId, UserRole userRole)
-        {
-            EmployeeID = employeeId;
-            Employee = employee;
-            Email = email;
-            Password = password;
-            RoleID = roleId;
-            UserRole = userRole;
-        }
-
-        public User()
-        {
-
-        }
         [DisplayName("Mã nhân viên")]
         public int EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
@@ -41,8 +27,6 @@ namespace QLCHWF.Models
         [DisplayName("Mã vai trò")]
         public int RoleID { get; set; }
         [ForeignKey("RoleID")]
-        public UserRole UserRole { get; set; }
-
-
+        public UserRole UserRole { get; set; } = null!;
     }
 }

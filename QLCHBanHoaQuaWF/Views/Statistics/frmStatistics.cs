@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Forms.DataVisualization.Charting;
 using Guna.Charts.WinForms;
+using QLCHWF.Helpers;
 using QLCHWF.Models;
 
 namespace QLCHWF.Views.Statistics
@@ -36,6 +37,7 @@ namespace QLCHWF.Views.Statistics
         {
             get { return budgetDataSet; }
         }
+
         public GunaBarDataset ProfitDataset
         {
             get { return profitDataSet; }
@@ -99,6 +101,16 @@ namespace QLCHWF.Views.Statistics
                 {
                     return dtpEnd.Value;
                 }
+
+                if (btnThisWeek.Checked)
+                {
+                    return DateTimeHelper.GetEndThisWeek();
+                }
+                if (btnThisMonth.Checked)
+                {
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+                        DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+                }
                 return DateTime.Now;
             }
             set { dtpEnd.Value = value; }
@@ -123,6 +135,13 @@ namespace QLCHWF.Views.Statistics
             get {return decimal.Parse(lblProfit.Text, NumberStyles.Currency);}
             set { lblProfit.Text = value.ToString("C0"); }
         }
+
+        public decimal Budget
+        {
+            get { return decimal.Parse(lblBudget.Text);}
+            set { lblBudget.Text = value.ToString(); }
+        }
+
         public int CountEmployee
         {
             get { return int.Parse(lblCountEmployee.Text);}
@@ -141,7 +160,7 @@ namespace QLCHWF.Views.Statistics
             set { lblCountProduct.Text = value.ToString(); }
         }
 
-        public event EventHandler LoadStatistics;
+        public event EventHandler? LoadStatistics;
 
         private void frmStatistics_Load(object sender, EventArgs e)
         {

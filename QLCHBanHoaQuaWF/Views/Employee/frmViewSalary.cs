@@ -34,7 +34,7 @@ namespace QLCHWF.Views.Employee
         {
             get { return salaryTableBindingSource; }
         }
-        public event EventHandler CalculateSalary;
+        public event EventHandler? CalculateSalary;
 
         private void btnCaculate_Click(object sender, EventArgs e)
         {

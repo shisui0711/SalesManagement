@@ -12,7 +12,7 @@ namespace QLCHWF.Models
         public int ProductID { get; set; }
         [Required(ErrorMessage = "Tên không được để trống")]
         [StringLength(30)]
-        public string ProductName { get; set; }
+        public required string ProductName { get; set; }
         [StringLength(30)]
         public string? CalculationUnit { get; set; }
 
@@ -22,10 +22,10 @@ namespace QLCHWF.Models
         public DateTime DateCreated { get; set; } = DateTime.Now;
         [Column(TypeName = "decimal(10,2)")]
         [Required(ErrorMessage = "Giá nhập không được để trống")]
-        public decimal? ImportUnitPrice { get; set; }
+        public decimal ImportUnitPrice { get; set; }
         [Column(TypeName = "decimal(10,2)")]
         [Required(ErrorMessage = "Giá bán không được để trống")]
-        public decimal? UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
         [StringLength(100)]
         public string? Description { get; set; }
 
