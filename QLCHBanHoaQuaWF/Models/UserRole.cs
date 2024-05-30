@@ -18,7 +18,7 @@ public class UserRole
     public string? Description { get; set; }
     public int PermissionID { get; set; }
     [ForeignKey("PermissionID")]
-    public Permission Permission { get; set; } = null!;
+    public virtual Permission Permission { get; set; } = null!;
 
     [InverseProperty("UserRole")]
     public virtual ICollection<User> Users { get; set; }

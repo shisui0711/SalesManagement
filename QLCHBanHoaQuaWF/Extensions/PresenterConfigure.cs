@@ -17,6 +17,9 @@ public static class PresenterConfigure
         services.AddSingleton<UserRolePresenter>();
         services.AddSingleton<OptionsPresenter>();
         services.AddSingleton<StatisticsPresenter>();
+        services.AddSingleton<UserPresenter>();
         services.AddSingleton<MainPresenter>();
+        services.AddSingleton<AddImportOrderPresenter>();
+        services.AddSingleton<AddSalesOrderPresenter>();
     }
 }

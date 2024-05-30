@@ -1,4 +1,6 @@
-﻿using QLCHWF.CustomMessageBox;
+﻿using Microsoft.Extensions.DependencyInjection;
+using QLCHWF.CustomMessageBox;
+using QLCHWF.Presenters;
 
 namespace QLCHWF.Views
 {
@@ -50,6 +52,11 @@ namespace QLCHWF.Views
         public void ShowMessage(string message)
         {
             MyMessageBox.Show(message);
+        }
+
+        private void frmLogin_Shown(object sender, EventArgs e)
+        {
+            Program.MyHost.Services.GetRequiredService<MainPresenter>();
         }
     }
 }

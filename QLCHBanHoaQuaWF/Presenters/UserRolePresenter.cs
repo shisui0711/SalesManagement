@@ -90,6 +90,7 @@ public class UserRolePresenter
         if (_unitOfWork.UserRoles.AddUserRoleWithPermission(userRole, permission))
         {
             _addUserRole.ShowMessage(@"Thêm thành công");
+            Load();
         }
         else
         {
@@ -110,14 +111,18 @@ public class UserRolePresenter
         {
             return;
         }
+
+        userRole.RoleName = _updateUserRole.RoleName;
+        userRole.Description = _updateUserRole.Description;
         Permission permission = _unitOfWork.UserRoles.GetPermission(userRole.Permission.PermissionID);
         for (int i = 0; i < _updateUserRole.PermissionSelected.Items.Count; i++)
         {
             var property = typeof(Permission).GetProperties().Where(x =>
             {
-                var displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault()!;
-                return displayNamAttribute.DisplayName == _updateUserRole.PermissionSelected.Items[i].ToString();
-
+                DisplayNameAttribute? displayNamAttribute = (DisplayNameAttribute)x.GetCustomAttributes(typeof(DisplayNameAttribute), true).FirstOrDefault();
+                if (displayNamAttribute != null)
+                    return displayNamAttribute.DisplayName == _updateUserRole.PermissionSelected.Items[i].ToString();
+                return false;
             }).FirstOrDefault();
             if (property != null)
             {
@@ -125,8 +130,7 @@ public class UserRolePresenter
                 property.SetValue(permission, value);
             }
         }
-
-        if (_unitOfWork.UserRoles.UpdatePermission(permission))
+        if (_unitOfWork.UserRoles.UpdateRoleWithPermission(userRole,permission))
         {
             _updateUserRole.ShowMessage(@"Sửa thành công");
         }
@@ -166,6 +170,7 @@ public class UserRolePresenter
         if (_unitOfWork.UserRoles.Remove(userRoleExist))
         {
             _viewUserRole.ShowMessage(@"Xóa thành công");
+            Load();
         }
         else
         {

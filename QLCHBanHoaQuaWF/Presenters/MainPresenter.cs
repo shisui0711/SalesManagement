@@ -10,6 +10,7 @@ using QLCHWF.Views.User;
 using QLCHWF.Views.UserRole;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Microsoft.Extensions.DependencyInjection;
 using QLCHWF.Views.Statistics;
 
 namespace QLCHWF.Presenters;
@@ -50,7 +51,7 @@ public class MainPresenter
         var events = _viewMain.GetType().GetEvents(BindingFlags.Public | BindingFlags.Instance).Where(x=>Regex.IsMatch(x.Name,@"Show[A-Z].*")).ToList();
         foreach (var eventInfo in events)
         {
-            EventHandler handler = (_, e) =>
+            EventHandler handler = (_, _) =>
             {
                 ShowForm(eventInfo.Name.Substring(4));
             };
@@ -59,6 +60,7 @@ public class MainPresenter
     }
     void ShowForm(string formName)
     {
+        InitPresenter(formName);
         var fieldForm = GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(f => f.FieldType.Name.StartsWith("IView")).FirstOrDefault(x=>x.Name.Substring(5) == formName);
         if (fieldForm != null)
         {
@@ -68,6 +70,43 @@ public class MainPresenter
             _viewMain.BodyPanel.Controls.Clear();
             _viewMain.BodyPanel.Controls.Add(form);
             form.Show();
+        }
+    }
+
+    void InitPresenter(string formName)
+    {
+        switch (formName)
+        {
+            case "Customer":
+                Program.MyHost.Services.GetRequiredService<CustomerPresenter>();
+                break;
+            case "Employee":
+                Program.MyHost.Services.GetRequiredService<EmployeePresenter>();
+                break;
+            case "ImportOrder":
+                Program.MyHost.Services.GetRequiredService<ImportOrderPresenter>();
+                break;
+            case "Options":
+                Program.MyHost.Services.GetRequiredService<OptionsPresenter>();
+                break;
+            case "Product":
+                Program.MyHost.Services.GetRequiredService<ProductPresenter>();
+                break;
+            case "Provider":
+                Program.MyHost.Services.GetRequiredService<ProviderPresenter>();
+                break;
+            case "SalesOrder":
+                Program.MyHost.Services.GetRequiredService<SalesOrderPresenter>();
+                break;
+            case "Statistics":
+                Program.MyHost.Services.GetRequiredService<StatisticsPresenter>();
+                break;
+            case "UserRole":
+                Program.MyHost.Services.GetRequiredService<UserRolePresenter>();
+                break;
+            case "User":
+                Program.MyHost.Services.GetRequiredService<UserPresenter>();
+                break;
         }
     }
 }

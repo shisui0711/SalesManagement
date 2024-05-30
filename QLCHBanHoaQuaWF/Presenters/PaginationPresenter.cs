@@ -1,4 +1,6 @@
-﻿using QLCHWF.IRepository;
+﻿using System.Linq.Expressions;
+using System.Text.RegularExpressions;
+using QLCHWF.IRepository;
 using QLCHWF.Views;
 
 namespace QLCHWF.Presenters;
@@ -7,26 +9,34 @@ public abstract class PaginationPresenter<T> where T : class
 {
     private readonly IViewPagination _viewPagination;
     private readonly IGenericRepository<T> _repository;
-    protected List<T> TargetSource;
+    private bool _isSearchMode = false;
+    private List<T> TargetSource;
     private readonly int _itemsPerPage;
+    private int _totalItems;
+    private int _totalPages;
+    private Expression<Func<T, bool>> _match;
 
     public PaginationPresenter(IViewPagination viewPagination,IGenericRepository<T> repository,int itemsPerPage)
     {
         _viewPagination = viewPagination;
         _repository = repository;
-        TargetSource = _repository.GetAll().ToList();
         _itemsPerPage = itemsPerPage;
+        _totalItems = _repository.Count();
+        _totalPages = (int)Math.Ceiling((double)_totalItems / _itemsPerPage);
         _viewPagination.NextPage += delegate { NextPage(); };
         _viewPagination.PreviousPage += delegate { PreviousPage(); };
     }
 
     protected abstract void Load(List<T> items);
 
+
     protected void RenewItems()
     {
+        _isSearchMode = false;
         ResetPage();
-        _viewPagination.CurrentPage = 0;
-        TargetSource = _repository.GetAll().ToList();
+        _totalItems = _repository.Count();
+        _totalPages = (int)Math.Ceiling((double)_totalItems / _itemsPerPage);
+        TargetSource = _repository.GetPagination((_viewPagination.CurrentPage) * _itemsPerPage, _itemsPerPage).ToList();
         NextPage();
     }
     protected void ResetPage()
@@ -36,20 +46,33 @@ public abstract class PaginationPresenter<T> where T : class
         _viewPagination.CurrentPage = 0;
     }
 
+    protected void SearchItems(Expression<Func<T,bool>> match)
+    {
+        ResetPage();
+        _isSearchMode = true;
+        _totalItems = _repository.Count(match);
+        _totalPages = (int)Math.Ceiling((double)_totalItems / _itemsPerPage);
+        _match = match;
+        NextPage();
+    }
     protected void NextPage()
     {
-        int totalItems = TargetSource.Count;
-        int totalPages = (int)Math.Ceiling((double)totalItems / _itemsPerPage);
-        int currentPage = _viewPagination.CurrentPage;
-        List<T> items = TargetSource.Skip((currentPage) * _itemsPerPage).Take(_itemsPerPage).ToList();
-        Load(items);
+        if (!_isSearchMode)
+        {
+            TargetSource = _repository.GetPagination((_viewPagination.CurrentPage) * _itemsPerPage, _itemsPerPage).ToList();
+        }
+        else
+        {
+            TargetSource = _repository.GetPagination((_viewPagination.CurrentPage) * _itemsPerPage, _itemsPerPage, _match).ToList();
+        }
+        Load(TargetSource);
         _viewPagination.CurrentPage += 1;
         if (_viewPagination.CurrentPage > 1)
         {
             _viewPagination.EnablePreviousPage();
         }
 
-        if (_viewPagination.CurrentPage >= totalPages)
+        if (_viewPagination.CurrentPage >= _totalPages)
         {
             _viewPagination.DisableNextPage();
         }
@@ -57,17 +80,21 @@ public abstract class PaginationPresenter<T> where T : class
     protected void  PreviousPage()
     {
         _viewPagination.CurrentPage -= 1;
-        int totalItems = TargetSource.Count;
-        int totalPages = (int)Math.Ceiling((double)totalItems / _itemsPerPage);
-        int currentPage = _viewPagination.CurrentPage;
-        List<T> items = TargetSource.Skip((currentPage - 1) * _itemsPerPage).Take(_itemsPerPage).ToList();
-        Load(items);
+        if (!_isSearchMode)
+        {
+            TargetSource = _repository.GetPagination((_viewPagination.CurrentPage -1) * _itemsPerPage, _itemsPerPage).ToList();
+        }
+        else
+        {
+            TargetSource = _repository.GetPagination((_viewPagination.CurrentPage -1) * _itemsPerPage, _itemsPerPage, _match).ToList();
+        }
+        Load(TargetSource);
         if (_viewPagination.CurrentPage <= 1)
         {
             _viewPagination.DisablePreviousPage();
         }
 
-        if (_viewPagination.CurrentPage < totalPages)
+        if (_viewPagination.CurrentPage < _totalPages)
         {
             _viewPagination.EnableNextPage();
         }

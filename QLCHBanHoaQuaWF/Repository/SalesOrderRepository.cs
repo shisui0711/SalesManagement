@@ -26,6 +26,7 @@ public class SalesOrderRepository:GenericRepository<SalesOrder>,ISalesOrderRepos
                 {
                     Product product = _context.Products.Find(detailSalesOrder.ProductID)!;
                     product.Inventory -= detailSalesOrder.Quantity;
+                    detailSalesOrder.OrderID = order.OrderID;
                     _context.DetailSalesOrders.Add(detailSalesOrder);
                 }
 

@@ -14,6 +14,17 @@ namespace QLCHWF.Views.Employee
             get { return cboOptionSearch.SelectedIndex; }
             set { cboOptionSearch.SelectedIndex = value; }
         }
+
+        public decimal SalaryStart
+        {
+            get { return txtSalaryStart.Value;}
+            set { txtSalaryStart.Value = value; }
+        }
+        public decimal SalaryEnd
+        {
+            get { return txtSalaryEnd.Value;}
+            set { txtSalaryEnd.Value = value; }
+        }
         public BindingSource EmployeeBindingSource { get { return employeeBindingSource; } }
 #nullable enable
         public event EventHandler? LoadEmployee;
@@ -59,6 +70,16 @@ namespace QLCHWF.Views.Employee
         private void cboOptionSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSearch.Text = String.Empty;
+            if (cboOptionSearch.SelectedIndex ==  2)
+            {
+                txtSalaryStart.Visible = true;
+                txtSalaryEnd.Visible = true;
+            }
+            else
+            {
+                txtSalaryStart.Visible = false;
+                txtSalaryEnd.Visible = false;
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

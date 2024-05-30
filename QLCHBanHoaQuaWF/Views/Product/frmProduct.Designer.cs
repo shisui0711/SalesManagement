@@ -61,8 +61,8 @@
             this.pnlProduct.Controls.Add(this.lbl2);
             this.pnlProduct.CustomizableEdges = customizableEdges5;
             this.pnlProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlProduct.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.pnlProduct.FillColor2 = System.Drawing.Color.Yellow;
+            this.pnlProduct.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
+            this.pnlProduct.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(238)))), ((int)(((byte)(33)))));
             this.pnlProduct.Location = new System.Drawing.Point(0, 0);
             this.pnlProduct.Name = "pnlProduct";
             this.pnlProduct.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -87,6 +87,7 @@
             // 
             // ptbProduct
             // 
+            this.ptbProduct.BorderRadius = 5;
             this.ptbProduct.CustomizableEdges = customizableEdges1;
             this.ptbProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ptbProduct.ImageRotate = 0F;

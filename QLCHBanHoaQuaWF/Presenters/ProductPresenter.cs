@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using QLCHWF.CustomMessageBox;
 using QLCHWF.Helpers;
 using QLCHWF.IRepository;
 using QLCHWF.Models;
@@ -91,6 +92,12 @@ public class ProductPresenter : PaginationPresenter<Product>
                 return;
             }
 
+            if (_addProduct.ImportUnitPrice > _addProduct.UnitPrice && MyMessageBox.Show(
+                    "Giá nhập đang lớn hơn giá bán. Có muốn tiếp tục ?","Cảnh báo",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+            {
+                return;
+            }
             _unitOfWork.Products.Add(product);
             RenewItems();
             _addProduct.ShowMessage(@"Thêm thành công");
@@ -118,6 +125,12 @@ public class ProductPresenter : PaginationPresenter<Product>
                 product.ImageData = ConverterHelper.BitmapToBytes(Properties.Resources.upload);
             }
             if (!ValidationHelper.IsValid(product, _updateProduct))
+            {
+                return;
+            }
+            if (_updateProduct.ImportUnitPrice > _updateProduct.UnitPrice && MyMessageBox.Show(
+                    "Giá nhập đang lớn hơn giá bán. Có muốn tiếp tục ?","Cảnh báo",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
             {
                 return;
             }
@@ -159,10 +172,7 @@ public class ProductPresenter : PaginationPresenter<Product>
 
     public void Search()
     {
-        ResetPage();
-        _viewProduct.CurrentPage = 0;
-        TargetSource = _unitOfWork.Products.GetSome(p => p.ProductName.Contains(_viewProduct.SearchText)).ToList();
-        NextPage();
+        SearchItems(p => p.ProductName.Contains(_viewProduct.SearchText));
     }
 
 

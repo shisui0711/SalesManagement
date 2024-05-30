@@ -19,5 +19,15 @@ namespace QLCHWF.Views.ImportOrder
         {
             LoadReport?.Invoke(sender, e);
         }
+
+        private void frmReportImportOrder_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            rpvImportOrder.AutoScrollPosition = new Point(0, 0);
+        }
+
+        private void rpvImportOrder_Scroll(object sender, ScrollEventArgs e)
+        {
+            Console.WriteLine("Scroll trigger");
+        }
     }
 }

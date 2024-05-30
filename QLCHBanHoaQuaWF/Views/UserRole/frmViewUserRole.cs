@@ -47,6 +47,7 @@ namespace QLCHWF.Views.UserRole
 
         private void btnReload_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = String.Empty;
             LoadUserRole?.Invoke(sender, e);
         }
 

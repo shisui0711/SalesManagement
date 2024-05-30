@@ -47,17 +47,15 @@
             // 
             // btnAppInfo
             // 
-            this.btnAppInfo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
-            this.btnAppInfo.BorderThickness = 2;
             this.btnAppInfo.CustomizableEdges = customizableEdges1;
             this.btnAppInfo.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAppInfo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAppInfo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAppInfo.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAppInfo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAppInfo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.btnAppInfo.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.btnAppInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAppInfo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(153)))), ((int)(((byte)(142)))));
+            this.btnAppInfo.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(239)))), ((int)(((byte)(125)))));
+            this.btnAppInfo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAppInfo.ForeColor = System.Drawing.Color.White;
             this.btnAppInfo.Image = global::QLCHWF.Properties.Resources.Shop;
             this.btnAppInfo.ImageSize = new System.Drawing.Size(30, 30);
@@ -65,7 +63,7 @@
             this.btnAppInfo.Name = "btnAppInfo";
             this.btnAppInfo.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.btnAppInfo.Size = new System.Drawing.Size(225, 100);
-            this.btnAppInfo.TabIndex = 0;
+            this.btnAppInfo.TabIndex = 1;
             this.btnAppInfo.Text = "Thông tin cửa hàng";
             this.btnAppInfo.Click += new System.EventHandler(this.btnAppInfo_Click);
             // 

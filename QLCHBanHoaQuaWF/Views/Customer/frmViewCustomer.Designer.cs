@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -51,468 +51,455 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnlControl = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
-            this.cboOptionSearch = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnReload = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
-            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pnlGridView = new Guna.UI2.WinForms.Guna2Panel();
-            this.panelPagination = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnCurrentPage = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
-            this.btnPrevious = new Guna.UI2.WinForms.Guna2Button();
-            this.dgvCustomer = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salesOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnPurchaseHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.bindingSourceCustomer = new System.Windows.Forms.BindingSource(this.components);
-            this.pnlControl.SuspendLayout();
-            this.pnlGridView.SuspendLayout();
-            this.panelPagination.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
-            this.contextMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCustomer)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            pnlControl = new Guna.UI2.WinForms.Guna2Panel();
+            btnAdd = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnReload = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnSearch = new Guna.UI2.WinForms.Guna2GradientButton();
+            cboOptionSearch = new Guna.UI2.WinForms.Guna2ComboBox();
+            txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            pnlGridView = new Guna.UI2.WinForms.Guna2Panel();
+            panelPagination = new Guna.UI2.WinForms.Guna2Panel();
+            btnNext = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnCurrentPage = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnPrevious = new Guna.UI2.WinForms.Guna2GradientButton();
+            dgvCustomer = new Guna.UI2.WinForms.Guna2DataGridView();
+            customerIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            CustomerName = new DataGridViewTextBoxColumn();
+            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            phoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            addressDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DateCreated = new DataGridViewTextBoxColumn();
+            salesOrdersDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            btnUpdate = new ToolStripMenuItem();
+            btnDelete = new ToolStripMenuItem();
+            btnPurchaseHistory = new ToolStripMenuItem();
+            bindingSourceCustomer = new BindingSource(components);
+            pnlControl.SuspendLayout();
+            pnlGridView.SuspendLayout();
+            panelPagination.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCustomer).BeginInit();
+            contextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceCustomer).BeginInit();
+            SuspendLayout();
             // 
             // pnlControl
             // 
-            this.pnlControl.BackColor = System.Drawing.Color.White;
-            this.pnlControl.Controls.Add(this.btnAdd);
-            this.pnlControl.Controls.Add(this.cboOptionSearch);
-            this.pnlControl.Controls.Add(this.btnReload);
-            this.pnlControl.Controls.Add(this.btnSearch);
-            this.pnlControl.Controls.Add(this.txtSearch);
-            this.pnlControl.CustomizableEdges = customizableEdges11;
-            this.pnlControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlControl.Location = new System.Drawing.Point(0, 0);
-            this.pnlControl.Name = "pnlControl";
-            this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            this.pnlControl.Size = new System.Drawing.Size(1301, 65);
-            this.pnlControl.TabIndex = 0;
+            pnlControl.BackColor = Color.White;
+            pnlControl.Controls.Add(btnAdd);
+            pnlControl.Controls.Add(btnReload);
+            pnlControl.Controls.Add(btnSearch);
+            pnlControl.Controls.Add(cboOptionSearch);
+            pnlControl.Controls.Add(txtSearch);
+            pnlControl.CustomizableEdges = customizableEdges11;
+            pnlControl.Dock = DockStyle.Top;
+            pnlControl.Location = new Point(0, 0);
+            pnlControl.Name = "pnlControl";
+            pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            pnlControl.Size = new Size(1301, 65);
+            pnlControl.TabIndex = 0;
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Animated = true;
-            this.btnAdd.BorderRadius = 5;
-            this.btnAdd.CustomizableEdges = customizableEdges1;
-            this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(1118, 15);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            this.btnAdd.Size = new System.Drawing.Size(171, 35);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // cboOptionSearch
-            // 
-            this.cboOptionSearch.BackColor = System.Drawing.Color.Transparent;
-            this.cboOptionSearch.BorderRadius = 5;
-            this.cboOptionSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cboOptionSearch.CustomizableEdges = customizableEdges3;
-            this.cboOptionSearch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboOptionSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOptionSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.cboOptionSearch.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboOptionSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboOptionSearch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cboOptionSearch.ForeColor = System.Drawing.Color.White;
-            this.cboOptionSearch.ItemHeight = 30;
-            this.cboOptionSearch.Items.AddRange(new object[] {
-            "Tìm kiếm theo",
-            "Tên",
-            "Email",
-            "Số điện thoại",
-            "Địa chỉ"});
-            this.cboOptionSearch.Location = new System.Drawing.Point(398, 14);
-            this.cboOptionSearch.Name = "cboOptionSearch";
-            this.cboOptionSearch.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            this.cboOptionSearch.Size = new System.Drawing.Size(175, 36);
-            this.cboOptionSearch.StartIndex = 0;
-            this.cboOptionSearch.TabIndex = 3;
-            this.cboOptionSearch.SelectedIndexChanged += new System.EventHandler(this.cboOptionSearch_SelectedIndexChanged);
+            btnAdd.BorderRadius = 5;
+            btnAdd.CustomizableEdges = customizableEdges1;
+            btnAdd.DisabledState.BorderColor = Color.DarkGray;
+            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAdd.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAdd.FillColor = Color.FromArgb(46, 49, 146);
+            btnAdd.FillColor2 = Color.FromArgb(27, 255, 255);
+            btnAdd.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(1118, 12);
+            btnAdd.Name = "btnAdd";
+            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnAdd.Size = new Size(171, 35);
+            btnAdd.TabIndex = 6;
+            btnAdd.Text = "Thêm";
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnReload
             // 
-            this.btnReload.Animated = true;
-            this.btnReload.BorderRadius = 5;
-            this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReload.CustomizableEdges = customizableEdges5;
-            this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnReload.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnReload.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnReload.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnReload.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Image = global::QLCHWF.Properties.Resources.reload;
-            this.btnReload.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnReload.Location = new System.Drawing.Point(351, 15);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            this.btnReload.Size = new System.Drawing.Size(41, 35);
-            this.btnReload.TabIndex = 2;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            btnReload.BorderRadius = 5;
+            btnReload.CustomizableEdges = customizableEdges3;
+            btnReload.DisabledState.BorderColor = Color.DarkGray;
+            btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnReload.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnReload.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnReload.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnReload.FillColor = Color.FromArgb(46, 49, 146);
+            btnReload.FillColor2 = Color.FromArgb(27, 255, 255);
+            btnReload.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReload.ForeColor = Color.White;
+            btnReload.Image = Properties.Resources.reload;
+            btnReload.Location = new Point(351, 15);
+            btnReload.Name = "btnReload";
+            btnReload.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnReload.Size = new Size(41, 35);
+            btnReload.TabIndex = 5;
+            btnReload.Click += btnReload_Click;
             // 
             // btnSearch
             // 
-            this.btnSearch.Animated = true;
-            this.btnSearch.BorderRadius = 5;
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.CustomizableEdges = customizableEdges7;
-            this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Image = global::QLCHWF.Properties.Resources._3d_magnifier;
-            this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnSearch.Location = new System.Drawing.Point(304, 15);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            this.btnSearch.Size = new System.Drawing.Size(41, 35);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            btnSearch.BorderRadius = 5;
+            btnSearch.CustomizableEdges = customizableEdges5;
+            btnSearch.DisabledState.BorderColor = Color.DarkGray;
+            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSearch.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSearch.FillColor = Color.FromArgb(46, 49, 146);
+            btnSearch.FillColor2 = Color.FromArgb(27, 255, 255);
+            btnSearch.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Image = Properties.Resources._3d_magnifier;
+            btnSearch.Location = new Point(304, 15);
+            btnSearch.Name = "btnSearch";
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnSearch.Size = new Size(41, 35);
+            btnSearch.TabIndex = 5;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // cboOptionSearch
+            // 
+            cboOptionSearch.BackColor = Color.Transparent;
+            cboOptionSearch.BorderRadius = 5;
+            cboOptionSearch.Cursor = Cursors.Hand;
+            cboOptionSearch.CustomizableEdges = customizableEdges7;
+            cboOptionSearch.DrawMode = DrawMode.OwnerDrawFixed;
+            cboOptionSearch.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboOptionSearch.FillColor = Color.FromArgb(16, 139, 250);
+            cboOptionSearch.FocusedColor = Color.FromArgb(94, 148, 255);
+            cboOptionSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cboOptionSearch.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cboOptionSearch.ForeColor = Color.White;
+            cboOptionSearch.ItemHeight = 30;
+            cboOptionSearch.Items.AddRange(new object[] { "Tìm kiếm theo", "Tên", "Email", "Số điện thoại", "Địa chỉ" });
+            cboOptionSearch.Location = new Point(398, 14);
+            cboOptionSearch.Name = "cboOptionSearch";
+            cboOptionSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            cboOptionSearch.Size = new Size(175, 36);
+            cboOptionSearch.StartIndex = 0;
+            cboOptionSearch.TabIndex = 3;
+            cboOptionSearch.SelectedIndexChanged += cboOptionSearch_SelectedIndexChanged;
             // 
             // txtSearch
             // 
-            this.txtSearch.Animated = true;
-            this.txtSearch.BorderRadius = 5;
-            this.txtSearch.CustomizableEdges = customizableEdges9;
-            this.txtSearch.DefaultText = "";
-            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(12, 15);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.PlaceholderText = "Tìm kiếm";
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            this.txtSearch.Size = new System.Drawing.Size(286, 35);
-            this.txtSearch.TabIndex = 0;
+            txtSearch.Animated = true;
+            txtSearch.BorderRadius = 5;
+            txtSearch.CustomizableEdges = customizableEdges9;
+            txtSearch.DefaultText = "";
+            txtSearch.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtSearch.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtSearch.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearch.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearch.Location = new Point(12, 15);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PasswordChar = '\0';
+            txtSearch.PlaceholderText = "Tìm kiếm";
+            txtSearch.SelectedText = "";
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtSearch.Size = new Size(286, 35);
+            txtSearch.TabIndex = 0;
             // 
             // pnlGridView
             // 
-            this.pnlGridView.Controls.Add(this.panelPagination);
-            this.pnlGridView.Controls.Add(this.dgvCustomer);
-            this.pnlGridView.CustomizableEdges = customizableEdges21;
-            this.pnlGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlGridView.Location = new System.Drawing.Point(0, 65);
-            this.pnlGridView.Name = "pnlGridView";
-            this.pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            this.pnlGridView.Size = new System.Drawing.Size(1301, 679);
-            this.pnlGridView.TabIndex = 1;
+            pnlGridView.Controls.Add(panelPagination);
+            pnlGridView.Controls.Add(dgvCustomer);
+            pnlGridView.CustomizableEdges = customizableEdges21;
+            pnlGridView.Dock = DockStyle.Fill;
+            pnlGridView.Location = new Point(0, 65);
+            pnlGridView.Name = "pnlGridView";
+            pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            pnlGridView.Size = new Size(1301, 679);
+            pnlGridView.TabIndex = 1;
             // 
             // panelPagination
             // 
-            this.panelPagination.BackColor = System.Drawing.Color.White;
-            this.panelPagination.Controls.Add(this.btnCurrentPage);
-            this.panelPagination.Controls.Add(this.btnNext);
-            this.panelPagination.Controls.Add(this.btnPrevious);
-            this.panelPagination.CustomizableEdges = customizableEdges19;
-            this.panelPagination.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelPagination.Location = new System.Drawing.Point(0, 634);
-            this.panelPagination.Name = "panelPagination";
-            this.panelPagination.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            this.panelPagination.Size = new System.Drawing.Size(1301, 45);
-            this.panelPagination.TabIndex = 1;
-            // 
-            // btnCurrentPage
-            // 
-            this.btnCurrentPage.Animated = true;
-            this.btnCurrentPage.BorderRadius = 5;
-            this.btnCurrentPage.CustomizableEdges = customizableEdges13;
-            this.btnCurrentPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCurrentPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCurrentPage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCurrentPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCurrentPage.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.btnCurrentPage.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCurrentPage.ForeColor = System.Drawing.Color.White;
-            this.btnCurrentPage.Location = new System.Drawing.Point(633, 9);
-            this.btnCurrentPage.Name = "btnCurrentPage";
-            this.btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            this.btnCurrentPage.Size = new System.Drawing.Size(44, 30);
-            this.btnCurrentPage.TabIndex = 17;
-            this.btnCurrentPage.Text = "0";
+            panelPagination.BackColor = Color.White;
+            panelPagination.Controls.Add(btnNext);
+            panelPagination.Controls.Add(btnCurrentPage);
+            panelPagination.Controls.Add(btnPrevious);
+            panelPagination.CustomizableEdges = customizableEdges19;
+            panelPagination.Dock = DockStyle.Bottom;
+            panelPagination.Location = new Point(0, 634);
+            panelPagination.Name = "panelPagination";
+            panelPagination.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            panelPagination.Size = new Size(1301, 45);
+            panelPagination.TabIndex = 1;
             // 
             // btnNext
             // 
-            this.btnNext.Animated = true;
-            this.btnNext.BorderRadius = 5;
-            this.btnNext.CustomizableEdges = customizableEdges15;
-            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.btnNext.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(700, 9);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            this.btnNext.Size = new System.Drawing.Size(44, 30);
-            this.btnNext.TabIndex = 16;
-            this.btnNext.Text = ">";
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            btnNext.Animated = true;
+            btnNext.BorderRadius = 5;
+            btnNext.CustomizableEdges = customizableEdges13;
+            btnNext.DisabledState.BorderColor = Color.DarkGray;
+            btnNext.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnNext.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnNext.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnNext.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnNext.FillColor = Color.FromArgb(17, 153, 142);
+            btnNext.FillColor2 = Color.FromArgb(56, 239, 125);
+            btnNext.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNext.ForeColor = Color.White;
+            btnNext.Image = Properties.Resources.right;
+            btnNext.Location = new Point(683, 4);
+            btnNext.Name = "btnNext";
+            btnNext.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnNext.Size = new Size(44, 37);
+            btnNext.TabIndex = 13;
+            btnNext.Click += btnNext_Click;
+            // 
+            // btnCurrentPage
+            // 
+            btnCurrentPage.Animated = true;
+            btnCurrentPage.BorderRadius = 5;
+            btnCurrentPage.CustomizableEdges = customizableEdges15;
+            btnCurrentPage.DisabledState.BorderColor = Color.DarkGray;
+            btnCurrentPage.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCurrentPage.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCurrentPage.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnCurrentPage.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCurrentPage.FillColor = Color.FromArgb(17, 153, 142);
+            btnCurrentPage.FillColor2 = Color.FromArgb(56, 239, 125);
+            btnCurrentPage.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCurrentPage.ForeColor = Color.White;
+            btnCurrentPage.Location = new Point(628, 4);
+            btnCurrentPage.Name = "btnCurrentPage";
+            btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnCurrentPage.Size = new Size(44, 37);
+            btnCurrentPage.TabIndex = 14;
+            btnCurrentPage.Text = "0";
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Animated = true;
-            this.btnPrevious.BorderRadius = 5;
-            this.btnPrevious.CustomizableEdges = customizableEdges17;
-            this.btnPrevious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrevious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrevious.Enabled = false;
-            this.btnPrevious.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.btnPrevious.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPrevious.ForeColor = System.Drawing.Color.White;
-            this.btnPrevious.Location = new System.Drawing.Point(557, 9);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            this.btnPrevious.Size = new System.Drawing.Size(44, 30);
-            this.btnPrevious.TabIndex = 15;
-            this.btnPrevious.Text = "<";
-            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            btnPrevious.Animated = true;
+            btnPrevious.BorderRadius = 5;
+            btnPrevious.CustomizableEdges = customizableEdges17;
+            btnPrevious.DisabledState.BorderColor = Color.DarkGray;
+            btnPrevious.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnPrevious.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnPrevious.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnPrevious.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnPrevious.FillColor = Color.FromArgb(17, 153, 142);
+            btnPrevious.FillColor2 = Color.FromArgb(56, 239, 125);
+            btnPrevious.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPrevious.ForeColor = Color.White;
+            btnPrevious.Image = Properties.Resources.left;
+            btnPrevious.Location = new Point(573, 4);
+            btnPrevious.Name = "btnPrevious";
+            btnPrevious.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnPrevious.Size = new Size(44, 37);
+            btnPrevious.TabIndex = 15;
+            btnPrevious.Click += btnPrevious_Click;
             // 
             // dgvCustomer
             // 
-            this.dgvCustomer.AllowUserToAddRows = false;
-            this.dgvCustomer.AllowUserToDeleteRows = false;
-            this.dgvCustomer.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCustomer.AutoGenerateColumns = false;
-            this.dgvCustomer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvCustomer.ColumnHeadersHeight = 40;
-            this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.customerIDDataGridViewTextBoxColumn,
-            this.CustomerName,
-            this.emailDataGridViewTextBoxColumn,
-            this.phoneDataGridViewTextBoxColumn,
-            this.addressDataGridViewTextBoxColumn,
-            this.DateCreated,
-            this.salesOrdersDataGridViewTextBoxColumn});
-            this.dgvCustomer.ContextMenuStrip = this.contextMenuStrip;
-            this.dgvCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgvCustomer.DataSource = this.bindingSourceCustomer;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCustomer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvCustomer.Location = new System.Drawing.Point(0, 0);
-            this.dgvCustomer.MultiSelect = false;
-            this.dgvCustomer.Name = "dgvCustomer";
-            this.dgvCustomer.ReadOnly = true;
-            this.dgvCustomer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvCustomer.RowHeadersVisible = false;
-            this.dgvCustomer.RowHeadersWidth = 100;
-            this.dgvCustomer.RowTemplate.Height = 30;
-            this.dgvCustomer.Size = new System.Drawing.Size(1301, 679);
-            this.dgvCustomer.TabIndex = 0;
-            this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvCustomer.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvCustomer.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvCustomer.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvCustomer.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvCustomer.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dgvCustomer.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvCustomer.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvCustomer.ThemeStyle.HeaderStyle.Height = 40;
-            this.dgvCustomer.ThemeStyle.ReadOnly = true;
-            this.dgvCustomer.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvCustomer.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvCustomer.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dgvCustomer.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvCustomer.ThemeStyle.RowsStyle.Height = 30;
-            this.dgvCustomer.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvCustomer.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dgvCustomer.AllowUserToAddRows = false;
+            dgvCustomer.AllowUserToDeleteRows = false;
+            dgvCustomer.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dgvCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvCustomer.AutoGenerateColumns = false;
+            dgvCustomer.BackgroundColor = Color.FromArgb(128, 255, 255);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(0, 128, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 128, 255);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvCustomer.ColumnHeadersHeight = 40;
+            dgvCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvCustomer.Columns.AddRange(new DataGridViewColumn[] { customerIDDataGridViewTextBoxColumn, CustomerName, emailDataGridViewTextBoxColumn, phoneDataGridViewTextBoxColumn, addressDataGridViewTextBoxColumn, DateCreated, salesOrdersDataGridViewTextBoxColumn });
+            dgvCustomer.ContextMenuStrip = contextMenuStrip;
+            dgvCustomer.Cursor = Cursors.Hand;
+            dgvCustomer.DataSource = bindingSourceCustomer;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvCustomer.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvCustomer.Dock = DockStyle.Fill;
+            dgvCustomer.GridColor = Color.FromArgb(231, 229, 255);
+            dgvCustomer.Location = new Point(0, 0);
+            dgvCustomer.MultiSelect = false;
+            dgvCustomer.Name = "dgvCustomer";
+            dgvCustomer.ReadOnly = true;
+            dgvCustomer.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dgvCustomer.RowHeadersVisible = false;
+            dgvCustomer.RowHeadersWidth = 100;
+            dgvCustomer.RowTemplate.Height = 30;
+            dgvCustomer.Size = new Size(1301, 679);
+            dgvCustomer.TabIndex = 0;
+            dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgvCustomer.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dgvCustomer.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dgvCustomer.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dgvCustomer.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dgvCustomer.ThemeStyle.BackColor = Color.FromArgb(128, 255, 255);
+            dgvCustomer.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgvCustomer.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgvCustomer.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvCustomer.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dgvCustomer.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgvCustomer.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvCustomer.ThemeStyle.HeaderStyle.Height = 40;
+            dgvCustomer.ThemeStyle.ReadOnly = true;
+            dgvCustomer.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgvCustomer.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCustomer.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dgvCustomer.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dgvCustomer.ThemeStyle.RowsStyle.Height = 30;
+            dgvCustomer.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgvCustomer.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // customerIDDataGridViewTextBoxColumn
             // 
-            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.HeaderText = "Mã khách hàng";
-            this.customerIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
-            this.customerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
+            customerIDDataGridViewTextBoxColumn.HeaderText = "Mã khách hàng";
+            customerIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
+            customerIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // CustomerName
             // 
-            this.CustomerName.DataPropertyName = "CustomerName";
-            this.CustomerName.HeaderText = "Tên khách hàng";
-            this.CustomerName.MinimumWidth = 6;
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
+            CustomerName.DataPropertyName = "CustomerName";
+            CustomerName.HeaderText = "Tên khách hàng";
+            CustomerName.MinimumWidth = 6;
+            CustomerName.Name = "CustomerName";
+            CustomerName.ReadOnly = true;
             // 
             // emailDataGridViewTextBoxColumn
             // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn.MinimumWidth = 6;
+            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            emailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // phoneDataGridViewTextBoxColumn
             // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Số điện thoại";
-            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            phoneDataGridViewTextBoxColumn.HeaderText = "Số điện thoại";
+            phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
+            phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            phoneDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // addressDataGridViewTextBoxColumn
             // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Địa chỉ";
-            this.addressDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            addressDataGridViewTextBoxColumn.HeaderText = "Địa chỉ";
+            addressDataGridViewTextBoxColumn.MinimumWidth = 6;
+            addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // DateCreated
             // 
-            this.DateCreated.DataPropertyName = "DateCreated";
-            this.DateCreated.HeaderText = "Ngày tạo";
-            this.DateCreated.MinimumWidth = 6;
-            this.DateCreated.Name = "DateCreated";
-            this.DateCreated.ReadOnly = true;
+            DateCreated.DataPropertyName = "DateCreated";
+            DateCreated.HeaderText = "Ngày tạo";
+            DateCreated.MinimumWidth = 6;
+            DateCreated.Name = "DateCreated";
+            DateCreated.ReadOnly = true;
             // 
             // salesOrdersDataGridViewTextBoxColumn
             // 
-            this.salesOrdersDataGridViewTextBoxColumn.DataPropertyName = "SalesOrders";
-            this.salesOrdersDataGridViewTextBoxColumn.HeaderText = "SalesOrders";
-            this.salesOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.salesOrdersDataGridViewTextBoxColumn.Name = "salesOrdersDataGridViewTextBoxColumn";
-            this.salesOrdersDataGridViewTextBoxColumn.ReadOnly = true;
-            this.salesOrdersDataGridViewTextBoxColumn.Visible = false;
+            salesOrdersDataGridViewTextBoxColumn.DataPropertyName = "SalesOrders";
+            salesOrdersDataGridViewTextBoxColumn.HeaderText = "SalesOrders";
+            salesOrdersDataGridViewTextBoxColumn.MinimumWidth = 6;
+            salesOrdersDataGridViewTextBoxColumn.Name = "salesOrdersDataGridViewTextBoxColumn";
+            salesOrdersDataGridViewTextBoxColumn.ReadOnly = true;
+            salesOrdersDataGridViewTextBoxColumn.Visible = false;
             // 
             // contextMenuStrip
             // 
-            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnUpdate,
-            this.btnDelete,
-            this.btnPurchaseHistory});
-            this.contextMenuStrip.Name = "mnstrip";
-            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.ColorTable = null;
-            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
-            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(198, 82);
+            contextMenuStrip.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip.Items.AddRange(new ToolStripItem[] { btnUpdate, btnDelete, btnPurchaseHistory });
+            contextMenuStrip.Name = "mnstrip";
+            contextMenuStrip.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
+            contextMenuStrip.RenderStyle.BorderColor = Color.Gainsboro;
+            contextMenuStrip.RenderStyle.ColorTable = null;
+            contextMenuStrip.RenderStyle.RoundedEdges = true;
+            contextMenuStrip.RenderStyle.SelectionArrowColor = Color.White;
+            contextMenuStrip.RenderStyle.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            contextMenuStrip.RenderStyle.SelectionForeColor = Color.White;
+            contextMenuStrip.RenderStyle.SeparatorColor = Color.Gainsboro;
+            contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            contextMenuStrip.Size = new Size(198, 82);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Image = global::QLCHWF.Properties.Resources.pencil;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(197, 26);
-            this.btnUpdate.Text = "Sửa thông tin";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            btnUpdate.Image = Properties.Resources.pencil;
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(197, 26);
+            btnUpdate.Text = "Sửa thông tin";
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnDelete
             // 
-            this.btnDelete.Image = global::QLCHWF.Properties.Resources.remove;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(197, 26);
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            btnDelete.Image = Properties.Resources.remove;
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(197, 26);
+            btnDelete.Text = "Xóa";
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnPurchaseHistory
             // 
-            this.btnPurchaseHistory.Image = global::QLCHWF.Properties.Resources.reload;
-            this.btnPurchaseHistory.Name = "btnPurchaseHistory";
-            this.btnPurchaseHistory.Size = new System.Drawing.Size(197, 26);
-            this.btnPurchaseHistory.Text = "Lịch sử mua hàng";
-            this.btnPurchaseHistory.Click += new System.EventHandler(this.btnPurchaseHistory_Click);
+            btnPurchaseHistory.Image = Properties.Resources.reload;
+            btnPurchaseHistory.Name = "btnPurchaseHistory";
+            btnPurchaseHistory.Size = new Size(197, 26);
+            btnPurchaseHistory.Text = "Lịch sử mua hàng";
+            btnPurchaseHistory.Click += btnPurchaseHistory_Click;
             // 
             // bindingSourceCustomer
             // 
-            this.bindingSourceCustomer.DataSource = typeof(QLCHWF.Models.Customer);
+            bindingSourceCustomer.DataSource = typeof(Models.Customer);
             // 
             // frmViewCustomer
             // 
-            this.AcceptButton = this.btnSearch;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1301, 744);
-            this.Controls.Add(this.pnlGridView);
-            this.Controls.Add(this.pnlControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmViewCustomer";
-            this.Text = "frmViewCustomer";
-            this.Load += new System.EventHandler(this.frmViewCustomer_Load);
-            this.pnlControl.ResumeLayout(false);
-            this.pnlGridView.ResumeLayout(false);
-            this.panelPagination.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
-            this.contextMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCustomer)).EndInit();
-            this.ResumeLayout(false);
-
+            AcceptButton = btnSearch;
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1301, 744);
+            Controls.Add(pnlGridView);
+            Controls.Add(pnlControl);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "frmViewCustomer";
+            Text = "frmViewCustomer";
+            Load += frmViewCustomer_Load;
+            pnlControl.ResumeLayout(false);
+            pnlGridView.ResumeLayout(false);
+            panelPagination.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvCustomer).EndInit();
+            contextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)bindingSourceCustomer).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -520,10 +507,7 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvCustomer;
         private Guna.UI2.WinForms.Guna2Panel pnlControl;
         private Guna.UI2.WinForms.Guna2ComboBox cboOptionSearch;
-        private Guna.UI2.WinForms.Guna2Button btnReload;
-        private Guna.UI2.WinForms.Guna2Button btnSearch;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        private Guna.UI2.WinForms.Guna2Button btnAdd;
         private BindingSource bindingSourceCustomer;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip contextMenuStrip;
         private ToolStripMenuItem btnUpdate;
@@ -537,8 +521,11 @@
         private DataGridViewTextBoxColumn DateCreated;
         private DataGridViewTextBoxColumn salesOrdersDataGridViewTextBoxColumn;
         private Guna.UI2.WinForms.Guna2Panel panelPagination;
-        private Guna.UI2.WinForms.Guna2Button btnCurrentPage;
-        private Guna.UI2.WinForms.Guna2Button btnNext;
-        private Guna.UI2.WinForms.Guna2Button btnPrevious;
+        private Guna.UI2.WinForms.Guna2GradientButton btnAdd;
+        private Guna.UI2.WinForms.Guna2GradientButton btnReload;
+        private Guna.UI2.WinForms.Guna2GradientButton btnSearch;
+        private Guna.UI2.WinForms.Guna2GradientButton btnNext;
+        private Guna.UI2.WinForms.Guna2GradientButton btnCurrentPage;
+        private Guna.UI2.WinForms.Guna2GradientButton btnPrevious;
     }
 }

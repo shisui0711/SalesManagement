@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -50,343 +50,343 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateCustomer));
-            this.pnlTop = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtID = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnExit = new Guna.UI2.WinForms.Guna2Button();
-            this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtCustomerName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.pnlTop.SuspendLayout();
-            this.pnlBody.SuspendLayout();
-            this.SuspendLayout();
+            pnlTop = new Guna.UI2.WinForms.Guna2Panel();
+            btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
+            label1 = new Label();
+            pnlBody = new Guna.UI2.WinForms.Guna2Panel();
+            btnUpdate = new Guna.UI2.WinForms.Guna2GradientButton();
+            label5 = new Label();
+            txtID = new Guna.UI2.WinForms.Guna2TextBox();
+            btnExit = new Guna.UI2.WinForms.Guna2Button();
+            label3 = new Label();
+            label2 = new Label();
+            label4 = new Label();
+            lblName = new Label();
+            txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
+            txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
+            txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
+            txtCustomerName = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(components);
+            pnlTop.SuspendLayout();
+            pnlBody.SuspendLayout();
+            SuspendLayout();
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.pnlTop.BorderColor = System.Drawing.Color.White;
-            this.pnlTop.Controls.Add(this.btnClose);
-            this.pnlTop.Controls.Add(this.label1);
-            this.pnlTop.CustomizableEdges = customizableEdges3;
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(2, 2);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            this.pnlTop.Size = new System.Drawing.Size(621, 47);
-            this.pnlTop.TabIndex = 0;
+            pnlTop.BackColor = Color.FromArgb(38, 191, 166);
+            pnlTop.BorderColor = Color.White;
+            pnlTop.Controls.Add(btnClose);
+            pnlTop.Controls.Add(label1);
+            pnlTop.CustomizableEdges = customizableEdges3;
+            pnlTop.Dock = DockStyle.Top;
+            pnlTop.Location = new Point(2, 2);
+            pnlTop.Name = "pnlTop";
+            pnlTop.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            pnlTop.Size = new Size(621, 47);
+            pnlTop.TabIndex = 0;
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.BorderRadius = 10;
-            this.btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
-            this.btnClose.CustomizableEdges = customizableEdges1;
-            this.btnClose.FillColor = System.Drawing.Color.Transparent;
-            this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
-            this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(565, 7);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            this.btnClose.Size = new System.Drawing.Size(44, 33);
-            this.btnClose.TabIndex = 10;
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.BackColor = Color.Transparent;
+            btnClose.BorderRadius = 10;
+            btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
+            btnClose.CustomizableEdges = customizableEdges1;
+            btnClose.FillColor = Color.Transparent;
+            btnClose.HoverState.FillColor = Color.Red;
+            btnClose.IconColor = Color.White;
+            btnClose.Location = new Point(565, 7);
+            btnClose.Name = "btnClose";
+            btnClose.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnClose.Size = new Size(44, 33);
+            btnClose.TabIndex = 10;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 23);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Cập nhật thông tin";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(12, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(162, 23);
+            label1.TabIndex = 4;
+            label1.Text = "Cập nhật thông tin";
             // 
             // pnlBody
             // 
-            this.pnlBody.AutoRoundedCorners = true;
-            this.pnlBody.BackColor = System.Drawing.Color.White;
-            this.pnlBody.BorderRadius = 210;
-            this.pnlBody.Controls.Add(this.label5);
-            this.pnlBody.Controls.Add(this.txtID);
-            this.pnlBody.Controls.Add(this.btnExit);
-            this.pnlBody.Controls.Add(this.btnUpdate);
-            this.pnlBody.Controls.Add(this.label3);
-            this.pnlBody.Controls.Add(this.label2);
-            this.pnlBody.Controls.Add(this.label4);
-            this.pnlBody.Controls.Add(this.lblName);
-            this.pnlBody.Controls.Add(this.txtAddress);
-            this.pnlBody.Controls.Add(this.txtPhone);
-            this.pnlBody.Controls.Add(this.txtEmail);
-            this.pnlBody.Controls.Add(this.txtCustomerName);
-            this.pnlBody.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlBody.CustomizableEdges = customizableEdges19;
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(2, 49);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            this.pnlBody.Size = new System.Drawing.Size(621, 423);
-            this.pnlBody.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(91, 35);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(157, 28);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Mã khách hàng:";
-            // 
-            // txtID
-            // 
-            this.txtID.Animated = true;
-            this.txtID.BorderRadius = 5;
-            this.txtID.BorderThickness = 2;
-            this.txtID.CustomizableEdges = customizableEdges5;
-            this.txtID.DefaultText = "";
-            this.txtID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtID.Enabled = false;
-            this.txtID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtID.Location = new System.Drawing.Point(253, 28);
-            this.txtID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtID.Name = "txtID";
-            this.txtID.PasswordChar = '\0';
-            this.txtID.PlaceholderText = "";
-            this.txtID.ReadOnly = true;
-            this.txtID.SelectedText = "";
-            this.txtID.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            this.txtID.Size = new System.Drawing.Size(280, 43);
-            this.txtID.TabIndex = 19;
-            // 
-            // btnExit
-            // 
-            this.btnExit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.btnExit.BorderRadius = 5;
-            this.btnExit.BorderThickness = 3;
-            this.btnExit.CustomizableEdges = customizableEdges7;
-            this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnExit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnExit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnExit.FillColor = System.Drawing.Color.White;
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.btnExit.HoverState.BorderColor = System.Drawing.Color.Red;
-            this.btnExit.HoverState.FillColor = System.Drawing.Color.Red;
-            this.btnExit.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(367, 355);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            this.btnExit.Size = new System.Drawing.Size(166, 47);
-            this.btnExit.TabIndex = 5;
-            this.btnExit.Text = "Đóng";
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            pnlBody.AutoRoundedCorners = true;
+            pnlBody.BackColor = Color.White;
+            pnlBody.BorderRadius = 210;
+            pnlBody.Controls.Add(btnUpdate);
+            pnlBody.Controls.Add(label5);
+            pnlBody.Controls.Add(txtID);
+            pnlBody.Controls.Add(btnExit);
+            pnlBody.Controls.Add(label3);
+            pnlBody.Controls.Add(label2);
+            pnlBody.Controls.Add(label4);
+            pnlBody.Controls.Add(lblName);
+            pnlBody.Controls.Add(txtAddress);
+            pnlBody.Controls.Add(txtPhone);
+            pnlBody.Controls.Add(txtEmail);
+            pnlBody.Controls.Add(txtCustomerName);
+            pnlBody.Cursor = Cursors.Hand;
+            pnlBody.CustomizableEdges = customizableEdges19;
+            pnlBody.Dock = DockStyle.Fill;
+            pnlBody.Location = new Point(2, 49);
+            pnlBody.Name = "pnlBody";
+            pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            pnlBody.Size = new Size(621, 423);
+            pnlBody.TabIndex = 1;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BorderRadius = 5;
-            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdate.CustomizableEdges = customizableEdges9;
-            this.btnUpdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnUpdate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnUpdate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnUpdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnUpdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(125, 355);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            this.btnUpdate.Size = new System.Drawing.Size(166, 47);
-            this.btnUpdate.TabIndex = 4;
-            this.btnUpdate.Text = "Lưu";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            btnUpdate.BorderRadius = 5;
+            btnUpdate.CustomizableEdges = customizableEdges5;
+            btnUpdate.DisabledState.BorderColor = Color.DarkGray;
+            btnUpdate.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnUpdate.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnUpdate.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnUpdate.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnUpdate.FillColor = Color.FromArgb(17, 153, 142);
+            btnUpdate.FillColor2 = Color.FromArgb(56, 239, 125);
+            btnUpdate.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.Location = new Point(136, 355);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnUpdate.Size = new Size(166, 47);
+            btnUpdate.TabIndex = 4;
+            btnUpdate.Text = "Lưu";
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(91, 35);
+            label5.Name = "label5";
+            label5.Size = new Size(157, 28);
+            label5.TabIndex = 20;
+            label5.Text = "Mã khách hàng:";
+            // 
+            // txtID
+            // 
+            txtID.Animated = true;
+            txtID.BorderRadius = 5;
+            txtID.BorderThickness = 2;
+            txtID.CustomizableEdges = customizableEdges7;
+            txtID.DefaultText = "";
+            txtID.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtID.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtID.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtID.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtID.Enabled = false;
+            txtID.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtID.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtID.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtID.Location = new Point(253, 28);
+            txtID.Margin = new Padding(3, 4, 3, 4);
+            txtID.Name = "txtID";
+            txtID.PasswordChar = '\0';
+            txtID.PlaceholderText = "";
+            txtID.ReadOnly = true;
+            txtID.SelectedText = "";
+            txtID.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtID.Size = new Size(280, 43);
+            txtID.TabIndex = 20;
+            // 
+            // btnExit
+            // 
+            btnExit.BorderColor = Color.FromArgb(38, 191, 166);
+            btnExit.BorderRadius = 5;
+            btnExit.BorderThickness = 3;
+            btnExit.CustomizableEdges = customizableEdges9;
+            btnExit.DisabledState.BorderColor = Color.DarkGray;
+            btnExit.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnExit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnExit.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnExit.FillColor = Color.White;
+            btnExit.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnExit.ForeColor = Color.FromArgb(38, 191, 166);
+            btnExit.HoverState.BorderColor = Color.Red;
+            btnExit.HoverState.FillColor = Color.Red;
+            btnExit.HoverState.ForeColor = Color.White;
+            btnExit.Location = new Point(367, 355);
+            btnExit.Name = "btnExit";
+            btnExit.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnExit.Size = new Size(166, 47);
+            btnExit.TabIndex = 5;
+            btnExit.Text = "Đóng";
+            btnExit.Click += btnExit_Click;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(170, 291);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 28);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Địa chỉ:";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(170, 291);
+            label3.Name = "label3";
+            label3.Size = new Size(78, 28);
+            label3.TabIndex = 16;
+            label3.Text = "Địa chỉ:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(110, 225);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 28);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Số điện thoại:";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(110, 225);
+            label2.Name = "label2";
+            label2.Size = new Size(138, 28);
+            label2.TabIndex = 15;
+            label2.Text = "Số điện thoại:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(87, 101);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(161, 28);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Tên khách hàng:";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(87, 101);
+            label4.Name = "label4";
+            label4.Size = new Size(161, 28);
+            label4.TabIndex = 13;
+            label4.Text = "Tên khách hàng:";
             // 
             // lblName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(183, 159);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(65, 28);
-            this.lblName.TabIndex = 14;
-            this.lblName.Text = "Email:";
+            lblName.AutoSize = true;
+            lblName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblName.Location = new Point(183, 159);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(65, 28);
+            lblName.TabIndex = 14;
+            lblName.Text = "Email:";
             // 
             // txtAddress
             // 
-            this.txtAddress.Animated = true;
-            this.txtAddress.BorderRadius = 5;
-            this.txtAddress.BorderThickness = 2;
-            this.txtAddress.CustomizableEdges = customizableEdges11;
-            this.txtAddress.DefaultText = "";
-            this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtAddress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtAddress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddress.Location = new System.Drawing.Point(253, 284);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtAddress.MaxLength = 100;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.PasswordChar = '\0';
-            this.txtAddress.PlaceholderText = "";
-            this.txtAddress.SelectedText = "";
-            this.txtAddress.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            this.txtAddress.Size = new System.Drawing.Size(280, 43);
-            this.txtAddress.TabIndex = 3;
+            txtAddress.Animated = true;
+            txtAddress.BorderRadius = 5;
+            txtAddress.BorderThickness = 2;
+            txtAddress.CustomizableEdges = customizableEdges11;
+            txtAddress.DefaultText = "";
+            txtAddress.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtAddress.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtAddress.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtAddress.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtAddress.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtAddress.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAddress.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtAddress.Location = new Point(253, 284);
+            txtAddress.Margin = new Padding(3, 4, 3, 4);
+            txtAddress.MaxLength = 100;
+            txtAddress.Name = "txtAddress";
+            txtAddress.PasswordChar = '\0';
+            txtAddress.PlaceholderText = "";
+            txtAddress.SelectedText = "";
+            txtAddress.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            txtAddress.Size = new Size(280, 43);
+            txtAddress.TabIndex = 3;
             // 
             // txtPhone
             // 
-            this.txtPhone.Animated = true;
-            this.txtPhone.BorderRadius = 5;
-            this.txtPhone.BorderThickness = 2;
-            this.txtPhone.CustomizableEdges = customizableEdges13;
-            this.txtPhone.DefaultText = "";
-            this.txtPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPhone.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPhone.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPhone.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhone.Location = new System.Drawing.Point(253, 218);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPhone.MaxLength = 10;
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.PasswordChar = '\0';
-            this.txtPhone.PlaceholderText = "";
-            this.txtPhone.SelectedText = "";
-            this.txtPhone.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            this.txtPhone.Size = new System.Drawing.Size(280, 43);
-            this.txtPhone.TabIndex = 2;
+            txtPhone.Animated = true;
+            txtPhone.BorderRadius = 5;
+            txtPhone.BorderThickness = 2;
+            txtPhone.CustomizableEdges = customizableEdges13;
+            txtPhone.DefaultText = "";
+            txtPhone.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtPhone.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtPhone.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtPhone.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtPhone.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtPhone.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPhone.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtPhone.Location = new Point(253, 218);
+            txtPhone.Margin = new Padding(3, 4, 3, 4);
+            txtPhone.MaxLength = 10;
+            txtPhone.Name = "txtPhone";
+            txtPhone.PasswordChar = '\0';
+            txtPhone.PlaceholderText = "";
+            txtPhone.SelectedText = "";
+            txtPhone.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            txtPhone.Size = new Size(280, 43);
+            txtPhone.TabIndex = 2;
             // 
             // txtEmail
             // 
-            this.txtEmail.Animated = true;
-            this.txtEmail.BorderRadius = 5;
-            this.txtEmail.BorderThickness = 2;
-            this.txtEmail.CustomizableEdges = customizableEdges15;
-            this.txtEmail.DefaultText = "";
-            this.txtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(253, 152);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtEmail.MaxLength = 50;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.PasswordChar = '\0';
-            this.txtEmail.PlaceholderText = "";
-            this.txtEmail.SelectedText = "";
-            this.txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            this.txtEmail.Size = new System.Drawing.Size(280, 43);
-            this.txtEmail.TabIndex = 1;
+            txtEmail.Animated = true;
+            txtEmail.BorderRadius = 5;
+            txtEmail.BorderThickness = 2;
+            txtEmail.CustomizableEdges = customizableEdges15;
+            txtEmail.DefaultText = "";
+            txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtEmail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtEmail.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtEmail.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtEmail.Location = new Point(253, 152);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
+            txtEmail.MaxLength = 50;
+            txtEmail.Name = "txtEmail";
+            txtEmail.PasswordChar = '\0';
+            txtEmail.PlaceholderText = "";
+            txtEmail.SelectedText = "";
+            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtEmail.Size = new Size(280, 43);
+            txtEmail.TabIndex = 1;
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Animated = true;
-            this.txtCustomerName.BorderRadius = 5;
-            this.txtCustomerName.BorderThickness = 2;
-            this.txtCustomerName.CustomizableEdges = customizableEdges17;
-            this.txtCustomerName.DefaultText = "";
-            this.txtCustomerName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCustomerName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCustomerName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCustomerName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCustomerName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCustomerName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCustomerName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCustomerName.Location = new System.Drawing.Point(253, 94);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCustomerName.MaxLength = 50;
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.PasswordChar = '\0';
-            this.txtCustomerName.PlaceholderText = "";
-            this.txtCustomerName.SelectedText = "";
-            this.txtCustomerName.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            this.txtCustomerName.Size = new System.Drawing.Size(280, 43);
-            this.txtCustomerName.TabIndex = 0;
+            txtCustomerName.Animated = true;
+            txtCustomerName.BorderRadius = 5;
+            txtCustomerName.BorderThickness = 2;
+            txtCustomerName.CustomizableEdges = customizableEdges17;
+            txtCustomerName.DefaultText = "";
+            txtCustomerName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtCustomerName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtCustomerName.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtCustomerName.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtCustomerName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtCustomerName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCustomerName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtCustomerName.Location = new Point(253, 94);
+            txtCustomerName.Margin = new Padding(3, 4, 3, 4);
+            txtCustomerName.MaxLength = 50;
+            txtCustomerName.Name = "txtCustomerName";
+            txtCustomerName.PasswordChar = '\0';
+            txtCustomerName.PlaceholderText = "";
+            txtCustomerName.SelectedText = "";
+            txtCustomerName.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtCustomerName.Size = new Size(280, 43);
+            txtCustomerName.TabIndex = 0;
             // 
             // guna2DragControl1
             // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.pnlTop;
-            this.guna2DragControl1.UseTransparentDrag = true;
+            guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            guna2DragControl1.TargetControl = pnlTop;
+            guna2DragControl1.UseTransparentDrag = true;
             // 
             // frmUpdateCustomer
             // 
-            this.AcceptButton = this.btnUpdate;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(625, 474);
-            this.Controls.Add(this.pnlBody);
-            this.Controls.Add(this.pnlTop);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmUpdateCustomer";
-            this.Padding = new System.Windows.Forms.Padding(2);
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmUpdateCustomer";
-            this.pnlTop.ResumeLayout(false);
-            this.pnlTop.PerformLayout();
-            this.pnlBody.ResumeLayout(false);
-            this.pnlBody.PerformLayout();
-            this.ResumeLayout(false);
-
+            AcceptButton = btnUpdate;
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(38, 191, 166);
+            CancelButton = btnExit;
+            ClientSize = new Size(625, 474);
+            Controls.Add(pnlBody);
+            Controls.Add(pnlTop);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "frmUpdateCustomer";
+            Padding = new Padding(2);
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "frmUpdateCustomer";
+            pnlTop.ResumeLayout(false);
+            pnlTop.PerformLayout();
+            pnlBody.ResumeLayout(false);
+            pnlBody.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -395,7 +395,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox btnClose;
         private Guna.UI2.WinForms.Guna2Panel pnlBody;
         private Guna.UI2.WinForms.Guna2Button btnExit;
-        private Guna.UI2.WinForms.Guna2Button btnUpdate;
         private Label label3;
         private Label label2;
         private Label label4;
@@ -407,5 +406,6 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Label label5;
         private Guna.UI2.WinForms.Guna2TextBox txtID;
+        private Guna.UI2.WinForms.Guna2GradientButton btnUpdate;
     }
 }

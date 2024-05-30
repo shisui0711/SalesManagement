@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QLCHWF.IRepository;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.Query;
 using QLCHWF.Models;
+using OfficeOpenXml.FormulaParsing.FormulaExpressions;
 
 namespace QLCHWF.Repository;
 
@@ -32,6 +34,42 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         return await _context.Set<T>().ToListAsync();
     }
+
+
+    public IEnumerable<T> GetAllInluce(params Expression<Func<T, object>>[] selector)
+    {
+        if (selector.Length == 0)
+        {
+            return _context.Set<T>().ToList();
+        }
+        IIncludableQueryable<T, object> result= _context.Set<T>().Include(selector.First());
+        for (int i = 1; i < selector.Length; i++)
+        {
+            result = result.Include(selector[i]);
+        }
+        return result.ToList();
+    }
+
+    public IEnumerable<T> GetPagination(int skip, int take)
+    {
+        return _context.Set<T>().Skip(skip).Take(take).ToList();
+    }
+
+    public int Count()
+    {
+        return _context.Set<T>().Count();
+    }
+
+    public int Count(Expression<Func<T, bool>> match)
+    {
+        return _context.Set<T>().Where(match).Count();
+    }
+
+    public IEnumerable<T> GetPagination(int skip, int take, Expression<Func<T, bool>> match)
+    {
+        return _context.Set<T>().Where(match).Skip(skip).Take(take).ToList();
+    }
+
 
     public IEnumerable<T> GetSome(Expression<Func<T, bool>> match)
     {

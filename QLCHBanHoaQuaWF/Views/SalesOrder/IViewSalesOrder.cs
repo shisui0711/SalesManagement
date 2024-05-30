@@ -1,6 +1,6 @@
 ﻿namespace QLCHWF.Views.SalesOrder;
 
-public interface IViewSalesOrder : IViewBase
+public interface IViewSalesOrder : IViewBase,IViewPagination
 {
     public string SearchText { get; set; }
     public int OptionIndex { get; set; }

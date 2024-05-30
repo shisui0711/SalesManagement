@@ -1,4 +1,5 @@
-﻿using Guna.UI2.WinForms;
+﻿using System.Globalization;
+using Guna.UI2.WinForms;
 using QLCHWF.CustomMessageBox;
 using QLCHWF.Presenters;
 using System.Text.RegularExpressions;
@@ -23,7 +24,7 @@ namespace QLCHWF.Views.SalesOrder
             get { return txtCustomerSearch.Text; }
             set { txtCustomerSearch.Text = value; }
         }
-        public string? ProductSearchText
+        public string ProductSearchText
         {
             get { return txtSearch.Text; }
             set { txtSearch.Text = value; }
@@ -33,49 +34,48 @@ namespace QLCHWF.Views.SalesOrder
         {
             get
             {
-                decimal purchasePrice = 0;
-                decimal.TryParse(txtPurchasePrice.Text,out purchasePrice);
+                decimal.TryParse(txtPurchasePrice.Text,out var purchasePrice);
                 return purchasePrice;
             }
             set { txtPurchasePrice.Text = value.ToString(); }
         }
         public decimal ChangePrice
         {
-            get { return decimal.Parse(lblChangePrice.Text); }
-            set { lblChangePrice.Text = value.ToString(); }
+            get { return decimal.Parse(lblChangePrice.Text,NumberStyles.Currency); }
+            set { lblChangePrice.Text = value.ToString("C2"); }
         }
 
         public decimal TotalPrice
         {
             get { try
                 {
-                    return decimal.Parse(lblTotalPrice.Text);
+                    return decimal.Parse(lblTotalPrice.Text,NumberStyles.Currency);
                 }
                 catch (Exception)
                 {
                     return 0;
                 }
             }
-            set { lblTotalPrice.Text = value.ToString(); }
+            set { lblTotalPrice.Text = value.ToString("C2"); }
         }
 
-        public int EmployeeID
+        public int? EmployeeID
         {
             get
             {
-                if (AuthPresenter.User != null) return AuthPresenter.User.EmployeeID;
-                throw new Exception("Bạn chưa đăng nhập");
+                if (AuthPresenter.User != null && AuthPresenter.User.EmployeeID != 0) return AuthPresenter.User.EmployeeID;
+                return null;
             }
         }
-        public int CustomerID
+        public int? CustomerID
         {
             get { try
                 {
-                    return int.Parse(dgvCustomer.CurrentRow!.Cells[0].Value.ToString()!);
+                    return int.Parse(dgvCustomer.CurrentRow?.Cells[0].Value.ToString() ?? string.Empty);
                 }
                 catch (Exception)
                 {
-                    return 0;
+                    return null;
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace QLCHWF.Views.SalesOrder
             {
                 return;
             }
-            if (!Regex.IsMatch(cellValue ?? string.Empty, @"\d+") || int.Parse(cellValue!) < 1)
+            if (!Regex.IsMatch(cellValue, @"\d+") || int.Parse(cellValue) < 1)
             {
                 dgvProductSelect.Rows[e.RowIndex].Cells["QuantityColumn"].Value = _quantityBackup;
                 MyMessageBox.Show("Số lượng không hợp lệ", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -201,7 +201,8 @@ namespace QLCHWF.Views.SalesOrder
 
         private void btnLoadCustomer_Click(object sender, EventArgs e)
         {
-            LoadCustomer?.Invoke(sender, e);
+            txtCustomerSearch.Text = "";
+            dgvCustomer.Rows.Clear();
         }
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
@@ -228,7 +229,7 @@ namespace QLCHWF.Views.SalesOrder
         {
             if (dgvProductSelect.RowCount == 0)
             {
-                lblTotalPrice.Text = "0";
+                lblTotalPrice.Text = @"0";
                 return;
             }
             RecalculateTotalPrice();
@@ -236,7 +237,7 @@ namespace QLCHWF.Views.SalesOrder
 
         private void CalculateChangePrice()
         {
-            decimal totalPrice = decimal.Parse(lblTotalPrice.Text);
+            decimal totalPrice = decimal.Parse(lblTotalPrice.Text,NumberStyles.Currency);
             decimal purchasePrice = 0;
             try
             {
@@ -244,11 +245,11 @@ namespace QLCHWF.Views.SalesOrder
             }
             catch
             {
-
+                // ignored
             }
 
             decimal changePrice = purchasePrice - totalPrice;
-            lblChangePrice.Text = (changePrice >= 0 ? changePrice : 0).ToString();
+            lblChangePrice.Text = (changePrice >= 0 ? changePrice : 0).ToString("C2");
         }
         private void RecalculateTotalPrice()
         {
@@ -261,11 +262,11 @@ namespace QLCHWF.Views.SalesOrder
                 }
                 catch (Exception)
                 {
-                    
+                    // ignored
                 }
             }
 
-            lblTotalPrice.Text = sum.ToString();
+            lblTotalPrice.Text = sum.ToString("C2");
             CalculateChangePrice();
         }
 

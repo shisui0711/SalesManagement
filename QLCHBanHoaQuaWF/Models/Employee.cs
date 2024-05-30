@@ -15,15 +15,17 @@ namespace QLCHWF.Models
         [StringLength(30)]
         public string EmployeeName { get; set; }
         [Required(ErrorMessage = "Email không được để trống")]
-        [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng email")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Vui lòng nhập đúng định dạng email")]
         [StringLength(50)]
         public string Email { get; set; }
         [RegularExpression(@"0\d{9}", ErrorMessage = "Vui lòng nhập đúng định dạng số điện thoại")]
         [StringLength(10)]
+        [Required(ErrorMessage = "Số điện thoại không được để trống")]
         public string Phone { get; set; }
         [StringLength(50)]
         public string? Address { get; set; }
         [Column(TypeName = "decimal(10,2)")]
+        [Range(0,999999999,ErrorMessage = "Lương phải lơn hơn 0 và không vượt quá giới hạn")]
         public decimal? Salary { get; set; }
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;

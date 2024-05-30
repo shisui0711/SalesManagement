@@ -17,12 +17,12 @@ namespace QLCHWF.Models
         public int? EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
         [InverseProperty("ImportOrders")]
-        public Employee? Employee { get; set; }
+        public virtual Employee? Employee { get; set; }
 
         public int? ProviderID { get; set; }
         [ForeignKey("ProviderID")]
         [InverseProperty("ImportOrders")]
-        public Provider? Provider { get; set; }
+        public virtual Provider? Provider { get; set; }
         [InverseProperty("ImportOrder")]
         public virtual ICollection<DetailImportOrder> DetailImportOrders { get; set; }
     }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -41,335 +41,324 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnlControl = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
-            this.btnReload = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
-            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pnlGridView = new Guna.UI2.WinForms.Guna2Panel();
-            this.dgvUserRole = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.roleIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateCreatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.permissionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.permissionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.btnUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.userRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pnlControl.SuspendLayout();
-            this.pnlGridView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUserRole)).BeginInit();
-            this.contextMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.userRoleBindingSource)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            pnlControl = new Guna.UI2.WinForms.Guna2Panel();
+            btnAdd = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnReload = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnSearch = new Guna.UI2.WinForms.Guna2GradientButton();
+            txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            pnlGridView = new Guna.UI2.WinForms.Guna2Panel();
+            dgvUserRole = new Guna.UI2.WinForms.Guna2DataGridView();
+            roleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            roleNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dateCreatedDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            permissionIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            permissionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            btnUpdate = new ToolStripMenuItem();
+            btnRemove = new ToolStripMenuItem();
+            userRoleBindingSource = new BindingSource(components);
+            pnlControl.SuspendLayout();
+            pnlGridView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvUserRole).BeginInit();
+            contextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)userRoleBindingSource).BeginInit();
+            SuspendLayout();
             // 
             // pnlControl
             // 
-            this.pnlControl.Controls.Add(this.btnAdd);
-            this.pnlControl.Controls.Add(this.btnReload);
-            this.pnlControl.Controls.Add(this.btnSearch);
-            this.pnlControl.Controls.Add(this.txtSearch);
-            this.pnlControl.CustomizableEdges = customizableEdges9;
-            this.pnlControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlControl.Location = new System.Drawing.Point(0, 0);
-            this.pnlControl.Name = "pnlControl";
-            this.pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            this.pnlControl.Size = new System.Drawing.Size(992, 72);
-            this.pnlControl.TabIndex = 0;
+            pnlControl.Controls.Add(btnAdd);
+            pnlControl.Controls.Add(btnReload);
+            pnlControl.Controls.Add(btnSearch);
+            pnlControl.Controls.Add(txtSearch);
+            pnlControl.CustomizableEdges = customizableEdges9;
+            pnlControl.Dock = DockStyle.Top;
+            pnlControl.Location = new Point(0, 0);
+            pnlControl.Name = "pnlControl";
+            pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            pnlControl.Size = new Size(992, 72);
+            pnlControl.TabIndex = 0;
             // 
             // btnAdd
             // 
-            this.btnAdd.AllowDrop = true;
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Animated = true;
-            this.btnAdd.BorderRadius = 5;
-            this.btnAdd.CustomizableEdges = customizableEdges1;
-            this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(809, 19);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            this.btnAdd.Size = new System.Drawing.Size(171, 35);
-            this.btnAdd.TabIndex = 17;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            btnAdd.BorderRadius = 5;
+            btnAdd.CustomizableEdges = customizableEdges1;
+            btnAdd.DisabledState.BorderColor = Color.DarkGray;
+            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAdd.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAdd.FillColor = Color.FromArgb(46, 49, 146);
+            btnAdd.FillColor2 = Color.FromArgb(27, 255, 255);
+            btnAdd.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(796, 19);
+            btnAdd.Name = "btnAdd";
+            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnAdd.Size = new Size(171, 35);
+            btnAdd.TabIndex = 21;
+            btnAdd.Text = "Thêm";
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnReload
             // 
-            this.btnReload.Animated = true;
-            this.btnReload.BorderRadius = 5;
-            this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReload.CustomizableEdges = customizableEdges3;
-            this.btnReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnReload.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnReload.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnReload.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnReload.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Image = global::QLCHWF.Properties.Resources.reload;
-            this.btnReload.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnReload.Location = new System.Drawing.Point(351, 19);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            this.btnReload.Size = new System.Drawing.Size(41, 35);
-            this.btnReload.TabIndex = 16;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            btnReload.BorderRadius = 5;
+            btnReload.CustomizableEdges = customizableEdges3;
+            btnReload.DisabledState.BorderColor = Color.DarkGray;
+            btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnReload.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnReload.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnReload.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnReload.FillColor = Color.FromArgb(46, 49, 146);
+            btnReload.FillColor2 = Color.FromArgb(27, 255, 255);
+            btnReload.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReload.ForeColor = Color.White;
+            btnReload.Image = Properties.Resources.reload;
+            btnReload.Location = new Point(351, 19);
+            btnReload.Name = "btnReload";
+            btnReload.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnReload.Size = new Size(41, 35);
+            btnReload.TabIndex = 19;
+            btnReload.Click += btnReload_Click;
             // 
             // btnSearch
             // 
-            this.btnSearch.Animated = true;
-            this.btnSearch.BorderRadius = 5;
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.CustomizableEdges = customizableEdges5;
-            this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Image = global::QLCHWF.Properties.Resources._3d_magnifier;
-            this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnSearch.Location = new System.Drawing.Point(304, 19);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            this.btnSearch.Size = new System.Drawing.Size(41, 35);
-            this.btnSearch.TabIndex = 15;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            btnSearch.BorderRadius = 5;
+            btnSearch.CustomizableEdges = customizableEdges5;
+            btnSearch.DisabledState.BorderColor = Color.DarkGray;
+            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSearch.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSearch.FillColor = Color.FromArgb(46, 49, 146);
+            btnSearch.FillColor2 = Color.FromArgb(27, 255, 255);
+            btnSearch.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Image = Properties.Resources._3d_magnifier;
+            btnSearch.Location = new Point(304, 19);
+            btnSearch.Name = "btnSearch";
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnSearch.Size = new Size(41, 35);
+            btnSearch.TabIndex = 20;
+            btnSearch.Click += btnSearch_Click;
             // 
             // txtSearch
             // 
-            this.txtSearch.Animated = true;
-            this.txtSearch.BorderRadius = 5;
-            this.txtSearch.CustomizableEdges = customizableEdges7;
-            this.txtSearch.DefaultText = "";
-            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(12, 19);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.PlaceholderText = "Tìm kiếm theo tên";
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            this.txtSearch.Size = new System.Drawing.Size(286, 35);
-            this.txtSearch.TabIndex = 14;
+            txtSearch.Animated = true;
+            txtSearch.BorderRadius = 5;
+            txtSearch.CustomizableEdges = customizableEdges7;
+            txtSearch.DefaultText = "";
+            txtSearch.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtSearch.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtSearch.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearch.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearch.Location = new Point(12, 19);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PasswordChar = '\0';
+            txtSearch.PlaceholderText = "Tìm kiếm theo tên";
+            txtSearch.SelectedText = "";
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtSearch.Size = new Size(286, 35);
+            txtSearch.TabIndex = 14;
             // 
             // pnlGridView
             // 
-            this.pnlGridView.Controls.Add(this.dgvUserRole);
-            this.pnlGridView.CustomizableEdges = customizableEdges11;
-            this.pnlGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlGridView.Location = new System.Drawing.Point(0, 72);
-            this.pnlGridView.Name = "pnlGridView";
-            this.pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            this.pnlGridView.Size = new System.Drawing.Size(992, 428);
-            this.pnlGridView.TabIndex = 1;
+            pnlGridView.Controls.Add(dgvUserRole);
+            pnlGridView.CustomizableEdges = customizableEdges11;
+            pnlGridView.Dock = DockStyle.Fill;
+            pnlGridView.Location = new Point(0, 72);
+            pnlGridView.Name = "pnlGridView";
+            pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            pnlGridView.Size = new Size(992, 428);
+            pnlGridView.TabIndex = 1;
             // 
             // dgvUserRole
             // 
-            this.dgvUserRole.AllowUserToAddRows = false;
-            this.dgvUserRole.AllowUserToDeleteRows = false;
-            this.dgvUserRole.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvUserRole.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvUserRole.AutoGenerateColumns = false;
-            this.dgvUserRole.BackgroundColor = System.Drawing.Color.Aqua;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUserRole.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvUserRole.ColumnHeadersHeight = 40;
-            this.dgvUserRole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvUserRole.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.roleIDDataGridViewTextBoxColumn,
-            this.roleNameDataGridViewTextBoxColumn,
-            this.dateCreatedDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn,
-            this.permissionIDDataGridViewTextBoxColumn,
-            this.permissionDataGridViewTextBoxColumn});
-            this.dgvUserRole.ContextMenuStrip = this.contextMenuStrip;
-            this.dgvUserRole.DataSource = this.userRoleBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUserRole.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvUserRole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvUserRole.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvUserRole.Location = new System.Drawing.Point(0, 0);
-            this.dgvUserRole.Name = "dgvUserRole";
-            this.dgvUserRole.ReadOnly = true;
-            this.dgvUserRole.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUserRole.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvUserRole.RowHeadersVisible = false;
-            this.dgvUserRole.RowHeadersWidth = 51;
-            this.dgvUserRole.RowTemplate.Height = 30;
-            this.dgvUserRole.Size = new System.Drawing.Size(992, 428);
-            this.dgvUserRole.TabIndex = 0;
-            this.dgvUserRole.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.Lime;
-            this.dgvUserRole.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dgvUserRole.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvUserRole.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvUserRole.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvUserRole.ThemeStyle.BackColor = System.Drawing.Color.Aqua;
-            this.dgvUserRole.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvUserRole.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvUserRole.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvUserRole.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dgvUserRole.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvUserRole.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvUserRole.ThemeStyle.HeaderStyle.Height = 40;
-            this.dgvUserRole.ThemeStyle.ReadOnly = true;
-            this.dgvUserRole.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.Lime;
-            this.dgvUserRole.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvUserRole.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dgvUserRole.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvUserRole.ThemeStyle.RowsStyle.Height = 30;
-            this.dgvUserRole.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvUserRole.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dgvUserRole.AllowUserToAddRows = false;
+            dgvUserRole.AllowUserToDeleteRows = false;
+            dgvUserRole.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dgvUserRole.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvUserRole.AutoGenerateColumns = false;
+            dgvUserRole.BackgroundColor = Color.Aqua;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(0, 128, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 128, 255);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvUserRole.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvUserRole.ColumnHeadersHeight = 40;
+            dgvUserRole.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvUserRole.Columns.AddRange(new DataGridViewColumn[] { roleIDDataGridViewTextBoxColumn, roleNameDataGridViewTextBoxColumn, dateCreatedDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, permissionIDDataGridViewTextBoxColumn, permissionDataGridViewTextBoxColumn });
+            dgvUserRole.ContextMenuStrip = contextMenuStrip;
+            dgvUserRole.DataSource = userRoleBindingSource;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvUserRole.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvUserRole.Dock = DockStyle.Fill;
+            dgvUserRole.GridColor = Color.FromArgb(231, 229, 255);
+            dgvUserRole.Location = new Point(0, 0);
+            dgvUserRole.Name = "dgvUserRole";
+            dgvUserRole.ReadOnly = true;
+            dgvUserRole.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvUserRole.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dgvUserRole.RowHeadersVisible = false;
+            dgvUserRole.RowHeadersWidth = 51;
+            dgvUserRole.RowTemplate.Height = 30;
+            dgvUserRole.Size = new Size(992, 428);
+            dgvUserRole.TabIndex = 0;
+            dgvUserRole.ThemeStyle.AlternatingRowsStyle.BackColor = Color.Lime;
+            dgvUserRole.ThemeStyle.AlternatingRowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dgvUserRole.ThemeStyle.AlternatingRowsStyle.ForeColor = SystemColors.ControlText;
+            dgvUserRole.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgvUserRole.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Black;
+            dgvUserRole.ThemeStyle.BackColor = Color.Aqua;
+            dgvUserRole.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgvUserRole.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgvUserRole.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvUserRole.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            dgvUserRole.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgvUserRole.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvUserRole.ThemeStyle.HeaderStyle.Height = 40;
+            dgvUserRole.ThemeStyle.ReadOnly = true;
+            dgvUserRole.ThemeStyle.RowsStyle.BackColor = Color.Lime;
+            dgvUserRole.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvUserRole.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dgvUserRole.ThemeStyle.RowsStyle.ForeColor = Color.Black;
+            dgvUserRole.ThemeStyle.RowsStyle.Height = 30;
+            dgvUserRole.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgvUserRole.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black;
             // 
             // roleIDDataGridViewTextBoxColumn
             // 
-            this.roleIDDataGridViewTextBoxColumn.DataPropertyName = "RoleID";
-            this.roleIDDataGridViewTextBoxColumn.HeaderText = "Mã vai trò";
-            this.roleIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
-            this.roleIDDataGridViewTextBoxColumn.ReadOnly = true;
+            roleIDDataGridViewTextBoxColumn.DataPropertyName = "RoleID";
+            roleIDDataGridViewTextBoxColumn.HeaderText = "Mã vai trò";
+            roleIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
+            roleIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // roleNameDataGridViewTextBoxColumn
             // 
-            this.roleNameDataGridViewTextBoxColumn.DataPropertyName = "RoleName";
-            this.roleNameDataGridViewTextBoxColumn.HeaderText = "Tên vai trò";
-            this.roleNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.roleNameDataGridViewTextBoxColumn.Name = "roleNameDataGridViewTextBoxColumn";
-            this.roleNameDataGridViewTextBoxColumn.ReadOnly = true;
+            roleNameDataGridViewTextBoxColumn.DataPropertyName = "RoleName";
+            roleNameDataGridViewTextBoxColumn.HeaderText = "Tên vai trò";
+            roleNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            roleNameDataGridViewTextBoxColumn.Name = "roleNameDataGridViewTextBoxColumn";
+            roleNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dateCreatedDataGridViewTextBoxColumn
             // 
-            this.dateCreatedDataGridViewTextBoxColumn.DataPropertyName = "DateCreated";
-            this.dateCreatedDataGridViewTextBoxColumn.HeaderText = "Ngày tạo";
-            this.dateCreatedDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dateCreatedDataGridViewTextBoxColumn.Name = "dateCreatedDataGridViewTextBoxColumn";
-            this.dateCreatedDataGridViewTextBoxColumn.ReadOnly = true;
+            dateCreatedDataGridViewTextBoxColumn.DataPropertyName = "DateCreated";
+            dateCreatedDataGridViewTextBoxColumn.HeaderText = "Ngày tạo";
+            dateCreatedDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dateCreatedDataGridViewTextBoxColumn.Name = "dateCreatedDataGridViewTextBoxColumn";
+            dateCreatedDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Mô tả";
-            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Mô tả";
+            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // permissionIDDataGridViewTextBoxColumn
             // 
-            this.permissionIDDataGridViewTextBoxColumn.DataPropertyName = "PermissionID";
-            this.permissionIDDataGridViewTextBoxColumn.HeaderText = "PermissionID";
-            this.permissionIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.permissionIDDataGridViewTextBoxColumn.Name = "permissionIDDataGridViewTextBoxColumn";
-            this.permissionIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.permissionIDDataGridViewTextBoxColumn.Visible = false;
+            permissionIDDataGridViewTextBoxColumn.DataPropertyName = "PermissionID";
+            permissionIDDataGridViewTextBoxColumn.HeaderText = "PermissionID";
+            permissionIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            permissionIDDataGridViewTextBoxColumn.Name = "permissionIDDataGridViewTextBoxColumn";
+            permissionIDDataGridViewTextBoxColumn.ReadOnly = true;
+            permissionIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // permissionDataGridViewTextBoxColumn
             // 
-            this.permissionDataGridViewTextBoxColumn.DataPropertyName = "Permission";
-            this.permissionDataGridViewTextBoxColumn.HeaderText = "Permission";
-            this.permissionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.permissionDataGridViewTextBoxColumn.Name = "permissionDataGridViewTextBoxColumn";
-            this.permissionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.permissionDataGridViewTextBoxColumn.Visible = false;
+            permissionDataGridViewTextBoxColumn.DataPropertyName = "Permission";
+            permissionDataGridViewTextBoxColumn.HeaderText = "Permission";
+            permissionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            permissionDataGridViewTextBoxColumn.Name = "permissionDataGridViewTextBoxColumn";
+            permissionDataGridViewTextBoxColumn.ReadOnly = true;
+            permissionDataGridViewTextBoxColumn.Visible = false;
             // 
             // contextMenuStrip
             // 
-            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnUpdate,
-            this.btnRemove});
-            this.contextMenuStrip.Name = "guna2ContextMenuStrip1";
-            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.ColorTable = null;
-            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
-            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.contextMenuStrip.Size = new System.Drawing.Size(109, 56);
+            contextMenuStrip.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip.Items.AddRange(new ToolStripItem[] { btnUpdate, btnRemove });
+            contextMenuStrip.Name = "guna2ContextMenuStrip1";
+            contextMenuStrip.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
+            contextMenuStrip.RenderStyle.BorderColor = Color.Gainsboro;
+            contextMenuStrip.RenderStyle.ColorTable = null;
+            contextMenuStrip.RenderStyle.RoundedEdges = true;
+            contextMenuStrip.RenderStyle.SelectionArrowColor = Color.White;
+            contextMenuStrip.RenderStyle.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            contextMenuStrip.RenderStyle.SelectionForeColor = Color.White;
+            contextMenuStrip.RenderStyle.SeparatorColor = Color.Gainsboro;
+            contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            contextMenuStrip.Size = new Size(109, 56);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Image = global::QLCHWF.Properties.Resources.pencil;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(108, 26);
-            this.btnUpdate.Text = "Sửa";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            btnUpdate.Image = Properties.Resources.pencil;
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(108, 26);
+            btnUpdate.Text = "Sửa";
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnRemove
             // 
-            this.btnRemove.Image = global::QLCHWF.Properties.Resources.remove;
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(108, 26);
-            this.btnRemove.Text = "Xóa";
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            btnRemove.Image = Properties.Resources.remove;
+            btnRemove.Name = "btnRemove";
+            btnRemove.Size = new Size(108, 26);
+            btnRemove.Text = "Xóa";
+            btnRemove.Click += btnRemove_Click;
             // 
             // userRoleBindingSource
             // 
-            this.userRoleBindingSource.DataSource = typeof(QLCHWF.Models.UserRole);
+            userRoleBindingSource.DataSource = typeof(Models.UserRole);
             // 
             // frmViewUserRole
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 500);
-            this.Controls.Add(this.pnlGridView);
-            this.Controls.Add(this.pnlControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmViewUserRole";
-            this.Text = "frmViewUserRole";
-            this.Load += new System.EventHandler(this.frmViewUserRole_Load);
-            this.pnlControl.ResumeLayout(false);
-            this.pnlGridView.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUserRole)).EndInit();
-            this.contextMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.userRoleBindingSource)).EndInit();
-            this.ResumeLayout(false);
-
+            AcceptButton = btnSearch;
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(992, 500);
+            Controls.Add(pnlGridView);
+            Controls.Add(pnlControl);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "frmViewUserRole";
+            Text = "frmViewUserRole";
+            Load += frmViewUserRole_Load;
+            pnlControl.ResumeLayout(false);
+            pnlGridView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvUserRole).EndInit();
+            contextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)userRoleBindingSource).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -383,12 +372,12 @@
         private DataGridViewTextBoxColumn permissionIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn permissionDataGridViewTextBoxColumn;
         private BindingSource userRoleBindingSource;
-        private Guna.UI2.WinForms.Guna2Button btnAdd;
-        private Guna.UI2.WinForms.Guna2Button btnReload;
-        private Guna.UI2.WinForms.Guna2Button btnSearch;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip contextMenuStrip;
         private ToolStripMenuItem btnUpdate;
         private ToolStripMenuItem btnRemove;
+        private Guna.UI2.WinForms.Guna2GradientButton btnReload;
+        private Guna.UI2.WinForms.Guna2GradientButton btnSearch;
+        private Guna.UI2.WinForms.Guna2GradientButton btnAdd;
     }
 }

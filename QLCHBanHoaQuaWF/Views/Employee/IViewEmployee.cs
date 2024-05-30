@@ -4,6 +4,8 @@ public interface IViewEmployee :IViewBase,IViewPagination
 {
     public string SearchText { get; set; }
     public int OptionIndex { get; set; }
+    public decimal SalaryStart { get; set; }
+    public decimal SalaryEnd { get; set; }
     public BindingSource EmployeeBindingSource { get; }
     public event EventHandler RemoveEmployee;
     public event EventHandler LoadEmployee;

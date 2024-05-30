@@ -10,35 +10,36 @@ public class StatisticsPresenter
 {
     private readonly IViewStatistics _viewStatistics;
     private readonly IUnitOfWork _unitOfWork;
-    //private readonly MyAppContext _context;
-    public StatisticsPresenter(IViewStatistics viewStatistics,IUnitOfWork unitOfWork,MyAppContext context)
+    private bool _isLoaded;
+    public StatisticsPresenter(IViewStatistics viewStatistics,IUnitOfWork unitOfWork)
     {
         _viewStatistics = viewStatistics;
         _unitOfWork = unitOfWork;
-        //_context = context;
 
-        _viewStatistics.LoadStatistics += delegate { Load(); };
+        _viewStatistics.LoadStatistics +=  delegate { Load(); };
     }
     public void Load()
     {
-        LoadCount();
+         LoadCount();
         LoadTopEmployee();
         LoadTopCustomer();
         LoadTopProduct();
         LoadRevenueChart();
     }
-    private void LoadCount()
+    private  void LoadCount()
     {
-        _viewStatistics.CountCustomer = _unitOfWork.Customers.GetAll().Count();
-        _viewStatistics.CountEmployee = _unitOfWork.Employees.GetAll().Count();
-        _viewStatistics.CountProvider = _unitOfWork.Providers.GetAll().Count();
-        _viewStatistics.CountProduct = _unitOfWork.Products.GetAll().Count();
-        List<SalesOrder> salesOrders = _unitOfWork.SalesOrders.GetSome(s =>
-            s.OrderDate >= _viewStatistics.StartDate && s.OrderDate <= _viewStatistics.EndDate).ToList();
-        List<ImportOrder> importOrders = _unitOfWork.ImportOrders
-            .GetSome(i => i.OrderDate >= _viewStatistics.StartDate && i.OrderDate <= _viewStatistics.EndDate).ToList();
-        _viewStatistics.SalesOrdered = salesOrders.Count();
-        _viewStatistics.ImportOrdered = importOrders.Count();
+        if (!_isLoaded)
+        {
+            _viewStatistics.CountCustomer = _unitOfWork.Customers.Count();
+            _viewStatistics.CountEmployee = _unitOfWork.Employees.Count();
+            _viewStatistics.CountProvider = _unitOfWork.Providers.Count();
+            _viewStatistics.CountProduct = _unitOfWork.Products.Count();
+            _isLoaded = true;
+        }
+        _viewStatistics.SalesOrdered = _unitOfWork.SalesOrders.Count(s =>
+            s.OrderDate >= _viewStatistics.StartDate && s.OrderDate <= _viewStatistics.EndDate);
+        _viewStatistics.ImportOrdered = _unitOfWork.ImportOrders
+            .Count(i => i.OrderDate >= _viewStatistics.StartDate && i.OrderDate <= _viewStatistics.EndDate);
         _viewStatistics.Revenue =
             _unitOfWork.SalesOrders.GetRevenue(_viewStatistics.StartDate, _viewStatistics.EndDate);
         _viewStatistics.Budget = _unitOfWork.SalesOrders.GetBudget(_viewStatistics.StartDate, _viewStatistics.EndDate);

@@ -14,8 +14,9 @@ namespace QLCHWF.Models
         [StringLength(30,ErrorMessage = "Tên không được quá 30 ký tự")]
         public required string ProviderName { get; set; }
 
-        [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng email")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Vui lòng nhập đúng định dạng email")]
         [StringLength(50)]
+        [Required(ErrorMessage = "Email không được để trống")]
         public required string Email { get; set; }
         [RegularExpression(@"0\d{9}", ErrorMessage = "Vui lòng nhập đúng định dạng số điện thoại")]
         [StringLength(10)]
@@ -28,7 +29,7 @@ namespace QLCHWF.Models
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;
         [InverseProperty("Provider")]
-        public ICollection<ImportOrder> ImportOrders { get; set; } = new List<ImportOrder>();
+        public virtual ICollection<ImportOrder> ImportOrders { get; set; } = new List<ImportOrder>();
         [NotMapped]
         public string NameWithPhone
         {

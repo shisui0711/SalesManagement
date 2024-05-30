@@ -29,15 +29,15 @@ namespace QLCHWF.Views.User
             set => txtEmail.Text = value;
         }
 
-        public int RoleID
+        public int? RoleID
         {
             get { try
                 {
-                    return int.Parse(cboVaiTro.Tag!.ToString()!);
+                    return int.Parse(cboVaitro.Tag?.ToString()?? string.Empty);
                 }
                 catch (Exception)
                 {
-                    return 0;
+                    return null;
                 }
             }
         }

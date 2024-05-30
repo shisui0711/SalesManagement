@@ -37,15 +37,15 @@ namespace QLCHWF.Views.ImportOrder
             }
             set { lblTotalPrice.Text = value.ToString(); }
         }
-        public int EmployeeID
+        public int? EmployeeID
         {
             get
             {
                 if (AuthPresenter.User != null) return AuthPresenter.User.EmployeeID;
-                throw new Exception("Bạn chưa đăng nhập");
+                return null;
             }
         }
-        public int ProviderID
+        public int? ProviderID
         {
             get { try
                 {
@@ -53,7 +53,7 @@ namespace QLCHWF.Views.ImportOrder
                 }
                 catch (Exception)
                 {
-                    return 0;
+                    return null;
                 }
             }
         }
@@ -79,7 +79,6 @@ namespace QLCHWF.Views.ImportOrder
             get { return providerBindingSource; }
         }
         public event EventHandler? LoadProduct;
-        public event EventHandler? LoadProvider;
         public event EventHandler? SearchProvider;
         public event EventHandler? SearchProduct;
         public event EventHandler? AddImportOrder;
@@ -161,7 +160,6 @@ namespace QLCHWF.Views.ImportOrder
         private void frmAddImportOrder_Load(object sender, EventArgs e)
         {
             LoadProduct?.Invoke(sender, e);
-            LoadProvider?.Invoke(sender, e);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -281,6 +279,12 @@ namespace QLCHWF.Views.ImportOrder
         private void frmAddImportOrder_FormClosed(object sender, FormClosedEventArgs e)
         {
             CurrentPage = 0;
+        }
+
+        private void btnReloadProvider_Click(object sender, EventArgs e)
+        {
+            txtProviderSearch.Text = "";
+            dgvProvider.Rows.Clear();
         }
     }
 }

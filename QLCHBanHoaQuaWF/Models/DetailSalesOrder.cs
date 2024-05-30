@@ -8,7 +8,7 @@ namespace QLCHWF.Models
         public int OrderID { get; set; }
         [ForeignKey("OrderID")]
         [InverseProperty("DetailSalesOrders")]
-        public SalesOrder? SalesOrder { get; set; }
+        public virtual SalesOrder? SalesOrder { get; set; }
 
         public int Quantity { get; set; }
         [Column(TypeName = "decimal(10,2)")]
@@ -22,6 +22,6 @@ namespace QLCHWF.Models
         public int ProductID { get; set; }
         [ForeignKey("ProductID")]
         [InverseProperty("DetailSalesOrders")]
-        public Product? Product { get; set; }
+        public virtual Product? Product { get; set; }
     }
 }

@@ -22,8 +22,8 @@ namespace QLCHWF.Views.User
 
         public string Email
         {
-            get { return lblEmail.Text; }
-            set { lblEmail.Text = value; }
+            get => lblEmail.Text;
+            set => lblEmail.Text = value;
         }
 
         public string Password

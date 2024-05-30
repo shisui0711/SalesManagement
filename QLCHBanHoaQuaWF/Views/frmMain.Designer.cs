@@ -490,7 +490,7 @@
             this.btnStatistics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(126)))), ((int)(((byte)(111)))));
             this.btnStatistics.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(160)))), ((int)(((byte)(236)))));
             this.btnStatistics.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnStatistics.Image = ((System.Drawing.Image)(resources.GetObject("btnStatistics.Image")));
+            this.btnStatistics.Image = global::QLCHWF.Properties.Resources.kpi;
             this.btnStatistics.ImageSize = new System.Drawing.Size(40, 40);
             this.btnStatistics.Location = new System.Drawing.Point(0, 0);
             this.btnStatistics.Name = "btnStatistics";

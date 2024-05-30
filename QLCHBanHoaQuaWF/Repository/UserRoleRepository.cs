@@ -34,17 +34,25 @@ public class UserRoleRepository : GenericRepository<UserRole>,IUserRoleRepositor
         }
     }
 
-    public bool UpdatePermission(Permission permission)
+    public bool UpdateRoleWithPermission(UserRole userRole,Permission permission)
     {
-        try
+        using (var transaction = _context.Database.BeginTransaction())
         {
-            _context.Update(permission);
-            return true;
+            try
+            {
+                _context.Update(userRole);
+                _context.Update(permission);
+                _context.SaveChanges();
+                transaction.Commit();
+                return true;
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+                return false;
+            }
         }
-        catch (Exception)
-        {
-            return false;
-        }
+        
     }
 
     public Permission? GetPermission(object? key)

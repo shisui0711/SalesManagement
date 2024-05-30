@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Diagnostics;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OfficeOpenXml;
@@ -9,6 +10,7 @@ using QLCHWF.Extensions;
 using QLCHWF.IRepository;
 using QLCHWF.Mapper;
 using QLCHWF.Models;
+using QLCHWF.Presenters;
 using QLCHWF.Repository;
 using MyAppContext = QLCHWF.Models.MyAppContext;
 
@@ -26,19 +28,14 @@ namespace QLCHWF
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            var _host = CreateHostBuilder(args).Build();
-            _host = CreateHostBuilder(args).Build();
-            _host.Start();
-            var presenterTypes =
-                Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Name.Contains("Presenter") && t.IsClass && !t.IsAbstract);
-            foreach (var type in presenterTypes)
-            {
-                _host.Services.GetRequiredService(type);
-            }
-
+            MyHost = CreateHostBuilder(args).Build();
+            MyHost = CreateHostBuilder(args).Build();
+            MyHost.Start();
+            //MyHost.Services.GetRequiredService<MainPresenter>();
+            MyHost.Services.GetRequiredService<AuthPresenter>();
             try
             {
-                Application.Run((Form)_host.Services.GetRequiredService<IViewLogin>());
+                Application.Run((Form)MyHost.Services.GetRequiredService<IViewLogin>());
             }
             catch (Exception e)
             {
@@ -46,12 +43,12 @@ namespace QLCHWF
             }
             finally
             {
-                _host.StopAsync().GetAwaiter().GetResult();
-                _host.Dispose();
+                MyHost.StopAsync().GetAwaiter().GetResult();
+                MyHost.Dispose();
             }
         }
 
-        //public static IHost Host = null!;
+        public static IHost MyHost = null!;
         static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args).ConfigureHostConfiguration(config =>

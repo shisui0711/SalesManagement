@@ -12,13 +12,15 @@ namespace QLCHWF.Models
         [Required(ErrorMessage = "Tên không được để trống")]
         [StringLength(30,ErrorMessage = "Tên không dài quá 30 ký tự")]
         public required string CustomerName { get; set; }
-        [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng email")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Vui lòng nhập đúng định dạng email")]
         [StringLength(50,ErrorMessage = "Email không được dài hơn 50 ký tự")]
         public string? Email { get; set; }
         [RegularExpression(@"0\d{9}", ErrorMessage = "Vui lòng nhập đúng định dạng số điện thoại")]
         [StringLength(10)]
+        [Required(ErrorMessage = "Số điện thoại không được để trống")]
         public required string Phone { get; set; }
         [StringLength(50,ErrorMessage = "Địa chỉ không được dài hơn 50 ký tự")]
+        [Required(ErrorMessage = "Địa chỉ không được để trống")]
         public string? Address { get; set; }
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; } = DateTime.Now;

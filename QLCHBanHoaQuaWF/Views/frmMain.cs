@@ -31,6 +31,15 @@ namespace QLCHWF.Views
         private void frmMain_Load(object sender, EventArgs e)
         {
             btnProduct.Checked = true;
+            btnCustomer.Checked = false;
+            btnEmployee.Checked = false;
+            btnImportOrder.Checked = false;
+            btnProvider.Checked = false;
+            btnStatistics.Checked = false;
+            btnSalesOrder.Checked = false;
+            btnUser.Checked = false;
+            btnUserRole.Checked = false;
+            btnOptions.Checked = false;
             ShowProduct?.Invoke(sender,e);
             IsLogout = false;
         }

@@ -180,34 +180,22 @@ public class ProviderPresenter: PaginationPresenter<Provider>
     {
         try
         {
-            List<Provider>? providers = null;
             switch (_viewProvider.OptionIndex)
             {
                 case 1:
-                    providers = _unitOfWork.Providers.GetSome(x => x.ProviderName.Contains(_viewProvider.SearchText))
-                        .ToList();
+                    SearchItems(x => x.ProviderName.Contains(_viewProvider.SearchText));
+                    break;
+                case 2:
+                   SearchItems(x => x.Email.Contains(_viewProvider.SearchText));
                     break;
                 case 3:
-                    providers =_unitOfWork.Providers.GetSome(x => x.Email.Contains(_viewProvider.SearchText)).ToList();
+                   SearchItems(x => x.Phone.Contains(_viewProvider.SearchText));
                     break;
                 case 4:
-                    providers = _unitOfWork.Providers.GetSome(x => x.Phone.Contains(_viewProvider.SearchText)).ToList();
-                    break;
-                case 5:
-                    providers = _unitOfWork.Providers.GetSome(x => x.Address.Contains(_viewProvider.SearchText)).ToList();
+                   SearchItems(x => x.Address.Contains(_viewProvider.SearchText));
                     break;
             }
 
-            if (providers != null && providers.Count >0)
-            {
-                ResetPage();
-                TargetSource = providers;
-                NextPage();
-            }
-            else
-            {
-                _viewProvider.ShowMessage("Không tìm thấy bản ghi nào hợp lệ");
-            }
         }
         catch (Exception e)
         {

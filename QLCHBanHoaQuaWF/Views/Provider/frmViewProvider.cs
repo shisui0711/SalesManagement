@@ -39,6 +39,7 @@ namespace QLCHWF.Views.Provider
 
         private void btnReload_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = String.Empty;
             LoadProvider?.Invoke(sender, e);
         }
 
@@ -70,7 +71,7 @@ namespace QLCHWF.Views.Provider
 
         private void btnHistoryImport_Click(object sender, EventArgs e)
         {
-            ShowOrderHistory?.Invoke(sender,e);
+            ShowOrderHistory?.Invoke(sender, e);
         }
 
         public void ShowMessage(string message)
@@ -122,6 +123,11 @@ namespace QLCHWF.Views.Provider
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             PreviousPage?.Invoke(sender, e);
+        }
+
+        private void cboOptionSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSearch.Text = String.Empty;
         }
     }
 }

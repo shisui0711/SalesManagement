@@ -3,16 +3,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using QLCHWF.Presenters;
 using System.Configuration;
+using QLCHWF.Helpers;
 
 namespace QLCHWF.Models
 {
     public partial class MyAppContext : DbContext
     {
         private readonly IConfiguration _configuration;
-        //public MyAppContext()
-        //{
-        //    //Database.Migrate();
-        //}
+        public MyAppContext()
+        {
+            //Database.Migrate();
+        }
         public MyAppContext(DbContextOptions<MyAppContext> optionsBuilderOptions, IConfiguration configuration) : base(optionsBuilderOptions)
         {
             _configuration = configuration;
@@ -35,7 +36,7 @@ namespace QLCHWF.Models
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(
-            "Data Source=.;Initial Catalog=QLCHBanHoaQua;Integrated Security=True;TrustServerCertificate=True");
+                "Data Source=.;Initial Catalog=QLCHBanHoaQua;Integrated Security=True;TrustServerCertificate=True").UseLazyLoadingProxies();
             //optionsBuilder.UseSqlServer(_configuration.GetConnectionString("SqlServer"));
         }
 
@@ -49,7 +50,7 @@ namespace QLCHWF.Models
             });
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(e => new { e.EmployeeID, e.RoleID });
+                entity.HasKey(e => new { e.EmployeeID, e.Email });
                 entity.HasIndex(e => e.Email).IsUnique();
             });
             modelBuilder.Entity<DetailSalesOrder>(entity =>
@@ -209,7 +210,7 @@ namespace QLCHWF.Models
             fakerUser.RuleFor(u => u.Email, f => employees[f.IndexFaker].Email);
             fakerUser.RuleFor(u => u.EmployeeID, f => employees[f.IndexFaker].EmployeeID);
             fakerUser.RuleFor(u => u.RoleID, f => f.Random.Byte(1, 2));
-            fakerUser.RuleFor(u => u.Password, f => AuthPresenter.GetSha256Hash("123456"));
+            fakerUser.RuleFor(u => u.Password, f => SecurityHelper.GetSha256Hash("123456"));
             return fakerUser.Generate(count);
         }
 

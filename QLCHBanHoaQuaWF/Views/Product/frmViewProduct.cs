@@ -38,6 +38,7 @@ namespace QLCHWF.Views.Product
 
         private void btnReload_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = String.Empty;
             LoadProduct?.Invoke(sender, e);
         }
 

@@ -7,15 +7,14 @@ public interface IAddSalesOrder : IViewBase,IViewPagination
     public decimal PurchasePrice { get; set; }
     public decimal ChangePrice { get; set; }
     public decimal TotalPrice { get; set; }
-    public int EmployeeID { get; }
-    public int CustomerID { get; }
+    public int? EmployeeID { get; }
+    public int? CustomerID { get; }
     public void AddControl(Control control);
     public void ClearControl();
     public BindingSource CustomerBindingSource { get; }
     public DataGridView OrderedGridView { get; set; }
     public event EventHandler<DataGridViewCellEventArgs>? RemoveProduct;
     public event EventHandler? LoadProduct;
-    public event EventHandler? LoadCustomer;
     public event EventHandler? SearchCustomer;
     public event EventHandler? SearchProduct;
     public event EventHandler? AddSalesOrder;

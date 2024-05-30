@@ -138,8 +138,8 @@ namespace QLCHWF.Views.Statistics
 
         public decimal Budget
         {
-            get { return decimal.Parse(lblBudget.Text);}
-            set { lblBudget.Text = value.ToString(); }
+            get { return decimal.Parse(lblBudget.Text, NumberStyles.Currency);}
+            set { lblBudget.Text = value.ToString("C0"); }
         }
 
         public int CountEmployee

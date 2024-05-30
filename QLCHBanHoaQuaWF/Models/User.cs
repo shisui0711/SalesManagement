@@ -10,9 +10,9 @@ namespace QLCHWF.Models
         [DisplayName("Mã nhân viên")]
         public int EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
-        public Employee Employee { get; set; }
+        public virtual Employee Employee { get; set; }
         [Required(ErrorMessage = "Email không được để trống")]
-        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Email không hợp lệ")]
         [StringLength(50,ErrorMessage = "Email không dài quá 50 ký tự")]
         [DisplayName("Email")]
         public string Email { get; set; }
@@ -27,6 +27,6 @@ namespace QLCHWF.Models
         [DisplayName("Mã vai trò")]
         public int RoleID { get; set; }
         [ForeignKey("RoleID")]
-        public UserRole UserRole { get; set; } = null!;
+        public virtual UserRole UserRole { get; set; } = null!;
     }
 }

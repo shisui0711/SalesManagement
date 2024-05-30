@@ -185,34 +185,21 @@ namespace QLCHWF.Presenters
         {
             try
             {
-                List<Customer>? customers = null;
                 switch (_viewCustomer.OptionIndex)
                 {
                     case 1:
-                        customers = _unitOfWork.Customers.GetSome(x =>
-                            x.CustomerName.ToLower().Contains(_viewCustomer.SearchText.ToLower())).ToList();
+                       SearchItems(x =>
+                            x.CustomerName.ToLower().Contains(_viewCustomer.SearchText.ToLower()));
                         break;
                     case 2:
-                        customers = _unitOfWork.Customers.GetSome(x =>x.Email != null &&  x.Email.Contains(_viewCustomer.SearchText)).ToList();
+                       SearchItems(x =>x.Email != null &&  x.Email.Contains(_viewCustomer.SearchText));
                         break;
                     case 3:
-                        customers = _unitOfWork.Customers.GetSome(x => x.Phone.Contains(_viewCustomer.SearchText)).ToList();
+                        SearchItems(x => x.Phone.Contains(_viewCustomer.SearchText));
                         break;
                     case 4:
-                        customers = _unitOfWork.Customers.GetSome(x =>x.Address != null &&  x.Address.Contains(_viewCustomer.SearchText))
-                            .ToList();
+                        SearchItems(x =>x.Address != null &&  x.Address.Contains(_viewCustomer.SearchText));
                         break;
-                }
-                if (customers != null && customers.Count > 0)
-                {
-                    _viewCustomer.CustomerBindingSource.ResetBindings(true);
-                    ResetPage();
-                    TargetSource = customers;
-                    NextPage();
-                }
-                else
-                {
-                    _viewCustomer.ShowMessage("Không tìm thấy bản ghi nào hợp lệ");
                 }
             }
             catch (Exception e)

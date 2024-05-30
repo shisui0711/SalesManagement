@@ -94,6 +94,7 @@ namespace QLCHWF.Views.User
 
         private void btnReload_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = String.Empty;
             LoadUser?.Invoke(sender, e);
         }
 

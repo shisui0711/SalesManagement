@@ -16,12 +16,11 @@ public class EmployeePresenter : PaginationPresenter<Employee>
     private readonly IViewSalary _viewSalary;
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly AuthPresenter _auth;
 
 
     public EmployeePresenter(IViewEmployee viewEmployee, IAddEmployee addEmployee, IUpdateEmployee updateEmployee,
         IHistoryImport historyImport, IHistorySales historySales, IViewSalary viewSalary, IMapper mapper,
-        IUnitOfWork unitOfWork, AuthPresenter auth) : base(viewEmployee, unitOfWork.Employees, 20)
+        IUnitOfWork unitOfWork) : base(viewEmployee, unitOfWork.Employees, 20)
     {
         _viewEmployee = viewEmployee;
         _addEmployee = addEmployee;
@@ -31,7 +30,6 @@ public class EmployeePresenter : PaginationPresenter<Employee>
         _viewSalary = viewSalary;
         _mapper = mapper;
         _unitOfWork = unitOfWork;
-        _auth = auth;
 
         _viewEmployee.LoadEmployee += delegate
         {
@@ -154,6 +152,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
         _updateEmployee.EmployeeName = updated.EmployeeName;
         _updateEmployee.Email = updated.Email;
         _updateEmployee.Phone = updated.Phone;
+        _updateEmployee.Address = updated.Address ?? String.Empty;
         _updateEmployee.Salary = updated.Salary;
         if (_updateEmployee.GetType().IsAssignableTo(typeof(Form)))
         {
@@ -182,7 +181,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
             }
 
             _unitOfWork.Employees.Add(employee);
-            _auth.Register(employee.Email, "123456", 1);
+            UserPresenter.Register(employee.Email, "123456", 1);
             _viewEmployee.EmployeeBindingSource.EndEdit();
             _addEmployee.ShowMessage("Thêm thành công");
         }
@@ -251,38 +250,26 @@ public class EmployeePresenter : PaginationPresenter<Employee>
     {
         try
         {
-            List<Employee>? employees = null;
             switch (_viewEmployee.OptionIndex)
             {
                 case 1:
-                    employees = _unitOfWork.Employees.GetSome(x => x.EmployeeName.Contains(_viewEmployee.SearchText))
-                        .ToList();
+                    SearchItems(x => x.EmployeeName.Contains(_viewEmployee.SearchText));
                     break;
                 case 2:
-                    employees = _unitOfWork.Employees.GetSome(x => x.Salary != null && x.Salary.ToString()!.Contains(_viewEmployee.SearchText))
-                        .ToList();
+                   SearchItems(x =>
+                       x.Salary != null && x.Salary >= _viewEmployee.SalaryStart &&
+                       x.Salary <= _viewEmployee.SalaryEnd);
                     break;
                 case 3:
-                    employees = _unitOfWork.Employees.GetSome(x => x.Email.Contains(_viewEmployee.SearchText)).ToList();
+                    SearchItems(x => x.Email.Contains(_viewEmployee.SearchText));
                     break;
                 case 4:
-                    employees = _unitOfWork.Employees.GetSome(x => x.Phone.Contains(_viewEmployee.SearchText)).ToList();
+                   SearchItems(x => x.Phone.Contains(_viewEmployee.SearchText));
                     break;
                 case 5:
-                    employees = _unitOfWork.Employees.GetSome(x =>x.Address !=null && x.Address.Contains(_viewEmployee.SearchText)).ToList();
+                    SearchItems(x =>x.Address !=null && x.Address.Contains(_viewEmployee.SearchText));
                     break;
                 
-            }
-
-            if (employees != null)
-            {
-                ResetPage();
-                TargetSource = employees;
-                NextPage();
-            }
-            else
-            {
-                _viewEmployee.ShowMessage("Không tìm thấy bản ghi nào hợp lệ");
             }
         }
         catch (Exception e)

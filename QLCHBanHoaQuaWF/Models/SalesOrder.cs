@@ -21,14 +21,14 @@ namespace QLCHWF.Models
         public int? EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
         [InverseProperty("SalesOrders")]
-        public Employee? Employee { get; set; }
+        public virtual Employee? Employee { get; set; }
 
         public int? CustomerID { get; set; }
         [ForeignKey("CustomerID")]
         [InverseProperty("SalesOrders")]
-        public Customer? Customer { get; set; }
+        public virtual Customer? Customer { get; set; }
 
         [InverseProperty("SalesOrder")]
-        public ICollection<DetailSalesOrder> DetailSalesOrders { get; set; } = new List<DetailSalesOrder>();
+        public virtual ICollection<DetailSalesOrder> DetailSalesOrders { get; set; } = new List<DetailSalesOrder>();
     }
 }

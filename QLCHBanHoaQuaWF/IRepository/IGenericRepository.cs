@@ -8,7 +8,12 @@ public interface IGenericRepository<T> where T : class
     Task<T?> GetByIdAsync(object key);
     IEnumerable<T> GetAll();
     Task<IEnumerable<T>> GetAllAsync();
+    IEnumerable<T> GetAllInluce(params Expression<Func<T, object>>[] selector);
+    IEnumerable<T> GetPagination(int skip, int take);
 
+    int Count();
+    int Count(Expression<Func<T, bool>> match);
+    IEnumerable<T> GetPagination(int skip, int take,Expression<Func<T,bool>> match);
     IEnumerable<T> GetSome(Expression<Func<T, bool>> match);
     Task<IEnumerable<T>> GetSomeAsync(Expression<Func<T, bool>> match);
     T? GetOne(Expression<Func<T, bool>> match);

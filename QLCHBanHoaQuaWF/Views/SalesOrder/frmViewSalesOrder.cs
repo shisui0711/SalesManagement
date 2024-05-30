@@ -183,5 +183,51 @@ namespace QLCHWF.Views.SalesOrder
         {
             MyMessageBox.Show(message);
         }
+        public int CurrentPage
+        {
+            get
+            {
+                try
+                {
+                    return int.Parse(btnCurrentPage.Text);
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+            set { btnCurrentPage.Text = value.ToString(); }
+        }
+        public event EventHandler? PreviousPage;
+        public event EventHandler? NextPage;
+        public void DisableNextPage()
+        {
+            btnNext.Enabled = false;
+        }
+
+        public void DisablePreviousPage()
+        {
+            btnPrevious.Enabled = false;
+        }
+
+        public void EnablePreviousPage()
+        {
+            btnPrevious.Enabled = true;
+        }
+
+        public void EnableNextPage()
+        {
+            btnNext.Enabled = true;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            NextPage?.Invoke(sender, e);
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            PreviousPage?.Invoke(sender, e);
+        }
     }
 }
