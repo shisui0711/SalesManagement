@@ -144,7 +144,9 @@
             // 
             // btnUpdate
             // 
+            btnUpdate.Animated = true;
             btnUpdate.BorderRadius = 5;
+            btnUpdate.Cursor = Cursors.Hand;
             btnUpdate.CustomizableEdges = customizableEdges1;
             btnUpdate.DisabledState.BorderColor = Color.DarkGray;
             btnUpdate.DisabledState.CustomBorderColor = Color.DarkGray;

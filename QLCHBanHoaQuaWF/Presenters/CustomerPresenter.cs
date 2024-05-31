@@ -195,7 +195,7 @@ namespace QLCHWF.Presenters
                        SearchItems(x =>x.Email != null &&  x.Email.Contains(_viewCustomer.SearchText));
                         break;
                     case 3:
-                        SearchItems(x => x.Phone.Contains(_viewCustomer.SearchText));
+                        SearchItems(x => x.Phone.StartsWith(_viewCustomer.SearchText));
                         break;
                     case 4:
                         SearchItems(x =>x.Address != null &&  x.Address.Contains(_viewCustomer.SearchText));

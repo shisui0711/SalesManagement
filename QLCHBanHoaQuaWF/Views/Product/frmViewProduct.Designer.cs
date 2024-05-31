@@ -102,7 +102,9 @@
             // 
             // btnAdd
             // 
+            btnAdd.Animated = true;
             btnAdd.BorderRadius = 5;
+            btnAdd.Cursor = Cursors.Hand;
             btnAdd.CustomizableEdges = customizableEdges1;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -123,7 +125,9 @@
             // 
             // btnReload
             // 
+            btnReload.Animated = true;
             btnReload.BorderRadius = 5;
+            btnReload.Cursor = Cursors.Hand;
             btnReload.CustomizableEdges = customizableEdges3;
             btnReload.DisabledState.BorderColor = Color.DarkGray;
             btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -144,7 +148,9 @@
             // 
             // btnSearch
             // 
+            btnSearch.Animated = true;
             btnSearch.BorderRadius = 5;
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.CustomizableEdges = customizableEdges5;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -248,10 +254,10 @@
             btnCurrentPage.FillColor2 = Color.FromArgb(56, 239, 125);
             btnCurrentPage.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnCurrentPage.ForeColor = Color.White;
-            btnCurrentPage.Location = new Point(628, 8);
+            btnCurrentPage.Location = new Point(625, 8);
             btnCurrentPage.Name = "btnCurrentPage";
             btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnCurrentPage.Size = new Size(44, 37);
+            btnCurrentPage.Size = new Size(50, 37);
             btnCurrentPage.TabIndex = 17;
             btnCurrentPage.Text = "0";
             // 
@@ -291,15 +297,14 @@
             dgvProduct.AutoGenerateColumns = false;
             dgvProduct.BackgroundColor = Color.FromArgb(128, 255, 255);
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(0, 128, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 128, 255);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvProduct.ColumnHeadersHeight = 40;
-            dgvProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvProduct.Columns.AddRange(new DataGridViewColumn[] { productIDDataGridViewTextBoxColumn, productNameDataGridViewTextBoxColumn, calculationUnitDataGridViewTextBoxColumn, inventoryDataGridViewTextBoxColumn, imageDataDataGridViewImageColumn, descriptionDataGridViewTextBoxColumn, detailImportOrdersDataGridViewTextBoxColumn, detailSalesOrdersDataGridViewTextBoxColumn });
             dgvProduct.ContextMenuStrip = contextMenuStrip;
             dgvProduct.DataSource = productBindingSource;
@@ -343,7 +348,7 @@
             dgvProduct.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvProduct.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             dgvProduct.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvProduct.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvProduct.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvProduct.ThemeStyle.HeaderStyle.Height = 40;
             dgvProduct.ThemeStyle.ReadOnly = true;
             dgvProduct.ThemeStyle.RowsStyle.BackColor = Color.White;

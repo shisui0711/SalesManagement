@@ -104,6 +104,7 @@
             gboCustomerInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             pnlCustomer = new Guna.UI2.WinForms.Guna2Panel();
             dgvProvider = new Guna.UI2.WinForms.Guna2DataGridView();
+            ProviderIdColumn = new DataGridViewTextBoxColumn();
             providerNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
@@ -428,7 +429,7 @@
             dgvProvider.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvProvider.ColumnHeadersHeight = 50;
             dgvProvider.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvProvider.Columns.AddRange(new DataGridViewColumn[] { providerNameDataGridViewTextBoxColumn, Email, Address, phoneDataGridViewTextBoxColumn });
+            dgvProvider.Columns.AddRange(new DataGridViewColumn[] { ProviderIdColumn, providerNameDataGridViewTextBoxColumn, Email, Address, phoneDataGridViewTextBoxColumn });
             dgvProvider.DataSource = providerBindingSource;
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.Lime;
@@ -478,6 +479,14 @@
             dgvProvider.ThemeStyle.RowsStyle.Height = 30;
             dgvProvider.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvProvider.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            // 
+            // ProviderIdColumn
+            // 
+            ProviderIdColumn.DataPropertyName = "ProviderID";
+            ProviderIdColumn.HeaderText = "Mã nhà cung cấp";
+            ProviderIdColumn.MinimumWidth = 6;
+            ProviderIdColumn.Name = "ProviderIdColumn";
+            ProviderIdColumn.ReadOnly = true;
             // 
             // providerNameDataGridViewTextBoxColumn
             // 
@@ -531,7 +540,9 @@
             // 
             // btnReloadProvider
             // 
+            btnReloadProvider.Animated = true;
             btnReloadProvider.BorderRadius = 5;
+            btnReloadProvider.Cursor = Cursors.Hand;
             btnReloadProvider.CustomizableEdges = customizableEdges9;
             btnReloadProvider.DisabledState.BorderColor = Color.DarkGray;
             btnReloadProvider.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -552,7 +563,9 @@
             // 
             // btnSearchProvider
             // 
+            btnSearchProvider.Animated = true;
             btnSearchProvider.BorderRadius = 5;
+            btnSearchProvider.Cursor = Cursors.Hand;
             btnSearchProvider.CustomizableEdges = customizableEdges11;
             btnSearchProvider.DisabledState.BorderColor = Color.DarkGray;
             btnSearchProvider.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -612,7 +625,9 @@
             // 
             // btnAdd
             // 
+            btnAdd.Animated = true;
             btnAdd.BorderRadius = 5;
+            btnAdd.Cursor = Cursors.Hand;
             btnAdd.CustomizableEdges = customizableEdges21;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -637,6 +652,7 @@
             btnCancel.BorderColor = Color.FromArgb(94, 148, 255);
             btnCancel.BorderRadius = 5;
             btnCancel.BorderThickness = 3;
+            btnCancel.Cursor = Cursors.Hand;
             btnCancel.CustomizableEdges = customizableEdges23;
             btnCancel.DisabledState.BorderColor = Color.DarkGray;
             btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -705,8 +721,10 @@
             // 
             // btnReload
             // 
+            btnReload.Animated = true;
             btnReload.BackColor = Color.Transparent;
             btnReload.BorderRadius = 5;
+            btnReload.Cursor = Cursors.Hand;
             btnReload.CustomizableEdges = customizableEdges29;
             btnReload.DisabledState.BorderColor = Color.DarkGray;
             btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -726,8 +744,10 @@
             // 
             // btnSearch
             // 
+            btnSearch.Animated = true;
             btnSearch.BackColor = Color.Transparent;
             btnSearch.BorderRadius = 5;
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.CustomizableEdges = customizableEdges31;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -789,6 +809,7 @@
             // 
             btnNext.Animated = true;
             btnNext.BorderRadius = 5;
+            btnNext.Cursor = Cursors.Hand;
             btnNext.CustomizableEdges = customizableEdges37;
             btnNext.DisabledState.BorderColor = Color.DarkGray;
             btnNext.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -821,10 +842,10 @@
             btnCurrentPage.FillColor2 = Color.FromArgb(56, 239, 125);
             btnCurrentPage.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnCurrentPage.ForeColor = Color.White;
-            btnCurrentPage.Location = new Point(396, 7);
+            btnCurrentPage.Location = new Point(393, 7);
             btnCurrentPage.Name = "btnCurrentPage";
             btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            btnCurrentPage.Size = new Size(44, 37);
+            btnCurrentPage.Size = new Size(50, 37);
             btnCurrentPage.TabIndex = 12;
             btnCurrentPage.Text = "0";
             // 
@@ -832,6 +853,7 @@
             // 
             btnPrevious.Animated = true;
             btnPrevious.BorderRadius = 5;
+            btnPrevious.Cursor = Cursors.Hand;
             btnPrevious.CustomizableEdges = customizableEdges41;
             btnPrevious.DisabledState.BorderColor = Color.DarkGray;
             btnPrevious.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -892,10 +914,10 @@
             // 
             // frmAddImportOrder
             // 
-            AcceptButton = btnAdd;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(38, 191, 166);
+            CancelButton = btnCancel;
             ClientSize = new Size(1350, 772);
             Controls.Add(pnlBodyRight);
             Controls.Add(pnlBodyLeft);
@@ -962,10 +984,6 @@
         private DataGridViewButtonColumn btnIncrese;
         private DataGridViewButtonColumn btnRemove;
         private Guna.UI2.WinForms.Guna2DataGridView dgvProvider;
-        private DataGridViewTextBoxColumn providerNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Email;
-        private DataGridViewTextBoxColumn Address;
-        private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private Guna.UI2.WinForms.Guna2GradientButton btnReloadProvider;
         private Guna.UI2.WinForms.Guna2GradientButton btnSearchProvider;
         private Guna.UI2.WinForms.Guna2GradientButton btnReload;
@@ -974,5 +992,10 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnPrevious;
         private Guna.UI2.WinForms.Guna2GradientButton btnNext;
         private Guna.UI2.WinForms.Guna2GradientButton btnCurrentPage;
+        private DataGridViewTextBoxColumn ProviderIdColumn;
+        private DataGridViewTextBoxColumn providerNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Address;
+        private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
     }
 }

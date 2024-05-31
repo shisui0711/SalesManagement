@@ -269,7 +269,6 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvProductSelect.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvProductSelect.ColumnHeadersHeight = 50;
-            dgvProductSelect.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvProductSelect.Columns.AddRange(new DataGridViewColumn[] { productNameDataGridViewTextBoxColumn, UnitPriceColumn, QuantityColumn, TotalPriceColumn, ProductIDColumn, btnDecrese, btnIncrese, removeButtonColumn });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.Lime;
@@ -308,7 +307,7 @@
             dgvProductSelect.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvProductSelect.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             dgvProductSelect.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvProductSelect.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvProductSelect.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvProductSelect.ThemeStyle.HeaderStyle.Height = 50;
             dgvProductSelect.ThemeStyle.ReadOnly = false;
             dgvProductSelect.ThemeStyle.RowsStyle.BackColor = Color.Lime;
@@ -405,7 +404,9 @@
             // 
             // btnAdd
             // 
+            btnAdd.Animated = true;
             btnAdd.BorderRadius = 5;
+            btnAdd.Cursor = Cursors.Hand;
             btnAdd.CustomizableEdges = customizableEdges9;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -430,6 +431,7 @@
             btnCancel.BorderColor = Color.FromArgb(94, 148, 255);
             btnCancel.BorderRadius = 5;
             btnCancel.BorderThickness = 3;
+            btnCancel.Cursor = Cursors.Hand;
             btnCancel.CustomizableEdges = customizableEdges11;
             btnCancel.DisabledState.BorderColor = Color.DarkGray;
             btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -582,7 +584,6 @@
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
             dgvCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvCustomer.ColumnHeadersHeight = 50;
-            dgvCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvCustomer.Columns.AddRange(new DataGridViewColumn[] { customerIDDataGridViewTextBoxColumn, customerNameDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, phoneDataGridViewTextBoxColumn, addressDataGridViewTextBoxColumn });
             dgvCustomer.DataSource = customerBindingSource;
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -623,7 +624,7 @@
             dgvCustomer.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvCustomer.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             dgvCustomer.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvCustomer.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvCustomer.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvCustomer.ThemeStyle.HeaderStyle.Height = 50;
             dgvCustomer.ThemeStyle.ReadOnly = true;
             dgvCustomer.ThemeStyle.RowsStyle.BackColor = Color.White;
@@ -694,7 +695,9 @@
             // 
             // btnLoadCustomer
             // 
+            btnLoadCustomer.Animated = true;
             btnLoadCustomer.BorderRadius = 5;
+            btnLoadCustomer.Cursor = Cursors.Hand;
             btnLoadCustomer.CustomizableEdges = customizableEdges17;
             btnLoadCustomer.DisabledState.BorderColor = Color.DarkGray;
             btnLoadCustomer.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -715,7 +718,9 @@
             // 
             // btnSearchCustomer
             // 
+            btnSearchCustomer.Animated = true;
             btnSearchCustomer.BorderRadius = 5;
+            btnSearchCustomer.Cursor = Cursors.Hand;
             btnSearchCustomer.CustomizableEdges = customizableEdges19;
             btnSearchCustomer.DisabledState.BorderColor = Color.DarkGray;
             btnSearchCustomer.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -808,6 +813,7 @@
             // 
             btnNext.Animated = true;
             btnNext.BorderRadius = 5;
+            btnNext.Cursor = Cursors.Hand;
             btnNext.CustomizableEdges = customizableEdges31;
             btnNext.DisabledState.BorderColor = Color.DarkGray;
             btnNext.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -840,10 +846,10 @@
             btnCurrentPage.FillColor2 = Color.FromArgb(56, 239, 125);
             btnCurrentPage.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnCurrentPage.ForeColor = Color.White;
-            btnCurrentPage.Location = new Point(396, 5);
+            btnCurrentPage.Location = new Point(393, 5);
             btnCurrentPage.Name = "btnCurrentPage";
             btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            btnCurrentPage.Size = new Size(44, 37);
+            btnCurrentPage.Size = new Size(50, 37);
             btnCurrentPage.TabIndex = 14;
             btnCurrentPage.Text = "0";
             // 
@@ -851,6 +857,7 @@
             // 
             btnPrevious.Animated = true;
             btnPrevious.BorderRadius = 5;
+            btnPrevious.Cursor = Cursors.Hand;
             btnPrevious.CustomizableEdges = customizableEdges35;
             btnPrevious.DisabledState.BorderColor = Color.DarkGray;
             btnPrevious.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -901,8 +908,10 @@
             // 
             // btnReload
             // 
+            btnReload.Animated = true;
             btnReload.BackColor = Color.Transparent;
             btnReload.BorderRadius = 5;
+            btnReload.Cursor = Cursors.Hand;
             btnReload.CustomizableEdges = customizableEdges41;
             btnReload.DisabledState.BorderColor = Color.DarkGray;
             btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -923,8 +932,10 @@
             // 
             // btnSearch
             // 
+            btnSearch.Animated = true;
             btnSearch.BackColor = Color.Transparent;
             btnSearch.BorderRadius = 5;
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.CustomizableEdges = customizableEdges43;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;

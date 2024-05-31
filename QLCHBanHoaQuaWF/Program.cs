@@ -1,10 +1,8 @@
-﻿using System.Diagnostics;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OfficeOpenXml;
 using QLCHWF.Views;
-using System.Reflection;
 using QLCHWF.CustomMessageBox;
 using QLCHWF.Extensions;
 using QLCHWF.IRepository;
@@ -29,9 +27,7 @@ namespace QLCHWF
             ApplicationConfiguration.Initialize();
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             MyHost = CreateHostBuilder(args).Build();
-            MyHost = CreateHostBuilder(args).Build();
             MyHost.Start();
-            //MyHost.Services.GetRequiredService<MainPresenter>();
             MyHost.Services.GetRequiredService<AuthPresenter>();
             try
             {
@@ -62,7 +58,6 @@ namespace QLCHWF
                 services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
                 services.AddView();
                 services.AddPresenter();
-                services.AddRepository();
                 services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             });

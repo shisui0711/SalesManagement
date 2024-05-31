@@ -80,12 +80,14 @@
             pnlControl.Location = new Point(0, 0);
             pnlControl.Name = "pnlControl";
             pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            pnlControl.Size = new Size(992, 72);
+            pnlControl.Size = new Size(1301, 72);
             pnlControl.TabIndex = 0;
             // 
             // btnAdd
             // 
+            btnAdd.Animated = true;
             btnAdd.BorderRadius = 5;
+            btnAdd.Cursor = Cursors.Hand;
             btnAdd.CustomizableEdges = customizableEdges1;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -96,7 +98,7 @@
             btnAdd.FillColor2 = Color.FromArgb(27, 255, 255);
             btnAdd.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnAdd.ForeColor = Color.White;
-            btnAdd.Location = new Point(796, 19);
+            btnAdd.Location = new Point(1118, 19);
             btnAdd.Name = "btnAdd";
             btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnAdd.Size = new Size(171, 35);
@@ -106,7 +108,9 @@
             // 
             // btnReload
             // 
+            btnReload.Animated = true;
             btnReload.BorderRadius = 5;
+            btnReload.Cursor = Cursors.Hand;
             btnReload.CustomizableEdges = customizableEdges3;
             btnReload.DisabledState.BorderColor = Color.DarkGray;
             btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -127,7 +131,9 @@
             // 
             // btnSearch
             // 
+            btnSearch.Animated = true;
             btnSearch.BorderRadius = 5;
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.CustomizableEdges = customizableEdges5;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -177,7 +183,7 @@
             pnlGridView.Location = new Point(0, 72);
             pnlGridView.Name = "pnlGridView";
             pnlGridView.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            pnlGridView.Size = new Size(992, 428);
+            pnlGridView.Size = new Size(1301, 672);
             pnlGridView.TabIndex = 1;
             // 
             // dgvUserRole
@@ -202,7 +208,6 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvUserRole.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvUserRole.ColumnHeadersHeight = 40;
-            dgvUserRole.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvUserRole.Columns.AddRange(new DataGridViewColumn[] { roleIDDataGridViewTextBoxColumn, roleNameDataGridViewTextBoxColumn, dateCreatedDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, permissionIDDataGridViewTextBoxColumn, permissionDataGridViewTextBoxColumn });
             dgvUserRole.ContextMenuStrip = contextMenuStrip;
             dgvUserRole.DataSource = userRoleBindingSource;
@@ -231,7 +236,7 @@
             dgvUserRole.RowHeadersVisible = false;
             dgvUserRole.RowHeadersWidth = 51;
             dgvUserRole.RowTemplate.Height = 30;
-            dgvUserRole.Size = new Size(992, 428);
+            dgvUserRole.Size = new Size(1301, 672);
             dgvUserRole.TabIndex = 0;
             dgvUserRole.ThemeStyle.AlternatingRowsStyle.BackColor = Color.Lime;
             dgvUserRole.ThemeStyle.AlternatingRowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -244,7 +249,7 @@
             dgvUserRole.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvUserRole.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             dgvUserRole.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvUserRole.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvUserRole.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvUserRole.ThemeStyle.HeaderStyle.Height = 40;
             dgvUserRole.ThemeStyle.ReadOnly = true;
             dgvUserRole.ThemeStyle.RowsStyle.BackColor = Color.Lime;
@@ -346,7 +351,7 @@
             AcceptButton = btnSearch;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(992, 500);
+            ClientSize = new Size(1301, 744);
             Controls.Add(pnlGridView);
             Controls.Add(pnlControl);
             FormBorderStyle = FormBorderStyle.None;

@@ -68,7 +68,7 @@ public class ImportOrderPresenter : PaginationPresenter<ImportOrder>
                 return;
             }
             OrderImportData? orderData = _unitOfWork.ImportOrders.GetOrderData(current.OrderID);
-            List<OrderDetailData?> detailData = _unitOfWork.ImportOrders.GetOrderDetailData(current.OrderID);
+            List<OrderDetailData> detailData = _unitOfWork.ImportOrders.GetOrderDetailData(current.OrderID);
             if (orderData == null)
             {
                 _viewImportOrder.ShowMessage("Đơn hàng đã chọn không còn tồn tại");

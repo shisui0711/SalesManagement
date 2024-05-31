@@ -52,7 +52,7 @@ public class SalesOrderRepository:GenericRepository<SalesOrder>,ISalesOrderRepos
                 DateCreated = s.OrderDate,
                 OrderID = s.OrderID,
                 CustomerName = c.CustomerName,
-                CustomerAddress = c.Address,
+                CustomerAddress = c.Address ?? "",
                 CustomerPhone = c.Phone,
                 TotalPrice = s.TotalPrice,
                 PurchasePrice = s.PurchasePrice
@@ -69,7 +69,7 @@ public class SalesOrderRepository:GenericRepository<SalesOrder>,ISalesOrderRepos
                 DateCreated = s.OrderDate,
                 OrderID = s.OrderID,
                 CustomerName = c.CustomerName,
-                CustomerAddress = c.Address,
+                CustomerAddress = c.Address ?? "",
                 CustomerPhone = c.Phone,
                 TotalPrice = s.TotalPrice,
                 PurchasePrice = s.PurchasePrice
@@ -89,7 +89,7 @@ public class SalesOrderRepository:GenericRepository<SalesOrder>,ISalesOrderRepos
                 TotalPrice = d.TotalPrice.ToString("C0")
             }).ToListAsync();
     }
-    public List<OrderDetailData?> GetOrderDetailData(int orderId)
+    public List<OrderDetailData> GetOrderDetailData(int orderId)
     {
         return (from d in _context.DetailSalesOrders
             join p in _context.Products

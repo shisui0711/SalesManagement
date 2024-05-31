@@ -3,7 +3,7 @@
 [AttributeUsage(AttributeTargets.Property)]
 public class PermissionGroupAttribute : Attribute
 {
-    public string GroupName { get; set; }
+    public string? GroupName { get; set; }
 
     public PermissionGroupAttribute()
     {

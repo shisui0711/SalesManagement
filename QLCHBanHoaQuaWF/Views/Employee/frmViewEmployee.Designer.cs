@@ -72,6 +72,7 @@
             salesOrdersDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             importOrdersDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            btnCopy = new ToolStripMenuItem();
             btnUpdate = new ToolStripMenuItem();
             btnDelete = new ToolStripMenuItem();
             btnPurchaseHistory = new ToolStripMenuItem();
@@ -123,7 +124,6 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvEmployee.ColumnHeadersHeight = 40;
-            dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvEmployee.Columns.AddRange(new DataGridViewColumn[] { employeeIDDataGridViewTextBoxColumn, employeeNameDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, phoneDataGridViewTextBoxColumn, addressDataGridViewTextBoxColumn, salaryDataGridViewTextBoxColumn, DateCreated, salesOrdersDataGridViewTextBoxColumn, importOrdersDataGridViewTextBoxColumn });
             dgvEmployee.ContextMenuStrip = contextMenuStrip;
             dgvEmployee.DataSource = employeeBindingSource;
@@ -166,7 +166,7 @@
             dgvEmployee.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvEmployee.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dgvEmployee.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvEmployee.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvEmployee.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvEmployee.ThemeStyle.HeaderStyle.Height = 40;
             dgvEmployee.ThemeStyle.ReadOnly = true;
             dgvEmployee.ThemeStyle.RowsStyle.BackColor = Color.White;
@@ -254,7 +254,7 @@
             // contextMenuStrip
             // 
             contextMenuStrip.ImageScalingSize = new Size(20, 20);
-            contextMenuStrip.Items.AddRange(new ToolStripItem[] { btnUpdate, btnDelete, btnPurchaseHistory, btnImportHistory });
+            contextMenuStrip.Items.AddRange(new ToolStripItem[] { btnCopy, btnUpdate, btnDelete, btnPurchaseHistory, btnImportHistory });
             contextMenuStrip.Name = "mnstrip";
             contextMenuStrip.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
             contextMenuStrip.RenderStyle.BorderColor = Color.Gainsboro;
@@ -265,7 +265,14 @@
             contextMenuStrip.RenderStyle.SelectionForeColor = Color.White;
             contextMenuStrip.RenderStyle.SeparatorColor = Color.Gainsboro;
             contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            contextMenuStrip.Size = new Size(202, 108);
+            contextMenuStrip.Size = new Size(202, 134);
+            // 
+            // btnCopy
+            // 
+            btnCopy.Image = Properties.Resources.copy;
+            btnCopy.Name = "btnCopy";
+            btnCopy.Size = new Size(201, 26);
+            btnCopy.Text = "Copy";
             // 
             // btnUpdate
             // 
@@ -333,6 +340,7 @@
             // 
             btnNext.Animated = true;
             btnNext.BorderRadius = 5;
+            btnNext.Cursor = Cursors.Hand;
             btnNext.CustomizableEdges = customizableEdges1;
             btnNext.DisabledState.BorderColor = Color.DarkGray;
             btnNext.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -365,10 +373,10 @@
             btnCurrentPage.FillColor2 = Color.FromArgb(56, 239, 125);
             btnCurrentPage.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnCurrentPage.ForeColor = Color.White;
-            btnCurrentPage.Location = new Point(628, 4);
+            btnCurrentPage.Location = new Point(625, 4);
             btnCurrentPage.Name = "btnCurrentPage";
             btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnCurrentPage.Size = new Size(44, 37);
+            btnCurrentPage.Size = new Size(50, 37);
             btnCurrentPage.TabIndex = 17;
             btnCurrentPage.Text = "0";
             // 
@@ -376,6 +384,7 @@
             // 
             btnPrevious.Animated = true;
             btnPrevious.BorderRadius = 5;
+            btnPrevious.Cursor = Cursors.Hand;
             btnPrevious.CustomizableEdges = customizableEdges5;
             btnPrevious.DisabledState.BorderColor = Color.DarkGray;
             btnPrevious.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -462,32 +471,39 @@
             // txtSalaryEnd
             // 
             txtSalaryEnd.BackColor = Color.Transparent;
+            txtSalaryEnd.BorderRadius = 5;
             txtSalaryEnd.CustomizableEdges = customizableEdges15;
             txtSalaryEnd.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtSalaryEnd.Location = new Point(747, 13);
             txtSalaryEnd.Margin = new Padding(3, 4, 3, 4);
+            txtSalaryEnd.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             txtSalaryEnd.Name = "txtSalaryEnd";
             txtSalaryEnd.ShadowDecoration.CustomizableEdges = customizableEdges16;
             txtSalaryEnd.Size = new Size(131, 36);
-            txtSalaryEnd.TabIndex = 9;
+            txtSalaryEnd.TabIndex = 5;
             txtSalaryEnd.Visible = false;
             // 
             // txtSalaryStart
             // 
             txtSalaryStart.BackColor = Color.Transparent;
+            txtSalaryStart.BorderRadius = 5;
             txtSalaryStart.CustomizableEdges = customizableEdges17;
             txtSalaryStart.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSalaryStart.Hexadecimal = true;
             txtSalaryStart.Location = new Point(593, 13);
             txtSalaryStart.Margin = new Padding(3, 4, 3, 4);
+            txtSalaryStart.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             txtSalaryStart.Name = "txtSalaryStart";
             txtSalaryStart.ShadowDecoration.CustomizableEdges = customizableEdges18;
             txtSalaryStart.Size = new Size(131, 36);
-            txtSalaryStart.TabIndex = 9;
+            txtSalaryStart.TabIndex = 5;
             txtSalaryStart.Visible = false;
             // 
             // btnSalary
             // 
+            btnSalary.Animated = true;
             btnSalary.BorderRadius = 5;
+            btnSalary.Cursor = Cursors.Hand;
             btnSalary.CustomizableEdges = customizableEdges19;
             btnSalary.DisabledState.BorderColor = Color.DarkGray;
             btnSalary.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -508,7 +524,9 @@
             // 
             // btnAdd
             // 
+            btnAdd.Animated = true;
             btnAdd.BorderRadius = 5;
+            btnAdd.Cursor = Cursors.Hand;
             btnAdd.CustomizableEdges = customizableEdges21;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -529,7 +547,9 @@
             // 
             // btnReload
             // 
+            btnReload.Animated = true;
             btnReload.BorderRadius = 5;
+            btnReload.Cursor = Cursors.Hand;
             btnReload.CustomizableEdges = customizableEdges23;
             btnReload.DisabledState.BorderColor = Color.DarkGray;
             btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -545,12 +565,14 @@
             btnReload.Name = "btnReload";
             btnReload.ShadowDecoration.CustomizableEdges = customizableEdges24;
             btnReload.Size = new Size(41, 35);
-            btnReload.TabIndex = 6;
+            btnReload.TabIndex = 2;
             btnReload.Click += btnReload_Click;
             // 
             // btnSearch
             // 
+            btnSearch.Animated = true;
             btnSearch.BorderRadius = 5;
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.CustomizableEdges = customizableEdges25;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -566,7 +588,7 @@
             btnSearch.Name = "btnSearch";
             btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges26;
             btnSearch.Size = new Size(41, 35);
-            btnSearch.TabIndex = 7;
+            btnSearch.TabIndex = 1;
             btnSearch.Click += btnSearch_Click;
             // 
             // frmViewEmployee
@@ -623,5 +645,6 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnPrevious;
         private Guna.UI2.WinForms.Guna2NumericUpDown txtSalaryEnd;
         private Guna.UI2.WinForms.Guna2NumericUpDown txtSalaryStart;
+        private ToolStripMenuItem btnCopy;
     }
 }

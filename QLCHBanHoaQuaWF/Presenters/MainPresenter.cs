@@ -43,6 +43,8 @@ public class MainPresenter
         _viewOptions = viewOptions;
         _viewStatistics = viewStatistics;
         _changePassword = changePassword;
+        _viewMain.ChangePassword += delegate { ShowChangePassword(); };
+
 
         Init();
     }
@@ -108,5 +110,16 @@ public class MainPresenter
                 Program.MyHost.Services.GetRequiredService<UserPresenter>();
                 break;
         }
+    }
+
+    void ShowChangePassword()
+    {
+        if (AuthPresenter.User == null)
+        {
+            Application.Exit();
+        }
+        _changePassword.Email = AuthPresenter.User!.Email;
+        Form form = (Form)_changePassword;
+        form.ShowDialog();
     }
 }

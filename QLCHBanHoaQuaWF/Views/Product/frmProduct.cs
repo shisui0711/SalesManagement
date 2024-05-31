@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLCHWF.Models;
 
 namespace QLCHWF.Views.Product
 {
@@ -19,6 +20,41 @@ namespace QLCHWF.Views.Product
 
         public event EventHandler? Clicked;
         private readonly Models.Product _product;
+        public frmProduct(Models.Product product,EProductMode mode)
+        {
+            InitializeComponent();
+            _product = product;
+            if (mode == EProductMode.Import)
+            {
+                lblMode.Text = "Giá nhập";
+                lblUnitPrice.Text = _product.ImportUnitPrice.ToString();
+            }
+            else if (mode == EProductMode.Sales)
+            {
+                lblMode.Text = "Giá bán";
+                lblUnitPrice.Text = _product.UnitPrice.ToString();
+            }
+            if (product.ImageData == null)
+            {
+                ptbProduct.Image = ptbProduct.ErrorImage;
+            }
+            else
+            {
+                using (MemoryStream ms = new MemoryStream(product.ImageData))
+                {
+                    ptbProduct.Image = Image.FromStream(ms);
+                }
+            }
+            lblProductName.Text = _product.ProductName;
+            lblInventory.Text = _product.Inventory.ToString();
+
+            lblProductName.Click += pnlProduct_Click;
+            lblUnitPrice.Click += pnlProduct_Click;
+            lblInventory.Click += pnlProduct_Click;
+            lbl1.Click += pnlProduct_Click;
+            lblMode.Click += pnlProduct_Click;
+            ptbProduct.Click += pnlProduct_Click;
+        }
         public frmProduct(Models.Product product)
         {
             InitializeComponent();
@@ -42,7 +78,7 @@ namespace QLCHWF.Views.Product
             lblUnitPrice.Click += pnlProduct_Click;
             lblInventory.Click += pnlProduct_Click;
             lbl1.Click += pnlProduct_Click;
-            lbl2.Click += pnlProduct_Click;
+            lblMode.Click += pnlProduct_Click;
             ptbProduct.Click += pnlProduct_Click;
         }
 

@@ -197,6 +197,7 @@
             // 
             // btnExit
             // 
+            btnExit.Animated = true;
             btnExit.BorderColor = Color.FromArgb(38, 191, 166);
             btnExit.BorderRadius = 5;
             btnExit.BorderThickness = 3;

@@ -1,31 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace QLCHWF.CustomMessageBox
+﻿namespace QLCHWF.CustomMessageBox
 {
     public partial class frmMessageBox : Form
     {
-        private Color cancelColor = Color.DimGray;
-        private Color noColor = Color.IndianRed;
-        private Color abortColor = Color.Goldenrod;
-        private Color primaryColor = Color.FromArgb(18, 145, 250);
-        private int borderSize = 2;
+        private Color _cancelColor = Color.DimGray;
+        private Color _noColor = Color.IndianRed;
+        private Color _abortColor = Color.Goldenrod;
+        private Color _primaryColor = Color.FromArgb(18, 145, 250);
+        private int _borderSize = 2;
         public Color PrimaryColor
         {
-            get { return primaryColor;}
+            get { return _primaryColor;}
             set
             {
-                primaryColor = value;
-                this.BackColor = primaryColor;
-                this.pnlHeader.FillColor = primaryColor;
-                btnClose.FillColor = primaryColor;
+                _primaryColor = value;
+                this.BackColor = _primaryColor;
+                this.pnlHeader.FillColor = _primaryColor;
+                btnClose.FillColor = _primaryColor;
             } }
         public frmMessageBox(string text)
         {
@@ -80,7 +70,7 @@ namespace QLCHWF.CustomMessageBox
         private void InitializeItems()
         {
             this.lblContent.MaximumSize = new Size(450, 0);
-            this.Padding = new Padding(borderSize);//Set border size
+            this.Padding = new Padding(_borderSize);//Set border size
             this.btnClose.DialogResult = DialogResult.Cancel;
             this.btn1.DialogResult = DialogResult.OK;
             btn1.Visible = false;
@@ -91,7 +81,8 @@ namespace QLCHWF.CustomMessageBox
         private void SetFormSize()
         {
             int height = this.pnlHeader.Height + this.lblContent.Height + this.ptbIcon.Height + this.pnlButton.Height;
-            this.Size = new Size(this.Size.Width, height);
+            int width = this.ptbIcon.Width * 2 + this.lblContent.Width;
+            this.Size = new Size(width, height);
         }
 
         private void SetButtons(MessageBoxButtons buttons, MessageBoxDefaultButton defaultButton)
@@ -105,9 +96,9 @@ namespace QLCHWF.CustomMessageBox
                     //Ok Button
                     btn1.Visible = true;
                     btn1.Location = new Point(xCenter, yCenter);
-                    btn1.Text = "OK";
+                    btn1.Text = @"Đồng ý";
                     btn1.DialogResult = DialogResult.OK;
-                    btn1.BackColor = primaryColor;
+                    btn1.BackColor = _primaryColor;
                     
                     SetDefaultButton(defaultButton);
                     break;
@@ -115,16 +106,16 @@ namespace QLCHWF.CustomMessageBox
                     //OK Button
                     btn1.Visible = true;
                     btn1.Location = new Point(xCenter - (btn1.Width / 2) - 5, yCenter);
-                    btn1.Text = "Ok";
+                    btn1.Text = @"Đồng ý";
                     btn1.DialogResult = DialogResult.OK;//Set DialogResult
-                    btn1.BackColor = primaryColor;
+                    btn1.BackColor = _primaryColor;
 
                     //Cancel Button
                     btn2.Visible = true;
                     btn2.Location = new Point(xCenter + (btn2.Width / 2) + 5, yCenter);
-                    btn2.Text = "Cancel";
+                    btn2.Text = @"Hủy bỏ";
                     btn2.DialogResult = DialogResult.Cancel;//Set DialogResult
-                    btn2.BackColor = cancelColor;
+                    btn2.BackColor = _cancelColor;
 
                     //Set Default Button
                     if (defaultButton != MessageBoxDefaultButton.Button3)//There are only 2 buttons, so the Default Button cannot be Button3
@@ -135,16 +126,16 @@ namespace QLCHWF.CustomMessageBox
                     //Retry Button
                     btn1.Visible = true;
                     btn1.Location = new Point(xCenter - (btn1.Width / 2) - 5, yCenter);
-                    btn1.Text = "Retry";
+                    btn1.Text = @"Thử lại";
                     btn1.DialogResult = DialogResult.Retry;//Set DialogResult
-                    btn1.BackColor = primaryColor;
+                    btn1.BackColor = _primaryColor;
 
                     //Cancel Button
                     btn2.Visible = true;
                     btn2.Location = new Point(xCenter + (btn2.Width / 2) + 5, yCenter);
-                    btn2.Text = "Cancel";
+                    btn2.Text = @"Hủy bỏ";
                     btn2.DialogResult = DialogResult.Cancel;//Set DialogResult
-                    btn2.BackColor = cancelColor;
+                    btn2.BackColor = _cancelColor;
 
                     //Set Default Button
                     if (defaultButton != MessageBoxDefaultButton.Button3)//There are only 2 buttons, so the Default Button cannot be Button3
@@ -156,16 +147,16 @@ namespace QLCHWF.CustomMessageBox
                     //Yes Button
                     btn1.Visible = true;
                     btn1.Location = new Point(xCenter - (btn1.Width / 2) - 5, yCenter);
-                    btn1.Text = "Yes";
+                    btn1.Text = @"Đồng ý";
                     btn1.DialogResult = DialogResult.Yes;//Set DialogResult
-                    btn1.BackColor = primaryColor;
+                    btn1.BackColor = _primaryColor;
 
                     //No Button
                     btn2.Visible = true;
                     btn2.Location = new Point(xCenter + (btn2.Width / 2) + 5, yCenter);
-                    btn2.Text = "No";
+                    btn2.Text = @"Từ chối";
                     btn2.DialogResult = DialogResult.No;//Set DialogResult
-                    btn2.BackColor = noColor;
+                    btn2.BackColor = _noColor;
 
                     //Set Default Button
                     if (defaultButton != MessageBoxDefaultButton.Button3)//There are only 2 buttons, so the Default Button cannot be Button3
@@ -176,23 +167,23 @@ namespace QLCHWF.CustomMessageBox
                     //Yes Button
                     btn1.Visible = true;
                     btn1.Location = new Point(xCenter - btn1.Width - 5, yCenter);
-                    btn1.Text = "Yes";
+                    btn1.Text = @"Đồng ý";
                     btn1.DialogResult = DialogResult.Yes;//Set DialogResult
-                    btn1.BackColor = primaryColor;
+                    btn1.BackColor = _primaryColor;
 
                     //No Button
                     btn2.Visible = true;
                     btn2.Location = new Point(xCenter, yCenter);
-                    btn2.Text = "No";
+                    btn2.Text = @"Từ chối";
                     btn2.DialogResult = DialogResult.No;//Set DialogResult
-                    btn2.BackColor = noColor;
+                    btn2.BackColor = _noColor;
 
                     //Cancel Button
                     btn3.Visible = true;
                     btn3.Location = new Point(xCenter + btn2.Width + 5, yCenter);
-                    btn3.Text = "Cancel";
+                    btn3.Text = @"Hủy bỏ";
                     btn3.DialogResult = DialogResult.Cancel;//Set DialogResult
-                    btn3.BackColor = cancelColor;
+                    btn3.BackColor = _cancelColor;
 
                     //Set Default Button
                     SetDefaultButton(defaultButton);
@@ -202,23 +193,23 @@ namespace QLCHWF.CustomMessageBox
                     //Abort Button
                     btn1.Visible = true;
                     btn1.Location = new Point(xCenter - btn1.Width - 5, yCenter);
-                    btn1.Text = "Abort";
+                    btn1.Text = @"Hủy bỏ";
                     btn1.DialogResult = DialogResult.Abort;//Set DialogResult
-                    btn1.BackColor = abortColor;
+                    btn1.BackColor = _abortColor;
 
                     //Retry Button
                     btn2.Visible = true;
                     btn2.Location = new Point(xCenter, yCenter);
-                    btn2.Text = "Retry";
+                    btn2.Text = @"Thử lại";
                     btn2.DialogResult = DialogResult.Retry;//Set DialogResult                    
-                    btn2.BackColor = primaryColor;
+                    btn2.BackColor = _primaryColor;
 
                     //Ignore Button
                     btn3.Visible = true;
                     btn3.Location = new Point(xCenter + btn2.Width + 5, yCenter);
-                    btn3.Text = "Ignore";
+                    btn3.Text = @"Bỏ qua";
                     btn3.DialogResult = DialogResult.Ignore;//Set DialogResult
-                    btn3.BackColor = cancelColor;
+                    btn3.BackColor = _cancelColor;
 
                     //Set Default Button
                     SetDefaultButton(defaultButton);

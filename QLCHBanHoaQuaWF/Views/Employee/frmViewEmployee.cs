@@ -1,4 +1,6 @@
 ﻿using QLCHWF.CustomMessageBox;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace QLCHWF.Views.Employee
 {
@@ -26,26 +28,55 @@ namespace QLCHWF.Views.Employee
             set { txtSalaryEnd.Value = value; }
         }
         public BindingSource EmployeeBindingSource { get { return employeeBindingSource; } }
-#nullable enable
         public event EventHandler? LoadEmployee;
-#nullable enable
         public event EventHandler? RemoveEmployee;
-#nullable enable
         public event EventHandler? SearchEmployee;
-#nullable enable
         public event EventHandler? ShowSalesHistory;
-#nullable enable
         public event EventHandler? ShowImportHistory;
         public event EventHandler? ShowSalary;
-#nullable enable
         public event EventHandler? ShowAddEmployee;
-#nullable enable
+
         public event EventHandler? ShowUpdateEmployee;
         public frmViewEmployee()
         {
             InitializeComponent();
+            LoadCopy();
         }
+        private void LoadCopy()
+        {
+            var properties = typeof(Models.Employee).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(p => p.GetCustomAttribute(typeof(DisplayNameAttribute), true) != null);
+            foreach (var propertyInfo in properties)
+            {
+                string? propertyName = (propertyInfo.GetCustomAttribute(typeof(DisplayNameAttribute)) as DisplayNameAttribute)?.DisplayName;
+                if (propertyName == null)
+                {
+                    continue;
+                }
+                btnCopy.DropDownItems.Add(new ToolStripMenuItem(propertyName));
+            }
+            foreach (var toolStripMenuItem in btnCopy.DropDownItems.OfType<ToolStripMenuItem>())
+            {
+                toolStripMenuItem.Click += delegate
+                {
+                    Models.Employee? selected = employeeBindingSource.Current as Models.Employee;
+                    if (selected == null)
+                    {
+                        return;
+                    }
+                    var property = selected.GetType().GetProperties().Where(x =>
+                    {
+                        var displayNameAtribute = x.GetCustomAttribute(typeof(DisplayNameAttribute)) as DisplayNameAttribute;
+                        return displayNameAtribute?.DisplayName == toolStripMenuItem.Text;
+                    }).FirstOrDefault();
+                    if (property != null)
+                    {
+                        Clipboard.SetText(property.GetValue(selected)!.ToString()!);
+                    }
 
+                };
+            }
+        }
         private void frmViewEmployee_Load(object sender, EventArgs e)
         {
             LoadEmployee?.Invoke(sender, e);

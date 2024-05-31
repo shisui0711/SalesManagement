@@ -4,5 +4,5 @@ namespace QLCHWF.IRepository;
 
 public interface IProviderRepository : IGenericRepository<Provider>
 {
-    public Provider GetProviderWithImportOrder(int id);
+    public Provider? GetProviderWithImportOrder(int id);
 }

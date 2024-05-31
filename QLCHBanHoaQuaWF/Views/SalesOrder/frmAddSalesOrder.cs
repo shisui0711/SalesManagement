@@ -267,6 +267,7 @@ namespace QLCHWF.Views.SalesOrder
             }
 
             lblTotalPrice.Text = sum.ToString("C2");
+            txtPurchasePrice.Text = sum.ToString();
             CalculateChangePrice();
         }
 

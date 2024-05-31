@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -60,6 +61,7 @@
             lblPassword = new Label();
             txtRepassword = new Guna.UI2.WinForms.Guna2TextBox();
             txtNewPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(components);
             pnlHeader.SuspendLayout();
             pnlBody.SuspendLayout();
             SuspendLayout();
@@ -128,7 +130,9 @@
             // 
             // btnChange
             // 
+            btnChange.Animated = true;
             btnChange.BorderRadius = 5;
+            btnChange.Cursor = Cursors.Hand;
             btnChange.CustomizableEdges = customizableEdges5;
             btnChange.DisabledState.BorderColor = Color.DarkGray;
             btnChange.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -222,6 +226,7 @@
             btnExit.BorderColor = Color.FromArgb(38, 191, 166);
             btnExit.BorderRadius = 5;
             btnExit.BorderThickness = 3;
+            btnExit.Cursor = Cursors.Hand;
             btnExit.CustomizableEdges = customizableEdges11;
             btnExit.DisabledState.BorderColor = Color.DarkGray;
             btnExit.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -309,6 +314,12 @@
             txtNewPassword.Size = new Size(280, 40);
             txtNewPassword.TabIndex = 1;
             // 
+            // guna2DragControl1
+            // 
+            guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            guna2DragControl1.TargetControl = pnlHeader;
+            guna2DragControl1.UseTransparentDrag = true;
+            // 
             // frmChangePassword
             // 
             AcceptButton = btnChange;
@@ -346,5 +357,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtRepassword;
         private Guna.UI2.WinForms.Guna2TextBox txtNewPassword;
         private Guna.UI2.WinForms.Guna2GradientButton btnChange;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

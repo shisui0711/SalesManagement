@@ -35,7 +35,7 @@ public class AddImportOrderPresenter : PaginationPresenter<Product>
             .ToList();
         _addImportOrder.ProviderBindingSource.DataSource = providers;
     }
-    public void SearchProduct(string? name = null)
+    public void SearchProduct()
     {
         SearchItems(x => x.ProductName == _addImportOrder.ProductSearchText);
     }
@@ -55,9 +55,14 @@ public class AddImportOrderPresenter : PaginationPresenter<Product>
             List<DetailImportOrder> detailImportOrders = new List<DetailImportOrder>();
             foreach (DataGridViewRow row in _addImportOrder.OrderedGridView.Rows)
             {
-                Product product = _unitOfWork.Products.GetById(row.Cells["ProductIDColumn"].Value)!;
+                Product product = _unitOfWork.Products.GetById(row.Cells["ProductIDColumn"].Value);
+                if (product == null)
+                {
+                    _addImportOrder.ShowMessage("Các mặt hàng đã chọn không còn tồn tại");
+                    return;
+                }
                 DetailImportOrder detail = new DetailImportOrder();
-                detail.Product = product;
+                detail.ProductID = product.ProductID;
                 detail.ImportOrder = importOrder;
                 detail.UnitPrice = decimal.Parse(row.Cells["UnitPriceColumn"].Value.ToString()!);
                 detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString()!);
@@ -101,7 +106,7 @@ public class AddImportOrderPresenter : PaginationPresenter<Product>
         _addImportOrder.ClearControl();
         foreach (var product in items)
         {
-            frmProduct form = new frmProduct(product);
+            frmProduct form = new frmProduct(product,EProductMode.Import);
             form.Clicked += OrderProduct;
             form.TopLevel = false;
             _addImportOrder.AddControl(form);

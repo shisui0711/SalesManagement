@@ -58,6 +58,10 @@ public class UserPresenter : PaginationPresenter<User>
             _unitOfWork.SaveChanges();
             _changePassword.ShowMessage(@"Đổi mật khẩu thành công");
         }
+        else
+        {
+            _changePassword.ShowMessage(@"Không tìm thấy email này trong hệ thống");
+        }
     }
     void ChangeUserRole()
     {

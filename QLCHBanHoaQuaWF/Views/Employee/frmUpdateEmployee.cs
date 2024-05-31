@@ -32,7 +32,15 @@ namespace QLCHWF.Views.Employee
         }
         public decimal? Salary
         {
-            get { return decimal.Parse(txtSalary.Text); }
+            get { try
+                {
+                    return decimal.Parse(txtSalary.Text);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
             set { txtSalary.Text = value.ToString(); }
         }
         public event EventHandler? UpdateEmployee;

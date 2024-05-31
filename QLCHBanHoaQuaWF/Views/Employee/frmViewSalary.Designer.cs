@@ -33,16 +33,16 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -51,6 +51,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlHeader = new Guna.UI2.WinForms.Guna2Panel();
             lblTitle = new Label();
             btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -64,6 +66,7 @@
             finalSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             salaryTableBindingSource = new BindingSource(components);
             pnlControl = new Guna.UI2.WinForms.Guna2Panel();
+            btnExit = new Guna.UI2.WinForms.Guna2Button();
             btnExportFile = new Guna.UI2.WinForms.Guna2GradientButton();
             btnCalculate = new Guna.UI2.WinForms.Guna2GradientButton();
             dtpEnd = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -122,11 +125,11 @@
             // 
             pnlBody.Controls.Add(pnlGridView);
             pnlBody.Controls.Add(pnlControl);
-            pnlBody.CustomizableEdges = customizableEdges17;
+            pnlBody.CustomizableEdges = customizableEdges19;
             pnlBody.Dock = DockStyle.Fill;
             pnlBody.Location = new Point(3, 57);
             pnlBody.Name = "pnlBody";
-            pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges20;
             pnlBody.Size = new Size(929, 473);
             pnlBody.TabIndex = 1;
             // 
@@ -262,22 +265,49 @@
             // pnlControl
             // 
             pnlControl.BackColor = Color.White;
+            pnlControl.Controls.Add(btnExit);
             pnlControl.Controls.Add(btnExportFile);
             pnlControl.Controls.Add(btnCalculate);
             pnlControl.Controls.Add(dtpEnd);
             pnlControl.Controls.Add(dtpStart);
-            pnlControl.CustomizableEdges = customizableEdges15;
+            pnlControl.CustomizableEdges = customizableEdges17;
             pnlControl.Dock = DockStyle.Top;
             pnlControl.Location = new Point(0, 0);
             pnlControl.Name = "pnlControl";
-            pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            pnlControl.ShadowDecoration.CustomizableEdges = customizableEdges18;
             pnlControl.Size = new Size(929, 91);
             pnlControl.TabIndex = 0;
+            // 
+            // btnExit
+            // 
+            btnExit.Animated = true;
+            btnExit.BorderColor = Color.FromArgb(38, 191, 166);
+            btnExit.BorderRadius = 5;
+            btnExit.BorderThickness = 3;
+            btnExit.Cursor = Cursors.Hand;
+            btnExit.CustomizableEdges = customizableEdges7;
+            btnExit.DisabledState.BorderColor = Color.DarkGray;
+            btnExit.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnExit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnExit.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnExit.FillColor = Color.White;
+            btnExit.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnExit.ForeColor = Color.FromArgb(38, 191, 166);
+            btnExit.HoverState.BorderColor = Color.Red;
+            btnExit.HoverState.FillColor = Color.Red;
+            btnExit.HoverState.ForeColor = Color.White;
+            btnExit.Location = new Point(692, 19);
+            btnExit.Name = "btnExit";
+            btnExit.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnExit.Size = new Size(166, 47);
+            btnExit.TabIndex = 23;
+            btnExit.Text = "Đóng";
+            btnExit.Click += btnExit_Click;
             // 
             // btnExportFile
             // 
             btnExportFile.BorderRadius = 5;
-            btnExportFile.CustomizableEdges = customizableEdges7;
+            btnExportFile.CustomizableEdges = customizableEdges9;
             btnExportFile.DisabledState.BorderColor = Color.DarkGray;
             btnExportFile.DisabledState.CustomBorderColor = Color.DarkGray;
             btnExportFile.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -287,9 +317,9 @@
             btnExportFile.FillColor2 = Color.FromArgb(56, 239, 125);
             btnExportFile.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnExportFile.ForeColor = Color.White;
-            btnExportFile.Location = new Point(492, 19);
+            btnExportFile.Location = new Point(500, 19);
             btnExportFile.Name = "btnExportFile";
-            btnExportFile.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnExportFile.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnExportFile.Size = new Size(166, 47);
             btnExportFile.TabIndex = 22;
             btnExportFile.Text = "Xuất file";
@@ -298,7 +328,7 @@
             // btnCalculate
             // 
             btnCalculate.BorderRadius = 5;
-            btnCalculate.CustomizableEdges = customizableEdges9;
+            btnCalculate.CustomizableEdges = customizableEdges11;
             btnCalculate.DisabledState.BorderColor = Color.DarkGray;
             btnCalculate.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCalculate.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -310,7 +340,7 @@
             btnCalculate.ForeColor = Color.White;
             btnCalculate.Location = new Point(308, 19);
             btnCalculate.Name = "btnCalculate";
-            btnCalculate.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnCalculate.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnCalculate.Size = new Size(166, 47);
             btnCalculate.TabIndex = 22;
             btnCalculate.Text = "Tính Lương";
@@ -322,7 +352,7 @@
             dtpEnd.BorderRadius = 5;
             dtpEnd.Checked = true;
             dtpEnd.CustomFormat = "dd-MM-yyyy";
-            dtpEnd.CustomizableEdges = customizableEdges11;
+            dtpEnd.CustomizableEdges = customizableEdges13;
             dtpEnd.FillColor = Color.Cyan;
             dtpEnd.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dtpEnd.Format = DateTimePickerFormat.Custom;
@@ -330,7 +360,7 @@
             dtpEnd.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpEnd.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpEnd.Name = "dtpEnd";
-            dtpEnd.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            dtpEnd.ShadowDecoration.CustomizableEdges = customizableEdges14;
             dtpEnd.Size = new Size(129, 47);
             dtpEnd.TabIndex = 9;
             dtpEnd.Value = new DateTime(2023, 11, 25, 22, 33, 5, 877);
@@ -341,7 +371,7 @@
             dtpStart.BorderRadius = 5;
             dtpStart.Checked = true;
             dtpStart.CustomFormat = "dd-MM-yyyy";
-            dtpStart.CustomizableEdges = customizableEdges13;
+            dtpStart.CustomizableEdges = customizableEdges15;
             dtpStart.FillColor = Color.Cyan;
             dtpStart.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dtpStart.Format = DateTimePickerFormat.Custom;
@@ -349,7 +379,7 @@
             dtpStart.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpStart.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpStart.Name = "dtpStart";
-            dtpStart.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            dtpStart.ShadowDecoration.CustomizableEdges = customizableEdges16;
             dtpStart.Size = new Size(128, 47);
             dtpStart.TabIndex = 8;
             dtpStart.Value = new DateTime(2023, 11, 25, 22, 33, 5, 877);
@@ -366,6 +396,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(38, 191, 166);
+            CancelButton = btnExit;
             ClientSize = new Size(935, 533);
             Controls.Add(pnlBody);
             Controls.Add(pnlHeader);
@@ -406,5 +437,6 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2GradientButton btnExportFile;
         private Guna.UI2.WinForms.Guna2GradientButton btnCalculate;
+        private Guna.UI2.WinForms.Guna2Button btnExit;
     }
 }

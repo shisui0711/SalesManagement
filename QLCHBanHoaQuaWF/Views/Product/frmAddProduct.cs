@@ -93,7 +93,7 @@ namespace QLCHWF.Views.Product
             }
         }
 
-        public event EventHandler AddProduct = null!;
+        public event EventHandler? AddProduct;
 
         private void ptbUpload_Click(object sender, EventArgs e)
         {

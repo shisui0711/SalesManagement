@@ -119,7 +119,9 @@
             // 
             // btnAdd
             // 
+            btnAdd.Animated = true;
             btnAdd.BorderRadius = 5;
+            btnAdd.Cursor = Cursors.Hand;
             btnAdd.CustomizableEdges = customizableEdges1;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -140,7 +142,9 @@
             // 
             // btnExportFile
             // 
+            btnExportFile.Animated = true;
             btnExportFile.BorderRadius = 5;
+            btnExportFile.Cursor = Cursors.Hand;
             btnExportFile.CustomizableEdges = customizableEdges3;
             btnExportFile.DisabledState.BorderColor = Color.DarkGray;
             btnExportFile.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -161,7 +165,9 @@
             // 
             // btnReload
             // 
+            btnReload.Animated = true;
             btnReload.BorderRadius = 5;
+            btnReload.Cursor = Cursors.Hand;
             btnReload.CustomizableEdges = customizableEdges5;
             btnReload.DisabledState.BorderColor = Color.DarkGray;
             btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -182,7 +188,9 @@
             // 
             // btnSearch
             // 
+            btnSearch.Animated = true;
             btnSearch.BorderRadius = 5;
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.CustomizableEdges = customizableEdges7;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -203,8 +211,10 @@
             // 
             // dtpEnd
             // 
+            dtpEnd.Animated = true;
             dtpEnd.BorderRadius = 5;
             dtpEnd.Checked = true;
+            dtpEnd.Cursor = Cursors.Hand;
             dtpEnd.CustomizableEdges = customizableEdges9;
             dtpEnd.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dtpEnd.Format = DateTimePickerFormat.Long;
@@ -220,8 +230,10 @@
             // 
             // dtpStart
             // 
+            dtpStart.Animated = true;
             dtpStart.BorderRadius = 5;
             dtpStart.Checked = true;
+            dtpStart.Cursor = Cursors.Hand;
             dtpStart.CustomizableEdges = customizableEdges11;
             dtpStart.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dtpStart.Format = DateTimePickerFormat.Long;
@@ -337,7 +349,6 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvImportOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvImportOrder.ColumnHeadersHeight = 40;
-            dgvImportOrder.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvImportOrder.Columns.AddRange(new DataGridViewColumn[] { orderIDDataGridViewTextBoxColumn, orderDateDataGridViewTextBoxColumn, providerDataGridViewTextBoxColumn, totalPriceDataGridViewTextBoxColumn, employeeDataGridViewTextBoxColumn, detailImportOrdersDataGridViewTextBoxColumn });
             dgvImportOrder.ContextMenuStrip = contextMenuStrip;
             dgvImportOrder.DataSource = importOrderBindingSource;
@@ -380,7 +391,7 @@
             dgvImportOrder.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvImportOrder.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dgvImportOrder.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvImportOrder.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvImportOrder.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvImportOrder.ThemeStyle.HeaderStyle.Height = 40;
             dgvImportOrder.ThemeStyle.ReadOnly = true;
             dgvImportOrder.ThemeStyle.RowsStyle.BackColor = Color.White;
@@ -534,10 +545,10 @@
             btnCurrentPage.FillColor2 = Color.FromArgb(56, 239, 125);
             btnCurrentPage.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnCurrentPage.ForeColor = Color.White;
-            btnCurrentPage.Location = new Point(628, 8);
+            btnCurrentPage.Location = new Point(625, 8);
             btnCurrentPage.Name = "btnCurrentPage";
             btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            btnCurrentPage.Size = new Size(44, 37);
+            btnCurrentPage.Size = new Size(50, 37);
             btnCurrentPage.TabIndex = 17;
             btnCurrentPage.Text = "0";
             // 

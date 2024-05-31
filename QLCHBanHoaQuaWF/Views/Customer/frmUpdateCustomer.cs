@@ -54,7 +54,6 @@ namespace QLCHWF.Views.Customer
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             UpdateCustomer?.Invoke(sender, e);
-            this.Close();
         }
 
         public void ShowMessage(string message)

@@ -103,7 +103,9 @@
             // 
             // btnAdd
             // 
+            btnAdd.Animated = true;
             btnAdd.BorderRadius = 5;
+            btnAdd.Cursor = Cursors.Hand;
             btnAdd.CustomizableEdges = customizableEdges1;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -124,7 +126,9 @@
             // 
             // btnReload
             // 
+            btnReload.Animated = true;
             btnReload.BorderRadius = 5;
+            btnReload.Cursor = Cursors.Hand;
             btnReload.CustomizableEdges = customizableEdges3;
             btnReload.DisabledState.BorderColor = Color.DarkGray;
             btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -145,7 +149,9 @@
             // 
             // btnSearch
             // 
+            btnSearch.Animated = true;
             btnSearch.BorderRadius = 5;
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.CustomizableEdges = customizableEdges5;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -249,10 +255,10 @@
             btnCurrentPage.FillColor2 = Color.FromArgb(56, 239, 125);
             btnCurrentPage.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnCurrentPage.ForeColor = Color.White;
-            btnCurrentPage.Location = new Point(628, 4);
+            btnCurrentPage.Location = new Point(625, 4);
             btnCurrentPage.Name = "btnCurrentPage";
             btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnCurrentPage.Size = new Size(44, 37);
+            btnCurrentPage.Size = new Size(50, 37);
             btnCurrentPage.TabIndex = 20;
             btnCurrentPage.Text = "0";
             // 
@@ -300,7 +306,6 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvUser.ColumnHeadersHeight = 40;
-            dgvUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvUser.Columns.AddRange(new DataGridViewColumn[] { employeeIDDataGridViewTextBoxColumn, employeeDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, lastLoginDataGridViewTextBoxColumn, lockDataGridViewCheckBoxColumn, userRoleDataGridViewTextBoxColumn, roleIDDataGridViewTextBoxColumn });
             dgvUser.ContextMenuStrip = contextMenuStrip;
             dgvUser.DataSource = userBindingSource;
@@ -343,7 +348,7 @@
             dgvUser.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvUser.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dgvUser.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvUser.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvUser.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvUser.ThemeStyle.HeaderStyle.Height = 40;
             dgvUser.ThemeStyle.ReadOnly = true;
             dgvUser.ThemeStyle.RowsStyle.BackColor = Color.White;

@@ -65,23 +65,6 @@ namespace QLCHWF.Views.User
                 };
             }
         }
-
-        //public void Copy()
-        //{
-        //    foreach (var toolStripMenuItem in btnCopy.DropDownItems.OfType<ToolStripMenuItem>())
-        //    {
-        //        toolStripMenuItem.Click += delegate
-        //        {
-        //            var selected = userBindingSource.Current as Models.User;
-        //            var property = selected.GetType().GetProperties().Where(x =>
-        //            {
-        //                var displayNameAtribute = x.GetCustomAttribute(typeof(DisplayNameAttribute)) as DisplayNameAttribute;
-        //                return displayNameAtribute?.DisplayName == toolStripMenuItem.Text;
-        //            }).FirstOrDefault();
-        //            Clipboard.SetText(property.GetValue(selected).ToString());
-        //        };
-        //    }
-        //}
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             ShowChangePassword?.Invoke(sender, e);

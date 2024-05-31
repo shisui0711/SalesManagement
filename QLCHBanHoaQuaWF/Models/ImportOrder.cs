@@ -13,7 +13,6 @@ namespace QLCHWF.Models
         public DateTime OrderDate { get; set; } = DateTime.Now;
         [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
-
         public int? EmployeeID { get; set; }
         [ForeignKey("EmployeeID")]
         [InverseProperty("ImportOrders")]

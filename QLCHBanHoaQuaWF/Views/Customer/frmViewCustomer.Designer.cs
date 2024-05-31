@@ -75,6 +75,7 @@
             DateCreated = new DataGridViewTextBoxColumn();
             salesOrdersDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             contextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            btnCopy = new ToolStripMenuItem();
             btnUpdate = new ToolStripMenuItem();
             btnDelete = new ToolStripMenuItem();
             btnPurchaseHistory = new ToolStripMenuItem();
@@ -105,7 +106,9 @@
             // 
             // btnAdd
             // 
+            btnAdd.Animated = true;
             btnAdd.BorderRadius = 5;
+            btnAdd.Cursor = Cursors.Hand;
             btnAdd.CustomizableEdges = customizableEdges1;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -126,7 +129,9 @@
             // 
             // btnReload
             // 
+            btnReload.Animated = true;
             btnReload.BorderRadius = 5;
+            btnReload.Cursor = Cursors.Hand;
             btnReload.CustomizableEdges = customizableEdges3;
             btnReload.DisabledState.BorderColor = Color.DarkGray;
             btnReload.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -147,7 +152,9 @@
             // 
             // btnSearch
             // 
+            btnSearch.Animated = true;
             btnSearch.BorderRadius = 5;
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.CustomizableEdges = customizableEdges5;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -242,6 +249,7 @@
             // 
             btnNext.Animated = true;
             btnNext.BorderRadius = 5;
+            btnNext.Cursor = Cursors.Hand;
             btnNext.CustomizableEdges = customizableEdges13;
             btnNext.DisabledState.BorderColor = Color.DarkGray;
             btnNext.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -274,10 +282,10 @@
             btnCurrentPage.FillColor2 = Color.FromArgb(56, 239, 125);
             btnCurrentPage.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnCurrentPage.ForeColor = Color.White;
-            btnCurrentPage.Location = new Point(628, 4);
+            btnCurrentPage.Location = new Point(625, 4);
             btnCurrentPage.Name = "btnCurrentPage";
             btnCurrentPage.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            btnCurrentPage.Size = new Size(44, 37);
+            btnCurrentPage.Size = new Size(50, 37);
             btnCurrentPage.TabIndex = 14;
             btnCurrentPage.Text = "0";
             // 
@@ -285,6 +293,7 @@
             // 
             btnPrevious.Animated = true;
             btnPrevious.BorderRadius = 5;
+            btnPrevious.Cursor = Cursors.Hand;
             btnPrevious.CustomizableEdges = customizableEdges17;
             btnPrevious.DisabledState.BorderColor = Color.DarkGray;
             btnPrevious.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -325,7 +334,6 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvCustomer.ColumnHeadersHeight = 40;
-            dgvCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvCustomer.Columns.AddRange(new DataGridViewColumn[] { customerIDDataGridViewTextBoxColumn, CustomerName, emailDataGridViewTextBoxColumn, phoneDataGridViewTextBoxColumn, addressDataGridViewTextBoxColumn, DateCreated, salesOrdersDataGridViewTextBoxColumn });
             dgvCustomer.ContextMenuStrip = contextMenuStrip;
             dgvCustomer.Cursor = Cursors.Hand;
@@ -369,7 +377,7 @@
             dgvCustomer.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvCustomer.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dgvCustomer.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvCustomer.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvCustomer.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvCustomer.ThemeStyle.HeaderStyle.Height = 40;
             dgvCustomer.ThemeStyle.ReadOnly = true;
             dgvCustomer.ThemeStyle.RowsStyle.BackColor = Color.White;
@@ -440,7 +448,7 @@
             // contextMenuStrip
             // 
             contextMenuStrip.ImageScalingSize = new Size(20, 20);
-            contextMenuStrip.Items.AddRange(new ToolStripItem[] { btnUpdate, btnDelete, btnPurchaseHistory });
+            contextMenuStrip.Items.AddRange(new ToolStripItem[] { btnCopy, btnUpdate, btnDelete, btnPurchaseHistory });
             contextMenuStrip.Name = "mnstrip";
             contextMenuStrip.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
             contextMenuStrip.RenderStyle.BorderColor = Color.Gainsboro;
@@ -451,7 +459,14 @@
             contextMenuStrip.RenderStyle.SelectionForeColor = Color.White;
             contextMenuStrip.RenderStyle.SeparatorColor = Color.Gainsboro;
             contextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            contextMenuStrip.Size = new Size(198, 82);
+            contextMenuStrip.Size = new Size(198, 108);
+            // 
+            // btnCopy
+            // 
+            btnCopy.Image = Properties.Resources.copy;
+            btnCopy.Name = "btnCopy";
+            btnCopy.Size = new Size(197, 26);
+            btnCopy.Text = "Copy";
             // 
             // btnUpdate
             // 
@@ -527,5 +542,6 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnNext;
         private Guna.UI2.WinForms.Guna2GradientButton btnCurrentPage;
         private Guna.UI2.WinForms.Guna2GradientButton btnPrevious;
+        private ToolStripMenuItem btnCopy;
     }
 }

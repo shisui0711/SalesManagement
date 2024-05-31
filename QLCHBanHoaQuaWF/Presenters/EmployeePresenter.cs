@@ -256,7 +256,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
                     SearchItems(x => x.EmployeeName.Contains(_viewEmployee.SearchText));
                     break;
                 case 2:
-                   SearchItems(x =>
+                    SearchItems(x =>
                        x.Salary != null && x.Salary >= _viewEmployee.SalaryStart &&
                        x.Salary <= _viewEmployee.SalaryEnd);
                     break;
@@ -264,7 +264,7 @@ public class EmployeePresenter : PaginationPresenter<Employee>
                     SearchItems(x => x.Email.Contains(_viewEmployee.SearchText));
                     break;
                 case 4:
-                   SearchItems(x => x.Phone.Contains(_viewEmployee.SearchText));
+                   SearchItems(x => x.Phone.StartsWith(_viewEmployee.SearchText));
                     break;
                 case 5:
                     SearchItems(x =>x.Address !=null && x.Address.Contains(_viewEmployee.SearchText));

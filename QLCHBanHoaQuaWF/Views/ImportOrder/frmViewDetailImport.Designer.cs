@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -37,259 +37,251 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnlHeader = new Guna.UI2.WinForms.Guna2Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnMinimize = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.pnlBody = new Guna.UI2.WinForms.Guna2Panel();
-            this.dgvDetailImport = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.orderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.importOrderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailImportOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.pnlHeader.SuspendLayout();
-            this.pnlBody.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetailImport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailImportOrderBindingSource)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            pnlHeader = new Guna.UI2.WinForms.Guna2Panel();
+            label4 = new Label();
+            btnMinimize = new Guna.UI2.WinForms.Guna2ControlBox();
+            btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
+            pnlBody = new Guna.UI2.WinForms.Guna2Panel();
+            dgvDetailImport = new Guna.UI2.WinForms.Guna2DataGridView();
+            orderIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            quantityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            unitPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            totalPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            productDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            importOrderDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            detailImportOrderBindingSource = new BindingSource(components);
+            dragControl = new Guna.UI2.WinForms.Guna2DragControl(components);
+            pnlHeader.SuspendLayout();
+            pnlBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDetailImport).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)detailImportOrderBindingSource).BeginInit();
+            SuspendLayout();
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.pnlHeader.Controls.Add(this.label4);
-            this.pnlHeader.Controls.Add(this.btnMinimize);
-            this.pnlHeader.Controls.Add(this.btnClose);
-            this.pnlHeader.CustomizableEdges = customizableEdges5;
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(3, 3);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            this.pnlHeader.Size = new System.Drawing.Size(956, 55);
-            this.pnlHeader.TabIndex = 0;
+            pnlHeader.BackColor = Color.FromArgb(38, 191, 166);
+            pnlHeader.Controls.Add(label4);
+            pnlHeader.Controls.Add(btnMinimize);
+            pnlHeader.Controls.Add(btnClose);
+            pnlHeader.CustomizableEdges = customizableEdges5;
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(3, 3);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            pnlHeader.Size = new Size(956, 55);
+            pnlHeader.TabIndex = 0;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(12, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 23);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "Chi tiết đơn hàng nhập";
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(12, 12);
+            label4.Name = "label4";
+            label4.Size = new Size(196, 23);
+            label4.TabIndex = 23;
+            label4.Text = "Chi tiết đơn hàng nhập";
             // 
             // btnMinimize
             // 
-            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.btnMinimize.BorderRadius = 10;
-            this.btnMinimize.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
-            this.btnMinimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
-            this.btnMinimize.CustomizableEdges = customizableEdges1;
-            this.btnMinimize.FillColor = System.Drawing.Color.Transparent;
-            this.btnMinimize.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(133)))), ((int)(((byte)(205)))));
-            this.btnMinimize.IconColor = System.Drawing.Color.White;
-            this.btnMinimize.Location = new System.Drawing.Point(857, 12);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            this.btnMinimize.Size = new System.Drawing.Size(43, 33);
-            this.btnMinimize.TabIndex = 22;
+            btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimize.BackColor = Color.Transparent;
+            btnMinimize.BorderRadius = 10;
+            btnMinimize.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
+            btnMinimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            btnMinimize.CustomizableEdges = customizableEdges1;
+            btnMinimize.FillColor = Color.Transparent;
+            btnMinimize.HoverState.FillColor = Color.FromArgb(9, 133, 205);
+            btnMinimize.IconColor = Color.White;
+            btnMinimize.Location = new Point(857, 12);
+            btnMinimize.Name = "btnMinimize";
+            btnMinimize.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnMinimize.Size = new Size(43, 33);
+            btnMinimize.TabIndex = 22;
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.BorderRadius = 10;
-            this.btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
-            this.btnClose.CustomizableEdges = customizableEdges3;
-            this.btnClose.FillColor = System.Drawing.Color.Transparent;
-            this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
-            this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(906, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            this.btnClose.Size = new System.Drawing.Size(44, 33);
-            this.btnClose.TabIndex = 21;
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.BackColor = Color.Transparent;
+            btnClose.BorderRadius = 10;
+            btnClose.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
+            btnClose.CustomizableEdges = customizableEdges3;
+            btnClose.FillColor = Color.Transparent;
+            btnClose.HoverState.FillColor = Color.Red;
+            btnClose.IconColor = Color.White;
+            btnClose.Location = new Point(906, 12);
+            btnClose.Name = "btnClose";
+            btnClose.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnClose.Size = new Size(44, 33);
+            btnClose.TabIndex = 21;
             // 
             // pnlBody
             // 
-            this.pnlBody.Controls.Add(this.dgvDetailImport);
-            this.pnlBody.CustomizableEdges = customizableEdges7;
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(3, 58);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            this.pnlBody.Size = new System.Drawing.Size(956, 451);
-            this.pnlBody.TabIndex = 1;
+            pnlBody.Controls.Add(dgvDetailImport);
+            pnlBody.CustomizableEdges = customizableEdges7;
+            pnlBody.Dock = DockStyle.Fill;
+            pnlBody.Location = new Point(3, 58);
+            pnlBody.Name = "pnlBody";
+            pnlBody.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            pnlBody.Size = new Size(956, 451);
+            pnlBody.TabIndex = 1;
             // 
             // dgvDetailImport
             // 
-            this.dgvDetailImport.AllowUserToAddRows = false;
-            this.dgvDetailImport.AllowUserToDeleteRows = false;
-            this.dgvDetailImport.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvDetailImport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvDetailImport.AutoGenerateColumns = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailImport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDetailImport.ColumnHeadersHeight = 40;
-            this.dgvDetailImport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvDetailImport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.orderIDDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn,
-            this.unitPriceDataGridViewTextBoxColumn,
-            this.totalPriceDataGridViewTextBoxColumn,
-            this.productDataGridViewTextBoxColumn,
-            this.importOrderDataGridViewTextBoxColumn});
-            this.dgvDetailImport.DataSource = this.detailImportOrderBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDetailImport.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvDetailImport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDetailImport.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDetailImport.Location = new System.Drawing.Point(0, 0);
-            this.dgvDetailImport.Name = "dgvDetailImport";
-            this.dgvDetailImport.ReadOnly = true;
-            this.dgvDetailImport.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailImport.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDetailImport.RowHeadersVisible = false;
-            this.dgvDetailImport.RowHeadersWidth = 51;
-            this.dgvDetailImport.RowTemplate.Height = 30;
-            this.dgvDetailImport.Size = new System.Drawing.Size(956, 451);
-            this.dgvDetailImport.TabIndex = 0;
-            this.dgvDetailImport.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvDetailImport.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvDetailImport.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvDetailImport.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvDetailImport.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvDetailImport.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvDetailImport.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDetailImport.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvDetailImport.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvDetailImport.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dgvDetailImport.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvDetailImport.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvDetailImport.ThemeStyle.HeaderStyle.Height = 40;
-            this.dgvDetailImport.ThemeStyle.ReadOnly = true;
-            this.dgvDetailImport.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvDetailImport.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvDetailImport.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dgvDetailImport.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvDetailImport.ThemeStyle.RowsStyle.Height = 30;
-            this.dgvDetailImport.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDetailImport.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dgvDetailImport.AllowUserToAddRows = false;
+            dgvDetailImport.AllowUserToDeleteRows = false;
+            dgvDetailImport.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dgvDetailImport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvDetailImport.AutoGenerateColumns = false;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(0, 128, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 128, 255);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvDetailImport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvDetailImport.ColumnHeadersHeight = 40;
+            dgvDetailImport.Columns.AddRange(new DataGridViewColumn[] { orderIDDataGridViewTextBoxColumn, quantityDataGridViewTextBoxColumn, unitPriceDataGridViewTextBoxColumn, totalPriceDataGridViewTextBoxColumn, productDataGridViewTextBoxColumn, importOrderDataGridViewTextBoxColumn });
+            dgvDetailImport.DataSource = detailImportOrderBindingSource;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvDetailImport.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvDetailImport.Dock = DockStyle.Fill;
+            dgvDetailImport.GridColor = Color.FromArgb(231, 229, 255);
+            dgvDetailImport.Location = new Point(0, 0);
+            dgvDetailImport.Name = "dgvDetailImport";
+            dgvDetailImport.ReadOnly = true;
+            dgvDetailImport.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(128, 255, 128);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvDetailImport.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dgvDetailImport.RowHeadersVisible = false;
+            dgvDetailImport.RowHeadersWidth = 51;
+            dgvDetailImport.RowTemplate.Height = 30;
+            dgvDetailImport.Size = new Size(956, 451);
+            dgvDetailImport.TabIndex = 0;
+            dgvDetailImport.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgvDetailImport.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dgvDetailImport.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dgvDetailImport.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dgvDetailImport.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dgvDetailImport.ThemeStyle.BackColor = Color.White;
+            dgvDetailImport.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgvDetailImport.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgvDetailImport.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvDetailImport.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dgvDetailImport.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgvDetailImport.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvDetailImport.ThemeStyle.HeaderStyle.Height = 40;
+            dgvDetailImport.ThemeStyle.ReadOnly = true;
+            dgvDetailImport.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgvDetailImport.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvDetailImport.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dgvDetailImport.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dgvDetailImport.ThemeStyle.RowsStyle.Height = 30;
+            dgvDetailImport.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgvDetailImport.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // orderIDDataGridViewTextBoxColumn
             // 
-            this.orderIDDataGridViewTextBoxColumn.DataPropertyName = "OrderID";
-            this.orderIDDataGridViewTextBoxColumn.HeaderText = "Mã đơn hàng";
-            this.orderIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.orderIDDataGridViewTextBoxColumn.Name = "orderIDDataGridViewTextBoxColumn";
-            this.orderIDDataGridViewTextBoxColumn.ReadOnly = true;
+            orderIDDataGridViewTextBoxColumn.DataPropertyName = "OrderID";
+            orderIDDataGridViewTextBoxColumn.HeaderText = "Mã đơn hàng";
+            orderIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            orderIDDataGridViewTextBoxColumn.Name = "orderIDDataGridViewTextBoxColumn";
+            orderIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
-            this.quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
+            quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
+            quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // unitPriceDataGridViewTextBoxColumn
             // 
-            this.unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
-            this.unitPriceDataGridViewTextBoxColumn.HeaderText = "Đơn giá";
-            this.unitPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
-            this.unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
+            unitPriceDataGridViewTextBoxColumn.HeaderText = "Đơn giá";
+            unitPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
+            unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // totalPriceDataGridViewTextBoxColumn
             // 
-            this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
-            this.totalPriceDataGridViewTextBoxColumn.HeaderText = "Tổng tiền";
-            this.totalPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
-            this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
+            totalPriceDataGridViewTextBoxColumn.HeaderText = "Tổng tiền";
+            totalPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
+            totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // productDataGridViewTextBoxColumn
             // 
-            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
-            this.productDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
-            this.productDataGridViewTextBoxColumn.ReadOnly = true;
+            productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            productDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
+            productDataGridViewTextBoxColumn.MinimumWidth = 6;
+            productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            productDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // importOrderDataGridViewTextBoxColumn
             // 
-            this.importOrderDataGridViewTextBoxColumn.DataPropertyName = "ImportOrder";
-            this.importOrderDataGridViewTextBoxColumn.HeaderText = "ImportOrder";
-            this.importOrderDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.importOrderDataGridViewTextBoxColumn.Name = "importOrderDataGridViewTextBoxColumn";
-            this.importOrderDataGridViewTextBoxColumn.ReadOnly = true;
-            this.importOrderDataGridViewTextBoxColumn.Visible = false;
+            importOrderDataGridViewTextBoxColumn.DataPropertyName = "ImportOrder";
+            importOrderDataGridViewTextBoxColumn.HeaderText = "ImportOrder";
+            importOrderDataGridViewTextBoxColumn.MinimumWidth = 6;
+            importOrderDataGridViewTextBoxColumn.Name = "importOrderDataGridViewTextBoxColumn";
+            importOrderDataGridViewTextBoxColumn.ReadOnly = true;
+            importOrderDataGridViewTextBoxColumn.Visible = false;
             // 
             // detailImportOrderBindingSource
             // 
-            this.detailImportOrderBindingSource.DataSource = typeof(QLCHWF.Models.DetailImportOrder);
+            detailImportOrderBindingSource.DataSource = typeof(Models.DetailImportOrder);
             // 
             // dragControl
             // 
-            this.dragControl.DockIndicatorTransparencyValue = 0.6D;
-            this.dragControl.TargetControl = this.pnlHeader;
-            this.dragControl.UseTransparentDrag = true;
+            dragControl.DockIndicatorTransparencyValue = 0.6D;
+            dragControl.TargetControl = pnlHeader;
+            dragControl.UseTransparentDrag = true;
             // 
             // frmViewDetailImport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(191)))), ((int)(((byte)(166)))));
-            this.ClientSize = new System.Drawing.Size(962, 512);
-            this.Controls.Add(this.pnlBody);
-            this.Controls.Add(this.pnlHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmViewDetailImport";
-            this.Padding = new System.Windows.Forms.Padding(3);
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmViewDetailImport";
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlHeader.PerformLayout();
-            this.pnlBody.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetailImport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailImportOrderBindingSource)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(38, 191, 166);
+            ClientSize = new Size(962, 512);
+            Controls.Add(pnlBody);
+            Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "frmViewDetailImport";
+            Padding = new Padding(3);
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "frmViewDetailImport";
+            pnlHeader.ResumeLayout(false);
+            pnlHeader.PerformLayout();
+            pnlBody.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvDetailImport).EndInit();
+            ((System.ComponentModel.ISupportInitialize)detailImportOrderBindingSource).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

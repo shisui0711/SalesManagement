@@ -137,7 +137,9 @@
             // 
             // btnAdd
             // 
+            btnAdd.Animated = true;
             btnAdd.BorderRadius = 5;
+            btnAdd.Cursor = Cursors.Hand;
             btnAdd.CustomizableEdges = customizableEdges1;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -158,9 +160,11 @@
             // 
             // btnExit
             // 
+            btnExit.Animated = true;
             btnExit.BorderColor = Color.FromArgb(38, 191, 166);
             btnExit.BorderRadius = 5;
             btnExit.BorderThickness = 3;
+            btnExit.Cursor = Cursors.Hand;
             btnExit.CustomizableEdges = customizableEdges3;
             btnExit.DisabledState.BorderColor = Color.DarkGray;
             btnExit.DisabledState.CustomBorderColor = Color.DarkGray;

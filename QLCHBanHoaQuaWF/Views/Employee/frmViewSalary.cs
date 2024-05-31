@@ -3,7 +3,7 @@ using QLCHWF.Extensions;
 
 namespace QLCHWF.Views.Employee
 {
-    public partial class frmViewSalary : Form,IViewSalary
+    public partial class frmViewSalary : Form, IViewSalary
     {
         public frmViewSalary()
         {
@@ -29,7 +29,7 @@ namespace QLCHWF.Views.Employee
 
         private void btnCaculate_Click(object sender, EventArgs e)
         {
-            CalculateSalary?.Invoke(sender,e);
+            CalculateSalary?.Invoke(sender, e);
         }
 
         private void btnExportFile_Click(object sender, EventArgs e)
@@ -54,6 +54,11 @@ namespace QLCHWF.Views.Employee
         public void ShowMessage(string message)
         {
             MyMessageBox.Show(message);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

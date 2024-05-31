@@ -1,4 +1,6 @@
 ﻿using QLCHWF.CustomMessageBox;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace QLCHWF.Views.Provider
 {
@@ -30,8 +32,43 @@ namespace QLCHWF.Views.Provider
         public frmViewProvider()
         {
             InitializeComponent();
+            LoadCopy();
         }
+        private void LoadCopy()
+        {
+            var properties = typeof(Models.Provider).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(p => p.GetCustomAttribute(typeof(DisplayNameAttribute), true) != null);
+            foreach (var propertyInfo in properties)
+            {
+                string? propertyName = (propertyInfo.GetCustomAttribute(typeof(DisplayNameAttribute)) as DisplayNameAttribute)?.DisplayName;
+                if (propertyName == null)
+                {
+                    continue;
+                }
+                btnCopy.DropDownItems.Add(new ToolStripMenuItem(propertyName));
+            }
+            foreach (var toolStripMenuItem in btnCopy.DropDownItems.OfType<ToolStripMenuItem>())
+            {
+                toolStripMenuItem.Click += delegate
+                {
+                    Models.Provider? selected = providerBindingSource.Current as Models.Provider;
+                    if (selected == null)
+                    {
+                        return;
+                    }
+                    var property = selected.GetType().GetProperties().Where(x =>
+                    {
+                        var displayNameAtribute = x.GetCustomAttribute(typeof(DisplayNameAttribute)) as DisplayNameAttribute;
+                        return displayNameAtribute?.DisplayName == toolStripMenuItem.Text;
+                    }).FirstOrDefault();
+                    if (property != null)
+                    {
+                        Clipboard.SetText(property.GetValue(selected)!.ToString()!);
+                    }
 
+                };
+            }
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchProvider?.Invoke(sender, e);

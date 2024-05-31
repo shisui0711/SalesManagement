@@ -69,9 +69,14 @@ public class AddSalesOrderPresenter : PaginationPresenter<Product>
             List<DetailSalesOrder> detailSalesOrders = new List<DetailSalesOrder>();
             foreach (DataGridViewRow row in _addSalesOrder.OrderedGridView.Rows)
             {
-                Product product = _unitOfWork.Products.GetById(row.Cells["ProductIDColumn"].Value)!;
+                Product product = _unitOfWork.Products.GetById(row.Cells["ProductIDColumn"].Value);
+                if (product == null)
+                {
+                    _addSalesOrder.ShowMessage("Các mặt hàng đã chọn không còn tồn tại");
+                    return;
+                }
                 DetailSalesOrder detail = new DetailSalesOrder();
-                detail.ProductID = int.Parse(row.Cells["ProductIDColumn"].Value.ToString()!);
+                detail.ProductID = product.ProductID;
                 detail.UnitPrice = decimal.Parse(row.Cells["UnitPriceColumn"].Value.ToString()!);
                 detail.Quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString()!);
                 if (detail.Quantity > product.Inventory)

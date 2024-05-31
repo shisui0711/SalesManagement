@@ -28,154 +28,154 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            this.pnlProduct = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.ptbProduct = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.lblUnitPrice = new System.Windows.Forms.Label();
-            this.lblProductName = new System.Windows.Forms.Label();
-            this.lblInventory = new System.Windows.Forms.Label();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.lbl2 = new System.Windows.Forms.Label();
-            this.pnlProduct.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbProduct)).BeginInit();
-            this.SuspendLayout();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            pnlProduct = new Guna.UI2.WinForms.Guna2GradientPanel();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            ptbProduct = new Guna.UI2.WinForms.Guna2PictureBox();
+            lblUnitPrice = new Label();
+            lblProductName = new Label();
+            lblInventory = new Label();
+            lbl1 = new Label();
+            lblMode = new Label();
+            pnlProduct.SuspendLayout();
+            guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbProduct).BeginInit();
+            SuspendLayout();
             // 
             // pnlProduct
             // 
-            this.pnlProduct.BackColor = System.Drawing.Color.White;
-            this.pnlProduct.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(119)))), ((int)(((byte)(232)))));
-            this.pnlProduct.BorderRadius = 10;
-            this.pnlProduct.BorderThickness = 3;
-            this.pnlProduct.Controls.Add(this.guna2Panel1);
-            this.pnlProduct.Controls.Add(this.lblUnitPrice);
-            this.pnlProduct.Controls.Add(this.lblProductName);
-            this.pnlProduct.Controls.Add(this.lblInventory);
-            this.pnlProduct.Controls.Add(this.lbl1);
-            this.pnlProduct.Controls.Add(this.lbl2);
-            this.pnlProduct.CustomizableEdges = customizableEdges5;
-            this.pnlProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlProduct.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
-            this.pnlProduct.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(238)))), ((int)(((byte)(33)))));
-            this.pnlProduct.Location = new System.Drawing.Point(0, 0);
-            this.pnlProduct.Name = "pnlProduct";
-            this.pnlProduct.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            this.pnlProduct.Size = new System.Drawing.Size(254, 248);
-            this.pnlProduct.TabIndex = 0;
-            this.pnlProduct.Click += new System.EventHandler(this.pnlProduct_Click);
+            pnlProduct.BackColor = Color.White;
+            pnlProduct.BorderColor = Color.FromArgb(10, 119, 232);
+            pnlProduct.BorderRadius = 10;
+            pnlProduct.BorderThickness = 3;
+            pnlProduct.Controls.Add(guna2Panel1);
+            pnlProduct.Controls.Add(lblUnitPrice);
+            pnlProduct.Controls.Add(lblProductName);
+            pnlProduct.Controls.Add(lblInventory);
+            pnlProduct.Controls.Add(lbl1);
+            pnlProduct.Controls.Add(lblMode);
+            pnlProduct.CustomizableEdges = customizableEdges11;
+            pnlProduct.Dock = DockStyle.Fill;
+            pnlProduct.FillColor = Color.FromArgb(0, 146, 69);
+            pnlProduct.FillColor2 = Color.FromArgb(252, 238, 33);
+            pnlProduct.Location = new Point(0, 0);
+            pnlProduct.Name = "pnlProduct";
+            pnlProduct.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            pnlProduct.Size = new Size(254, 248);
+            pnlProduct.TabIndex = 0;
+            pnlProduct.Click += pnlProduct_Click;
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(119)))), ((int)(((byte)(232)))));
-            this.guna2Panel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(119)))), ((int)(((byte)(232)))));
-            this.guna2Panel1.BorderRadius = 10;
-            this.guna2Panel1.BorderThickness = 3;
-            this.guna2Panel1.Controls.Add(this.ptbProduct);
-            this.guna2Panel1.CustomizableEdges = customizableEdges3;
-            this.guna2Panel1.Location = new System.Drawing.Point(25, 26);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            this.guna2Panel1.Size = new System.Drawing.Size(205, 125);
-            this.guna2Panel1.TabIndex = 12;
+            guna2Panel1.BackColor = Color.FromArgb(10, 119, 232);
+            guna2Panel1.BorderColor = Color.FromArgb(10, 119, 232);
+            guna2Panel1.BorderRadius = 10;
+            guna2Panel1.BorderThickness = 3;
+            guna2Panel1.Controls.Add(ptbProduct);
+            guna2Panel1.CustomizableEdges = customizableEdges9;
+            guna2Panel1.Location = new Point(25, 26);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.Padding = new Padding(3);
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2Panel1.Size = new Size(205, 125);
+            guna2Panel1.TabIndex = 12;
             // 
             // ptbProduct
             // 
-            this.ptbProduct.BorderRadius = 5;
-            this.ptbProduct.CustomizableEdges = customizableEdges1;
-            this.ptbProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ptbProduct.ImageRotate = 0F;
-            this.ptbProduct.Location = new System.Drawing.Point(3, 3);
-            this.ptbProduct.Name = "ptbProduct";
-            this.ptbProduct.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            this.ptbProduct.Size = new System.Drawing.Size(199, 119);
-            this.ptbProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbProduct.TabIndex = 0;
-            this.ptbProduct.TabStop = false;
+            ptbProduct.BorderRadius = 5;
+            ptbProduct.CustomizableEdges = customizableEdges7;
+            ptbProduct.Dock = DockStyle.Fill;
+            ptbProduct.ImageRotate = 0F;
+            ptbProduct.Location = new Point(3, 3);
+            ptbProduct.Name = "ptbProduct";
+            ptbProduct.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            ptbProduct.Size = new Size(199, 119);
+            ptbProduct.SizeMode = PictureBoxSizeMode.StretchImage;
+            ptbProduct.TabIndex = 0;
+            ptbProduct.TabStop = false;
             // 
             // lblUnitPrice
             // 
-            this.lblUnitPrice.AutoSize = true;
-            this.lblUnitPrice.BackColor = System.Drawing.Color.Transparent;
-            this.lblUnitPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblUnitPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(79)))), ((int)(((byte)(95)))));
-            this.lblUnitPrice.Location = new System.Drawing.Point(84, 195);
-            this.lblUnitPrice.Name = "lblUnitPrice";
-            this.lblUnitPrice.Size = new System.Drawing.Size(17, 20);
-            this.lblUnitPrice.TabIndex = 11;
-            this.lblUnitPrice.Text = "0";
+            lblUnitPrice.AutoSize = true;
+            lblUnitPrice.BackColor = Color.Transparent;
+            lblUnitPrice.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblUnitPrice.ForeColor = Color.FromArgb(224, 79, 95);
+            lblUnitPrice.Location = new Point(84, 195);
+            lblUnitPrice.Name = "lblUnitPrice";
+            lblUnitPrice.Size = new Size(17, 20);
+            lblUnitPrice.TabIndex = 11;
+            lblUnitPrice.Text = "0";
             // 
             // lblProductName
             // 
-            this.lblProductName.AutoSize = true;
-            this.lblProductName.BackColor = System.Drawing.Color.Transparent;
-            this.lblProductName.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblProductName.ForeColor = System.Drawing.Color.White;
-            this.lblProductName.Location = new System.Drawing.Point(21, 167);
-            this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(92, 17);
-            this.lblProductName.TabIndex = 10;
-            this.lblProductName.Text = "ProductName";
+            lblProductName.AutoSize = true;
+            lblProductName.BackColor = Color.Transparent;
+            lblProductName.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            lblProductName.ForeColor = Color.White;
+            lblProductName.Location = new Point(21, 167);
+            lblProductName.Name = "lblProductName";
+            lblProductName.Size = new Size(92, 17);
+            lblProductName.TabIndex = 10;
+            lblProductName.Text = "ProductName";
             // 
             // lblInventory
             // 
-            this.lblInventory.AutoSize = true;
-            this.lblInventory.BackColor = System.Drawing.Color.Transparent;
-            this.lblInventory.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(79)))), ((int)(((byte)(95)))));
-            this.lblInventory.Location = new System.Drawing.Point(96, 219);
-            this.lblInventory.Name = "lblInventory";
-            this.lblInventory.Size = new System.Drawing.Size(17, 20);
-            this.lblInventory.TabIndex = 9;
-            this.lblInventory.Text = "0";
+            lblInventory.AutoSize = true;
+            lblInventory.BackColor = Color.Transparent;
+            lblInventory.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblInventory.ForeColor = Color.FromArgb(224, 79, 95);
+            lblInventory.Location = new Point(96, 219);
+            lblInventory.Name = "lblInventory";
+            lblInventory.Size = new Size(17, 20);
+            lblInventory.TabIndex = 9;
+            lblInventory.Text = "0";
             // 
             // lbl1
             // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.BackColor = System.Drawing.Color.Transparent;
-            this.lbl1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl1.ForeColor = System.Drawing.Color.White;
-            this.lbl1.Location = new System.Drawing.Point(21, 219);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(69, 20);
-            this.lbl1.TabIndex = 8;
-            this.lbl1.Text = "Tồn kho:";
+            lbl1.AutoSize = true;
+            lbl1.BackColor = Color.Transparent;
+            lbl1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl1.ForeColor = Color.White;
+            lbl1.Location = new Point(21, 219);
+            lbl1.Name = "lbl1";
+            lbl1.Size = new Size(69, 20);
+            lbl1.TabIndex = 8;
+            lbl1.Text = "Tồn kho:";
             // 
-            // lbl2
+            // lblMode
             // 
-            this.lbl2.AutoSize = true;
-            this.lbl2.BackColor = System.Drawing.Color.Transparent;
-            this.lbl2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl2.ForeColor = System.Drawing.Color.White;
-            this.lbl2.Location = new System.Drawing.Point(21, 198);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(57, 17);
-            this.lbl2.TabIndex = 7;
-            this.lbl2.Text = "Giá bán:";
+            lblMode.AutoSize = true;
+            lblMode.BackColor = Color.Transparent;
+            lblMode.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            lblMode.ForeColor = Color.White;
+            lblMode.Location = new Point(21, 198);
+            lblMode.Name = "lblMode";
+            lblMode.Size = new Size(57, 17);
+            lblMode.TabIndex = 7;
+            lblMode.Text = "Giá bán:";
             // 
             // frmProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(254, 248);
-            this.Controls.Add(this.pnlProduct);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmProduct";
-            this.ShowInTaskbar = false;
-            this.Text = "frmTest";
-            this.pnlProduct.ResumeLayout(false);
-            this.pnlProduct.PerformLayout();
-            this.guna2Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbProduct)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(254, 248);
+            Controls.Add(pnlProduct);
+            Cursor = Cursors.Hand;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "frmProduct";
+            ShowInTaskbar = false;
+            Text = "frmTest";
+            pnlProduct.ResumeLayout(false);
+            pnlProduct.PerformLayout();
+            guna2Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ptbProduct).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -187,6 +187,6 @@
         private Label lblProductName;
         private Label lblInventory;
         private Label lbl1;
-        private Label lbl2;
+        private Label lblMode;
     }
 }

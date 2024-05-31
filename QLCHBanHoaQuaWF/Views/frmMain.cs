@@ -1,6 +1,8 @@
 ﻿
 
 using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using QLCHWF.Presenters;
 
 namespace QLCHWF.Views
 {
@@ -22,6 +24,7 @@ namespace QLCHWF.Views
         public event EventHandler? ShowUser;
         public event EventHandler? ShowUserRole;
         public event EventHandler? ShowOptions;
+        public event EventHandler? ChangePassword;
         private bool IsLogout;
         public frmMain()
         {
@@ -40,8 +43,9 @@ namespace QLCHWF.Views
             btnUser.Checked = false;
             btnUserRole.Checked = false;
             btnOptions.Checked = false;
-            ShowProduct?.Invoke(sender,e);
+            ShowProduct?.Invoke(sender, e);
             IsLogout = false;
+            Program.MyHost.Services.GetRequiredService<UserPresenter>();
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -60,52 +64,52 @@ namespace QLCHWF.Views
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-            ShowStatistics?.Invoke(sender,e);
+            ShowStatistics?.Invoke(sender, e);
         }
 
         private void btnSalesOrder_Click(object sender, EventArgs e)
         {
-            ShowSalesOrder?.Invoke(sender,e);
+            ShowSalesOrder?.Invoke(sender, e);
         }
 
         private void btnImportOrder_Click(object sender, EventArgs e)
         {
-            ShowImportOrder?.Invoke(sender,e);
+            ShowImportOrder?.Invoke(sender, e);
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            ShowCustomer?.Invoke(sender,e);
+            ShowCustomer?.Invoke(sender, e);
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            ShowProduct?.Invoke(sender,e);
+            ShowProduct?.Invoke(sender, e);
         }
 
         private void btnProvider_Click(object sender, EventArgs e)
         {
-            ShowProvider?.Invoke(sender,e);
+            ShowProvider?.Invoke(sender, e);
         }
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-            ShowEmployee?.Invoke(sender,e);
+            ShowEmployee?.Invoke(sender, e);
         }
 
         private void btnUser_Click(object sender, EventArgs e)
         {
-            ShowUser?.Invoke(sender,e);
+            ShowUser?.Invoke(sender, e);
         }
 
         private void btnUserRole_Click(object sender, EventArgs e)
         {
-            ShowUserRole?.Invoke(sender,e);
+            ShowUserRole?.Invoke(sender, e);
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
         {
-            ShowOptions?.Invoke(sender,e);
+            ShowOptions?.Invoke(sender, e);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -114,7 +118,7 @@ namespace QLCHWF.Views
             this.Close();
         }
 
-        public void ChangeVisible(string controlName,bool value)
+        public void ChangeVisible(string controlName, bool value)
         {
             var type = GetType().GetField(controlName, BindingFlags.Instance | BindingFlags.NonPublic);
             if (type == null)
@@ -124,6 +128,11 @@ namespace QLCHWF.Views
 
             var control = (Control)type.GetValue(this)!;
             control.Visible = value;
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            ChangePassword?.Invoke(sender,e);
         }
     }
 }

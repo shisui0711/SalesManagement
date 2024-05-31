@@ -189,7 +189,7 @@ public class ProviderPresenter: PaginationPresenter<Provider>
                    SearchItems(x => x.Email.Contains(_viewProvider.SearchText));
                     break;
                 case 3:
-                   SearchItems(x => x.Phone.Contains(_viewProvider.SearchText));
+                   SearchItems(x => x.Phone.StartsWith(_viewProvider.SearchText));
                     break;
                 case 4:
                    SearchItems(x => x.Address.Contains(_viewProvider.SearchText));

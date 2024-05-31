@@ -41,7 +41,7 @@ namespace QLCHWF.Views.ImportOrder
         {
             get
             {
-                if (AuthPresenter.User != null) return AuthPresenter.User.EmployeeID;
+                if (AuthPresenter.User != null && AuthPresenter.User.EmployeeID != 0) return AuthPresenter.User.EmployeeID;
                 return null;
             }
         }
@@ -49,7 +49,7 @@ namespace QLCHWF.Views.ImportOrder
         {
             get { try
                 {
-                    return int.Parse(dgvProvider.CurrentRow!.Cells[0].Value.ToString()!);
+                    return int.Parse(dgvProvider.CurrentRow?.Cells[0].Value.ToString() ?? string.Empty);
                 }
                 catch (Exception)
                 {

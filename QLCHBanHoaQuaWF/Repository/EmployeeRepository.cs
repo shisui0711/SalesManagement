@@ -12,7 +12,7 @@ public class EmployeeRepository : GenericRepository<Employee>,IEmployeeRepositor
         _context = context;
     }
 
-    public List<SalaryTable?> GetSalesSalary(DateTime fromDate, DateTime toDate)
+    public List<SalaryTable> GetSalesSalary(DateTime fromDate, DateTime toDate)
     {
         return (from employee in _context.Employees
             join sales in _context.SalesOrders
@@ -30,12 +30,12 @@ public class EmployeeRepository : GenericRepository<Employee>,IEmployeeRepositor
             {
                 EmployeeID = g.Key.EmployeeID,
                 EmployeeName = g.Key.EmployeeName,
-                Salary = (decimal)g.Key.Salary,
+                Salary = g.Key.Salary,
                 TotalWorked = g.Count()
             }).ToList();
     }
 
-    public List<SalaryTable?> GetImportSalary(DateTime fromDate, DateTime toDate)
+    public List<SalaryTable> GetImportSalary(DateTime fromDate, DateTime toDate)
     {
        return (from employee in _context.Employees
            join import in _context.ImportOrders
@@ -53,7 +53,7 @@ public class EmployeeRepository : GenericRepository<Employee>,IEmployeeRepositor
            {
                EmployeeID = g.Key.EmployeeID,
                EmployeeName = g.Key.EmployeeName,
-               Salary = (decimal)g.Key.Salary,
+               Salary = (decimal?)g.Key.Salary,
                TotalWorked = g.Count()
            }).ToList();
     }
@@ -74,7 +74,7 @@ public class EmployeeRepository : GenericRepository<Employee>,IEmployeeRepositor
     {
         return (from e in _context.Employees
             join import in _context.ImportOrders
-                on e.EmployeeID equals import.Employee.EmployeeID
+                on  e.EmployeeID equals import.EmployeeID
             where import.OrderDate >= start && import.OrderDate <= end
             group import by new { e.EmployeeID, e.EmployeeName }
             into g
